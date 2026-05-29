@@ -1,0 +1,14 @@
+# Lock files
+.~lock.*
+~$*
+
+# Excel temp files
+*.tmp
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Setup script (delete after first run)
+setup-github.ps1

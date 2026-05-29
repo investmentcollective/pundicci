@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PIC 2026 Dashboard</title>
+<style>
+  :root {
+    --navy: #0D1B2A; --navy2: #1B2A3B; --grey-card: #F2F4F7;
+    --grey-line: #C5CDD6; --grey-text: #6E7D8C;
+    --green: #1EA050; --red: #D23232; --white: #ffffff;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; background: #F0F2F5; color: var(--navy); min-height: 100vh; }
+  .header { background: var(--white); border-bottom: 2px solid var(--navy); padding: 18px 40px; display: flex; align-items: center; justify-content: space-between; }
+  .header-logo { display: flex; align-items: center; gap: 14px; }
+  .logo-svg { width: 52px; height: 52px; }
+  .logo-text h1 { font-size: 20px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; line-height: 1; }
+  .logo-text p  { font-size: 11px; letter-spacing: 2px; color: var(--grey-text); text-transform: uppercase; margin-top: 2px; }
+  .header-tagline { font-size: 12px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--navy); }
+  .nav-wrap { background: var(--white); border-bottom: 1px solid var(--grey-line); position: relative; }
+  .nav { padding: 0 40px; display: flex; }
+  .nav-tab { padding: 14px 28px; font-size: 13px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; cursor: pointer; border-bottom: 3px solid transparent; color: var(--grey-text); transition: all 0.2s; white-space: nowrap; }
+  .nav-tab:hover { color: var(--navy); }
+  .nav-tab.active { color: var(--navy); border-bottom-color: var(--navy); }
+  .page { display: none; padding: 32px 40px; max-width: 1100px; margin: 0 auto; }
+  .page.active { display: block; }
+  .stats-bar { background: var(--navy); border-radius: 10px; padding: 20px 28px; display: grid; grid-template-columns: repeat(7, 1fr); gap: 0; margin-bottom: 28px; }
+  .stat-item { text-align: center; border-right: 1px solid rgba(255,255,255,0.1); padding: 0 12px; }
+  .stat-item:last-child { border-right: none; }
+  .stat-label { font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 6px; }
+  .stat-value { font-size: 22px; font-weight: 800; color: #fff; }
+  .stat-value.positive { color: #4ADE80; }
+  .stat-value.negative { color: #F87171; }
+  .section-title { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--grey-text); margin-bottom: 14px; }
+  .leaderboard { display: flex; flex-direction: column; gap: 10px; }
+  .lb-card { background: var(--white); border-radius: 10px; padding: 20px 24px; display: flex; align-items: center; gap: 20px; cursor: pointer; transition: all 0.2s; border: 2px solid transparent; box-shadow: 0 1px 4px rgba(0,0,0,0.06); }
+  .lb-card:hover { border-color: var(--navy); transform: translateY(-1px); box-shadow: 0 4px 16px rgba(0,0,0,0.10); }
+  .lb-rank { font-size: 42px; font-weight: 900; width: 62px; text-align: center; flex-shrink: 0; font-family: 'Arial Black', Arial, sans-serif; }
+  .rank-1 { color: var(--navy); } .rank-2 { color: #555; } .rank-3 { color: #8B5E1A; } .rank-4 { color: #999; }
+  .lb-stripe { width: 5px; height: 72px; border-radius: 3px; flex-shrink: 0; }
+  .lb-name-block { flex: 1; }
+  .lb-name { font-size: 28px; font-weight: 900; text-transform: uppercase; letter-spacing: 1px; line-height: 1; }
+  .lb-record { font-size: 12px; color: var(--grey-text); margin-top: 4px; font-weight: 600; letter-spacing: 1px; }
+  .lb-stats { display: flex; gap: 32px; align-items: center; }
+  .lb-stat { text-align: right; }
+  .lb-stat-label { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: var(--grey-text); margin-bottom: 3px; }
+  .lb-stat-value { font-size: 18px; font-weight: 800; font-variant-numeric: tabular-nums; }
+  .lb-stat-value.positive { color: var(--green); }
+  .lb-stat-value.negative { color: var(--red); }
+  .lb-arrow { font-size: 20px; color: var(--grey-line); margin-left: 8px; }
+  .lb-card:hover .lb-arrow { color: var(--navy); }
+  .back-btn { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--grey-text); cursor: pointer; margin-bottom: 24px; padding: 8px 0; }
+  .back-btn:hover { color: var(--navy); }
+  .bettor-header { background: var(--navy); border-radius: 10px; padding: 24px 28px; margin-bottom: 24px; display: flex; align-items: center; justify-content: space-between; }
+  .bettor-name { font-size: 42px; font-weight: 900; text-transform: uppercase; color: #fff; letter-spacing: 2px; }
+  .bettor-stats { display: flex; gap: 32px; }
+  .bettor-stat { text-align: center; }
+  .bettor-stat-label { font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 4px; }
+  .bettor-stat-value { font-size: 22px; font-weight: 800; color: #fff; }
+  .bettor-stat-value.positive { color: #4ADE80; }
+  .bettor-stat-value.negative { color: #F87171; }
+  .bet-table { width: 100%; border-collapse: collapse; background: var(--white); border-radius: 10px; overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,0.06); }
+  .bet-table th { background: var(--navy); color: rgba(255,255,255,0.6); font-size: 10px; letter-spacing: 2px; text-transform: uppercase; padding: 12px 16px; text-align: left; font-weight: 600; }
+  .bet-table td { padding: 14px 16px; font-size: 14px; border-bottom: 1px solid var(--grey-line); }
+  .bet-table tr:last-child td { border-bottom: none; }
+  .bet-table tr:hover td { background: var(--grey-card); }
+  .badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; }
+  .badge-win  { background: #DCFCE7; color: #15803D; }
+  .badge-loss { background: #FEE2E2; color: #B91C1C; }
+  .net-positive { color: var(--green); font-weight: 700; }
+  .net-negative { color: var(--red); font-weight: 700; }
+  .monospace { font-family: 'Courier New', monospace; }
+  .totals-row td { background: #F8F9FA; font-weight: 700; border-top: 2px solid var(--navy); }
+  .month-badge { display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--grey-text); background: var(--grey-card); border-radius: 4px; padding: 2px 6px; margin-right: 6px; }
+  footer { text-align: center; padding: 24px; font-size: 11px; color: var(--grey-text); letter-spacing: 1px; text-transform: uppercase; }
+
+  /* Mobile bet cards (hidden on desktop) */
+  .bet-cards { display: none; }
+  .bet-card { background: var(--white); border-radius: 10px; padding: 14px 16px; margin-bottom: 10px; box-shadow: 0 1px 4px rgba(0,0,0,0.06); border-left: 4px solid var(--grey-line); }
+  .bet-card.win  { border-left-color: var(--green); }
+  .bet-card.loss { border-left-color: var(--red); }
+  .bet-card-top  { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
+  .bet-card-date { font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--grey-text); }
+  .bet-card-desc { font-size: 14px; font-weight: 600; color: var(--navy); margin-bottom: 8px; line-height: 1.3; }
+  .bet-card-row  { display: flex; gap: 20px; flex-wrap: wrap; }
+  .bet-card-stat { font-size: 12px; color: var(--grey-text); }
+  .bet-card-stat strong { color: var(--navy); display: block; font-size: 13px; }
+  .bet-cards-total { background: #F8F9FA; border-radius: 8px; padding: 12px 16px; display: flex; justify-content: space-between; align-items: center; border: 1px solid var(--grey-line); margin-top: 4px; font-size: 13px; font-weight: 700; }
+
+  /* Mobile-only account cards (hidden on desktop) */
+  .mob-savings-cards { display: none; }
+  .mob-returns-cards { display: none; }
+  .mob-member-row { background: var(--white); border-radius: 10px; padding: 14px 16px; margin-bottom: 8px; box-shadow: 0 1px 4px rgba(0,0,0,0.06); display: flex; justify-content: space-between; align-items: center; }
+  .mob-member-name { font-size: 16px; font-weight: 700; color: var(--navy); }
+  .mob-member-sub  { font-size: 11px; color: var(--grey-text); margin-top: 2px; }
+  .mob-member-right { text-align: right; }
+  .mob-member-val  { font-size: 15px; font-weight: 800; color: var(--navy); }
+  .mob-totals-row  { background: var(--navy); border-radius: 10px; padding: 12px 16px; display: flex; justify-content: space-between; align-items: center; margin-top: 4px; }
+  .mob-totals-label { font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: rgba(255,255,255,0.6); }
+  .mob-totals-val  { font-size: 16px; font-weight: 800; color: #fff; }
+
+  @media (max-width: 600px) {
+    /* ── Header ── */
+    .header { padding: 12px 14px; }
+    .logo-svg { width: 32px; height: 32px; }
+    .logo-text h1 { font-size: 13px; letter-spacing: 0; }
+    .logo-text p { display: none; }
+    .header-tagline { display: none; }
+
+    /* ── Nav: 2-row wrapped grid, no horizontal scroll ── */
+    .nav-fade { display: none; }
+    .nav { padding: 0; flex-wrap: wrap; overflow-x: visible; }
+    .nav-tab {
+      flex: 1 0 25%;        /* 4 per row */
+      min-width: 0;
+      padding: 11px 4px;
+      font-size: 10px;
+      letter-spacing: 0;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      text-align: center;
+      justify-content: center;
+      display: flex;
+      align-items: center;
+      border-bottom: 3px solid transparent;
+      border-right: 1px solid var(--grey-line);
+      min-height: 44px;
+    }
+    /* Single row: Home | +Submit | Leaderboard | Account */
+    .nav-tab:nth-child(4) { border-right: none; }
+    .nav-tab.active { border-bottom-color: var(--navy); background: #F8F9FA; }
+
+    /* ── Page ── */
+    .page { padding: 14px 12px; }
+    .section-title { font-size: 10px; margin-bottom: 10px; }
+
+    /* ── Account: next-up stacks ── */
+    #next-up-row { flex-direction: column !important; flex-wrap: wrap; }
+    #next-up-row > div { min-width: unset !important; width: 100% !important; box-sizing: border-box; }
+    #next-up-row button { width: 100% !important; }
+    .home-submit-btn { width: 100% !important; }
+
+    /* ── Account: balance hero ── */
+    .acct-hero { flex-direction: column !important; gap: 0 !important; padding: 18px !important; border-radius: 10px; }
+    .acct-bal { font-size: 36px !important; }
+    .acct-right { text-align: left !important; flex-direction: row !important; gap: 14px !important; flex-wrap: wrap; margin-top: 14px; border-top: 1px solid rgba(255,255,255,0.15); padding-top: 14px; width: 100%; }
+    .acct-right > div { flex: 1 1 40%; }
+
+    /* ── Account: shorten section titles ── */
+    .mob-savings-title::after { content: 'Savings — 2026'; }
+    .mob-savings-title .full-title { display: none; }
+    .section-title { word-break: break-word; }
+
+    /* ── Account: hide wide tables, show mobile cards ── */
+    .mob-scroll { display: none; }
+    .mob-savings-cards { display: block; margin-bottom: 16px; }
+    .mob-returns-cards { display: block; margin-bottom: 16px; }
+
+    /* ── Leaderboard: stats bar 3+3+1 ── */
+    .stats-bar { grid-template-columns: repeat(3, 1fr); padding: 14px 12px; margin-bottom: 16px; row-gap: 0; }
+    .stat-item { padding: 10px 4px; border-right: 1px solid rgba(255,255,255,0.15); }
+    .stat-item:nth-child(3) { border-right: none; }
+    .stat-item:nth-child(4) { border-top: 1px solid rgba(255,255,255,0.15); }
+    .stat-item:nth-child(6) { border-right: none; }
+    /* Hide Total Staked & Total Return — show Net P&L full width */
+    .stat-item:nth-child(5),
+    .stat-item:nth-child(6) { display: none; }
+    .stat-item:nth-child(7) { grid-column: 1 / -1; border-right: none; border-top: 1px solid rgba(255,255,255,0.15); padding-top: 12px; }
+    .stat-label { font-size: 9px; letter-spacing: 0; margin-bottom: 4px; }
+    .stat-value { font-size: 18px; }
+
+    /* ── Leaderboard cards ── */
+    .lb-card { flex-wrap: wrap; padding: 12px 12px; gap: 0; width: 100%; }
+    .lb-rank { font-size: 26px; width: 34px; flex-shrink: 0; }
+    .lb-stripe { height: 32px; width: 4px; flex-shrink: 0; margin-right: 8px; }
+    .lb-name-block { flex: 1; min-width: 0; }
+    .lb-name { font-size: 18px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .lb-record { font-size: 10px; line-height: 1.5; white-space: normal; }
+    .lb-record span { display: block; margin-top: 3px; font-size: 10px; }
+    /* Stats: 2×2 grid on mobile */
+    .lb-stats { width: 100%; display: grid; grid-template-columns: repeat(2, 1fr); gap: 0; border-top: 1px solid var(--grey-line); padding-top: 10px; margin-top: 10px; }
+    .lb-stat { text-align: center; padding: 6px 0; border-right: 1px solid var(--grey-line); border-bottom: 1px solid var(--grey-line); }
+    .lb-stat:nth-child(2) { border-right: none; }
+    .lb-stat:nth-child(3) { border-bottom: none; }
+    .lb-stat:nth-child(4) { border-right: none; border-bottom: none; }
+    .lb-stat-label { font-size: 9px; letter-spacing: 0; }
+    .lb-stat-value { font-size: 14px; }
+    .lb-arrow { display: none; }
+
+    /* ── Leaderboard section title ── */
+    .lb-section-title .mob-hide { display: none; }
+
+    /* ── Individual bettor pages ── */
+    .bettor-header { flex-direction: column; align-items: flex-start; gap: 12px; padding: 16px 14px; margin-bottom: 14px; }
+    .bettor-name { font-size: 28px; letter-spacing: 0; }
+    .bettor-stats { width: 100%; display: grid; grid-template-columns: repeat(4, 1fr); }
+    .bettor-stat { text-align: center; }
+    .bettor-stat-label { font-size: 9px; letter-spacing: 0; }
+    .bettor-stat-value { font-size: 15px; }
+    .back-btn { margin-bottom: 12px; font-size: 11px; }
+
+    /* ── Bet history: cards only, no table ── */
+    .bet-table-wrap { display: none; }
+    .bet-cards { display: block; }
+
+    /* ── Submit form ── */
+    .form-card { padding: 16px 14px; }
+    .form-grid { grid-template-columns: 1fr !important; gap: 12px; }
+    .form-input, .form-select, .form-textarea { font-size: 16px; padding: 13px 12px; }
+    .submit-btn { padding: 15px; font-size: 13px; }
+    footer { font-size: 10px; padding: 16px; }
+    .mob-hide { display: none; }
+  }
+
+  /* Submit Bet form styles */
+  .form-card { background: var(--white); border-radius: 12px; padding: 28px 32px; box-shadow: 0 1px 4px rgba(0,0,0,0.06); margin-bottom: 20px; }
+  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  .form-group { display: flex; flex-direction: column; gap: 6px; }
+  .form-group.full { grid-column: 1 / -1; }
+  .form-label { font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--grey-text); }
+  .form-input, .form-select, .form-textarea {
+    padding: 12px 14px; border: 2px solid var(--grey-line); border-radius: 8px;
+    font-size: 15px; font-family: inherit; color: var(--navy); background: var(--white);
+    transition: border-color 0.2s; outline: none; width: 100%;
+  }
+  .form-input:focus, .form-select:focus, .form-textarea:focus { border-color: var(--navy); }
+  .form-textarea { resize: vertical; min-height: 80px; }
+  .form-select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236E7D8C' stroke-width='2' fill='none'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 36px; }
+  .bet-alert { background: #EBF4FF; border: 1px solid #B3D4F5; border-radius: 8px; padding: 14px 16px; margin-bottom: 18px; font-size: 13px; color: var(--navy); display: none; }
+  .bet-alert.overdue { background: #FEF3C7; border-color: #F59E0B; }
+  .bet-alert strong { display: block; margin-bottom: 2px; font-size: 12px; letter-spacing: 1px; text-transform: uppercase; }
+  .submit-btn { width: 100%; padding: 16px; background: var(--navy); color: #fff; border: none; border-radius: 8px; font-size: 14px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; transition: background 0.2s; margin-top: 8px; }
+  .submit-btn:hover { background: #1B2A3B; }
+  .submit-btn:disabled { background: var(--grey-line); cursor: not-allowed; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-logo">
+    <div class="logo-text">
+      <h1>Pundicci Investment Collective</h1>
+      <p>Invest to Win</p>
+    </div>
+  </div>
+  <div class="header-tagline">2026 Season</div>
+</div>
+
+<div class="nav-wrap">
+  <div class="nav" id="main-nav">
+    <div class="nav-tab active" onclick="showPage('home')">Home</div>
+    <div class="nav-tab" onclick="showPage('submit')" style="color:#1EA050;font-weight:800">+ Submit</div>
+    <div class="nav-tab" onclick="showPage('leaderboard')">Leaderboard</div>
+    <div class="nav-tab" onclick="showPage('account')">Account</div>
+  </div>
+  <div class="nav-fade" id="nav-fade"></div>
+</div>
+
+<!-- ═══════════════ HOME -->
+<div class="page active" id="page-home">
+  <div style="height:8px"></div>
+  <!-- Next Up + Then tiles -->
+  <div style="display:flex;align-items:stretch;gap:12px;margin-bottom:16px;flex-wrap:wrap" id="next-up-row"></div>
+  <!-- Submit Bet CTA -->
+  <div style="margin-bottom:20px">
+    <button onclick="showPage('submit')" style="width:100%;background:var(--navy);color:#fff;border:none;border-radius:10px;padding:16px 22px;font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:background 0.2s;display:flex;align-items:center;justify-content:center;gap:10px" onmouseover="this.style.background='#1B2A3B'" onmouseout="this.style.background='var(--navy)'">
+      <span style="font-size:18px">+</span> Submit This Week's Bet
+    </button>
+  </div>
+  <!-- Pending Bets widget -->
+  <div id="pending-bets-widget" style="margin-bottom:20px;display:none"></div>
+  <!-- Balance widget -->
+  <div class="acct-hero" style="background:var(--navy);border-radius:12px;padding:32px 36px;margin-bottom:20px;display:flex;align-items:center;justify-content:space-between">
+    <div>
+      <div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-bottom:8px">Collective Account Balance</div>
+      <div class="acct-bal" style="font-size:52px;font-weight:900;color:#fff;letter-spacing:-1px;line-height:1">$6,735.61</div>
+      <div style="font-size:12px;color:rgba(255,255,255,0.4);margin-top:8px;letter-spacing:1px">AS AT 29 MAY 2026</div>
+    </div>
+    <div class="acct-right" style="display:flex;flex-direction:column;gap:16px;text-align:right">
+      <div><div style="font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.4)">Opening Balance (30 Dec 2025)</div><div style="font-size:20px;font-weight:700;color:rgba(255,255,255,0.8)">$5,138.12</div></div>
+      <div><div style="font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.4)">Total Bet Returns (2026)</div><div style="font-size:20px;font-weight:700;color:#4ADE80">+$596.64</div></div>
+    </div>
+  </div>
+  <footer>Net P&amp;L = Bet return minus stake &nbsp;·&nbsp; Stake from captain's own pocket</footer>
+</div>
+
+<!-- ═══════════════ ACCOUNT (details) -->
+<div class="page" id="page-account">
+  <div style="height:8px"></div>
+  <!-- Pending Bets widget -->
+  <div id="pending-bets-widget" style="margin-bottom:20px;display:none"></div>
+  <!-- Balance widget -->
+  <div class="acct-hero" style="background:var(--navy);border-radius:12px;padding:32px 36px;margin-bottom:24px;display:flex;align-items:center;justify-content:space-between">
+    <div>
+      <div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-bottom:8px">Collective Account Balance</div>
+      <div class="acct-bal" style="font-size:52px;font-weight:900;color:#fff;letter-spacing:-1px;line-height:1">$6,735.61</div>
+      <div style="font-size:12px;color:rgba(255,255,255,0.4);margin-top:8px;letter-spacing:1px">AS AT 29 MAY 2026</div>
+    </div>
+    <div class="acct-right" style="display:flex;flex-direction:column;gap:16px;text-align:right">
+      <div><div style="font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.4)">Opening Balance (30 Dec 2025)</div><div style="font-size:20px;font-weight:700;color:rgba(255,255,255,0.8)">$5,138.12</div></div>
+      <div><div style="font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.4)">Total Bet Returns (2026)</div><div style="font-size:20px;font-weight:700;color:#4ADE80">+$596.64</div></div>
+    </div>
+  </div>
+  <div class="section-title">Savings Contributions<span class="mob-hide"> — 2026 (12 × $30 = $360 per member)</span></div>
+  <!-- Mobile cards for savings -->
+  <div class="mob-savings-cards">
+    <div class="mob-member-row"><div><div class="mob-member-name">Charlie</div><div class="mob-member-sub">Full year pre-paid</div></div><div class="mob-member-right"><div class="mob-member-val" style="color:var(--green)">$360 ✓</div><div class="mob-member-sub">Paid in full</div></div></div>
+    <div class="mob-member-row"><div><div class="mob-member-name">Douchie</div><div class="mob-member-sub">Full year pre-paid</div></div><div class="mob-member-right"><div class="mob-member-val" style="color:var(--green)">$360 ✓</div><div class="mob-member-sub">Paid in full</div></div></div>
+    <div class="mob-member-row"><div><div class="mob-member-name">Nic</div><div class="mob-member-sub">$80 still outstanding</div></div><div class="mob-member-right"><div class="mob-member-val" style="color:#D97706">$280 ⚠</div><div class="mob-member-sub">of $360</div></div></div>
+    <div class="mob-member-row"><div><div class="mob-member-name">Shannon</div><div class="mob-member-sub" style="color:var(--red)">$120 owed now (4 weeks)</div></div><div class="mob-member-right"><div class="mob-member-val" style="color:var(--red)">$0 ✗</div><div class="mob-member-sub">of $360</div></div></div>
+    <div class="mob-totals-row"><span class="mob-totals-label">Outstanding</span><span class="mob-totals-val" style="color:#F87171">$440</span></div>
+  </div>
+  <div class="mob-scroll"><div style="background:var(--white);border-radius:10px;overflow:hidden">
+    <table style="width:100%;border-collapse:collapse">
+      <thead><tr>
+        <th style="background:var(--navy);color:rgba(255,255,255,0.6);font-size:10px;letter-spacing:2px;text-transform:uppercase;padding:12px 20px;text-align:left;font-weight:600">Member</th>
+        <th style="background:var(--navy);color:rgba(255,255,255,0.6);font-size:10px;letter-spacing:2px;text-transform:uppercase;padding:12px 20px;text-align:center;font-weight:600">Annual Total</th>
+        <th style="background:var(--navy);color:rgba(255,255,255,0.6);font-size:10px;letter-spacing:2px;text-transform:uppercase;padding:12px 20px;text-align:center;font-weight:600">Paid</th>
+        <th style="background:var(--navy);color:rgba(255,255,255,0.6);font-size:10px;letter-spacing:2px;text-transform:uppercase;padding:12px 20px;text-align:center;font-weight:600">Outstanding</th>
+        <th style="background:var(--navy);color:rgba(255,255,255,0.6);font-size:10px;letter-spacing:2px;text-transform:uppercase;padding:12px 20px;text-align:center;font-weight:600">Status</th>
+      </tr></thead>
+      <tbody>
+        <tr style="border-bottom:1px solid var(--grey-line)"><td style="padding:16px 20px;font-weight:700;font-size:15px">Charlie</td><td style="padding:16px 20px;text-align:center;font-family:monospace">$360.00</td><td style="padding:16px 20px;text-align:center;font-family:monospace;font-weight:700;color:var(--green)">$360.00</td><td style="padding:16px 20px;text-align:center;font-family:monospace;color:var(--grey-text)">—</td><td style="padding:16px 20px;text-align:center"><span style="background:#DCFCE7;color:#15803D;padding:4px 12px;border-radius:20px;font-size:11px;font-weight:700;letter-spacing:1px">✓ PAID IN FULL</span></td></tr>
+        <tr style="border-bottom:1px solid var(--grey-line)"><td style="padding:16px 20px;font-weight:700;font-size:15px">Douchie</td><td style="padding:16px 20px;text-align:center;font-family:monospace">$360.00</td><td style="padding:16px 20px;text-align:center;font-family:monospace;font-weight:700;color:var(--green)">$360.00</td><td style="padding:16px 20px;text-align:center;font-family:monospace;color:var(--grey-text)">—</td><td style="padding:16px 20px;text-align:center"><span style="background:#DCFCE7;color:#15803D;padding:4px 12px;border-radius:20px;font-size:11px;font-weight:700;letter-spacing:1px">✓ PAID IN FULL</span></td></tr>
+        <tr style="border-bottom:1px solid var(--grey-line)"><td style="padding:16px 20px;font-weight:700;font-size:15px">Nic</td><td style="padding:16px 20px;text-align:center;font-family:monospace">$360.00</td><td style="padding:16px 20px;text-align:center;font-family:monospace;font-weight:700;color:#D97706">$280.00</td><td style="padding:16px 20px;text-align:center;font-family:monospace;font-weight:700;color:#D97706">$80.00</td><td style="padding:16px 20px;text-align:center"><span style="background:#FEF3C7;color:#B45309;padding:4px 12px;border-radius:20px;font-size:11px;font-weight:700;letter-spacing:1px">⚠ PARTIAL</span></td></tr>
+        <tr style="border-bottom:1px solid var(--grey-line)"><td style="padding:16px 20px;font-weight:700;font-size:15px">Shannon</td><td style="padding:16px 20px;text-align:center;font-family:monospace">$360.00</td><td style="padding:16px 20px;text-align:center;font-family:monospace;font-weight:700;color:var(--red)">$0.00</td><td style="padding:16px 20px;text-align:center;font-family:monospace;font-weight:700;color:var(--red)">$360.00</td><td style="padding:16px 20px;text-align:center"><span style="background:#FEE2E2;color:#B91C1C;padding:4px 12px;border-radius:20px;font-size:11px;font-weight:700;letter-spacing:1px">✗ OVERDUE</span></td></tr>
+        <tr style="background:#F8F9FA;border-top:2px solid var(--navy)"><td style="padding:14px 20px;font-weight:700;font-size:13px;text-transform:uppercase;letter-spacing:1px">Total</td><td style="padding:14px 20px;text-align:center;font-family:monospace;font-weight:700">$1,440.00</td><td style="padding:14px 20px;text-align:center;font-family:monospace;font-weight:700;color:var(--green)">$1,000.00</td><td style="padding:14px 20px;text-align:center;font-family:monospace;font-weight:700;color:var(--red)">$440.00</td><td style="padding:14px 20px;font-size:12px;color:var(--grey-text)">$440 outstanding</td></tr>
+      </tbody>
+    </table>
+  </div></div>
+
+  <div class="section-title">Bet Returns<span class="mob-hide"> — 2026 Season to Date</span></div>
+  <!-- Mobile cards for returns -->
+  <div class="mob-returns-cards">
+    <div class="mob-member-row"><div><div class="mob-member-name">Charlie</div><div class="mob-member-sub">5 bets · 2W 3L · 40%</div></div><div class="mob-member-right"><div class="mob-member-val" style="color:var(--green)">+$126.05</div><div class="mob-member-sub">$276.05 returned</div></div></div>
+    <div class="mob-member-row"><div><div class="mob-member-name">Nic</div><div class="mob-member-sub">2 bets · 1W 1L · 50%</div></div><div class="mob-member-right"><div class="mob-member-val" style="color:var(--green)">+$11.25</div><div class="mob-member-sub">$71.25 returned</div></div></div>
+    <div class="mob-member-row"><div><div class="mob-member-name">Shannon</div><div class="mob-member-sub">4 bets · 1W 3L · 25%</div></div><div class="mob-member-right"><div class="mob-member-val">$0.00</div><div class="mob-member-sub">$120.00 returned</div></div></div>
+    <div class="mob-member-row"><div><div class="mob-member-name">Douchie</div><div class="mob-member-sub">5 bets · 1W 4L · 20%</div></div><div class="mob-member-right"><div class="mob-member-val" style="color:var(--red)">-$20.66</div><div class="mob-member-sub">$129.34 returned</div></div></div>
+    <div class="mob-totals-row"><span class="mob-totals-label">16 bets · 5W 11L · 31%</span><span class="mob-totals-val" style="color:#4ADE80">+$116.64</span></div>
+  </div>
+  <div class="mob-scroll"><div style="background:var(--white);border-radius:10px;overflow:hidden">
+    <table style="width:100%;border-collapse:collapse">
+      <thead><tr>
+        <th style="background:var(--navy);color:rgba(255,255,255,0.6);font-size:10px;letter-spacing:2px;text-transform:uppercase;padding:12px 20px;text-align:left;font-weight:600">Member</th>
+        <th style="background:var(--navy);color:rgba(255,255,255,0.6);font-size:10px;letter-spacing:2px;text-transform:uppercase;padding:12px 20px;text-align:center;font-weight:600">Bets</th>
+        <th style="background:var(--navy);color:rgba(255,255,255,0.6);font-size:10px;letter-spacing:2px;text-transform:uppercase;padding:12px 20px;text-align:center;font-weight:600">Record</th>
+        <th style="background:var(--navy);color:rgba(255,255,255,0.6);font-size:10px;letter-spacing:2px;text-transform:uppercase;padding:12px 20px;text-align:center;font-weight:600">Win Rate</th>
+        <th style="background:var(--navy);color:rgba(255,255,255,0.6);font-size:10px;letter-spacing:2px;text-transform:uppercase;padding:12px 20px;text-align:center;font-weight:600">Return to Pool</th>
+        <th style="background:var(--navy);color:rgba(255,255,255,0.6);font-size:10px;letter-spacing:2px;text-transform:uppercase;padding:12px 20px;text-align:center;font-weight:600">Net P&amp;L</th>
+      </tr></thead>
+      <tbody>
+        <tr style="border-bottom:1px solid var(--grey-line)"><td style="padding:14px 20px;font-weight:700">Charlie</td><td style="padding:14px 20px;text-align:center">5</td><td style="padding:14px 20px;text-align:center">2W &nbsp;3L</td><td style="padding:14px 20px;text-align:center">40%</td><td style="padding:14px 20px;text-align:center;font-family:monospace">$276.05</td><td style="padding:14px 20px;text-align:center;font-family:monospace;font-weight:700;color:var(--green)">+$126.05</td></tr>
+        <tr style="border-bottom:1px solid var(--grey-line)"><td style="padding:14px 20px;font-weight:700">Nic</td><td style="padding:14px 20px;text-align:center">2</td><td style="padding:14px 20px;text-align:center">1W &nbsp;1L</td><td style="padding:14px 20px;text-align:center">50%</td><td style="padding:14px 20px;text-align:center;font-family:monospace">$71.25</td><td style="padding:14px 20px;text-align:center;font-family:monospace;font-weight:700;color:var(--green)">+$11.25</td></tr>
+        <tr style="border-bottom:1px solid var(--grey-line)"><td style="padding:14px 20px;font-weight:700">Shannon</td><td style="padding:14px 20px;text-align:center">4</td><td style="padding:14px 20px;text-align:center">1W &nbsp;3L</td><td style="padding:14px 20px;text-align:center">25%</td><td style="padding:14px 20px;text-align:center;font-family:monospace">$120.00</td><td style="padding:14px 20px;text-align:center;font-family:monospace;font-weight:700">$0.00</td></tr>
+        <tr style="border-bottom:1px solid var(--grey-line)"><td style="padding:14px 20px;font-weight:700">Douchie</td><td style="padding:14px 20px;text-align:center">5</td><td style="padding:14px 20px;text-align:center">1W &nbsp;4L</td><td style="padding:14px 20px;text-align:center">20%</td><td style="padding:14px 20px;text-align:center;font-family:monospace">$129.34</td><td style="padding:14px 20px;text-align:center;font-family:monospace;font-weight:700;color:var(--red)">-$20.66</td></tr>
+        <tr style="background:#F8F9FA;border-top:2px solid var(--navy)"><td style="padding:14px 20px;font-weight:700;font-size:13px;text-transform:uppercase;letter-spacing:1px">Total</td><td style="padding:14px 20px;text-align:center;font-weight:700">16</td><td style="padding:14px 20px;text-align:center;font-weight:700">5W &nbsp;11L</td><td style="padding:14px 20px;text-align:center;font-weight:700">31%</td><td style="padding:14px 20px;text-align:center;font-family:monospace;font-weight:700">$596.64</td><td style="padding:14px 20px;text-align:center;font-family:monospace;font-weight:700;color:var(--green)">+$116.64</td></tr>
+      </tbody>
+    </table>
+  </div></div>
+  <footer>Account balance as at 29 May 2026 &nbsp;·&nbsp; Net P&amp;L = Bet return minus stake &nbsp;·&nbsp; Stake from captain's own pocket</footer>
+</div>
+
+<!-- ═══════════════ LEADERBOARD -->
+<div class="page" id="page-leaderboard">
+  <div style="height:8px"></div>
+  <div class="stats-bar">
+    <div class="stat-item"><div class="stat-label">Total Bets</div><div class="stat-value">16</div></div>
+    <div class="stat-item"><div class="stat-label">Wins</div><div class="stat-value">5</div></div>
+    <div class="stat-item"><div class="stat-label">Losses</div><div class="stat-value">11</div></div>
+    <div class="stat-item"><div class="stat-label">Win Rate</div><div class="stat-value">31%</div></div>
+    <div class="stat-item"><div class="stat-label">Total Staked</div><div class="stat-value">$480</div></div>
+    <div class="stat-item"><div class="stat-label">Total Return</div><div class="stat-value">$596.64</div></div>
+    <div class="stat-item"><div class="stat-label">Net P&amp;L</div><div class="stat-value positive">+$116.64</div></div>
+  </div>
+  <div class="section-title">Individual Rankings<span class="mob-hide"> — as at 29 May 2026 · Click to view bet history</span></div>
+  <div class="leaderboard">
+    <div class="lb-card" onclick="showPage('charlie')">
+      <div class="lb-rank rank-1">#1</div><div class="lb-stripe" style="background:#0D1B2A"></div>
+      <div class="lb-name-block"><div class="lb-name">Charlie</div><div class="lb-record">2W &nbsp;3L &nbsp;·&nbsp; 5 Bets</div></div>
+      <div class="lb-stats">
+        <div class="lb-stat"><div class="lb-stat-label">Return</div><div class="lb-stat-value">$276.05</div></div>
+        <div class="lb-stat"><div class="lb-stat-label">Staked</div><div class="lb-stat-value">$150.00</div></div>
+        <div class="lb-stat"><div class="lb-stat-label">Net P&amp;L</div><div class="lb-stat-value positive">+$126.05</div></div>
+        <div class="lb-stat"><div class="lb-stat-label">Win %</div><div class="lb-stat-value">40%</div></div>
+      </div><div class="lb-arrow">›</div>
+    </div>
+    <div class="lb-card" onclick="showPage('nic')">
+      <div class="lb-rank rank-2">#2</div><div class="lb-stripe" style="background:#555"></div>
+      <div class="lb-name-block"><div class="lb-name">Nic</div><div class="lb-record">1W &nbsp;1L &nbsp;·&nbsp; 2 Bets &nbsp;<span style="background:#FEF3C7;color:#B45309;font-size:11px;font-weight:700;padding:2px 8px;border-radius:12px;letter-spacing:1px">⚠ 2 BETS OUTSTANDING</span></div></div>
+      <div class="lb-stats">
+        <div class="lb-stat"><div class="lb-stat-label">Return</div><div class="lb-stat-value">$71.25</div></div>
+        <div class="lb-stat"><div class="lb-stat-label">Staked</div><div class="lb-stat-value">$60.00</div></div>
+        <div class="lb-stat"><div class="lb-stat-label">Net P&amp;L</div><div class="lb-stat-value positive">+$11.25</div></div>
+        <div class="lb-stat"><div class="lb-stat-label">Win %</div><div class="lb-stat-value">50%</div></div>
+      </div><div class="lb-arrow">›</div>
+    </div>
+    <div class="lb-card" onclick="showPage('shannon')">
+      <div class="lb-rank rank-3">#3</div><div class="lb-stripe" style="background:#8B5E1A"></div>
+      <div class="lb-name-block"><div class="lb-name">Shannon</div><div class="lb-record">1W &nbsp;3L &nbsp;·&nbsp; 4 Bets</div></div>
+      <div class="lb-stats">
+        <div class="lb-stat"><div class="lb-stat-label">Return</div><div class="lb-stat-value">$120.00</div></div>
+        <div class="lb-stat"><div class="lb-stat-label">Staked</div><div class="lb-stat-value">$120.00</div></div>
+        <div class="lb-stat"><div class="lb-stat-label">Net P&amp;L</div><div class="lb-stat-value">$0.00</div></div>
+        <div class="lb-stat"><div class="lb-stat-label">Win %</div><div class="lb-stat-value">25%</div></div>
+      </div><div class="lb-arrow">›</div>
+    </div>
+    <div class="lb-card" onclick="showPage('douchie')">
+      <div class="lb-rank rank-4">#4</div><div class="lb-stripe" style="background:#999"></div>
+      <div class="lb-name-block"><div class="lb-name">Douchie</div><div class="lb-record">1W &nbsp;4L &nbsp;·&nbsp; 5 Bets</div></div>
+      <div class="lb-stats">
+        <div class="lb-stat"><div class="lb-stat-label">Return</div><div class="lb-stat-value">$129.34</div></div>
+        <div class="lb-stat"><div class="lb-stat-label">Staked</div><div class="lb-stat-value">$150.00</div></div>
+        <div class="lb-stat"><div class="lb-stat-label">Net P&amp;L</div><div class="lb-stat-value negative">-$20.66</div></div>
+        <div class="lb-stat"><div class="lb-stat-label">Win %</div><div class="lb-stat-value">20%</div></div>
+      </div><div class="lb-arrow">›</div>
+    </div>
+  </div>
+  <footer>Net P&amp;L = Bet return minus stake &nbsp;·&nbsp; Stake from captain's own pocket</footer>
+</div>
+
+<!-- ═══════════════ CHARLIE -->
+<div class="page" id="page-charlie">
+  <div class="back-btn" onclick="showPage('leaderboard')"><span>‹</span> Back to Leaderboard</div>
+  <div class="bettor-header">
+    <div><div class="bettor-name">Charlie</div><div style="color:rgba(255,255,255,0.5);font-size:12px;letter-spacing:2px;text-transform:uppercase;margin-top:4px">#1 · 5 Bets · 2026 Season</div></div>
+    <div class="bettor-stats">
+      <div class="bettor-stat"><div class="bettor-stat-label">Staked</div><div class="bettor-stat-value">$150.00</div></div>
+      <div class="bettor-stat"><div class="bettor-stat-label">Return</div><div class="bettor-stat-value">$276.05</div></div>
+      <div class="bettor-stat"><div class="bettor-stat-label">Net P&amp;L</div><div class="bettor-stat-value positive">+$136.05</div></div>
+      <div class="bettor-stat"><div class="bettor-stat-label">Win Rate</div><div class="bettor-stat-value">40%</div></div>
+    </div>
+  </div>
+  <div class="section-title">Bet History</div>
+  <div class="bet-table-wrap"><table class="bet-table">
+    <thead><tr><th>Date</th><th>Bet</th><th>Odds</th><th>Stake</th><th>Return</th><th>Result</th><th>Net</th></tr></thead>
+    <tbody>
+      <tr><td><span class="month-badge">Jan</span>31 Jan 2026</td><td>Bet Lost</td><td>—</td><td class="monospace">$30.00</td><td class="monospace">$0.00</td><td><span class="badge badge-loss">Loss</span></td><td class="monospace net-negative">-$30.00</td></tr>
+      <tr><td><span class="month-badge">Feb</span>28 Feb 2026</td><td>Flemington Race 8 — Ahha Ahha</td><td>5.50</td><td class="monospace">$30.00</td><td class="monospace">$165.00</td><td><span class="badge badge-win">Win</span></td><td class="monospace net-positive">+$135.00</td></tr>
+      <tr><td><span class="month-badge">Mar</span>28 Mar 2026</td><td>Bet Lost</td><td>—</td><td class="monospace">$30.00</td><td class="monospace">$0.00</td><td><span class="badge badge-loss">Loss</span></td><td class="monospace net-negative">-$30.00</td></tr>
+      <tr><td><span class="month-badge">Apr</span>25 Apr 2026</td><td>Morphetville R1 — Staand Deel ($25) &amp; Multi: Lions 40+, Cats 40+, St Kilda 1-39, Swans H2H ($5)</td><td>2.35 / Multi</td><td class="monospace">$30.00</td><td class="monospace">$111.05</td><td><span class="badge badge-win">Win</span></td><td class="monospace net-positive">+$81.05</td></tr>
+      <tr><td><span class="month-badge">May</span>23 May 2026</td><td>Bet Lost ($20 stake)</td><td>—</td><td class="monospace">$20.00</td><td class="monospace">$0.00</td><td><span class="badge badge-loss">Loss</span></td><td class="monospace net-negative">-$20.00</td></tr>
+      <tr><td><span class="month-badge">May</span>23 May 2026</td><td>SGM — Carlton v Geelong Cats (9-leg) · Fri 29 May 19:40</td><td>11.75</td><td class="monospace">$10.00</td><td class="monospace">—</td><td><span class="badge" style="background:#EFF6FF;color:#1D4ED8">Pending</span></td><td class="monospace" style="color:var(--grey-text)">TBD</td></tr>
+      <tr class="totals-row"><td colspan="3"><strong>TOTAL</strong></td><td class="monospace"><strong>$150.00</strong></td><td class="monospace"><strong>$276.05</strong></td><td></td><td class="monospace net-positive"><strong>+$136.05</strong> <span style="font-size:11px;color:#1D4ED8;font-weight:600">(+$117.50 pending)</span></td></tr>
+    </tbody>
+  </table></div>
+  <div class="bet-cards">
+    <div class="bet-card loss"><div class="bet-card-top"><span class="bet-card-date">31 Jan 2026</span><span class="badge badge-loss">Loss</span></div><div class="bet-card-desc">Bet Lost</div><div class="bet-card-row"><div class="bet-card-stat"><strong>-$30.00</strong>Net</div></div></div>
+    <div class="bet-card win"><div class="bet-card-top"><span class="bet-card-date">28 Feb 2026</span><span class="badge badge-win">Win</span></div><div class="bet-card-desc">Flemington Race 8 — Ahha Ahha</div><div class="bet-card-row"><div class="bet-card-stat"><strong>5.50</strong>Odds</div><div class="bet-card-stat"><strong>$165.00</strong>Return</div><div class="bet-card-stat" style="color:var(--green)"><strong style="color:var(--green)">+$135.00</strong>Net</div></div></div>
+    <div class="bet-card loss"><div class="bet-card-top"><span class="bet-card-date">28 Mar 2026</span><span class="badge badge-loss">Loss</span></div><div class="bet-card-desc">Bet Lost</div><div class="bet-card-row"><div class="bet-card-stat"><strong>-$30.00</strong>Net</div></div></div>
+    <div class="bet-card win"><div class="bet-card-top"><span class="bet-card-date">25 Apr 2026</span><span class="badge badge-win">Win</span></div><div class="bet-card-desc">Morphetville R1 — Staand Deel ($25) &amp; Multi: Lions 40+, Cats 40+, St Kilda 1-39, Swans H2H ($5)</div><div class="bet-card-row"><div class="bet-card-stat"><strong>$111.05</strong>Return</div><div class="bet-card-stat" style="color:var(--green)"><strong style="color:var(--green)">+$81.05</strong>Net</div></div></div>
+    <div class="bet-card loss"><div class="bet-card-top"><span class="bet-card-date">23 May 2026</span><span class="badge badge-loss">Loss</span></div><div class="bet-card-desc">Bet Lost ($20 stake)</div><div class="bet-card-row"><div class="bet-card-stat"><strong>-$20.00</strong>Net</div></div></div>
+    <div class="bet-card" style="border-left-color:#3B82F6"><div class="bet-card-top"><span class="bet-card-date">23 May 2026</span><span class="badge" style="background:#EFF6FF;color:#1D4ED8">Pending</span></div><div class="bet-card-desc">SGM — Carlton v Geelong Cats (9-leg) · Fri 29 May 19:40</div><div class="bet-card-row"><div class="bet-card-stat"><strong>11.75</strong>Odds</div><div class="bet-card-stat"><strong>$10.00</strong>Stake</div><div class="bet-card-stat"><strong>$117.50</strong>Potential</div></div></div>
+    <div class="bet-cards-total"><span>Total · 5 bets · 2W 2L · 1 Pending</span><span class="net-positive">+$136.05 <span style="color:#1D4ED8;font-size:11px">(+$117.50 pending)</span></span></div>
+  </div>
+</div>
+
+<!-- ═══════════════ SHANNON -->
+<div class="page" id="page-shannon">
+  <div class="back-btn" onclick="showPage('leaderboard')"><span>‹</span> Back to Leaderboard</div>
+  <div class="bettor-header">
+    <div><div class="bettor-name">Shannon</div><div style="color:rgba(255,255,255,0.5);font-size:12px;letter-spacing:2px;text-transform:uppercase;margin-top:4px">#3 · 4 Bets · 2026 Season</div></div>
+    <div class="bettor-stats">
+      <div class="bettor-stat"><div class="bettor-stat-label">Staked</div><div class="bettor-stat-value">$120.00</div></div>
+      <div class="bettor-stat"><div class="bettor-stat-label">Return</div><div class="bettor-stat-value">$120.00</div></div>
+      <div class="bettor-stat"><div class="bettor-stat-label">Net P&amp;L</div><div class="bettor-stat-value">$0.00</div></div>
+      <div class="bettor-stat"><div class="bettor-stat-label">Win Rate</div><div class="bettor-stat-value">25%</div></div>
+    </div>
+  </div>
+  <div class="section-title">Bet History</div>
+  <div class="bet-table-wrap"><table class="bet-table">
+    <thead><tr><th>Date</th><th>Bet</th><th>Odds</th><th>Stake</th><th>Return</th><th>Result</th><th>Net</th></tr></thead>
+    <tbody>
+      <tr><td><span class="month-badge">Feb</span>07 Feb 2026</td><td>Bet Lost</td><td>—</td><td class="monospace">$30.00</td><td class="monospace">$0.00</td><td><span class="badge badge-loss">Loss</span></td><td class="monospace net-negative">-$30.00</td></tr>
+      <tr><td><span class="month-badge">Mar</span>07 Mar 2026</td><td>Bet Lost</td><td>—</td><td class="monospace">$30.00</td><td class="monospace">$0.00</td><td><span class="badge badge-loss">Loss</span></td><td class="monospace net-negative">-$30.00</td></tr>
+      <tr><td><span class="month-badge">Apr</span>04 Apr 2026</td><td>Randwick Race 7 — Joliestar</td><td>4.00</td><td class="monospace">$30.00</td><td class="monospace">$120.00</td><td><span class="badge badge-win">Win</span></td><td class="monospace net-positive">+$90.00</td></tr>
+      <tr><td><span class="month-badge">May</span>02 May 2026</td><td>Bet Lost</td><td>—</td><td class="monospace">$30.00</td><td class="monospace">$0.00</td><td><span class="badge badge-loss">Loss</span></td><td class="monospace net-negative">-$30.00</td></tr>
+      <tr class="totals-row"><td colspan="3"><strong>TOTAL</strong></td><td class="monospace"><strong>$120.00</strong></td><td class="monospace"><strong>$120.00</strong></td><td></td><td class="monospace"><strong>$0.00</strong></td></tr>
+    </tbody>
+  </table></div>
+  <div class="bet-cards">
+    <div class="bet-card loss"><div class="bet-card-top"><span class="bet-card-date">07 Feb 2026</span><span class="badge badge-loss">Loss</span></div><div class="bet-card-desc">Bet Lost</div><div class="bet-card-row"><div class="bet-card-stat"><strong>-$30.00</strong>Net</div></div></div>
+    <div class="bet-card loss"><div class="bet-card-top"><span class="bet-card-date">07 Mar 2026</span><span class="badge badge-loss">Loss</span></div><div class="bet-card-desc">Bet Lost</div><div class="bet-card-row"><div class="bet-card-stat"><strong>-$30.00</strong>Net</div></div></div>
+    <div class="bet-card win"><div class="bet-card-top"><span class="bet-card-date">04 Apr 2026</span><span class="badge badge-win">Win</span></div><div class="bet-card-desc">Randwick Race 7 — Joliestar</div><div class="bet-card-row"><div class="bet-card-stat"><strong>4.00</strong>Odds</div><div class="bet-card-stat"><strong>$120.00</strong>Return</div><div class="bet-card-stat" style="color:var(--green)"><strong style="color:var(--green)">+$90.00</strong>Net</div></div></div>
+    <div class="bet-card loss"><div class="bet-card-top"><span class="bet-card-date">02 May 2026</span><span class="badge badge-loss">Loss</span></div><div class="bet-card-desc">Bet Lost</div><div class="bet-card-row"><div class="bet-card-stat"><strong>-$30.00</strong>Net</div></div></div>
+    <div class="bet-cards-total"><span>Total · 4 bets · 1W 3L</span><span>$0.00</span></div>
+  </div>
+</div>
+
+<!-- ═══════════════ DOUCHIE -->
+<div class="page" id="page-douchie">
+  <div class="back-btn" onclick="showPage('leaderboard')"><span>‹</span> Back to Leaderboard</div>
+  <div class="bettor-header">
+    <div><div class="bettor-name">Douchie</div><div style="color:rgba(255,255,255,0.5);font-size:12px;letter-spacing:2px;text-transform:uppercase;margin-top:4px">#4 · 5 Bets · 2026 Season</div></div>
+    <div class="bettor-stats">
+      <div class="bettor-stat"><div class="bettor-stat-label">Staked</div><div class="bettor-stat-value">$150.00</div></div>
+      <div class="bettor-stat"><div class="bettor-stat-label">Return</div><div class="bettor-stat-value">$129.34</div></div>
+      <div class="bettor-stat"><div class="bettor-stat-label">Net P&amp;L</div><div class="bettor-stat-value negative">-$20.66</div></div>
+      <div class="bettor-stat"><div class="bettor-stat-label">Win Rate</div><div class="bettor-stat-value">20%</div></div>
+    </div>
+  </div>
+  <div class="section-title">Bet History</div>
+  <div class="bet-table-wrap"><table class="bet-table">
+    <thead><tr><th>Date</th><th>Bet</th><th>Odds</th><th>Stake</th><th>Return</th><th>Result</th><th>Net</th></tr></thead>
+    <tbody>
+      <tr><td><span class="month-badge">Jan</span>24 Jan 2026</td><td>Bet Lost</td><td>—</td><td class="monospace">$30.00</td><td class="monospace">$0.00</td><td><span class="badge badge-loss">Loss</span></td><td class="monospace net-negative">-$30.00</td></tr>
+      <tr><td><span class="month-badge">Feb</span>21 Feb 2026</td><td>Flemington Quaddie</td><td>—</td><td class="monospace">$30.00</td><td class="monospace">$129.34</td><td><span class="badge badge-win">Win</span></td><td class="monospace net-positive">+$99.34</td></tr>
+      <tr><td><span class="month-badge">Mar</span>21 Mar 2026</td><td>Bet Lost</td><td>—</td><td class="monospace">$30.00</td><td class="monospace">$0.00</td><td><span class="badge badge-loss">Loss</span></td><td class="monospace net-negative">-$30.00</td></tr>
+      <tr><td><span class="month-badge">Apr</span>18 Apr 2026</td><td>Bet Lost</td><td>—</td><td class="monospace">$30.00</td><td class="monospace">$0.00</td><td><span class="badge badge-loss">Loss</span></td><td class="monospace net-negative">-$30.00</td></tr>
+      <tr><td><span class="month-badge">May</span>16 May 2026</td><td>Bet Lost</td><td>—</td><td class="monospace">$30.00</td><td class="monospace">$0.00</td><td><span class="badge badge-loss">Loss</span></td><td class="monospace net-negative">-$30.00</td></tr>
+      <tr class="totals-row"><td colspan="3"><strong>TOTAL</strong></td><td class="monospace"><strong>$150.00</strong></td><td class="monospace"><strong>$129.34</strong></td><td></td><td class="monospace net-negative"><strong>-$20.66</strong></td></tr>
+    </tbody>
+  </table></div>
+  <div class="bet-cards">
+    <div class="bet-card loss"><div class="bet-card-top"><span class="bet-card-date">24 Jan 2026</span><span class="badge badge-loss">Loss</span></div><div class="bet-card-desc">Bet Lost</div><div class="bet-card-row"><div class="bet-card-stat"><strong>-$30.00</strong>Net</div></div></div>
+    <div class="bet-card win"><div class="bet-card-top"><span class="bet-card-date">21 Feb 2026</span><span class="badge badge-win">Win</span></div><div class="bet-card-desc">Flemington Quaddie</div><div class="bet-card-row"><div class="bet-card-stat"><strong>$129.34</strong>Return</div><div class="bet-card-stat" style="color:var(--green)"><strong style="color:var(--green)">+$99.34</strong>Net</div></div></div>
+    <div class="bet-card loss"><div class="bet-card-top"><span class="bet-card-date">21 Mar 2026</span><span class="badge badge-loss">Loss</span></div><div class="bet-card-desc">Bet Lost</div><div class="bet-card-row"><div class="bet-card-stat"><strong>-$30.00</strong>Net</div></div></div>
+    <div class="bet-card loss"><div class="bet-card-top"><span class="bet-card-date">18 Apr 2026</span><span class="badge badge-loss">Loss</span></div><div class="bet-card-desc">Bet Lost</div><div class="bet-card-row"><div class="bet-card-stat"><strong>-$30.00</strong>Net</div></div></div>
+    <div class="bet-card loss"><div class="bet-card-top"><span class="bet-card-date">16 May 2026</span><span class="badge badge-loss">Loss</span></div><div class="bet-card-desc">Bet Lost</div><div class="bet-card-row"><div class="bet-card-stat"><strong>-$30.00</strong>Net</div></div></div>
+    <div class="bet-cards-total"><span>Total · 5 bets · 1W 4L</span><span class="net-negative">-$20.66</span></div>
+  </div>
+</div>
+
+<!-- ═══════════════ NIC -->
+<div class="page" id="page-nic">
+  <div class="back-btn" onclick="showPage('leaderboard')"><span>‹</span> Back to Leaderboard</div>
+  <div class="bettor-header">
+    <div><div class="bettor-name">Nic</div><div style="color:rgba(255,255,255,0.5);font-size:12px;letter-spacing:2px;text-transform:uppercase;margin-top:4px">#2 · 2 Bets · 2026 Season</div></div>
+    <div class="bettor-stats">
+      <div class="bettor-stat"><div class="bettor-stat-label">Staked</div><div class="bettor-stat-value">$60.00</div></div>
+      <div class="bettor-stat"><div class="bettor-stat-label">Return</div><div class="bettor-stat-value">$71.25</div></div>
+      <div class="bettor-stat"><div class="bettor-stat-label">Net P&amp;L</div><div class="bettor-stat-value positive">+$11.25</div></div>
+      <div class="bettor-stat"><div class="bettor-stat-label">Win Rate</div><div class="bettor-stat-value">50%</div></div>
+    </div>
+  </div>
+  <div class="section-title">Bet History</div>
+  <div class="bet-table-wrap"><table class="bet-table">
+    <thead><tr><th>Date</th><th>Bet</th><th>Odds</th><th>Stake</th><th>Return</th><th>Result</th><th>Net</th></tr></thead>
+    <tbody>
+      <tr><td><span class="month-badge">Feb</span>14 Feb 2026</td><td>Bet Lost</td><td>—</td><td class="monospace">$30.00</td><td class="monospace">$0.00</td><td><span class="badge badge-loss">Loss</span></td><td class="monospace net-negative">-$30.00</td></tr>
+      <tr><td><span class="month-badge">Mar</span>14 Mar 2026</td><td>Multi — Melbourne Storm, Penrith Panthers, Queensland Reds</td><td>2.37</td><td class="monospace">$30.00</td><td class="monospace">$71.25</td><td><span class="badge badge-win">Win</span></td><td class="monospace net-positive">+$41.25</td></tr>
+      <tr class="totals-row"><td colspan="3"><strong>TOTAL</strong></td><td class="monospace"><strong>$60.00</strong></td><td class="monospace"><strong>$71.25</strong></td><td></td><td class="monospace net-positive"><strong>+$11.25</strong></td></tr>
+    </tbody>
+  </table></div>
+  <div class="bet-cards">
+    <div class="bet-card loss"><div class="bet-card-top"><span class="bet-card-date">14 Feb 2026</span><span class="badge badge-loss">Loss</span></div><div class="bet-card-desc">Bet Lost</div><div class="bet-card-row"><div class="bet-card-stat"><strong>-$30.00</strong>Net</div></div></div>
+    <div class="bet-card win"><div class="bet-card-top"><span class="bet-card-date">14 Mar 2026</span><span class="badge badge-win">Win</span></div><div class="bet-card-desc">Multi — Melbourne Storm, Penrith Panthers, Queensland Reds</div><div class="bet-card-row"><div class="bet-card-stat"><strong>2.37</strong>Odds</div><div class="bet-card-stat"><strong>$71.25</strong>Return</div><div class="bet-card-stat" style="color:var(--green)"><strong style="color:var(--green)">+$41.25</strong>Net</div></div></div>
+    <div class="bet-cards-total"><span>Total · 2 bets · 1W 1L</span><span class="net-positive">+$11.25</span></div>
+  </div>
+</div>
+
+<!-- ═══════════════ SUBMIT BET -->
+<div class="page" id="page-submit">
+  <div style="height:8px"></div>
+  <div style="max-width:600px;margin:0 auto">
+    <div style="margin-bottom:24px">
+      <div style="font-size:28px;font-weight:900;text-transform:uppercase;letter-spacing:1px;color:var(--navy)">Submit a Bet</div>
+      <div style="font-size:13px;color:var(--grey-text);margin-top:4px">Select your name to see your next bet slot, fill in the details, and hit send.</div>
+    </div>
+    <div class="form-card">
+      <div class="form-group" style="margin-bottom:20px">
+        <label class="form-label">Who are you?</label>
+        <select class="form-select" id="f-name" onchange="onNameChange()">
+          <option value="">— Select your name —</option>
+          <option value="Charlie">Charlie</option>
+          <option value="Douchie">Douchie</option>
+          <option value="Nic">Nic</option>
+          <option value="Shannon">Shannon</option>
+        </select>
+      </div>
+      <div class="bet-alert" id="bet-alert"></div>
+      <div id="form-fields" style="display:none">
+        <div class="form-grid" style="margin-bottom:18px">
+          <div class="form-group">
+            <label class="form-label">Bet Date</label>
+            <input class="form-input" type="text" id="f-date" placeholder="e.g. 30 May 2026" style="background:#fff">
+            <div style="font-size:10px;color:var(--grey-text);margin-top:4px;letter-spacing:0.5px">Auto-filled · edit to override</div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Total Budget</label>
+            <div style="padding:12px 14px;border:2px solid var(--grey-line);border-radius:8px;font-size:15px;font-weight:700;background:#F2F4F7;display:flex;justify-content:space-between;align-items:center">
+              <span style="color:var(--grey-text);font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase">Remaining</span>
+              <span id="stake-remaining" style="color:var(--green)">$30.00</span>
+            </div>
+          </div>
+        </div>
+        <div id="bets-container"></div>
+        <button type="button" onclick="addBet()" id="add-bet-btn" style="width:100%;padding:11px;background:transparent;border:2px dashed var(--grey-line);border-radius:8px;font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--grey-text);cursor:pointer;margin-bottom:18px;transition:all 0.2s">+ Add Another Bet</button>
+        <div class="form-group" style="margin-bottom:20px">
+          <label class="form-label">Notes (optional)</label>
+          <textarea class="form-textarea" id="f-notes" placeholder="Any extra details…"></textarea>
+        </div>
+        <button class="submit-btn" id="submit-btn" onclick="submitBet()">📧 Send to Douchie</button>
+        <div style="font-size:11px;color:var(--grey-text);text-align:center;margin-top:10px;letter-spacing:0.5px">Opens your email app pre-filled — just hit send.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+var SCHEDULE = [
+  { date: '24 Jan 2026', captain: 'Douchie',  logged: true  },
+  { date: '31 Jan 2026', captain: 'Charlie',  logged: true  },
+  { date: '07 Feb 2026', captain: 'Shannon',  logged: true  },
+  { date: '14 Feb 2026', captain: 'Nic',      logged: true  },
+  { date: '21 Feb 2026', captain: 'Douchie',  logged: true  },
+  { date: '28 Feb 2026', captain: 'Charlie',  logged: true  },
+  { date: '07 Mar 2026', captain: 'Shannon',  logged: true  },
+  { date: '14 Mar 2026', captain: 'Nic',      logged: true  },
+  { date: '21 Mar 2026', captain: 'Douchie',  logged: true  },
+  { date: '28 Mar 2026', captain: 'Charlie',  logged: true  },
+  { date: '04 Apr 2026', captain: 'Shannon',  logged: true  },
+  { date: '11 Apr 2026', captain: 'Nic',      logged: true,  noBet: true },
+  { date: '18 Apr 2026', captain: 'Douchie',  logged: true  },
+  { date: '25 Apr 2026', captain: 'Charlie',  logged: true  },
+  { date: '02 May 2026', captain: 'Shannon',  logged: true  },
+  { date: '09 May 2026', captain: 'Nic',      logged: true,  noBet: true },
+  { date: '16 May 2026', captain: 'Douchie',  logged: true  },
+  { date: '23 May 2026', captain: 'Charlie',  logged: true  },
+  { date: '30 May 2026', captain: 'Shannon',  logged: false },
+  { date: '06 Jun 2026', captain: 'Nic',      logged: false },
+  { date: '13 Jun 2026', captain: 'Douchie',  logged: false },
+  { date: '20 Jun 2026', captain: 'Charlie',  logged: false },
+  { date: '27 Jun 2026', captain: 'Shannon',  logged: false },
+  { date: '04 Jul 2026', captain: 'Nic',      logged: false },
+  { date: '11 Jul 2026', captain: 'Douchie',  logged: false },
+  { date: '18 Jul 2026', captain: 'Charlie',  logged: false },
+  { date: '25 Jul 2026', captain: 'Shannon',  logged: false },
+  { date: '01 Aug 2026', captain: 'Nic',      logged: false },
+  { date: '08 Aug 2026', captain: 'Douchie',  logged: false },
+  { date: '15 Aug 2026', captain: 'Charlie',  logged: false },
+  { date: '22 Aug 2026', captain: 'Shannon',  logged: false },
+  { date: '29 Aug 2026', captain: 'Nic',      logged: false },
+  { date: '05 Sep 2026', captain: 'Douchie',  logged: false },
+  { date: '12 Sep 2026', captain: 'Charlie',  logged: false },
+  { date: '19 Sep 2026', captain: 'Shannon',  logged: false },
+  { date: '26 Sep 2026', captain: 'Nic',      logged: false },
+  { date: '03 Oct 2026', captain: 'Douchie',  logged: false },
+  { date: '10 Oct 2026', captain: 'Charlie',  logged: false },
+  { date: '17 Oct 2026', captain: 'Shannon',  logged: false },
+  { date: '24 Oct 2026', captain: 'Nic',      logged: false },
+  { date: '31 Oct 2026', captain: 'Douchie',  logged: false },
+  { date: '07 Nov 2026', captain: 'Charlie',  logged: false },
+  { date: '14 Nov 2026', captain: 'Shannon',  logged: false },
+  { date: '21 Nov 2026', captain: 'Nic',      logged: false },
+  { date: '28 Nov 2026', captain: 'Douchie',  logged: false },
+  { date: '05 Dec 2026', captain: 'Charlie',  logged: false },
+  { date: '12 Dec 2026', captain: 'Shannon',  logged: false },
+  { date: '19 Dec 2026', captain: 'Nic',      logged: false }
+];
+
+var betCount = 0;
+var TOTAL_BUDGET = 30;
+
+function onNameChange() {
+  var name = document.getElementById('f-name').value;
+  var alertEl = document.getElementById('bet-alert');
+  var fields = document.getElementById('form-fields');
+  var dateInput = document.getElementById('f-date');
+  if (!name) { alertEl.style.display = 'none'; fields.style.display = 'none'; return; }
+  var outstanding = SCHEDULE.filter(function(s) { return s.captain === name && s.noBet; });
+  var next = SCHEDULE.find(function(s) { return s.captain === name && !s.logged; });
+  alertEl.className = 'bet-alert';
+  alertEl.style.display = 'block';
+  if (outstanding.length > 0) {
+    dateInput.value = outstanding[0].date;
+    alertEl.className = 'bet-alert overdue';
+    alertEl.innerHTML = '<strong>⚠ Outstanding Bet</strong>You have ' + outstanding.length + ' unplaced bet' + (outstanding.length > 1 ? 's' : '') + '. Submitting for <strong>' + outstanding[0].date + '</strong> first.' + (outstanding.length > 1 ? ' (' + outstanding[outstanding.length-1].date + ' also outstanding)' : '');
+  } else if (next) {
+    dateInput.value = next.date;
+    var remaining = SCHEDULE.filter(function(s) { return s.captain === name && !s.logged; }).length;
+    alertEl.innerHTML = '<strong>Next Bet Slot</strong>Your next bet is <strong>' + next.date + '</strong>. You have <strong>' + remaining + '</strong> bet' + (remaining !== 1 ? 's' : '') + ' remaining in 2026.';
+  } else {
+    dateInput.value = '—';
+    alertEl.innerHTML = '<strong>All Done!</strong>All 2026 bet slots have been logged for ' + name + '.';
+  }
+  betCount = 0;
+  document.getElementById('bets-container').innerHTML = '';
+  addBet();
+  fields.style.display = 'block';
+}
+
+function addBet() {
+  betCount++;
+  var n = betCount;
+  var container = document.getElementById('bets-container');
+  var div = document.createElement('div');
+  div.id = 'bet-' + n;
+  div.style.cssText = 'background:#F8F9FA;border-radius:8px;padding:16px;margin-bottom:12px;border:1px solid var(--grey-line)';
+  var header = '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px">'
+    + '<div style="font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--navy)">Bet ' + n + '</div>'
+    + (n > 1 ? '<button type="button" onclick="removeBet(' + n + ')" style="font-size:11px;color:var(--red);background:none;border:none;cursor:pointer;font-weight:700;letter-spacing:1px;text-transform:uppercase">✕ Remove</button>' : '')
+    + '</div>';
+  var fields = '<div class="form-grid">'
+    + '<div class="form-group full"><label class="form-label">Bet Description</label><input class="form-input bet-field" type="text" id="b' + n + '-desc" placeholder="e.g. Flemington R5 — Horsename"></div>'
+    + '<div class="form-group"><label class="form-label">Odds</label><input class="form-input bet-field" type="text" id="b' + n + '-odds" placeholder="e.g. 4.50"></div>'
+    + '<div class="form-group"><label class="form-label">Stake ($)</label><input class="form-input bet-field" type="number" id="b' + n + '-stake" placeholder="e.g. 15.00" step="0.01" oninput="updateRemaining()"></div>'
+    + '<div class="form-group"><label class="form-label">Result</label><select class="form-select bet-field" id="b' + n + '-result"><option value="">— Pending —</option><option value="Win">Win</option><option value="Loss">Loss</option></select></div>'
+    + '<div class="form-group"><label class="form-label">Return ($)</label><input class="form-input bet-field" type="number" id="b' + n + '-return" placeholder="0.00" step="0.01"></div>'
+    + '</div>';
+  div.innerHTML = header + fields;
+  container.appendChild(div);
+  if (n === 1) { document.getElementById('b1-stake').value = '30'; updateRemaining(); }
+  updateRemaining();
+}
+
+function removeBet(n) {
+  var el = document.getElementById('bet-' + n);
+  if (el) el.remove();
+  updateRemaining();
+}
+
+function updateRemaining() {
+  var inputs = document.querySelectorAll('[id$="-stake"]');
+  var used = 0;
+  inputs.forEach(function(inp) { used += parseFloat(inp.value) || 0; });
+  var remaining = TOTAL_BUDGET - used;
+  var el = document.getElementById('stake-remaining');
+  el.textContent = '$' + remaining.toFixed(2);
+  el.style.color = remaining < 0 ? 'var(--red)' : remaining === 0 ? 'var(--green)' : 'var(--navy)';
+  document.getElementById('add-bet-btn').style.display = remaining <= 0 ? 'none' : 'block';
+}
+
+function submitBet() {
+  var name  = document.getElementById('f-name').value;
+  var date  = document.getElementById('f-date').value;
+  var notes = document.getElementById('f-notes').value;
+  var bets = [];
+  for (var i = 1; i <= betCount; i++) {
+    var descEl = document.getElementById('b' + i + '-desc');
+    if (!descEl) continue;
+    var desc = descEl.value;
+    if (!desc) continue;
+    bets.push({
+      desc:   desc,
+      odds:   document.getElementById('b' + i + '-odds').value || '—',
+      stake:  document.getElementById('b' + i + '-stake').value || '—',
+      result: document.getElementById('b' + i + '-result').value || 'Pending',
+      ret:    document.getElementById('b' + i + '-return').value || '—'
+    });
+  }
+  if (bets.length === 0) { window.alert('Please enter at least one bet description.'); return; }
+  var body = 'PIC BET SUBMISSION\n==================\n'
+    + 'Captain: ' + name + '\n'
+    + 'Date:    ' + date + '\n\n';
+  bets.forEach(function(b, idx) {
+    if (bets.length > 1) body += 'BET ' + (idx+1) + '\n';
+    body += 'Bet:     ' + b.desc + '\n'
+      + 'Odds:    ' + b.odds + '\n'
+      + 'Stake:   $' + b.stake + '\n'
+      + 'Result:  ' + b.result + '\n'
+      + 'Return:  ' + (b.ret !== '—' ? '$' + b.ret : '—') + '\n\n';
+  });
+  if (notes) body += 'Notes: ' + notes + '\n';
+  body += '==================';
+  var subject = 'PIC Bet — ' + name + ' — ' + date + (bets.length > 1 ? ' (' + bets.length + ' bets)' : '');
+  window.location.href = 'mailto:wylieda@gmail.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+}
+
+var PENDING_BETS = [
+  {
+    captain: 'Charlie',
+    date: '23 May 2026',
+    event: 'SGM — Carlton v Geelong Cats',
+    details: '9-leg multi · Fri 29 May 19:40',
+    stake: '$10.00',
+    odds: '11.75',
+    potential: '$117.50',
+    legs: [
+      'Under 178.5 — Total Game Points',
+      'Geelong Cats — Head to Head',
+      'Jacob Weitering — 10+ Disposals',
+      'Patrick Dangerfield — 10+ Disposals',
+      'Sam De Koning — 10+ Disposals',
+      'Mitch McGovern — 1+ Goal',
+      'Shaun Mannagh — 1+ Goal',
+      'Shannon Neale — 1+ Goal',
+      'Brodie Kemp — 1+ Goal'
+    ]
+  }
+];
+
+function buildPendingBets() {
+  var widget = document.getElementById('pending-bets-widget');
+  if (!widget) return;
+  if (PENDING_BETS.length === 0) { widget.style.display = 'none'; return; }
+
+  var MEMBER_BG = { 'Douchie':'#D6E4F0', 'Charlie':'#D5F5E3', 'Shannon':'#FAD7A0', 'Nic':'#E8DAEF' };
+
+  var html = '<div style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--grey-text);margin-bottom:10px">🕐 Pending Bets</div>';
+
+  PENDING_BETS.forEach(function(bet) {
+    var accentBg = MEMBER_BG[bet.captain] || '#EFF6FF';
+    var legsHtml = '';
+    if (bet.legs && bet.legs.length) {
+      legsHtml = '<div style="margin-top:10px;border-top:1px solid rgba(0,0,0,0.07);padding-top:10px">'
+        + '<div style="font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--grey-text);margin-bottom:6px">Legs</div>'
+        + '<div style="display:flex;flex-wrap:wrap;gap:5px">'
+        + bet.legs.map(function(l, i) {
+            return '<span style="font-size:11px;background:#F0F4FF;color:#1D4ED8;border-radius:4px;padding:2px 8px;font-weight:600">' + (i+1) + '. ' + l + '</span>';
+          }).join('')
+        + '</div></div>';
+    }
+
+    html += '<div style="background:var(--white);border-radius:10px;padding:18px 22px;box-shadow:0 1px 4px rgba(0,0,0,0.06);border-left:4px solid #3B82F6">'
+      + '<div style="display:flex;align-items:flex-start;justify-content:space-between;gap:16px;flex-wrap:wrap">'
+      + '<div style="flex:1;min-width:180px">'
+      + '<div style="display:flex;align-items:center;gap:8px;margin-bottom:4px">'
+      + '<span style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;background:' + accentBg + ';color:var(--navy);padding:2px 10px;border-radius:20px">' + bet.captain + '</span>'
+      + '<span style="font-size:11px;color:var(--grey-text)">' + bet.date + '</span>'
+      + '</div>'
+      + '<div style="font-size:16px;font-weight:800;color:var(--navy);line-height:1.2">' + bet.event + '</div>'
+      + '<div style="font-size:12px;color:var(--grey-text);margin-top:3px">' + bet.details + '</div>'
+      + legsHtml
+      + '</div>'
+      + '<div style="display:flex;gap:20px;align-items:center;flex-shrink:0">'
+      + '<div style="text-align:center"><div style="font-size:10px;text-transform:uppercase;letter-spacing:1px;color:var(--grey-text);margin-bottom:2px">Odds</div><div style="font-size:18px;font-weight:800;color:var(--navy)">@' + bet.odds + '</div></div>'
+      + '<div style="text-align:center"><div style="font-size:10px;text-transform:uppercase;letter-spacing:1px;color:var(--grey-text);margin-bottom:2px">Stake</div><div style="font-size:18px;font-weight:800;color:var(--navy)">' + bet.stake + '</div></div>'
+      + '<div style="text-align:center"><div style="font-size:10px;text-transform:uppercase;letter-spacing:1px;color:var(--grey-text);margin-bottom:2px">Potential</div><div style="font-size:18px;font-weight:800;color:#1D4ED8">' + bet.potential + '</div></div>'
+      + '</div>'
+      + '</div>'
+      + '</div>';
+  });
+
+  widget.innerHTML = html;
+  widget.style.display = 'block';
+}
+
+function buildNextUp() {
+  var today = new Date();
+  today.setHours(0,0,0,0);
+  var upcoming = SCHEDULE.filter(function(s) {
+    var parts = s.date.split(' ');
+    var months = {Jan:0,Feb:1,Mar:2,Apr:3,May:4,Jun:5,Jul:6,Aug:7,Sep:8,Oct:9,Nov:10,Dec:11};
+    var d = new Date(parseInt(parts[2]), months[parts[1]], parseInt(parts[0]));
+    return d >= today;
+  });
+  var row = document.getElementById('next-up-row');
+  if (!row) return;
+  var MEMBER_BG = { 'Douchie':'#D6E4F0', 'Charlie':'#D5F5E3', 'Shannon':'#FAD7A0', 'Nic':'#E8DAEF' };
+  var html = '';
+  if (upcoming.length > 0) {
+    var next = upcoming[0];
+    var bg = MEMBER_BG[next.captain] || '#F2F4F7';
+    var parts = next.date.split(' ');
+    var months = {Jan:0,Feb:1,Mar:2,Apr:3,May:4,Jun:5,Jul:6,Aug:7,Sep:8,Oct:9,Nov:10,Dec:11};
+    var nextDate = new Date(parseInt(parts[2]), months[parts[1]], parseInt(parts[0]));
+    var diff = Math.round((nextDate - today) / (1000*60*60*24));
+    var daysLabel = diff === 0 ? '🎯 Today!' : diff === 1 ? 'Tomorrow' : 'In ' + diff + ' days';
+    html += '<div style="flex:1;min-width:220px;background:' + bg + ';border-radius:10px;padding:18px 22px;border:2px solid rgba(0,0,0,0.06)">'
+      + '<div style="font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--grey-text);margin-bottom:8px">🎲 Next Up</div>'
+      + '<div style="font-size:26px;font-weight:900;text-transform:uppercase;letter-spacing:1px;color:var(--navy);line-height:1">' + next.captain + '</div>'
+      + '<div style="font-size:13px;color:var(--navy);margin-top:6px;font-weight:600">' + next.date + '</div>'
+      + '<div style="font-size:12px;color:var(--grey-text);margin-top:3px">' + daysLabel + '</div>'
+      + '</div>';
+    if (upcoming.length > 1) {
+      var after = upcoming[1];
+      html += '<div style="flex:1;min-width:180px;background:var(--white);border-radius:10px;padding:18px 22px;border:2px solid var(--grey-line)">'
+        + '<div style="font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--grey-text);margin-bottom:8px">Then</div>'
+        + '<div style="font-size:20px;font-weight:900;text-transform:uppercase;letter-spacing:1px;color:var(--navy);line-height:1">' + after.captain + '</div>'
+        + '<div style="font-size:13px;color:var(--grey-text);margin-top:6px">' + after.date + '</div>'
+        + '</div>';
+    }
+  }
+  row.innerHTML = html;
+}
+
+function showPage(id) {
+  document.querySelectorAll('.page').forEach(function(p) { p.classList.remove('active'); });
+  document.querySelectorAll('.nav-tab').forEach(function(t) { t.classList.remove('active'); });
+  document.getElementById('page-' + id).classList.add('active');
+  var order = ['home','submit','leaderboard','account'];
+  var idx = order.indexOf(id);
+  var tabs = document.querySelectorAll('.nav-tab');
+  var memberPages = ['charlie','shannon','douchie','nic'];
+  var activeIdx = memberPages.indexOf(id) >= 0 ? order.indexOf('leaderboard') : idx;
+  if (activeIdx >= 0) {
+    tabs[activeIdx].classList.add('active');
+    var nav = document.getElementById('main-nav');
+    var tab = tabs[activeIdx];
+    if (nav && tab) {
+      nav.scrollTo({ left: tab.offsetLeft - nav.offsetWidth/2 + tab.offsetWidth/2, behavior: 'smooth' });
+    }
+  }
+  updateNavFade();
+  window.scrollTo(0, 0);
+  if (id === 'home') { buildNextUp(); buildPendingBets(); }
+}
+
+function updateNavFade() {
+  var nav = document.getElementById('main-nav');
+  var fade = document.getElementById('nav-fade');
+  if (!nav || !fade) return;
+  var atEnd = nav.scrollLeft + nav.offsetWidth >= nav.scrollWidth - 4;
+  fade.style.display = atEnd ? 'none' : 'block';
+}
+
+window.addEventListener('load', function() {
+  var nav = document.getElementById('main-nav');
+  if (nav) nav.addEventListener('scroll', updateNavFade);
+  updateNavFade();
+});
+
+buildNextUp();
+buildPendingBets();
+</script>
+</body>
+</html>
