@@ -269,6 +269,8 @@
       <span style="font-size:18px">+</span> Submit This Week's Bet
     </button>
   </div>
+  <!-- Pending Bets widget -->
+  <div id="pending-bets-widget" style="margin-bottom:20px;display:none"></div>
   <!-- Balance widget -->
   <div class="acct-hero" style="background:var(--navy);border-radius:12px;padding:32px 36px;margin-bottom:20px;display:flex;align-items:center;justify-content:space-between">
     <div>
@@ -287,6 +289,20 @@
 <!-- ═══════════════ ACCOUNT (details) -->
 <div class="page" id="page-account">
   <div style="height:8px"></div>
+  <!-- Pending Bets widget -->
+  <div id="pending-bets-widget" style="margin-bottom:20px;display:none"></div>
+  <!-- Balance widget -->
+  <div class="acct-hero" style="background:var(--navy);border-radius:12px;padding:32px 36px;margin-bottom:24px;display:flex;align-items:center;justify-content:space-between">
+    <div>
+      <div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-bottom:8px">Collective Account Balance</div>
+      <div class="acct-bal" style="font-size:52px;font-weight:900;color:#fff;letter-spacing:-1px;line-height:1">$6,735.61</div>
+      <div style="font-size:12px;color:rgba(255,255,255,0.4);margin-top:8px;letter-spacing:1px">AS AT 29 MAY 2026</div>
+    </div>
+    <div class="acct-right" style="display:flex;flex-direction:column;gap:16px;text-align:right">
+      <div><div style="font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.4)">Opening Balance (30 Dec 2025)</div><div style="font-size:20px;font-weight:700;color:rgba(255,255,255,0.8)">$5,138.12</div></div>
+      <div><div style="font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.4)">Total Bet Returns (2026)</div><div style="font-size:20px;font-weight:700;color:#4ADE80">+$596.64</div></div>
+    </div>
+  </div>
   <div class="section-title">Savings Contributions<span class="mob-hide"> — 2026 (12 × $30 = $360 per member)</span></div>
   <!-- Mobile cards for savings -->
   <div class="mob-savings-cards">
@@ -412,7 +428,7 @@
     <div class="bettor-stats">
       <div class="bettor-stat"><div class="bettor-stat-label">Staked</div><div class="bettor-stat-value">$150.00</div></div>
       <div class="bettor-stat"><div class="bettor-stat-label">Return</div><div class="bettor-stat-value">$276.05</div></div>
-      <div class="bettor-stat"><div class="bettor-stat-label">Net P&amp;L</div><div class="bettor-stat-value positive">+$126.05</div></div>
+      <div class="bettor-stat"><div class="bettor-stat-label">Net P&amp;L</div><div class="bettor-stat-value positive">+$136.05</div></div>
       <div class="bettor-stat"><div class="bettor-stat-label">Win Rate</div><div class="bettor-stat-value">40%</div></div>
     </div>
   </div>
@@ -424,8 +440,9 @@
       <tr><td><span class="month-badge">Feb</span>28 Feb 2026</td><td>Flemington Race 8 — Ahha Ahha</td><td>5.50</td><td class="monospace">$30.00</td><td class="monospace">$165.00</td><td><span class="badge badge-win">Win</span></td><td class="monospace net-positive">+$135.00</td></tr>
       <tr><td><span class="month-badge">Mar</span>28 Mar 2026</td><td>Bet Lost</td><td>—</td><td class="monospace">$30.00</td><td class="monospace">$0.00</td><td><span class="badge badge-loss">Loss</span></td><td class="monospace net-negative">-$30.00</td></tr>
       <tr><td><span class="month-badge">Apr</span>25 Apr 2026</td><td>Morphetville R1 — Staand Deel ($25) &amp; Multi: Lions 40+, Cats 40+, St Kilda 1-39, Swans H2H ($5)</td><td>2.35 / Multi</td><td class="monospace">$30.00</td><td class="monospace">$111.05</td><td><span class="badge badge-win">Win</span></td><td class="monospace net-positive">+$81.05</td></tr>
-      <tr><td><span class="month-badge">May</span>23 May 2026</td><td>Bet Lost</td><td>—</td><td class="monospace">$30.00</td><td class="monospace">$0.00</td><td><span class="badge badge-loss">Loss</span></td><td class="monospace net-negative">-$30.00</td></tr>
-      <tr class="totals-row"><td colspan="3"><strong>TOTAL</strong></td><td class="monospace"><strong>$150.00</strong></td><td class="monospace"><strong>$276.05</strong></td><td></td><td class="monospace net-positive"><strong>+$126.05</strong></td></tr>
+      <tr><td><span class="month-badge">May</span>23 May 2026</td><td>Bet Lost ($20 stake)</td><td>—</td><td class="monospace">$20.00</td><td class="monospace">$0.00</td><td><span class="badge badge-loss">Loss</span></td><td class="monospace net-negative">-$20.00</td></tr>
+      <tr><td><span class="month-badge">May</span>23 May 2026</td><td>SGM — Carlton v Geelong Cats (9-leg) · Fri 29 May 19:40</td><td>11.75</td><td class="monospace">$10.00</td><td class="monospace">—</td><td><span class="badge" style="background:#EFF6FF;color:#1D4ED8">Pending</span></td><td class="monospace" style="color:var(--grey-text)">TBD</td></tr>
+      <tr class="totals-row"><td colspan="3"><strong>TOTAL</strong></td><td class="monospace"><strong>$150.00</strong></td><td class="monospace"><strong>$276.05</strong></td><td></td><td class="monospace net-positive"><strong>+$136.05</strong> <span style="font-size:11px;color:#1D4ED8;font-weight:600">(+$117.50 pending)</span></td></tr>
     </tbody>
   </table></div>
   <div class="bet-cards">
@@ -433,8 +450,9 @@
     <div class="bet-card win"><div class="bet-card-top"><span class="bet-card-date">28 Feb 2026</span><span class="badge badge-win">Win</span></div><div class="bet-card-desc">Flemington Race 8 — Ahha Ahha</div><div class="bet-card-row"><div class="bet-card-stat"><strong>5.50</strong>Odds</div><div class="bet-card-stat"><strong>$165.00</strong>Return</div><div class="bet-card-stat" style="color:var(--green)"><strong style="color:var(--green)">+$135.00</strong>Net</div></div></div>
     <div class="bet-card loss"><div class="bet-card-top"><span class="bet-card-date">28 Mar 2026</span><span class="badge badge-loss">Loss</span></div><div class="bet-card-desc">Bet Lost</div><div class="bet-card-row"><div class="bet-card-stat"><strong>-$30.00</strong>Net</div></div></div>
     <div class="bet-card win"><div class="bet-card-top"><span class="bet-card-date">25 Apr 2026</span><span class="badge badge-win">Win</span></div><div class="bet-card-desc">Morphetville R1 — Staand Deel ($25) &amp; Multi: Lions 40+, Cats 40+, St Kilda 1-39, Swans H2H ($5)</div><div class="bet-card-row"><div class="bet-card-stat"><strong>$111.05</strong>Return</div><div class="bet-card-stat" style="color:var(--green)"><strong style="color:var(--green)">+$81.05</strong>Net</div></div></div>
-    <div class="bet-card loss"><div class="bet-card-top"><span class="bet-card-date">23 May 2026</span><span class="badge badge-loss">Loss</span></div><div class="bet-card-desc">Bet Lost</div><div class="bet-card-row"><div class="bet-card-stat"><strong>-$30.00</strong>Net</div></div></div>
-    <div class="bet-cards-total"><span>Total · 5 bets · 2W 3L</span><span class="net-positive">+$126.05</span></div>
+    <div class="bet-card loss"><div class="bet-card-top"><span class="bet-card-date">23 May 2026</span><span class="badge badge-loss">Loss</span></div><div class="bet-card-desc">Bet Lost ($20 stake)</div><div class="bet-card-row"><div class="bet-card-stat"><strong>-$20.00</strong>Net</div></div></div>
+    <div class="bet-card" style="border-left-color:#3B82F6"><div class="bet-card-top"><span class="bet-card-date">23 May 2026</span><span class="badge" style="background:#EFF6FF;color:#1D4ED8">Pending</span></div><div class="bet-card-desc">SGM — Carlton v Geelong Cats (9-leg) · Fri 29 May 19:40</div><div class="bet-card-row"><div class="bet-card-stat"><strong>11.75</strong>Odds</div><div class="bet-card-stat"><strong>$10.00</strong>Stake</div><div class="bet-card-stat"><strong>$117.50</strong>Potential</div></div></div>
+    <div class="bet-cards-total"><span>Total · 5 bets · 2W 2L · 1 Pending</span><span class="net-positive">+$136.05 <span style="color:#1D4ED8;font-size:11px">(+$117.50 pending)</span></span></div>
   </div>
 </div>
 
@@ -556,7 +574,8 @@
         <div class="form-grid" style="margin-bottom:18px">
           <div class="form-group">
             <label class="form-label">Bet Date</label>
-            <input class="form-input" type="text" id="f-date" readonly style="background:#F2F4F7;cursor:default">
+            <input class="form-input" type="text" id="f-date" placeholder="e.g. 30 May 2026" style="background:#fff">
+            <div style="font-size:10px;color:var(--grey-text);margin-top:4px;letter-spacing:0.5px">Auto-filled · edit to override</div>
           </div>
           <div class="form-group">
             <label class="form-label">Total Budget</label>
@@ -739,6 +758,75 @@ function submitBet() {
   window.location.href = 'mailto:wylieda@gmail.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
 }
 
+var PENDING_BETS = [
+  {
+    captain: 'Charlie',
+    date: '23 May 2026',
+    event: 'SGM — Carlton v Geelong Cats',
+    details: '9-leg multi · Fri 29 May 19:40',
+    stake: '$10.00',
+    odds: '11.75',
+    potential: '$117.50',
+    legs: [
+      'Under 178.5 — Total Game Points',
+      'Geelong Cats — Head to Head',
+      'Jacob Weitering — 10+ Disposals',
+      'Patrick Dangerfield — 10+ Disposals',
+      'Sam De Koning — 10+ Disposals',
+      'Mitch McGovern — 1+ Goal',
+      'Shaun Mannagh — 1+ Goal',
+      'Shannon Neale — 1+ Goal',
+      'Brodie Kemp — 1+ Goal'
+    ]
+  }
+];
+
+function buildPendingBets() {
+  var widget = document.getElementById('pending-bets-widget');
+  if (!widget) return;
+  if (PENDING_BETS.length === 0) { widget.style.display = 'none'; return; }
+
+  var MEMBER_BG = { 'Douchie':'#D6E4F0', 'Charlie':'#D5F5E3', 'Shannon':'#FAD7A0', 'Nic':'#E8DAEF' };
+
+  var html = '<div style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--grey-text);margin-bottom:10px">🕐 Pending Bets</div>';
+
+  PENDING_BETS.forEach(function(bet) {
+    var accentBg = MEMBER_BG[bet.captain] || '#EFF6FF';
+    var legsHtml = '';
+    if (bet.legs && bet.legs.length) {
+      legsHtml = '<div style="margin-top:10px;border-top:1px solid rgba(0,0,0,0.07);padding-top:10px">'
+        + '<div style="font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--grey-text);margin-bottom:6px">Legs</div>'
+        + '<div style="display:flex;flex-wrap:wrap;gap:5px">'
+        + bet.legs.map(function(l, i) {
+            return '<span style="font-size:11px;background:#F0F4FF;color:#1D4ED8;border-radius:4px;padding:2px 8px;font-weight:600">' + (i+1) + '. ' + l + '</span>';
+          }).join('')
+        + '</div></div>';
+    }
+
+    html += '<div style="background:var(--white);border-radius:10px;padding:18px 22px;box-shadow:0 1px 4px rgba(0,0,0,0.06);border-left:4px solid #3B82F6">'
+      + '<div style="display:flex;align-items:flex-start;justify-content:space-between;gap:16px;flex-wrap:wrap">'
+      + '<div style="flex:1;min-width:180px">'
+      + '<div style="display:flex;align-items:center;gap:8px;margin-bottom:4px">'
+      + '<span style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;background:' + accentBg + ';color:var(--navy);padding:2px 10px;border-radius:20px">' + bet.captain + '</span>'
+      + '<span style="font-size:11px;color:var(--grey-text)">' + bet.date + '</span>'
+      + '</div>'
+      + '<div style="font-size:16px;font-weight:800;color:var(--navy);line-height:1.2">' + bet.event + '</div>'
+      + '<div style="font-size:12px;color:var(--grey-text);margin-top:3px">' + bet.details + '</div>'
+      + legsHtml
+      + '</div>'
+      + '<div style="display:flex;gap:20px;align-items:center;flex-shrink:0">'
+      + '<div style="text-align:center"><div style="font-size:10px;text-transform:uppercase;letter-spacing:1px;color:var(--grey-text);margin-bottom:2px">Odds</div><div style="font-size:18px;font-weight:800;color:var(--navy)">@' + bet.odds + '</div></div>'
+      + '<div style="text-align:center"><div style="font-size:10px;text-transform:uppercase;letter-spacing:1px;color:var(--grey-text);margin-bottom:2px">Stake</div><div style="font-size:18px;font-weight:800;color:var(--navy)">' + bet.stake + '</div></div>'
+      + '<div style="text-align:center"><div style="font-size:10px;text-transform:uppercase;letter-spacing:1px;color:var(--grey-text);margin-bottom:2px">Potential</div><div style="font-size:18px;font-weight:800;color:#1D4ED8">' + bet.potential + '</div></div>'
+      + '</div>'
+      + '</div>'
+      + '</div>';
+  });
+
+  widget.innerHTML = html;
+  widget.style.display = 'block';
+}
+
 function buildNextUp() {
   var today = new Date();
   today.setHours(0,0,0,0);
@@ -797,7 +885,7 @@ function showPage(id) {
   }
   updateNavFade();
   window.scrollTo(0, 0);
-  if (id === 'home') buildNextUp();
+  if (id === 'home') { buildNextUp(); buildPendingBets(); }
 }
 
 function updateNavFade() {
@@ -815,6 +903,7 @@ window.addEventListener('load', function() {
 });
 
 buildNextUp();
+buildPendingBets();
 </script>
 </body>
 </html>
