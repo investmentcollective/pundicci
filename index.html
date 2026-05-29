@@ -88,61 +88,111 @@
   .bet-card-stat strong { color: var(--navy); display: block; font-size: 13px; }
   .bet-cards-total { background: #F8F9FA; border-radius: 8px; padding: 12px 16px; display: flex; justify-content: space-between; align-items: center; border: 1px solid var(--grey-line); margin-top: 4px; font-size: 13px; font-weight: 700; }
 
+  /* Mobile-only account cards (hidden on desktop) */
+  .mob-savings-cards { display: none; }
+  .mob-returns-cards { display: none; }
+  .mob-member-row { background: var(--white); border-radius: 10px; padding: 14px 16px; margin-bottom: 8px; box-shadow: 0 1px 4px rgba(0,0,0,0.06); display: flex; justify-content: space-between; align-items: center; }
+  .mob-member-name { font-size: 16px; font-weight: 700; color: var(--navy); }
+  .mob-member-sub  { font-size: 11px; color: var(--grey-text); margin-top: 2px; }
+  .mob-member-right { text-align: right; }
+  .mob-member-val  { font-size: 15px; font-weight: 800; color: var(--navy); }
+  .mob-totals-row  { background: var(--navy); border-radius: 10px; padding: 12px 16px; display: flex; justify-content: space-between; align-items: center; margin-top: 4px; }
+  .mob-totals-label { font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: rgba(255,255,255,0.6); }
+  .mob-totals-val  { font-size: 16px; font-weight: 800; color: #fff; }
+
   @media (max-width: 600px) {
-    /* Header */
+    /* ── Header ── */
     .header { padding: 12px 14px; }
     .logo-svg { width: 32px; height: 32px; }
     .logo-text h1 { font-size: 13px; letter-spacing: 0; }
     .logo-text p { display: none; }
     .header-tagline { display: none; }
 
-    /* Nav */
-    .nav-wrap { position: relative; }
-    .nav { padding: 0; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
-    .nav::-webkit-scrollbar { display: none; }
-    .nav-tab { padding: 13px 14px; font-size: 11px; letter-spacing: 0; white-space: nowrap; flex-shrink: 0; min-height: 44px; display: flex; align-items: center; }
-    .nav-fade { position: absolute; right: 0; top: 0; bottom: 1px; width: 40px; background: linear-gradient(to right, transparent, white); pointer-events: none; }
+    /* ── Nav: 2-row wrapped grid, no horizontal scroll ── */
+    .nav-fade { display: none; }
+    .nav { padding: 0; flex-wrap: wrap; overflow-x: visible; }
+    .nav-tab {
+      flex: 1 0 25%;        /* 4 per row */
+      min-width: 0;
+      padding: 11px 4px;
+      font-size: 10px;
+      letter-spacing: 0;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      text-align: center;
+      justify-content: center;
+      display: flex;
+      align-items: center;
+      border-bottom: 3px solid transparent;
+      border-right: 1px solid var(--grey-line);
+      min-height: 44px;
+    }
+    /* Single row: Home | +Submit | Leaderboard | Account */
+    .nav-tab:nth-child(4) { border-right: none; }
+    .nav-tab.active { border-bottom-color: var(--navy); background: #F8F9FA; }
 
-    /* Page */
+    /* ── Page ── */
     .page { padding: 14px 12px; }
     .section-title { font-size: 10px; margin-bottom: 10px; }
 
-    /* Account — next up */
-    #next-up-row { flex-direction: column; }
-    #next-up-row > div { min-width: unset !important; width: 100% !important; }
+    /* ── Account: next-up stacks ── */
+    #next-up-row { flex-direction: column !important; flex-wrap: wrap; }
+    #next-up-row > div { min-width: unset !important; width: 100% !important; box-sizing: border-box; }
+    #next-up-row button { width: 100% !important; }
+    .home-submit-btn { width: 100% !important; }
 
-    /* Account — balance hero */
-    .acct-hero { flex-direction: column !important; gap: 0; padding: 16px 16px !important; }
-    .acct-bal { font-size: 38px !important; }
-    .acct-right { text-align: left !important; flex-direction: row !important; gap: 16px !important; flex-wrap: wrap; margin-top: 14px; border-top: 1px solid rgba(255,255,255,0.15); padding-top: 14px; }
-    .acct-right > div { flex: 1; min-width: 130px; }
+    /* ── Account: balance hero ── */
+    .acct-hero { flex-direction: column !important; gap: 0 !important; padding: 18px !important; border-radius: 10px; }
+    .acct-bal { font-size: 36px !important; }
+    .acct-right { text-align: left !important; flex-direction: row !important; gap: 14px !important; flex-wrap: wrap; margin-top: 14px; border-top: 1px solid rgba(255,255,255,0.15); padding-top: 14px; width: 100%; }
+    .acct-right > div { flex: 1 1 40%; }
 
-    /* Account — scrollable tables */
-    .mob-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; border-radius: 10px; box-shadow: 0 1px 4px rgba(0,0,0,0.06); margin-bottom: 16px; }
-    .mob-scroll table { min-width: 460px; }
+    /* ── Account: shorten section titles ── */
+    .mob-savings-title::after { content: 'Savings — 2026'; }
+    .mob-savings-title .full-title { display: none; }
+    .section-title { word-break: break-word; }
 
-    /* Leaderboard — stats bar 4+3 */
-    .stats-bar { grid-template-columns: repeat(4, 1fr); padding: 12px 8px; margin-bottom: 16px; row-gap: 0; }
-    .stat-item { padding: 8px 4px; border-right: 1px solid rgba(255,255,255,0.1); }
-    .stat-item:nth-child(4) { border-right: none; }
-    .stat-item:nth-child(5) { border-top: 1px solid rgba(255,255,255,0.15); padding-top: 10px; }
-    .stat-item:nth-child(7) { border-right: none; }
-    .stat-label { font-size: 9px; letter-spacing: 0; margin-bottom: 3px; }
-    .stat-value { font-size: 15px; }
+    /* ── Account: hide wide tables, show mobile cards ── */
+    .mob-scroll { display: none; }
+    .mob-savings-cards { display: block; margin-bottom: 16px; }
+    .mob-returns-cards { display: block; margin-bottom: 16px; }
 
-    /* Leaderboard cards */
-    .lb-card { flex-wrap: wrap; padding: 12px 12px; gap: 8px; }
-    .lb-rank { font-size: 28px; width: 38px; }
-    .lb-stripe { height: 36px; width: 4px; }
-    .lb-name { font-size: 20px; }
-    .lb-record { font-size: 10px; line-height: 1.8; }
-    .lb-stats { width: 100%; display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--grey-line); padding-top: 10px; }
-    .lb-stat { text-align: center; }
+    /* ── Leaderboard: stats bar 3+3+1 ── */
+    .stats-bar { grid-template-columns: repeat(3, 1fr); padding: 14px 12px; margin-bottom: 16px; row-gap: 0; }
+    .stat-item { padding: 10px 4px; border-right: 1px solid rgba(255,255,255,0.15); }
+    .stat-item:nth-child(3) { border-right: none; }
+    .stat-item:nth-child(4) { border-top: 1px solid rgba(255,255,255,0.15); }
+    .stat-item:nth-child(6) { border-right: none; }
+    /* Hide Total Staked & Total Return — show Net P&L full width */
+    .stat-item:nth-child(5),
+    .stat-item:nth-child(6) { display: none; }
+    .stat-item:nth-child(7) { grid-column: 1 / -1; border-right: none; border-top: 1px solid rgba(255,255,255,0.15); padding-top: 12px; }
+    .stat-label { font-size: 9px; letter-spacing: 0; margin-bottom: 4px; }
+    .stat-value { font-size: 18px; }
+
+    /* ── Leaderboard cards ── */
+    .lb-card { flex-wrap: wrap; padding: 12px 12px; gap: 0; width: 100%; }
+    .lb-rank { font-size: 26px; width: 34px; flex-shrink: 0; }
+    .lb-stripe { height: 32px; width: 4px; flex-shrink: 0; margin-right: 8px; }
+    .lb-name-block { flex: 1; min-width: 0; }
+    .lb-name { font-size: 18px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .lb-record { font-size: 10px; line-height: 1.5; white-space: normal; }
+    .lb-record span { display: block; margin-top: 3px; font-size: 10px; }
+    /* Stats: 2×2 grid on mobile */
+    .lb-stats { width: 100%; display: grid; grid-template-columns: repeat(2, 1fr); gap: 0; border-top: 1px solid var(--grey-line); padding-top: 10px; margin-top: 10px; }
+    .lb-stat { text-align: center; padding: 6px 0; border-right: 1px solid var(--grey-line); border-bottom: 1px solid var(--grey-line); }
+    .lb-stat:nth-child(2) { border-right: none; }
+    .lb-stat:nth-child(3) { border-bottom: none; }
+    .lb-stat:nth-child(4) { border-right: none; border-bottom: none; }
     .lb-stat-label { font-size: 9px; letter-spacing: 0; }
-    .lb-stat-value { font-size: 13px; }
+    .lb-stat-value { font-size: 14px; }
     .lb-arrow { display: none; }
 
-    /* Individual pages */
+    /* ── Leaderboard section title ── */
+    .lb-section-title .mob-hide { display: none; }
+
+    /* ── Individual bettor pages ── */
     .bettor-header { flex-direction: column; align-items: flex-start; gap: 12px; padding: 16px 14px; margin-bottom: 14px; }
     .bettor-name { font-size: 28px; letter-spacing: 0; }
     .bettor-stats { width: 100%; display: grid; grid-template-columns: repeat(4, 1fr); }
@@ -151,16 +201,17 @@
     .bettor-stat-value { font-size: 15px; }
     .back-btn { margin-bottom: 12px; font-size: 11px; }
 
-    /* Bet history — cards on mobile, hide table */
+    /* ── Bet history: cards only, no table ── */
     .bet-table-wrap { display: none; }
     .bet-cards { display: block; }
 
-    /* Submit form */
+    /* ── Submit form ── */
     .form-card { padding: 16px 14px; }
     .form-grid { grid-template-columns: 1fr !important; gap: 12px; }
     .form-input, .form-select, .form-textarea { font-size: 16px; padding: 13px 12px; }
     .submit-btn { padding: 15px; font-size: 13px; }
     footer { font-size: 10px; padding: 16px; }
+    .mob-hide { display: none; }
   }
 
   /* Submit Bet form styles */
@@ -189,10 +240,6 @@
 
 <div class="header">
   <div class="header-logo">
-    <svg class="logo-svg" viewBox="0 0 60 70" xmlns="http://www.w3.org/2000/svg">
-      <polygon points="0,0 40,0 57,16 57,32 42,40 18,40 18,70 0,70" fill="#0D1B2A"/>
-      <polygon points="18,8 36,8 46,17 46,28 36,32 18,32" fill="white"/>
-    </svg>
     <div class="logo-text">
       <h1>Pundicci Investment Collective</h1>
       <p>Invest to Win</p>
@@ -203,22 +250,26 @@
 
 <div class="nav-wrap">
   <div class="nav" id="main-nav">
-    <div class="nav-tab active" onclick="showPage('account')">Account</div>
-    <div class="nav-tab" onclick="showPage('leaderboard')">Leaderboard</div>
-    <div class="nav-tab" onclick="showPage('charlie')">Charlie</div>
-    <div class="nav-tab" onclick="showPage('shannon')">Shannon</div>
-    <div class="nav-tab" onclick="showPage('douchie')">Douchie</div>
-    <div class="nav-tab" onclick="showPage('nic')">Nic</div>
+    <div class="nav-tab active" onclick="showPage('home')">Home</div>
     <div class="nav-tab" onclick="showPage('submit')" style="color:#1EA050;font-weight:800">+ Submit</div>
+    <div class="nav-tab" onclick="showPage('leaderboard')">Leaderboard</div>
+    <div class="nav-tab" onclick="showPage('account')">Account</div>
   </div>
   <div class="nav-fade" id="nav-fade"></div>
 </div>
 
-<!-- ═══════════════ ACCOUNT -->
-<div class="page active" id="page-account">
+<!-- ═══════════════ HOME -->
+<div class="page active" id="page-home">
   <div style="height:8px"></div>
-  <!-- Next Up + Submit row -->
-  <div style="display:flex;align-items:stretch;gap:12px;margin-bottom:20px;flex-wrap:wrap" id="next-up-row"></div>
+  <!-- Next Up + Then tiles -->
+  <div style="display:flex;align-items:stretch;gap:12px;margin-bottom:16px;flex-wrap:wrap" id="next-up-row"></div>
+  <!-- Submit Bet CTA -->
+  <div style="margin-bottom:20px">
+    <button onclick="showPage('submit')" style="width:100%;background:var(--navy);color:#fff;border:none;border-radius:10px;padding:16px 22px;font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:background 0.2s;display:flex;align-items:center;justify-content:center;gap:10px" onmouseover="this.style.background='#1B2A3B'" onmouseout="this.style.background='var(--navy)'">
+      <span style="font-size:18px">+</span> Submit This Week's Bet
+    </button>
+  </div>
+  <!-- Balance widget -->
   <div class="acct-hero" style="background:var(--navy);border-radius:12px;padding:32px 36px;margin-bottom:20px;display:flex;align-items:center;justify-content:space-between">
     <div>
       <div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-bottom:8px">Collective Account Balance</div>
@@ -230,8 +281,21 @@
       <div><div style="font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.4)">Total Bet Returns (2026)</div><div style="font-size:20px;font-weight:700;color:#4ADE80">+$596.64</div></div>
     </div>
   </div>
+  <footer>Net P&amp;L = Bet return minus stake &nbsp;·&nbsp; Stake from captain's own pocket</footer>
+</div>
 
-  <div class="section-title">Savings Contributions — 2026 (12 × $30 = $360 per member)</div>
+<!-- ═══════════════ ACCOUNT (details) -->
+<div class="page" id="page-account">
+  <div style="height:8px"></div>
+  <div class="section-title">Savings Contributions<span class="mob-hide"> — 2026 (12 × $30 = $360 per member)</span></div>
+  <!-- Mobile cards for savings -->
+  <div class="mob-savings-cards">
+    <div class="mob-member-row"><div><div class="mob-member-name">Charlie</div><div class="mob-member-sub">Full year pre-paid</div></div><div class="mob-member-right"><div class="mob-member-val" style="color:var(--green)">$360 ✓</div><div class="mob-member-sub">Paid in full</div></div></div>
+    <div class="mob-member-row"><div><div class="mob-member-name">Douchie</div><div class="mob-member-sub">Full year pre-paid</div></div><div class="mob-member-right"><div class="mob-member-val" style="color:var(--green)">$360 ✓</div><div class="mob-member-sub">Paid in full</div></div></div>
+    <div class="mob-member-row"><div><div class="mob-member-name">Nic</div><div class="mob-member-sub">$80 still outstanding</div></div><div class="mob-member-right"><div class="mob-member-val" style="color:#D97706">$280 ⚠</div><div class="mob-member-sub">of $360</div></div></div>
+    <div class="mob-member-row"><div><div class="mob-member-name">Shannon</div><div class="mob-member-sub" style="color:var(--red)">$120 owed now (4 weeks)</div></div><div class="mob-member-right"><div class="mob-member-val" style="color:var(--red)">$0 ✗</div><div class="mob-member-sub">of $360</div></div></div>
+    <div class="mob-totals-row"><span class="mob-totals-label">Outstanding</span><span class="mob-totals-val" style="color:#F87171">$440</span></div>
+  </div>
   <div class="mob-scroll"><div style="background:var(--white);border-radius:10px;overflow:hidden">
     <table style="width:100%;border-collapse:collapse">
       <thead><tr>
@@ -240,19 +304,26 @@
         <th style="background:var(--navy);color:rgba(255,255,255,0.6);font-size:10px;letter-spacing:2px;text-transform:uppercase;padding:12px 20px;text-align:center;font-weight:600">Paid</th>
         <th style="background:var(--navy);color:rgba(255,255,255,0.6);font-size:10px;letter-spacing:2px;text-transform:uppercase;padding:12px 20px;text-align:center;font-weight:600">Outstanding</th>
         <th style="background:var(--navy);color:rgba(255,255,255,0.6);font-size:10px;letter-spacing:2px;text-transform:uppercase;padding:12px 20px;text-align:center;font-weight:600">Status</th>
-        <th style="background:var(--navy);color:rgba(255,255,255,0.6);font-size:10px;letter-spacing:2px;text-transform:uppercase;padding:12px 20px;text-align:left;font-weight:600">Notes</th>
       </tr></thead>
       <tbody>
-        <tr style="border-bottom:1px solid var(--grey-line)"><td style="padding:16px 20px;font-weight:700;font-size:15px">Charlie</td><td style="padding:16px 20px;text-align:center;font-family:monospace">$360.00</td><td style="padding:16px 20px;text-align:center;font-family:monospace;font-weight:700;color:var(--green)">$360.00</td><td style="padding:16px 20px;text-align:center;font-family:monospace;color:var(--grey-text)">—</td><td style="padding:16px 20px;text-align:center"><span style="background:#DCFCE7;color:#15803D;padding:4px 12px;border-radius:20px;font-size:11px;font-weight:700;letter-spacing:1px">✓ PAID IN FULL</span></td><td style="padding:16px 20px;font-size:13px;color:var(--grey-text)">Full year pre-paid</td></tr>
-        <tr style="border-bottom:1px solid var(--grey-line)"><td style="padding:16px 20px;font-weight:700;font-size:15px">Douchie</td><td style="padding:16px 20px;text-align:center;font-family:monospace">$360.00</td><td style="padding:16px 20px;text-align:center;font-family:monospace;font-weight:700;color:var(--green)">$360.00</td><td style="padding:16px 20px;text-align:center;font-family:monospace;color:var(--grey-text)">—</td><td style="padding:16px 20px;text-align:center"><span style="background:#DCFCE7;color:#15803D;padding:4px 12px;border-radius:20px;font-size:11px;font-weight:700;letter-spacing:1px">✓ PAID IN FULL</span></td><td style="padding:16px 20px;font-size:13px;color:var(--grey-text)">Full year pre-paid</td></tr>
-        <tr style="border-bottom:1px solid var(--grey-line)"><td style="padding:16px 20px;font-weight:700;font-size:15px">Nic</td><td style="padding:16px 20px;text-align:center;font-family:monospace">$360.00</td><td style="padding:16px 20px;text-align:center;font-family:monospace;font-weight:700;color:#D97706">$280.00</td><td style="padding:16px 20px;text-align:center;font-family:monospace;font-weight:700;color:#D97706">$80.00</td><td style="padding:16px 20px;text-align:center"><span style="background:#FEF3C7;color:#B45309;padding:4px 12px;border-radius:20px;font-size:11px;font-weight:700;letter-spacing:1px">⚠ PARTIAL</span></td><td style="padding:16px 20px;font-size:13px;color:var(--grey-text)">$80 remaining outstanding</td></tr>
-        <tr style="border-bottom:1px solid var(--grey-line)"><td style="padding:16px 20px;font-weight:700;font-size:15px">Shannon</td><td style="padding:16px 20px;text-align:center;font-family:monospace">$360.00</td><td style="padding:16px 20px;text-align:center;font-family:monospace;font-weight:700;color:var(--red)">$0.00</td><td style="padding:16px 20px;text-align:center;font-family:monospace;font-weight:700;color:var(--red)">$360.00</td><td style="padding:16px 20px;text-align:center"><span style="background:#FEE2E2;color:#B91C1C;padding:4px 12px;border-radius:20px;font-size:11px;font-weight:700;letter-spacing:1px">✗ OVERDUE</span></td><td style="padding:16px 20px;font-size:13px;color:var(--red);font-weight:600">$120 owed now (4 past weeks)</td></tr>
-        <tr style="background:#F8F9FA;border-top:2px solid var(--navy)"><td style="padding:14px 20px;font-weight:700;font-size:13px;text-transform:uppercase;letter-spacing:1px">Total</td><td style="padding:14px 20px;text-align:center;font-family:monospace;font-weight:700">$1,440.00</td><td style="padding:14px 20px;text-align:center;font-family:monospace;font-weight:700;color:var(--green)">$1,000.00</td><td style="padding:14px 20px;text-align:center;font-family:monospace;font-weight:700;color:var(--red)">$440.00</td><td colspan="2" style="padding:14px 20px;font-size:12px;color:var(--grey-text)">$440 outstanding across Nic &amp; Shannon</td></tr>
+        <tr style="border-bottom:1px solid var(--grey-line)"><td style="padding:16px 20px;font-weight:700;font-size:15px">Charlie</td><td style="padding:16px 20px;text-align:center;font-family:monospace">$360.00</td><td style="padding:16px 20px;text-align:center;font-family:monospace;font-weight:700;color:var(--green)">$360.00</td><td style="padding:16px 20px;text-align:center;font-family:monospace;color:var(--grey-text)">—</td><td style="padding:16px 20px;text-align:center"><span style="background:#DCFCE7;color:#15803D;padding:4px 12px;border-radius:20px;font-size:11px;font-weight:700;letter-spacing:1px">✓ PAID IN FULL</span></td></tr>
+        <tr style="border-bottom:1px solid var(--grey-line)"><td style="padding:16px 20px;font-weight:700;font-size:15px">Douchie</td><td style="padding:16px 20px;text-align:center;font-family:monospace">$360.00</td><td style="padding:16px 20px;text-align:center;font-family:monospace;font-weight:700;color:var(--green)">$360.00</td><td style="padding:16px 20px;text-align:center;font-family:monospace;color:var(--grey-text)">—</td><td style="padding:16px 20px;text-align:center"><span style="background:#DCFCE7;color:#15803D;padding:4px 12px;border-radius:20px;font-size:11px;font-weight:700;letter-spacing:1px">✓ PAID IN FULL</span></td></tr>
+        <tr style="border-bottom:1px solid var(--grey-line)"><td style="padding:16px 20px;font-weight:700;font-size:15px">Nic</td><td style="padding:16px 20px;text-align:center;font-family:monospace">$360.00</td><td style="padding:16px 20px;text-align:center;font-family:monospace;font-weight:700;color:#D97706">$280.00</td><td style="padding:16px 20px;text-align:center;font-family:monospace;font-weight:700;color:#D97706">$80.00</td><td style="padding:16px 20px;text-align:center"><span style="background:#FEF3C7;color:#B45309;padding:4px 12px;border-radius:20px;font-size:11px;font-weight:700;letter-spacing:1px">⚠ PARTIAL</span></td></tr>
+        <tr style="border-bottom:1px solid var(--grey-line)"><td style="padding:16px 20px;font-weight:700;font-size:15px">Shannon</td><td style="padding:16px 20px;text-align:center;font-family:monospace">$360.00</td><td style="padding:16px 20px;text-align:center;font-family:monospace;font-weight:700;color:var(--red)">$0.00</td><td style="padding:16px 20px;text-align:center;font-family:monospace;font-weight:700;color:var(--red)">$360.00</td><td style="padding:16px 20px;text-align:center"><span style="background:#FEE2E2;color:#B91C1C;padding:4px 12px;border-radius:20px;font-size:11px;font-weight:700;letter-spacing:1px">✗ OVERDUE</span></td></tr>
+        <tr style="background:#F8F9FA;border-top:2px solid var(--navy)"><td style="padding:14px 20px;font-weight:700;font-size:13px;text-transform:uppercase;letter-spacing:1px">Total</td><td style="padding:14px 20px;text-align:center;font-family:monospace;font-weight:700">$1,440.00</td><td style="padding:14px 20px;text-align:center;font-family:monospace;font-weight:700;color:var(--green)">$1,000.00</td><td style="padding:14px 20px;text-align:center;font-family:monospace;font-weight:700;color:var(--red)">$440.00</td><td style="padding:14px 20px;font-size:12px;color:var(--grey-text)">$440 outstanding</td></tr>
       </tbody>
     </table>
   </div></div>
 
-  <div class="section-title">Bet Returns — 2026 Season to Date</div>
+  <div class="section-title">Bet Returns<span class="mob-hide"> — 2026 Season to Date</span></div>
+  <!-- Mobile cards for returns -->
+  <div class="mob-returns-cards">
+    <div class="mob-member-row"><div><div class="mob-member-name">Charlie</div><div class="mob-member-sub">5 bets · 2W 3L · 40%</div></div><div class="mob-member-right"><div class="mob-member-val" style="color:var(--green)">+$126.05</div><div class="mob-member-sub">$276.05 returned</div></div></div>
+    <div class="mob-member-row"><div><div class="mob-member-name">Nic</div><div class="mob-member-sub">2 bets · 1W 1L · 50%</div></div><div class="mob-member-right"><div class="mob-member-val" style="color:var(--green)">+$11.25</div><div class="mob-member-sub">$71.25 returned</div></div></div>
+    <div class="mob-member-row"><div><div class="mob-member-name">Shannon</div><div class="mob-member-sub">4 bets · 1W 3L · 25%</div></div><div class="mob-member-right"><div class="mob-member-val">$0.00</div><div class="mob-member-sub">$120.00 returned</div></div></div>
+    <div class="mob-member-row"><div><div class="mob-member-name">Douchie</div><div class="mob-member-sub">5 bets · 1W 4L · 20%</div></div><div class="mob-member-right"><div class="mob-member-val" style="color:var(--red)">-$20.66</div><div class="mob-member-sub">$129.34 returned</div></div></div>
+    <div class="mob-totals-row"><span class="mob-totals-label">16 bets · 5W 11L · 31%</span><span class="mob-totals-val" style="color:#4ADE80">+$116.64</span></div>
+  </div>
   <div class="mob-scroll"><div style="background:var(--white);border-radius:10px;overflow:hidden">
     <table style="width:100%;border-collapse:collapse">
       <thead><tr>
@@ -287,7 +358,7 @@
     <div class="stat-item"><div class="stat-label">Total Return</div><div class="stat-value">$596.64</div></div>
     <div class="stat-item"><div class="stat-label">Net P&amp;L</div><div class="stat-value positive">+$116.64</div></div>
   </div>
-  <div class="section-title">Individual Rankings — as at 29 May 2026 · Click to view bet history</div>
+  <div class="section-title">Individual Rankings<span class="mob-hide"> — as at 29 May 2026 · Click to view bet history</span></div>
   <div class="leaderboard">
     <div class="lb-card" onclick="showPage('charlie')">
       <div class="lb-rank rank-1">#1</div><div class="lb-stripe" style="background:#0D1B2A"></div>
@@ -465,14 +536,11 @@
 <div class="page" id="page-submit">
   <div style="height:8px"></div>
   <div style="max-width:600px;margin:0 auto">
-
     <div style="margin-bottom:24px">
       <div style="font-size:28px;font-weight:900;text-transform:uppercase;letter-spacing:1px;color:var(--navy)">Submit a Bet</div>
       <div style="font-size:13px;color:var(--grey-text);margin-top:4px">Select your name to see your next bet slot, fill in the details, and hit send.</div>
     </div>
-
     <div class="form-card">
-      <!-- Step 1: Name -->
       <div class="form-group" style="margin-bottom:20px">
         <label class="form-label">Who are you?</label>
         <select class="form-select" id="f-name" onchange="onNameChange()">
@@ -483,14 +551,8 @@
           <option value="Shannon">Shannon</option>
         </select>
       </div>
-
-      <!-- Bet context alert -->
       <div class="bet-alert" id="bet-alert"></div>
-
-      <!-- Form fields (hidden until name selected) -->
       <div id="form-fields" style="display:none">
-
-        <!-- Date row -->
         <div class="form-grid" style="margin-bottom:18px">
           <div class="form-group">
             <label class="form-label">Bet Date</label>
@@ -504,24 +566,13 @@
             </div>
           </div>
         </div>
-
-        <!-- Bets container -->
         <div id="bets-container"></div>
-
-        <!-- Add bet button -->
-        <button type="button" onclick="addBet()" id="add-bet-btn" style="width:100%;padding:11px;background:transparent;border:2px dashed var(--grey-line);border-radius:8px;font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--grey-text);cursor:pointer;margin-bottom:18px;transition:all 0.2s">
-          + Add Another Bet
-        </button>
-
-        <!-- Notes -->
+        <button type="button" onclick="addBet()" id="add-bet-btn" style="width:100%;padding:11px;background:transparent;border:2px dashed var(--grey-line);border-radius:8px;font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--grey-text);cursor:pointer;margin-bottom:18px;transition:all 0.2s">+ Add Another Bet</button>
         <div class="form-group" style="margin-bottom:20px">
           <label class="form-label">Notes (optional)</label>
           <textarea class="form-textarea" id="f-notes" placeholder="Any extra details…"></textarea>
         </div>
-
-        <button class="submit-btn" id="submit-btn" onclick="submitBet()">
-          📧 Send to Douchie
-        </button>
+        <button class="submit-btn" id="submit-btn" onclick="submitBet()">📧 Send to Douchie</button>
         <div style="font-size:11px;color:var(--grey-text);text-align:center;margin-top:10px;letter-spacing:0.5px">Opens your email app pre-filled — just hit send.</div>
       </div>
     </div>
@@ -529,7 +580,6 @@
 </div>
 
 <script>
-// Full 2026 schedule — used for bet slot logic
 var SCHEDULE = [
   { date: '24 Jan 2026', captain: 'Douchie',  logged: true  },
   { date: '31 Jan 2026', captain: 'Charlie',  logged: true  },
@@ -589,15 +639,11 @@ function onNameChange() {
   var alertEl = document.getElementById('bet-alert');
   var fields = document.getElementById('form-fields');
   var dateInput = document.getElementById('f-date');
-
   if (!name) { alertEl.style.display = 'none'; fields.style.display = 'none'; return; }
-
   var outstanding = SCHEDULE.filter(function(s) { return s.captain === name && s.noBet; });
   var next = SCHEDULE.find(function(s) { return s.captain === name && !s.logged; });
-
   alertEl.className = 'bet-alert';
   alertEl.style.display = 'block';
-
   if (outstanding.length > 0) {
     dateInput.value = outstanding[0].date;
     alertEl.className = 'bet-alert overdue';
@@ -610,8 +656,6 @@ function onNameChange() {
     dateInput.value = '—';
     alertEl.innerHTML = '<strong>All Done!</strong>All 2026 bet slots have been logged for ' + name + '.';
   }
-
-  // Reset bets
   betCount = 0;
   document.getElementById('bets-container').innerHTML = '';
   addBet();
@@ -625,12 +669,10 @@ function addBet() {
   var div = document.createElement('div');
   div.id = 'bet-' + n;
   div.style.cssText = 'background:#F8F9FA;border-radius:8px;padding:16px;margin-bottom:12px;border:1px solid var(--grey-line)';
-
   var header = '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px">'
     + '<div style="font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--navy)">Bet ' + n + '</div>'
     + (n > 1 ? '<button type="button" onclick="removeBet(' + n + ')" style="font-size:11px;color:var(--red);background:none;border:none;cursor:pointer;font-weight:700;letter-spacing:1px;text-transform:uppercase">✕ Remove</button>' : '')
     + '</div>';
-
   var fields = '<div class="form-grid">'
     + '<div class="form-group full"><label class="form-label">Bet Description</label><input class="form-input bet-field" type="text" id="b' + n + '-desc" placeholder="e.g. Flemington R5 — Horsename"></div>'
     + '<div class="form-group"><label class="form-label">Odds</label><input class="form-input bet-field" type="text" id="b' + n + '-odds" placeholder="e.g. 4.50"></div>'
@@ -638,17 +680,9 @@ function addBet() {
     + '<div class="form-group"><label class="form-label">Result</label><select class="form-select bet-field" id="b' + n + '-result"><option value="">— Pending —</option><option value="Win">Win</option><option value="Loss">Loss</option></select></div>'
     + '<div class="form-group"><label class="form-label">Return ($)</label><input class="form-input bet-field" type="number" id="b' + n + '-return" placeholder="0.00" step="0.01"></div>'
     + '</div>';
-
   div.innerHTML = header + fields;
   container.appendChild(div);
-
-  // Pre-fill stake if only one bet
-  if (n === 1) {
-    document.getElementById('b1-stake').value = '30';
-    updateRemaining();
-  }
-
-  // Hide add button if stake is fully allocated
+  if (n === 1) { document.getElementById('b1-stake').value = '30'; updateRemaining(); }
   updateRemaining();
 }
 
@@ -673,8 +707,6 @@ function submitBet() {
   var name  = document.getElementById('f-name').value;
   var date  = document.getElementById('f-date').value;
   var notes = document.getElementById('f-notes').value;
-
-  // Collect all bets
   var bets = [];
   for (var i = 1; i <= betCount; i++) {
     var descEl = document.getElementById('b' + i + '-desc');
@@ -689,13 +721,10 @@ function submitBet() {
       ret:    document.getElementById('b' + i + '-return').value || '—'
     });
   }
-
   if (bets.length === 0) { window.alert('Please enter at least one bet description.'); return; }
-
   var body = 'PIC BET SUBMISSION\n==================\n'
     + 'Captain: ' + name + '\n'
     + 'Date:    ' + date + '\n\n';
-
   bets.forEach(function(b, idx) {
     if (bets.length > 1) body += 'BET ' + (idx+1) + '\n';
     body += 'Bet:     ' + b.desc + '\n'
@@ -704,10 +733,8 @@ function submitBet() {
       + 'Result:  ' + b.result + '\n'
       + 'Return:  ' + (b.ret !== '—' ? '$' + b.ret : '—') + '\n\n';
   });
-
   if (notes) body += 'Notes: ' + notes + '\n';
   body += '==================';
-
   var subject = 'PIC Bet — ' + name + ' — ' + date + (bets.length > 1 ? ' (' + bets.length + ' bets)' : '');
   window.location.href = 'mailto:wylieda@gmail.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
 }
@@ -715,41 +742,30 @@ function submitBet() {
 function buildNextUp() {
   var today = new Date();
   today.setHours(0,0,0,0);
-
-  // Find the current/next upcoming Saturday in the schedule
   var upcoming = SCHEDULE.filter(function(s) {
     var parts = s.date.split(' ');
     var months = {Jan:0,Feb:1,Mar:2,Apr:3,May:4,Jun:5,Jul:6,Aug:7,Sep:8,Oct:9,Nov:10,Dec:11};
     var d = new Date(parseInt(parts[2]), months[parts[1]], parseInt(parts[0]));
     return d >= today;
   });
-
   var row = document.getElementById('next-up-row');
   if (!row) return;
-
   var MEMBER_BG = { 'Douchie':'#D6E4F0', 'Charlie':'#D5F5E3', 'Shannon':'#FAD7A0', 'Nic':'#E8DAEF' };
-
   var html = '';
-
   if (upcoming.length > 0) {
     var next = upcoming[0];
     var bg = MEMBER_BG[next.captain] || '#F2F4F7';
-
-    // Days until
     var parts = next.date.split(' ');
     var months = {Jan:0,Feb:1,Mar:2,Apr:3,May:4,Jun:5,Jul:6,Aug:7,Sep:8,Oct:9,Nov:10,Dec:11};
     var nextDate = new Date(parseInt(parts[2]), months[parts[1]], parseInt(parts[0]));
     var diff = Math.round((nextDate - today) / (1000*60*60*24));
     var daysLabel = diff === 0 ? '🎯 Today!' : diff === 1 ? 'Tomorrow' : 'In ' + diff + ' days';
-
     html += '<div style="flex:1;min-width:220px;background:' + bg + ';border-radius:10px;padding:18px 22px;border:2px solid rgba(0,0,0,0.06)">'
       + '<div style="font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--grey-text);margin-bottom:8px">🎲 Next Up</div>'
       + '<div style="font-size:26px;font-weight:900;text-transform:uppercase;letter-spacing:1px;color:var(--navy);line-height:1">' + next.captain + '</div>'
       + '<div style="font-size:13px;color:var(--navy);margin-top:6px;font-weight:600">' + next.date + '</div>'
       + '<div style="font-size:12px;color:var(--grey-text);margin-top:3px">' + daysLabel + '</div>'
       + '</div>';
-
-    // Also show the one after
     if (upcoming.length > 1) {
       var after = upcoming[1];
       html += '<div style="flex:1;min-width:180px;background:var(--white);border-radius:10px;padding:18px 22px;border:2px solid var(--grey-line)">'
@@ -759,12 +775,6 @@ function buildNextUp() {
         + '</div>';
     }
   }
-
-  // Submit bet button
-  html += '<div style="display:flex;align-items:center">'
-    + '<button onclick="showPage(\'submit\')" style="background:var(--navy);color:#fff;border:none;border-radius:10px;padding:18px 22px;font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;white-space:nowrap;height:100%">+ Submit Bet</button>'
-    + '</div>';
-
   row.innerHTML = html;
 }
 
@@ -772,25 +782,22 @@ function showPage(id) {
   document.querySelectorAll('.page').forEach(function(p) { p.classList.remove('active'); });
   document.querySelectorAll('.nav-tab').forEach(function(t) { t.classList.remove('active'); });
   document.getElementById('page-' + id).classList.add('active');
-  var order = ['account','leaderboard','charlie','shannon','douchie','nic','submit'];
+  var order = ['home','submit','leaderboard','account'];
   var idx = order.indexOf(id);
   var tabs = document.querySelectorAll('.nav-tab');
-  if (idx >= 0) {
-    tabs[idx].classList.add('active');
-    // Scroll active tab into view in the nav
+  var memberPages = ['charlie','shannon','douchie','nic'];
+  var activeIdx = memberPages.indexOf(id) >= 0 ? order.indexOf('leaderboard') : idx;
+  if (activeIdx >= 0) {
+    tabs[activeIdx].classList.add('active');
     var nav = document.getElementById('main-nav');
-    var tab = tabs[idx];
+    var tab = tabs[activeIdx];
     if (nav && tab) {
-      var tabLeft = tab.offsetLeft;
-      var tabWidth = tab.offsetWidth;
-      var navWidth = nav.offsetWidth;
-      nav.scrollTo({ left: tabLeft - navWidth/2 + tabWidth/2, behavior: 'smooth' });
+      nav.scrollTo({ left: tab.offsetLeft - nav.offsetWidth/2 + tab.offsetWidth/2, behavior: 'smooth' });
     }
   }
-  // Update fade — hide when scrolled to end
   updateNavFade();
   window.scrollTo(0, 0);
-  if (id === 'account') buildNextUp();
+  if (id === 'home') buildNextUp();
 }
 
 function updateNavFade() {
@@ -801,7 +808,6 @@ function updateNavFade() {
   fade.style.display = atEnd ? 'none' : 'block';
 }
 
-// Init fade on load and on scroll
 window.addEventListener('load', function() {
   var nav = document.getElementById('main-nav');
   if (nav) nav.addEventListener('scroll', updateNavFade);
