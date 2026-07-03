@@ -569,16 +569,27 @@
       <div style="font-size:28px;font-weight:900;text-transform:uppercase;letter-spacing:1px;color:var(--navy)">Submit a Bet</div>
       <div style="font-size:13px;color:var(--grey-text);margin-top:4px">Select your name to see your next bet slot, fill in the details, and hit send.</div>
     </div>
+    <!-- GitHub Token Setup (one-time) -->
+    <div id="token-setup" style="display:none;background:#FEF3C7;border:1px solid #F59E0B;border-radius:10px;padding:18px 20px;margin-bottom:20px">
+      <div style="font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#B45309;margin-bottom:8px">⚙ GitHub Token Required</div>
+      <div style="font-size:13px;color:#78350F;margin-bottom:12px">To submit bets directly to the repository, enter your GitHub Personal Access Token once. It is stored only in your browser.</div>
+      <input class="form-input" type="password" id="token-input" placeholder="ghp_…" style="background:#fff;margin-bottom:10px">
+      <button onclick="saveToken()" style="padding:10px 20px;background:#B45309;color:#fff;border:none;border-radius:6px;font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;cursor:pointer">Save Token</button>
+      <button onclick="document.getElementById('token-setup').style.display='none'" style="padding:10px 20px;background:transparent;color:#B45309;border:1px solid #F59E0B;border-radius:6px;font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;cursor:pointer;margin-left:8px">Cancel</button>
+    </div>
     <div class="form-card">
-      <div class="form-group" style="margin-bottom:20px">
-        <label class="form-label">Who are you?</label>
-        <select class="form-select" id="f-name" onchange="onNameChange()">
-          <option value="">— Select your name —</option>
-          <option value="Charlie">Charlie</option>
-          <option value="Douchie">Douchie</option>
-          <option value="Nic">Nic</option>
-          <option value="Shannon">Shannon</option>
-        </select>
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px">
+        <div class="form-group" style="flex:1;margin-bottom:0">
+          <label class="form-label">Who are you?</label>
+          <select class="form-select" id="f-name" onchange="onNameChange()">
+            <option value="">— Select your name —</option>
+            <option value="Charlie">Charlie</option>
+            <option value="Douchie">Douchie</option>
+            <option value="Nic">Nic</option>
+            <option value="Shannon">Shannon</option>
+          </select>
+        </div>
+        <button onclick="showTokenSetup()" style="margin-left:12px;margin-top:18px;padding:8px 14px;background:transparent;border:1px solid var(--grey-line);border-radius:6px;font-size:11px;color:var(--grey-text);cursor:pointer;letter-spacing:0.5px" title="Set GitHub token">⚙ Token</button>
       </div>
       <div class="bet-alert" id="bet-alert"></div>
       <div id="form-fields" style="display:none">
@@ -602,8 +613,9 @@
           <label class="form-label">Notes (optional)</label>
           <textarea class="form-textarea" id="f-notes" placeholder="Any extra details…"></textarea>
         </div>
-        <button class="submit-btn" id="submit-btn" onclick="submitBet()">📧 Send to Douchie</button>
-        <div style="font-size:11px;color:var(--grey-text);text-align:center;margin-top:10px;letter-spacing:0.5px">Opens your email app pre-filled — just hit send.</div>
+        <button class="submit-btn" id="submit-btn" onclick="submitBet()">📥 Submit Bet</button>
+        <div style="font-size:11px;color:var(--grey-text);text-align:center;margin-top:10px;letter-spacing:0.5px">Saves bet to the repository · Douchie runs push.bat to publish</div>
+        <div id="submit-status" style="display:none;margin-top:14px;padding:14px 16px;border-radius:8px;font-size:13px;font-weight:600;text-align:center"></div>
       </div>
     </div>
   </div>
@@ -733,40 +745,160 @@ function updateRemaining() {
   document.getElementById('add-bet-btn').style.display = remaining <= 0 ? 'none' : 'block';
 }
 
-function submitBet() {
+var GH_REPO  = 'investmentcollective/pundicci';
+var GH_FILE  = 'bets_log.json';
+var GH_API   = 'https://api.github.com/repos/' + GH_REPO + '/contents/' + GH_FILE;
+
+function getToken() {
+  return localStorage.getItem('pic_gh_token') || '';
+}
+
+function saveToken() {
+  var t = document.getElementById('token-input').value.trim();
+  if (!t) { alert('Please paste your GitHub token.'); return; }
+  localStorage.setItem('pic_gh_token', t);
+  document.getElementById('token-setup').style.display = 'none';
+  document.getElementById('token-input').value = '';
+  showStatus('Token saved ✓ — you can now submit bets.', 'success');
+}
+
+function showTokenSetup() {
+  document.getElementById('token-setup').style.display = 'block';
+}
+
+function showStatus(msg, type) {
+  var el = document.getElementById('submit-status');
+  if (!el) return;
+  el.style.display = 'block';
+  el.textContent = msg;
+  if (type === 'success') {
+    el.style.background = '#DCFCE7'; el.style.color = '#15803D'; el.style.border = '1px solid #86EFAC';
+  } else if (type === 'error') {
+    el.style.background = '#FEE2E2'; el.style.color = '#B91C1C'; el.style.border = '1px solid #FCA5A5';
+  } else {
+    el.style.background = '#EFF6FF'; el.style.color = '#1D4ED8'; el.style.border = '1px solid #BFDBFE';
+  }
+}
+
+async function submitBet() {
   var name  = document.getElementById('f-name').value;
   var date  = document.getElementById('f-date').value;
-  var notes = document.getElementById('f-notes').value;
+  var notes = document.getElementById('f-notes').value.trim();
+  var token = getToken();
+
+  if (!name) { alert('Please select your name.'); return; }
+  if (!date || date === '—') { alert('No bet date available.'); return; }
+
+  // Collect bet rows
   var bets = [];
   for (var i = 1; i <= betCount; i++) {
     var descEl = document.getElementById('b' + i + '-desc');
     if (!descEl) continue;
-    var desc = descEl.value;
+    var desc = descEl.value.trim();
     if (!desc) continue;
+    var result = document.getElementById('b' + i + '-result').value || '';
+    var ret    = parseFloat(document.getElementById('b' + i + '-return').value) || 0;
     bets.push({
-      desc:   desc,
-      odds:   document.getElementById('b' + i + '-odds').value || '—',
-      stake:  document.getElementById('b' + i + '-stake').value || '—',
-      result: document.getElementById('b' + i + '-result').value || 'Pending',
-      ret:    document.getElementById('b' + i + '-return').value || '—'
+      captain:  name,
+      date:     date,
+      desc:     desc,
+      odds:     document.getElementById('b' + i + '-odds').value.trim() || '—',
+      stake:    parseFloat(document.getElementById('b' + i + '-stake').value) || 30,
+      result:   result || 'Pending',
+      'return': result ? ret : null,
+      notes:    notes,
+      submitted_at: new Date().toISOString()
     });
   }
-  if (bets.length === 0) { window.alert('Please enter at least one bet description.'); return; }
-  var body = 'PIC BET SUBMISSION\n==================\n'
-    + 'Captain: ' + name + '\n'
-    + 'Date:    ' + date + '\n\n';
-  bets.forEach(function(b, idx) {
-    if (bets.length > 1) body += 'BET ' + (idx+1) + '\n';
-    body += 'Bet:     ' + b.desc + '\n'
-      + 'Odds:    ' + b.odds + '\n'
-      + 'Stake:   $' + b.stake + '\n'
-      + 'Result:  ' + b.result + '\n'
-      + 'Return:  ' + (b.ret !== '—' ? '$' + b.ret : '—') + '\n\n';
-  });
-  if (notes) body += 'Notes: ' + notes + '\n';
-  body += '==================';
-  var subject = 'PIC Bet — ' + name + ' — ' + date + (bets.length > 1 ? ' (' + bets.length + ' bets)' : '');
-  window.location.href = 'mailto:wylieda@gmail.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+
+  if (bets.length === 0) { alert('Please enter at least one bet description.'); return; }
+
+  // Check for token
+  if (!token) {
+    showTokenSetup();
+    showStatus('Please save your GitHub token first, then submit again.', 'error');
+    return;
+  }
+
+  // Disable button while submitting
+  var btn = document.getElementById('submit-btn');
+  btn.disabled = true;
+  btn.textContent = '⏳ Submitting…';
+  showStatus('Connecting to GitHub…', 'info');
+
+  try {
+    // 1. GET current bets_log.json
+    var getResp = await fetch(GH_API, {
+      headers: { 'Authorization': 'token ' + token, 'Accept': 'application/vnd.github+json' }
+    });
+
+    var sha = null;
+    var existing = { bets: [] };
+
+    if (getResp.ok) {
+      var fileData = await getResp.json();
+      sha = fileData.sha;
+      try {
+        existing = JSON.parse(atob(fileData.content.replace(/\n/g, '')));
+      } catch(e) {
+        existing = { bets: [] };
+      }
+    } else if (getResp.status !== 404) {
+      var errData = await getResp.json();
+      throw new Error('GitHub GET error: ' + (errData.message || getResp.status));
+    }
+
+    // 2. Append new bets
+    var allBets = (existing.bets || []).concat(bets);
+    var newContent = JSON.stringify({ bets: allBets }, null, 2) + '\n';
+    var encoded   = btoa(unescape(encodeURIComponent(newContent)));
+
+    // 3. PUT updated file
+    var putBody = {
+      message: 'Bet submission: ' + name + ' — ' + date,
+      content: encoded
+    };
+    if (sha) putBody.sha = sha;
+
+    var putResp = await fetch(GH_API, {
+      method:  'PUT',
+      headers: {
+        'Authorization': 'token ' + token,
+        'Accept':        'application/vnd.github+json',
+        'Content-Type':  'application/json'
+      },
+      body: JSON.stringify(putBody)
+    });
+
+    if (!putResp.ok) {
+      var putErr = await putResp.json();
+      throw new Error('GitHub PUT error: ' + (putErr.message || putResp.status));
+    }
+
+    // 4. Success
+    var resLabels = bets.map(function(b) {
+      return b.result !== 'Pending' ? b.result + ' (' + b.desc + ')' : 'Pending — ' + b.desc;
+    }).join(', ');
+    showStatus('✓ Bet logged! ' + resLabels + ' — Douchie: run push.bat to update the dashboard.', 'success');
+    btn.textContent = '✓ Submitted';
+
+    // Reset form after 4 seconds
+    setTimeout(function() {
+      document.getElementById('f-name').value = '';
+      document.getElementById('bet-alert').style.display = 'none';
+      document.getElementById('form-fields').style.display = 'none';
+      document.getElementById('bets-container').innerHTML = '';
+      betCount = 0;
+      btn.disabled = false;
+      btn.textContent = '📥 Submit Bet';
+    }, 4000);
+
+  } catch (err) {
+    showStatus('✗ ' + err.message, 'error');
+    btn.disabled = false;
+    btn.textContent = '📥 Submit Bet';
+    console.error(err);
+  }
 }
 
 var PENDING_BETS = [];
