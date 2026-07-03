@@ -5,14 +5,11 @@ echo  PIC Dashboard - Publishing to GitHub...
 echo.
 
 echo  Step 1: Processing bet log...
-python process_bets.py
-if %ERRORLEVEL% NEQ 0 (
-    echo.
-    echo  process_bets.py failed. Check Python is installed (python --version).
-    echo  Install openpyxl if missing: pip install openpyxl
-    echo.
-    pause
-    exit /b 1
+where python >nul 2>&1
+if %ERRORLEVEL% EQU 0 (
+    python process_bets.py
+) else (
+    echo  Python not found - skipping bet processing. Bets_log unchanged.
 )
 
 echo.

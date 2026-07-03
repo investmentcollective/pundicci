@@ -4,6 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>PIC 2026 Dashboard</title>
+<link rel="icon" type="image/png" href="logo-icon.png">
+<link rel="apple-touch-icon" href="logo-icon.png">
 <style>
   :root {
     --navy: #0D1B2A; --navy2: #1B2A3B; --grey-card: #F2F4F7;
@@ -13,10 +15,9 @@
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body { font-family: 'Segoe UI', Arial, sans-serif; background: #F0F2F5; color: var(--navy); min-height: 100vh; }
   .header { background: var(--white); border-bottom: 2px solid var(--navy); padding: 18px 40px; display: flex; align-items: center; justify-content: space-between; }
-  .header-logo { display: flex; align-items: center; gap: 14px; }
-  .logo-svg { width: 52px; height: 52px; }
-  .logo-text h1 { font-size: 20px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; line-height: 1; }
-  .logo-text p  { font-size: 11px; letter-spacing: 2px; color: var(--grey-text); text-transform: uppercase; margin-top: 2px; }
+  .header-logo { display: flex; align-items: center; gap: 20px; }
+  .logo-icon { height: 64px; width: auto; display: block; }
+  .logo-wordmark { height: 40px; width: auto; display: block; }
   .header-tagline { font-size: 12px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--navy); }
   .nav-wrap { background: var(--white); border-bottom: 1px solid var(--grey-line); position: relative; }
   .nav { padding: 0 40px; display: flex; }
@@ -103,6 +104,9 @@
   @media (max-width: 600px) {
     /* ── Header ── */
     .header { padding: 12px 14px; }
+    .logo-icon { height: 40px; }
+    .logo-wordmark { height: 26px; }
+    .header-logo { gap: 12px; }
     .logo-svg { width: 32px; height: 32px; }
     .logo-text h1 { font-size: 13px; letter-spacing: 0; }
     .logo-text p { display: none; }
@@ -213,10 +217,8 @@
 
 <div class="header">
   <div class="header-logo">
-    <div class="logo-text">
-      <h1>Pundicci Investment Collective</h1>
-      <p>Invest to Win</p>
-    </div>
+    <img src="logo-icon.png" class="logo-icon" alt="PIC">
+    <img src="logo-wordmark.png" class="logo-wordmark" alt="Pundicci Investment Collective">
   </div>
   <div style="text-align:right">
     <div class="header-tagline">2026 Season</div>
