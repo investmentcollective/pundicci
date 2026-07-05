@@ -3,773 +3,582 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PIC 2026 Dashboard</title>
+<title>Pundicci Investment Collective — 2026</title>
 <link rel="icon" type="image/png" href="logo-icon.png">
 <link rel="apple-touch-icon" href="logo-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=Archivo+Black&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&display=swap" rel="stylesheet">
 <style>
   :root {
-    --navy: #0D1B2A; --navy2: #1B2A3B; --grey-card: #F2F4F7;
-    --grey-line: #C5CDD6; --grey-text: #6E7D8C;
-    --green: #1EA050; --red: #D23232; --white: #ffffff;
+    --bg0:#05080F; --bg1:#0A111D; --bg2:#0E1726;
+    --card:rgba(255,255,255,0.035); --card2:rgba(255,255,255,0.06);
+    --line:rgba(255,255,255,0.09); --line2:rgba(255,255,255,0.16);
+    --ink:#E9EEF5; --muted:#8A97A8; --faint:#5A6675;
+    --gold:#E8C56A; --gold2:#C9A24B; --gold-dim:rgba(232,197,106,0.14);
+    --green:#3DDC97; --red:#FF6B6B; --blue:#6AA8FF;
+    --charlie:#3DDC97; --nic:#B48CFF; --shannon:#FFB454; --douchie:#5EA0FF;
+    --paper:#F6F1E4; --paper2:#EFE8D6; --paper-ink:#1E2430; --paper-muted:#6B6353;
+    --font:'Archivo',-apple-system,'Segoe UI',Arial,sans-serif;
+    --display:'Archivo Black','Arial Black',Arial,sans-serif;
+    --serif:'Playfair Display',Georgia,'Times New Roman',serif;
   }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: 'Segoe UI', Arial, sans-serif; background: #F0F2F5; color: var(--navy); min-height: 100vh; }
-  .header { background: var(--white); border-bottom: 2px solid var(--navy); padding: 18px 40px; display: flex; align-items: center; justify-content: space-between; }
-  .header-logo { display: flex; align-items: center; gap: 20px; }
-  .logo-icon { height: 64px; width: auto; display: block; }
-  .logo-wordmark { height: 40px; width: auto; display: block; }
-  .header-tagline { font-size: 12px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--navy); }
-  .nav-wrap { background: var(--white); border-bottom: 1px solid var(--grey-line); position: relative; }
-  .nav { padding: 0 40px; display: flex; }
-  .nav-tab { padding: 14px 28px; font-size: 13px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; cursor: pointer; border-bottom: 3px solid transparent; color: var(--grey-text); transition: all 0.2s; white-space: nowrap; }
-  .nav-tab:hover { color: var(--navy); }
-  .nav-tab.active { color: var(--navy); border-bottom-color: var(--navy); }
-  .page { display: none; padding: 32px 40px; max-width: 1100px; margin: 0 auto; }
-  .page.active { display: block; }
-  .stats-bar { background: var(--navy); border-radius: 10px; padding: 20px 28px; display: grid; grid-template-columns: repeat(7, 1fr); gap: 0; margin-bottom: 28px; }
-  .stat-item { text-align: center; border-right: 1px solid rgba(255,255,255,0.1); padding: 0 12px; }
-  .stat-item:last-child { border-right: none; }
-  .stat-label { font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 6px; }
-  .stat-value { font-size: 22px; font-weight: 800; color: #fff; }
-  .stat-value.positive { color: #4ADE80; }
-  .stat-value.negative { color: #F87171; }
-  .section-title { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--grey-text); margin-bottom: 14px; }
-  .leaderboard { display: flex; flex-direction: column; gap: 10px; }
-  .lb-card { background: var(--white); border-radius: 10px; padding: 20px 24px; display: flex; align-items: center; gap: 20px; cursor: pointer; transition: all 0.2s; border: 2px solid transparent; box-shadow: 0 1px 4px rgba(0,0,0,0.06); }
-  .lb-card:hover { border-color: var(--navy); transform: translateY(-1px); box-shadow: 0 4px 16px rgba(0,0,0,0.10); }
-  .lb-rank { font-size: 42px; font-weight: 900; width: 62px; text-align: center; flex-shrink: 0; font-family: 'Arial Black', Arial, sans-serif; }
-  .rank-1 { color: var(--navy); } .rank-2 { color: #555; } .rank-3 { color: #8B5E1A; } .rank-4 { color: #999; }
-  .lb-stripe { width: 5px; height: 72px; border-radius: 3px; flex-shrink: 0; }
-  .lb-name-block { flex: 1; }
-  .lb-name { font-size: 28px; font-weight: 900; text-transform: uppercase; letter-spacing: 1px; line-height: 1; }
-  .lb-record { font-size: 12px; color: var(--grey-text); margin-top: 4px; font-weight: 600; letter-spacing: 1px; }
-  .lb-stats { display: flex; gap: 32px; align-items: center; }
-  .lb-stat { text-align: right; }
-  .lb-stat-label { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: var(--grey-text); margin-bottom: 3px; }
-  .lb-stat-value { font-size: 18px; font-weight: 800; font-variant-numeric: tabular-nums; }
-  .lb-stat-value.positive { color: var(--green); }
-  .lb-stat-value.negative { color: var(--red); }
-  .lb-arrow { font-size: 20px; color: var(--grey-line); margin-left: 8px; }
-  .lb-card:hover .lb-arrow { color: var(--navy); }
-  .back-btn { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--grey-text); cursor: pointer; margin-bottom: 24px; padding: 8px 0; }
-  .back-btn:hover { color: var(--navy); }
-  .bettor-header { background: var(--navy); border-radius: 10px; padding: 24px 28px; margin-bottom: 24px; display: flex; align-items: center; justify-content: space-between; }
-  .bettor-name { font-size: 42px; font-weight: 900; text-transform: uppercase; color: #fff; letter-spacing: 2px; }
-  .bettor-stats { display: flex; gap: 32px; }
-  .bettor-stat { text-align: center; }
-  .bettor-stat-label { font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 4px; }
-  .bettor-stat-value { font-size: 22px; font-weight: 800; color: #fff; }
-  .bettor-stat-value.positive { color: #4ADE80; }
-  .bettor-stat-value.negative { color: #F87171; }
-  .bet-table { width: 100%; border-collapse: collapse; background: var(--white); border-radius: 10px; overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,0.06); }
-  .bet-table th { background: var(--navy); color: rgba(255,255,255,0.6); font-size: 10px; letter-spacing: 2px; text-transform: uppercase; padding: 12px 16px; text-align: left; font-weight: 600; }
-  .bet-table td { padding: 14px 16px; font-size: 14px; border-bottom: 1px solid var(--grey-line); }
-  .bet-table tr:last-child td { border-bottom: none; }
-  .bet-table tr:hover td { background: var(--grey-card); }
-  .badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; }
-  .badge-win  { background: #DCFCE7; color: #15803D; }
-  .badge-loss { background: #FEE2E2; color: #B91C1C; }
-  .net-positive { color: var(--green); font-weight: 700; }
-  .net-negative { color: var(--red); font-weight: 700; }
-  .monospace { font-family: 'Courier New', monospace; }
-  .totals-row td { background: #F8F9FA; font-weight: 700; border-top: 2px solid var(--navy); }
-  .month-badge { display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--grey-text); background: var(--grey-card); border-radius: 4px; padding: 2px 6px; margin-right: 6px; }
-  footer { text-align: center; padding: 24px; font-size: 11px; color: var(--grey-text); letter-spacing: 1px; text-transform: uppercase; }
-
-  /* Mobile bet cards (hidden on desktop) */
-  .bet-cards { display: none; }
-  .bet-card { background: var(--white); border-radius: 10px; padding: 14px 16px; margin-bottom: 10px; box-shadow: 0 1px 4px rgba(0,0,0,0.06); border-left: 4px solid var(--grey-line); }
-  .bet-card.win  { border-left-color: var(--green); }
-  .bet-card.loss { border-left-color: var(--red); }
-  .bet-card-top  { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
-  .bet-card-date { font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--grey-text); }
-  .bet-card-desc { font-size: 14px; font-weight: 600; color: var(--navy); margin-bottom: 8px; line-height: 1.3; }
-  .bet-card-row  { display: flex; gap: 20px; flex-wrap: wrap; }
-  .bet-card-stat { font-size: 12px; color: var(--grey-text); }
-  .bet-card-stat strong { color: var(--navy); display: block; font-size: 13px; }
-  .bet-cards-total { background: #F8F9FA; border-radius: 8px; padding: 12px 16px; display: flex; justify-content: space-between; align-items: center; border: 1px solid var(--grey-line); margin-top: 4px; font-size: 13px; font-weight: 700; }
-
-  /* Mobile-only account cards (hidden on desktop) */
-  .mob-savings-cards { display: none; }
-  .mob-returns-cards { display: none; }
-  .mob-member-row { background: var(--white); border-radius: 10px; padding: 14px 16px; margin-bottom: 8px; box-shadow: 0 1px 4px rgba(0,0,0,0.06); display: flex; justify-content: space-between; align-items: center; }
-  .mob-member-name { font-size: 16px; font-weight: 700; color: var(--navy); }
-  .mob-member-sub  { font-size: 11px; color: var(--grey-text); margin-top: 2px; }
-  .mob-member-right { text-align: right; }
-  .mob-member-val  { font-size: 15px; font-weight: 800; color: var(--navy); }
-  .mob-totals-row  { background: var(--navy); border-radius: 10px; padding: 12px 16px; display: flex; justify-content: space-between; align-items: center; margin-top: 4px; }
-  .mob-totals-label { font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: rgba(255,255,255,0.6); }
-  .mob-totals-val  { font-size: 16px; font-weight: 800; color: #fff; }
-
-  @media (max-width: 600px) {
-    /* ── Header ── */
-    .header { padding: 12px 14px; }
-    .logo-icon { height: 40px; }
-    .logo-wordmark { height: 26px; }
-    .header-logo { gap: 12px; }
-    .logo-svg { width: 32px; height: 32px; }
-    .logo-text h1 { font-size: 13px; letter-spacing: 0; }
-    .logo-text p { display: none; }
-    .header-tagline { display: none; }
-
-    /* ── Nav: 2-row wrapped grid, no horizontal scroll ── */
-    .nav-fade { display: none; }
-    .nav { padding: 0; flex-wrap: wrap; overflow-x: visible; }
-    .nav-tab {
-      flex: 1 0 25%;        /* 4 per row */
-      min-width: 0;
-      padding: 11px 4px;
-      font-size: 10px;
-      letter-spacing: 0;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      text-align: center;
-      justify-content: center;
-      display: flex;
-      align-items: center;
-      border-bottom: 3px solid transparent;
-      border-right: 1px solid var(--grey-line);
-      min-height: 44px;
-    }
-    /* Single row: Home | Leaderboard | Account */
-    .nav-tab:nth-child(3) { border-right: none; }
-    .nav-tab.active { border-bottom-color: var(--navy); background: #F8F9FA; }
-
-    /* ── Page ── */
-    .page { padding: 14px 12px; }
-    .section-title { font-size: 10px; margin-bottom: 10px; }
-
-    /* ── Account: next-up stacks ── */
-    #next-up-row { flex-direction: column !important; flex-wrap: wrap; }
-    #next-up-row > div { min-width: unset !important; width: 100% !important; box-sizing: border-box; }
-    #next-up-row button { width: 100% !important; }
-    /* ── Account: balance hero ── */
-    .acct-hero { flex-direction: column !important; gap: 0 !important; padding: 18px !important; border-radius: 10px; }
-    .acct-bal { font-size: 36px !important; }
-    .acct-right { text-align: left !important; flex-direction: row !important; gap: 14px !important; flex-wrap: wrap; margin-top: 14px; border-top: 1px solid rgba(255,255,255,0.15); padding-top: 14px; width: 100%; }
-    .acct-right > div { flex: 1 1 40%; }
-
-    /* ── Account: shorten section titles ── */
-    .mob-savings-title::after { content: 'Savings — 2026'; }
-    .mob-savings-title .full-title { display: none; }
-    .section-title { word-break: break-word; }
-
-    /* ── Account: hide wide tables, show mobile cards ── */
-    .mob-scroll { display: none; }
-    .mob-savings-cards { display: block; margin-bottom: 16px; }
-    .mob-returns-cards { display: block; margin-bottom: 16px; }
-
-    /* ── Leaderboard: stats bar 3+3+1 ── */
-    .stats-bar { grid-template-columns: repeat(3, 1fr); padding: 14px 12px; margin-bottom: 16px; row-gap: 0; }
-    .stat-item { padding: 10px 4px; border-right: 1px solid rgba(255,255,255,0.15); }
-    .stat-item:nth-child(3) { border-right: none; }
-    .stat-item:nth-child(4) { border-top: 1px solid rgba(255,255,255,0.15); }
-    .stat-item:nth-child(6) { border-right: none; }
-    /* Hide Total Staked & Total Return — show Net P&L full width */
-    .stat-item:nth-child(5),
-    .stat-item:nth-child(6) { display: none; }
-    .stat-item:nth-child(7) { grid-column: 1 / -1; border-right: none; border-top: 1px solid rgba(255,255,255,0.15); padding-top: 12px; }
-    .stat-label { font-size: 9px; letter-spacing: 0; margin-bottom: 4px; }
-    .stat-value { font-size: 18px; }
-
-    /* ── Leaderboard cards ── */
-    .lb-card { flex-wrap: wrap; padding: 12px 12px; gap: 0; width: 100%; }
-    .lb-rank { font-size: 26px; width: 34px; flex-shrink: 0; }
-    .lb-stripe { height: 32px; width: 4px; flex-shrink: 0; margin-right: 8px; }
-    .lb-name-block { flex: 1; min-width: 0; }
-    .lb-name { font-size: 18px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-    .lb-record { font-size: 10px; line-height: 1.5; white-space: normal; }
-    .lb-record span { display: block; margin-top: 3px; font-size: 10px; }
-    /* Stats: 2×2 grid on mobile */
-    .lb-stats { width: 100%; display: grid; grid-template-columns: repeat(2, 1fr); gap: 0; border-top: 1px solid var(--grey-line); padding-top: 10px; margin-top: 10px; }
-    .lb-stat { text-align: center; padding: 6px 0; border-right: 1px solid var(--grey-line); border-bottom: 1px solid var(--grey-line); }
-    .lb-stat:nth-child(2) { border-right: none; }
-    .lb-stat:nth-child(3) { border-bottom: none; }
-    .lb-stat:nth-child(4) { border-right: none; border-bottom: none; }
-    .lb-stat-label { font-size: 9px; letter-spacing: 0; }
-    .lb-stat-value { font-size: 14px; }
-    .lb-arrow { display: none; }
-
-    /* ── Leaderboard section title ── */
-    .lb-section-title .mob-hide { display: none; }
-
-    /* ── Individual bettor pages ── */
-    .bettor-header { flex-direction: column; align-items: flex-start; gap: 12px; padding: 16px 14px; margin-bottom: 14px; }
-    .bettor-name { font-size: 28px; letter-spacing: 0; }
-    .bettor-stats { width: 100%; display: grid; grid-template-columns: repeat(4, 1fr); }
-    .bettor-stat { text-align: center; }
-    .bettor-stat-label { font-size: 9px; letter-spacing: 0; }
-    .bettor-stat-value { font-size: 15px; }
-    .back-btn { margin-bottom: 12px; font-size: 11px; }
-
-    /* ── Bet history: cards only, no table ── */
-    .bet-table-wrap { display: none; }
-    .bet-cards { display: block; }
-
-    footer { font-size: 10px; padding: 16px; }
-    .mob-hide { display: none; }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  html { scroll-behavior:smooth; }
+  body {
+    font-family:var(--font); color:var(--ink); min-height:100vh;
+    background:
+      radial-gradient(1100px 500px at 85% -10%, rgba(232,197,106,0.07), transparent 60%),
+      radial-gradient(900px 600px at -10% 15%, rgba(94,160,255,0.06), transparent 55%),
+      linear-gradient(180deg, var(--bg1) 0%, var(--bg0) 100%);
+    background-attachment:fixed;
   }
+  ::selection { background:var(--gold); color:#111; }
 
+  /* ─────────── Header ─────────── */
+  .header {
+    position:sticky; top:0; z-index:50;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:14px 36px;
+    background:rgba(7,11,19,0.82); backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px);
+    border-bottom:1px solid var(--line);
+  }
+  .brand { display:flex; align-items:center; gap:14px; }
+  .brand-mark { width:44px; height:44px; flex-shrink:0; filter:drop-shadow(0 0 12px rgba(232,197,106,0.35)); }
+  .brand-text .brand-name { font-family:var(--display); font-size:15px; letter-spacing:2.5px; line-height:1.15; }
+  .brand-text .brand-name span { color:var(--gold); }
+  .brand-text .brand-sub { font-size:9px; letter-spacing:4px; text-transform:uppercase; color:var(--muted); margin-top:3px; }
+  .header-right { text-align:right; }
+  .season-chip {
+    display:inline-block; font-size:11px; font-weight:800; letter-spacing:2.5px; text-transform:uppercase;
+    color:var(--gold); border:1px solid rgba(232,197,106,0.4); border-radius:999px; padding:5px 14px;
+    background:var(--gold-dim);
+  }
+  .updated { font-size:10px; letter-spacing:1.5px; text-transform:uppercase; color:var(--faint); margin-top:6px; }
+
+  /* ─────────── Ticker ─────────── */
+  .ticker-wrap { overflow:hidden; border-bottom:1px solid var(--line); background:rgba(255,255,255,0.02); }
+  .ticker { display:flex; width:max-content; animation:ticker 55s linear infinite; }
+  .ticker-wrap:hover .ticker { animation-play-state:paused; }
+  @keyframes ticker { from { transform:translateX(0); } to { transform:translateX(-50%); } }
+  .tick { display:flex; align-items:center; gap:10px; padding:9px 22px; font-size:11px; letter-spacing:1.2px; text-transform:uppercase; white-space:nowrap; color:var(--muted); }
+  .tick b { color:var(--ink); font-weight:800; }
+  .tick .up { color:var(--green); font-weight:800; }
+  .tick .down { color:var(--red); font-weight:800; }
+  .tick .pend { color:var(--blue); font-weight:800; }
+  .tick::after { content:'◆'; color:var(--gold2); font-size:8px; margin-left:22px; opacity:0.7; }
+
+  /* ─────────── Nav ─────────── */
+  .nav { display:flex; justify-content:center; gap:6px; padding:14px 20px 0; position:relative; z-index:5; flex-wrap:wrap; }
+  .nav-tab {
+    font-size:12px; font-weight:800; letter-spacing:2.5px; text-transform:uppercase;
+    color:var(--muted); padding:11px 26px; cursor:pointer; border-radius:10px;
+    border:1px solid transparent; transition:all .22s;
+  }
+  .nav-tab:hover { color:var(--ink); background:var(--card); }
+  .nav-tab.active { color:var(--gold); background:var(--gold-dim); border-color:rgba(232,197,106,0.35); }
+
+  /* ─────────── Pages ─────────── */
+  .page { display:none; max-width:1080px; margin:0 auto; padding:28px 32px 60px; }
+  .page.active { display:block; animation:pageIn .45s cubic-bezier(.2,.7,.3,1) both; }
+  @keyframes pageIn { from { opacity:0; transform:translateY(14px); } to { opacity:1; transform:none; } }
+  .section-title { font-size:11px; font-weight:800; letter-spacing:3px; text-transform:uppercase; color:var(--muted); margin:30px 0 14px; display:flex; align-items:center; gap:12px; }
+  .section-title::after { content:''; flex:1; height:1px; background:linear-gradient(90deg, var(--line2), transparent); }
+  .section-title .gold { color:var(--gold); }
+
+  /* ─────────── Hero ─────────── */
+  .hero {
+    position:relative; overflow:hidden; border-radius:20px; padding:38px 40px;
+    background:linear-gradient(135deg, rgba(232,197,106,0.10) 0%, rgba(255,255,255,0.03) 38%, rgba(94,160,255,0.05) 100%);
+    border:1px solid var(--line2);
+    display:flex; justify-content:space-between; align-items:flex-end; gap:30px; flex-wrap:wrap;
+  }
+  .hero::before {
+    content:''; position:absolute; top:-60%; left:-20%; width:60%; height:220%;
+    background:linear-gradient(100deg, transparent 30%, rgba(232,197,106,0.07) 50%, transparent 70%);
+    transform:rotate(8deg); animation:sheen 7s ease-in-out infinite;
+  }
+  @keyframes sheen { 0%,100% { transform:translateX(-30%) rotate(8deg);} 50% { transform:translateX(160%) rotate(8deg);} }
+  .hero-label { font-size:11px; letter-spacing:3.5px; text-transform:uppercase; color:var(--muted); margin-bottom:12px; }
+  .hero-balance {
+    font-family:var(--display); font-size:72px; line-height:0.95; letter-spacing:-1px;
+    background:linear-gradient(160deg, #FFF6DF 10%, var(--gold) 55%, var(--gold2) 90%);
+    -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent;
+    filter:drop-shadow(0 6px 26px rgba(232,197,106,0.25));
+    font-variant-numeric:tabular-nums;
+  }
+  .hero-asat { font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--faint); margin-top:14px; }
+  .hero-side { display:flex; gap:34px; flex-wrap:wrap; position:relative; z-index:1; }
+  .hero-stat-label { font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--muted); margin-bottom:6px; }
+  .hero-stat-value { font-size:21px; font-weight:800; font-variant-numeric:tabular-nums; }
+  .hero-stat-value.up { color:var(--green); }
+  .hero-stat-value.gold { color:var(--gold); }
+
+  /* Season progress */
+  .progress-card { margin-top:14px; border:1px solid var(--line); border-radius:14px; background:var(--card); padding:16px 22px; }
+  .progress-head { display:flex; justify-content:space-between; align-items:baseline; margin-bottom:10px; }
+  .progress-head .pl { font-size:10px; letter-spacing:2.5px; text-transform:uppercase; color:var(--muted); }
+  .progress-head .pv { font-size:12px; font-weight:800; color:var(--gold); letter-spacing:1px; }
+  .progress-track { height:7px; border-radius:99px; background:rgba(255,255,255,0.07); overflow:hidden; }
+  .progress-fill { height:100%; width:0; border-radius:99px; background:linear-gradient(90deg, var(--gold2), var(--gold)); box-shadow:0 0 14px rgba(232,197,106,0.5); transition:width 1.4s cubic-bezier(.2,.7,.2,1); }
+
+  /* ─────────── Chart card ─────────── */
+  .chart-card { border:1px solid var(--line); border-radius:16px; background:var(--card); padding:22px 24px 12px; }
+  .chart-head { display:flex; justify-content:space-between; align-items:baseline; flex-wrap:wrap; gap:8px; margin-bottom:6px; }
+  .chart-title { font-size:11px; font-weight:800; letter-spacing:2.5px; text-transform:uppercase; color:var(--muted); }
+  .chart-now { font-size:15px; font-weight:800; }
+  .chart-now.up { color:var(--green); } .chart-now.down { color:var(--red); }
+  .chart-card svg { width:100%; height:auto; display:block; }
+
+  /* ─────────── Next up / pending ─────────── */
+  .duty-row { display:flex; gap:14px; flex-wrap:wrap; }
+  .duty-card { flex:1; min-width:230px; border-radius:16px; padding:20px 24px; border:1px solid var(--line2); background:var(--card2); position:relative; overflow:hidden; }
+  .duty-card.primary { border-color:rgba(232,197,106,0.35); }
+  .duty-tag { font-size:10px; font-weight:800; letter-spacing:3px; text-transform:uppercase; color:var(--muted); margin-bottom:10px; }
+  .duty-name { font-family:var(--display); font-size:30px; letter-spacing:1px; line-height:1; text-transform:uppercase; }
+  .duty-date { font-size:13px; color:var(--muted); margin-top:8px; font-weight:600; }
+  .duty-when { display:inline-block; margin-top:10px; font-size:10px; font-weight:800; letter-spacing:1.5px; text-transform:uppercase; padding:4px 12px; border-radius:999px; background:var(--gold-dim); color:var(--gold); }
+  .duty-glow { position:absolute; right:-30px; top:-30px; width:130px; height:130px; border-radius:50%; filter:blur(46px); opacity:0.35; }
+
+  .pending-card { border:1px solid rgba(106,168,255,0.4); border-radius:16px; background:linear-gradient(135deg, rgba(106,168,255,0.10), rgba(255,255,255,0.02)); padding:22px 26px; position:relative; overflow:hidden; }
+  .pending-pulse { display:inline-flex; align-items:center; gap:8px; font-size:10px; font-weight:800; letter-spacing:2.5px; text-transform:uppercase; color:var(--blue); }
+  .pending-pulse::before { content:''; width:8px; height:8px; border-radius:50%; background:var(--blue); animation:pulse 1.6s ease-in-out infinite; }
+  @keyframes pulse { 0%,100% { box-shadow:0 0 0 0 rgba(106,168,255,0.6);} 50% { box-shadow:0 0 0 7px rgba(106,168,255,0);} }
+  .pending-main { display:flex; justify-content:space-between; gap:20px; flex-wrap:wrap; margin-top:12px; }
+  .pending-event { font-size:20px; font-weight:800; }
+  .pending-details { font-size:12px; color:var(--muted); margin-top:5px; line-height:1.5; }
+  .pending-nums { display:flex; gap:26px; align-items:center; }
+  .pnum { text-align:center; }
+  .pnum .l { font-size:9px; letter-spacing:2px; text-transform:uppercase; color:var(--muted); margin-bottom:4px; }
+  .pnum .v { font-size:20px; font-weight:800; font-variant-numeric:tabular-nums; }
+  .pnum .v.blue { color:var(--blue); }
+  .legs { display:flex; flex-wrap:wrap; gap:7px; margin-top:16px; padding-top:14px; border-top:1px solid rgba(106,168,255,0.2); }
+  .leg { font-size:11px; font-weight:700; padding:5px 12px; border-radius:999px; letter-spacing:0.4px; }
+  .leg.done { background:rgba(61,220,151,0.14); color:var(--green); border:1px solid rgba(61,220,151,0.35); }
+  .leg.wait { background:rgba(106,168,255,0.10); color:var(--blue); border:1px dashed rgba(106,168,255,0.45); }
+  .member-chip { display:inline-block; font-size:10px; font-weight:800; letter-spacing:1.5px; text-transform:uppercase; padding:3px 11px; border-radius:999px; margin-right:8px; }
+
+  /* ─────────── Stats bar ─────────── */
+  .stats-bar { display:grid; grid-template-columns:repeat(7,1fr); border:1px solid var(--line2); border-radius:16px; overflow:hidden; background:var(--card); }
+  .stat-item { text-align:center; padding:20px 8px; border-right:1px solid var(--line); }
+  .stat-item:last-child { border-right:none; }
+  .stat-label { font-size:9px; letter-spacing:2px; text-transform:uppercase; color:var(--muted); margin-bottom:7px; }
+  .stat-value { font-size:22px; font-weight:800; font-variant-numeric:tabular-nums; }
+  .stat-value.up { color:var(--green); } .stat-value.down { color:var(--red); } .stat-value.gold { color:var(--gold); }
+
+  /* ─────────── Leaderboard ─────────── */
+  .lb-card {
+    display:flex; align-items:center; gap:20px; padding:22px 26px; margin-bottom:12px;
+    border:1px solid var(--line); border-radius:16px; background:var(--card); cursor:pointer;
+    transition:all .25s; position:relative; overflow:hidden;
+  }
+  .lb-card:hover { transform:translateY(-2px); border-color:var(--line2); background:var(--card2); box-shadow:0 14px 34px rgba(0,0,0,0.35); }
+  .lb-card::before { content:''; position:absolute; left:0; top:0; bottom:0; width:4px; background:var(--mc, var(--gold)); }
+  .lb-rank { font-family:var(--display); font-size:38px; width:66px; text-align:center; flex-shrink:0; }
+  .lb-rank.r1 { background:linear-gradient(160deg,#FFF3CE,var(--gold),var(--gold2)); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
+  .lb-rank.r2 { color:#C9D4E0; } .lb-rank.r3 { color:#C88A4E; } .lb-rank.r4 { color:#5A6675; }
+  .lb-name-block { flex:1; min-width:0; }
+  .lb-name { font-family:var(--display); font-size:25px; letter-spacing:1px; text-transform:uppercase; line-height:1.05; }
+  .lb-record { font-size:11px; color:var(--muted); margin-top:6px; font-weight:700; letter-spacing:1px; display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
+  .owe-badge { font-size:9px; font-weight:800; letter-spacing:1px; padding:3px 9px; border-radius:999px; background:rgba(255,180,84,0.15); color:var(--shannon); border:1px solid rgba(255,180,84,0.4); }
+  .lb-bar { height:4px; border-radius:99px; background:rgba(255,255,255,0.07); margin-top:10px; max-width:280px; overflow:hidden; }
+  .lb-bar i { display:block; height:100%; border-radius:99px; background:var(--mc, var(--gold)); }
+  .lb-stats { display:flex; gap:30px; }
+  .lb-stat { text-align:right; min-width:74px; }
+  .lb-stat-label { font-size:9px; letter-spacing:1.5px; text-transform:uppercase; color:var(--muted); margin-bottom:4px; }
+  .lb-stat-value { font-size:17px; font-weight:800; font-variant-numeric:tabular-nums; }
+  .lb-stat-value.up { color:var(--green); } .lb-stat-value.down { color:var(--red); }
+  .lb-arrow { color:var(--faint); font-size:22px; transition:all .2s; }
+  .lb-card:hover .lb-arrow { color:var(--gold); transform:translateX(3px); }
+
+  /* ─────────── Member page ─────────── */
+  .back-btn { display:inline-flex; align-items:center; gap:8px; font-size:11px; font-weight:800; letter-spacing:2px; text-transform:uppercase; color:var(--muted); cursor:pointer; padding:8px 0; margin-bottom:16px; transition:color .2s; }
+  .back-btn:hover { color:var(--gold); }
+  .member-hero { border-radius:18px; border:1px solid var(--line2); padding:30px 32px; display:flex; justify-content:space-between; align-items:center; gap:24px; flex-wrap:wrap; position:relative; overflow:hidden; background:var(--card2); }
+  .member-hero::before { content:''; position:absolute; left:0; top:0; bottom:0; width:5px; background:var(--mc); }
+  .member-hero::after { content:''; position:absolute; right:-60px; top:-60px; width:210px; height:210px; border-radius:50%; background:var(--mc); filter:blur(90px); opacity:0.16; }
+  .member-name { font-family:var(--display); font-size:44px; text-transform:uppercase; letter-spacing:1px; line-height:1; }
+  .member-sub { font-size:11px; letter-spacing:2.5px; text-transform:uppercase; color:var(--muted); margin-top:8px; }
+  .member-stats { display:flex; gap:30px; flex-wrap:wrap; position:relative; z-index:1; }
+  .m-stat { text-align:center; }
+  .m-stat .l { font-size:9px; letter-spacing:2px; text-transform:uppercase; color:var(--muted); margin-bottom:5px; }
+  .m-stat .v { font-size:22px; font-weight:800; font-variant-numeric:tabular-nums; }
+  .m-stat .v.up { color:var(--green); } .m-stat .v.down { color:var(--red); }
+  .spark-wrap { margin-top:14px; border:1px solid var(--line); background:var(--card); border-radius:14px; padding:16px 20px 8px; }
+
+  .bet-row { display:flex; align-items:center; gap:18px; padding:16px 20px; border:1px solid var(--line); border-radius:14px; background:var(--card); margin-bottom:9px; transition:all .2s; }
+  .bet-row:hover { background:var(--card2); border-color:var(--line2); }
+  .bet-date { width:86px; flex-shrink:0; }
+  .bet-date .d { font-size:12px; font-weight:800; }
+  .bet-date .m { font-size:9px; letter-spacing:2px; text-transform:uppercase; color:var(--muted); margin-top:2px; }
+  .bet-desc { flex:1; min-width:0; font-size:14px; font-weight:600; line-height:1.45; }
+  .bet-desc .odds { display:inline-block; font-size:10px; font-weight:800; color:var(--gold); background:var(--gold-dim); border-radius:6px; padding:2px 8px; margin-left:8px; letter-spacing:0.5px; }
+  .bet-nums { display:flex; gap:22px; align-items:center; flex-shrink:0; }
+  .bn { text-align:right; min-width:64px; }
+  .bn .l { font-size:9px; letter-spacing:1.5px; text-transform:uppercase; color:var(--muted); margin-bottom:3px; }
+  .bn .v { font-size:14px; font-weight:800; font-variant-numeric:tabular-nums; }
+  .result-chip { font-size:10px; font-weight:800; letter-spacing:1.5px; text-transform:uppercase; padding:5px 13px; border-radius:999px; flex-shrink:0; }
+  .result-chip.win { background:rgba(61,220,151,0.13); color:var(--green); border:1px solid rgba(61,220,151,0.4); }
+  .result-chip.loss { background:rgba(255,107,107,0.11); color:var(--red); border:1px solid rgba(255,107,107,0.35); }
+  .net.up { color:var(--green); } .net.down { color:var(--red); }
+  .bet-total { display:flex; justify-content:space-between; align-items:center; padding:16px 22px; border-radius:14px; border:1px solid rgba(232,197,106,0.3); background:var(--gold-dim); margin-top:4px; font-weight:800; }
+  .bet-total .lbl { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); }
+  .bet-total .val { font-size:17px; font-variant-numeric:tabular-nums; }
+
+  /* ─────────── The Post ─────────── */
+  .post-masthead { text-align:center; padding:26px 0 18px; }
+  .post-title { font-family:var(--serif); font-weight:800; font-size:46px; letter-spacing:1px; color:var(--paper); }
+  .post-title .amp { color:var(--gold); }
+  .post-rules { display:flex; align-items:center; gap:14px; margin:12px auto 0; max-width:640px; }
+  .post-rules::before, .post-rules::after { content:''; flex:1; height:3px; border-top:1px solid var(--line2); border-bottom:1px solid var(--line2); }
+  .post-tagline { font-size:10px; letter-spacing:3.5px; text-transform:uppercase; color:var(--muted); white-space:nowrap; }
+  .article {
+    background:var(--paper); color:var(--paper-ink); border-radius:14px; padding:26px 30px; margin-bottom:16px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.35), inset 0 0 0 1px rgba(0,0,0,0.05);
+    position:relative;
+  }
+  .article::before { content:''; position:absolute; top:0; left:24px; right:24px; height:3px; background:var(--paper-ink); opacity:0.85; }
+  .article-meta { display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:10px; }
+  .article-tag { font-size:9px; font-weight:800; letter-spacing:1.5px; text-transform:uppercase; padding:3px 10px; border-radius:3px; }
+  .tag-win { background:#D7EFDD; color:#166534; } .tag-loss { background:#F6DBD7; color:#991B1B; }
+  .tag-pending { background:#DBE7F6; color:#1E40AF; } .tag-editorial { background:#F3E8C9; color:#92400E; }
+  .article-date { font-size:11px; color:var(--paper-muted); font-weight:700; letter-spacing:0.5px; }
+  .article h3 { font-family:var(--serif); font-size:23px; font-weight:800; line-height:1.25; margin-bottom:7px; }
+  .article .byline { font-size:10px; font-weight:800; letter-spacing:1.8px; text-transform:uppercase; color:var(--paper-muted); margin-bottom:12px; }
+  .article .body { font-size:14px; line-height:1.7; color:#33394A; }
+  .article .body strong { color:var(--paper-ink); }
+  .article .chart-note { font-size:10px; color:var(--paper-muted); margin-top:6px; }
+  .article .chart-label { font-size:10px; font-weight:800; letter-spacing:1.5px; text-transform:uppercase; color:var(--paper-muted); margin:16px 0 8px; }
+  .article svg { width:100%; max-width:560px; }
+
+  /* ─────────── Account ─────────── */
+  .sav-row { display:flex; align-items:center; gap:20px; padding:18px 22px; border:1px solid var(--line); border-radius:14px; background:var(--card); margin-bottom:9px; }
+  .sav-name { width:110px; flex-shrink:0; font-family:var(--display); font-size:17px; text-transform:uppercase; letter-spacing:0.5px; }
+  .sav-mid { flex:1; min-width:140px; }
+  .sav-note { font-size:11px; color:var(--muted); margin-bottom:8px; font-weight:600; }
+  .sav-note.warn { color:var(--shannon); } .sav-note.bad { color:var(--red); }
+  .sav-track { height:6px; border-radius:99px; background:rgba(255,255,255,0.07); overflow:hidden; }
+  .sav-fill { height:100%; width:0; border-radius:99px; transition:width 1.2s cubic-bezier(.2,.7,.2,1); }
+  .sav-right { text-align:right; flex-shrink:0; min-width:110px; }
+  .sav-amt { font-size:17px; font-weight:800; font-variant-numeric:tabular-nums; }
+  .sav-of { font-size:10px; color:var(--muted); margin-top:2px; }
+  .status-chip { display:inline-block; font-size:9px; font-weight:800; letter-spacing:1.2px; text-transform:uppercase; padding:4px 11px; border-radius:999px; margin-top:6px; }
+  .status-chip.paid { background:rgba(61,220,151,0.13); color:var(--green); border:1px solid rgba(61,220,151,0.4); }
+  .status-chip.partial { background:rgba(255,180,84,0.13); color:var(--shannon); border:1px solid rgba(255,180,84,0.4); }
+  .status-chip.overdue { background:rgba(255,107,107,0.12); color:var(--red); border:1px solid rgba(255,107,107,0.4); }
+
+  .ret-grid { border:1px solid var(--line2); border-radius:16px; overflow:hidden; }
+  .ret-row { display:grid; grid-template-columns:1.3fr 0.7fr 1fr 0.8fr 1fr 1fr; align-items:center; padding:15px 22px; border-bottom:1px solid var(--line); background:var(--card); font-size:14px; }
+  .ret-row:last-child { border-bottom:none; }
+  .ret-row.head { background:rgba(255,255,255,0.05); font-size:9px; letter-spacing:2px; text-transform:uppercase; color:var(--muted); font-weight:800; padding:12px 22px; }
+  .ret-row.foot { background:var(--gold-dim); font-weight:800; border-top:1px solid rgba(232,197,106,0.3); }
+  .ret-row .r { text-align:right; font-variant-numeric:tabular-nums; }
+  .ret-row .name { font-weight:800; }
+  .ret-row .up { color:var(--green); font-weight:800; } .ret-row .down { color:var(--red); font-weight:800; }
+
+  footer { text-align:center; padding:30px 20px 40px; font-size:10px; color:var(--faint); letter-spacing:2px; text-transform:uppercase; line-height:2; }
+  footer .gold { color:var(--gold2); }
+
+  /* ─────────── Mobile ─────────── */
+  @media (max-width: 700px) {
+    .header { padding:12px 16px; }
+    .brand-mark { width:36px; height:36px; }
+    .brand-text .brand-name { font-size:12px; letter-spacing:1.5px; }
+    .brand-text .brand-sub { display:none; }
+    .season-chip { font-size:9px; padding:4px 10px; letter-spacing:1.5px; }
+    .updated { font-size:8px; }
+    .nav { gap:4px; padding:10px 8px 0; }
+    .nav-tab { padding:9px 13px; font-size:10px; letter-spacing:1.2px; }
+    .page { padding:18px 14px 40px; }
+    .hero { padding:24px 20px; border-radius:16px; }
+    .hero-balance { font-size:46px; }
+    .hero-side { gap:0; width:100%; border-top:1px solid var(--line); padding-top:16px; display:grid; grid-template-columns:1fr 1fr; row-gap:16px; }
+    .stats-bar { grid-template-columns:repeat(3,1fr); }
+    .stat-item { padding:14px 6px; border-bottom:1px solid var(--line); }
+    .stat-item:nth-child(3n) { border-right:none; }
+    .stat-item:nth-child(7) { grid-column:1 / -1; border-bottom:none; border-right:none; }
+    .stat-value { font-size:17px; }
+    .lb-card { flex-wrap:wrap; gap:12px; padding:16px 16px; }
+    .lb-rank { font-size:26px; width:38px; }
+    .lb-name { font-size:19px; }
+    .lb-stats { width:100%; display:grid; grid-template-columns:repeat(2,1fr); gap:10px 8px; border-top:1px solid var(--line); padding-top:12px; }
+    .lb-stat { text-align:center; min-width:0; }
+    .lb-arrow { display:none; }
+    .member-hero { padding:20px 18px; }
+    .member-name { font-size:30px; }
+    .member-stats { width:100%; display:grid; grid-template-columns:repeat(2,1fr); gap:14px; border-top:1px solid var(--line); padding-top:14px; }
+    .bet-row { flex-wrap:wrap; gap:10px; }
+    .bet-date { display:flex; gap:8px; align-items:baseline; width:auto; }
+    .bet-desc { flex-basis:100%; order:3; }
+    .bet-nums { width:100%; order:4; justify-content:space-between; border-top:1px solid var(--line); padding-top:10px; }
+    .bn { text-align:center; min-width:0; }
+    .result-chip { order:2; margin-left:auto; }
+    .post-title { font-size:30px; }
+    .article { padding:20px 18px; }
+    .article h3 { font-size:19px; }
+    .ret-row { grid-template-columns:1fr 1fr 1fr; row-gap:8px; font-size:12px; padding:12px 14px; }
+    .ret-row.head { display:none; }
+    .ret-row > div:nth-child(1) { grid-column:1 / -1; font-size:14px; }
+    .sav-row { flex-wrap:wrap; }
+    .sav-name { width:auto; }
+    .sav-right { margin-left:auto; }
+    .sav-mid { flex-basis:100%; order:3; }
+    .pending-nums { width:100%; justify-content:space-between; }
+    .duty-card { min-width:100%; }
+    .hero-asat { margin-top:8px; }
+  }
 </style>
 </head>
 <body>
 
 <div class="header">
-  <div class="header-logo">
-    <img src="logo-icon.png" class="logo-icon" alt="PIC">
-    <img src="logo-wordmark.png" class="logo-wordmark" alt="Pundicci Investment Collective">
+  <div class="brand">
+    <svg class="brand-mark" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-label="PIC">
+      <defs>
+        <linearGradient id="goldgrad" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="#FFF0C4"/><stop offset="0.5" stop-color="#E8C56A"/><stop offset="1" stop-color="#B8933F"/>
+        </linearGradient>
+      </defs>
+      <path d="M50 3 L91 13 L91 52 C91 74 74 90 50 97 C26 90 9 74 9 52 L9 13 Z" fill="rgba(232,197,106,0.08)" stroke="url(#goldgrad)" stroke-width="3"/>
+      <text x="50" y="67" text-anchor="middle" font-family="'Archivo Black','Arial Black',Arial,sans-serif" font-size="48" fill="url(#goldgrad)" font-style="italic">P</text>
+    </svg>
+    <div class="brand-text">
+      <div class="brand-name">PUNDICCI <span>INVESTMENT</span> COLLECTIVE</div>
+      <div class="brand-sub">Est. 2023 · Fortune Favours The Collective</div>
+    </div>
   </div>
-  <div style="text-align:right">
-    <div class="header-tagline">2026 Season</div>
-    <div style="font-size:11px;font-weight:600;color:var(--grey-text);letter-spacing:1px;text-transform:uppercase;margin-top:4px">Updated 30 Jun 2026</div>
+  <div class="header-right">
+    <span class="season-chip">2026 Season</span>
+    <div class="updated">Updated 03 Jul 2026</div>
   </div>
 </div>
 
-<div class="nav-wrap">
-  <div class="nav" id="main-nav">
-    <div class="nav-tab active" onclick="showPage('home')">Home</div>
-    <div class="nav-tab" onclick="showPage('leaderboard')">Leaderboard</div>
-    <div class="nav-tab" onclick="showPage('account')">Account</div>
-  </div>
-  <div class="nav-fade" id="nav-fade"></div>
+<div class="ticker-wrap"><div class="ticker" id="ticker"></div></div>
+
+<div class="nav" id="main-nav">
+  <div class="nav-tab active" data-nav="home" onclick="showPage('home')">Home</div>
+  <div class="nav-tab" data-nav="leaderboard" onclick="showPage('leaderboard')">Leaderboard</div>
+  <div class="nav-tab" data-nav="post" onclick="showPage('post')">The Post</div>
+  <div class="nav-tab" data-nav="account" onclick="showPage('account')">Account</div>
 </div>
 
-<!-- ═══════════════ HOME -->
+<!-- ═══════════ HOME ═══════════ -->
 <div class="page active" id="page-home">
-  <div style="height:8px"></div>
-  <!-- Next Up + Then tiles -->
-  <div style="display:flex;align-items:stretch;gap:12px;margin-bottom:16px;flex-wrap:wrap" id="next-up-row"></div>
-  <!-- Pending Bets widget -->
-  <div id="pending-bets-widget" style="margin-bottom:20px;display:none"></div>
-  <!-- Balance widget -->
-  <div class="acct-hero" style="background:var(--navy);border-radius:12px;padding:32px 36px;margin-bottom:20px;display:flex;align-items:center;justify-content:space-between">
+  <div class="hero">
     <div>
-      <div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-bottom:8px">Collective Account Balance</div>
-      <div class="acct-bal" style="font-size:52px;font-weight:900;color:#fff;letter-spacing:-1px;line-height:1">$6,822.01</div>
-      <div style="font-size:12px;color:rgba(255,255,255,0.4);margin-top:8px;letter-spacing:1px">AS AT 03 JUL 2026</div>
+      <div class="hero-label">Collective Account Balance</div>
+      <div class="hero-balance" id="hero-balance">$0.00</div>
+      <div class="hero-asat">As at 03 Jul 2026</div>
     </div>
-    <div class="acct-right" style="display:flex;flex-direction:column;gap:16px;text-align:right">
-      <div><div style="font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.4)">Opening Balance (30 Dec 2025)</div><div style="font-size:20px;font-weight:700;color:rgba(255,255,255,0.8)">$5,138.12</div></div>
-      <div><div style="font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.4)">Total Bet Returns (2026)</div><div style="font-size:20px;font-weight:700;color:#4ADE80">+$596.64</div></div>
+    <div class="hero-side">
+      <div><div class="hero-stat-label">Opening Balance<br>(30 Dec 2025)</div><div class="hero-stat-value">$5,138.12</div></div>
+      <div><div class="hero-stat-label">Bet Returns<br>(2026)</div><div class="hero-stat-value up" id="hero-returns">+$0.00</div></div>
+      <div><div class="hero-stat-label">Season Net<br>P&amp;L</div><div class="hero-stat-value up" id="hero-net">+$0.00</div></div>
+      <div><div class="hero-stat-label">Record<br>(2026)</div><div class="hero-stat-value gold">6W – 15L</div></div>
     </div>
   </div>
-  <footer>Net P&amp;L = Bet return minus stake &nbsp;·&nbsp; Stake from captain's own pocket</footer>
+
+  <div class="progress-card">
+    <div class="progress-head">
+      <span class="pl">Season Progress</span>
+      <span class="pv" id="progress-text"></span>
+    </div>
+    <div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div>
+  </div>
+
+  <div class="section-title"><span class="gold">◆</span> Live Position</div>
+  <div id="pending-widget"></div>
+
+  <div class="section-title"><span class="gold">◆</span> Captain Duty</div>
+  <div class="duty-row" id="duty-row"></div>
+
+  <div class="section-title"><span class="gold">◆</span> Collective Net P&amp;L — 2026 Season</div>
+  <div class="chart-card">
+    <div class="chart-head">
+      <span class="chart-title">Cumulative Betting P&amp;L · All Members</span>
+      <span class="chart-now up" id="chart-now"></span>
+    </div>
+    <div id="pool-chart"></div>
+  </div>
+
+  <footer>Net P&amp;L = Bet return minus stake <span class="gold">◆</span> Stake from captain's own pocket</footer>
 </div>
 
-<!-- ═══════════════ ACCOUNT (details) -->
-<div class="page" id="page-account">
-  <div style="height:8px"></div>
-  <!-- Pending Bets widget -->
-  <div id="pending-bets-widget" style="margin-bottom:20px;display:none"></div>
-  <!-- Balance widget -->
-  <div class="acct-hero" style="background:var(--navy);border-radius:12px;padding:32px 36px;margin-bottom:24px;display:flex;align-items:center;justify-content:space-between">
-    <div>
-      <div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-bottom:8px">Collective Account Balance</div>
-      <div class="acct-bal" style="font-size:52px;font-weight:900;color:#fff;letter-spacing:-1px;line-height:1">$6,822.01</div>
-      <div style="font-size:12px;color:rgba(255,255,255,0.4);margin-top:8px;letter-spacing:1px">AS AT 03 JUL 2026</div>
-    </div>
-    <div class="acct-right" style="display:flex;flex-direction:column;gap:16px;text-align:right">
-      <div><div style="font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.4)">Opening Balance (30 Dec 2025)</div><div style="font-size:20px;font-weight:700;color:rgba(255,255,255,0.8)">$5,138.12</div></div>
-      <div><div style="font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.4)">Total Bet Returns (2026)</div><div style="font-size:20px;font-weight:700;color:#4ADE80">+$596.64</div></div>
-    </div>
-  </div>
-  <div class="section-title">Savings Contributions<span class="mob-hide"> — 2026 (12 × $30 = $360 per member)</span></div>
-  <!-- Mobile cards for savings -->
-  <div class="mob-savings-cards">
-    <div class="mob-member-row"><div><div class="mob-member-name">Charlie</div><div class="mob-member-sub">Full year pre-paid</div></div><div class="mob-member-right"><div class="mob-member-val" style="color:var(--green)">$360 ✓</div><div class="mob-member-sub">Paid in full</div></div></div>
-    <div class="mob-member-row"><div><div class="mob-member-name">Douchie</div><div class="mob-member-sub">Full year pre-paid</div></div><div class="mob-member-right"><div class="mob-member-val" style="color:var(--green)">$360 ✓</div><div class="mob-member-sub">Paid in full</div></div></div>
-    <div class="mob-member-row"><div><div class="mob-member-name">Nic</div><div class="mob-member-sub">$80 still outstanding</div></div><div class="mob-member-right"><div class="mob-member-val" style="color:#D97706">$280 ⚠</div><div class="mob-member-sub">of $360</div></div></div>
-    <div class="mob-member-row"><div><div class="mob-member-name">Shannon</div><div class="mob-member-sub" style="color:var(--red)">$120 owed now (4 weeks)</div></div><div class="mob-member-right"><div class="mob-member-val" style="color:var(--red)">$0 ✗</div><div class="mob-member-sub">of $360</div></div></div>
-    <div class="mob-totals-row"><span class="mob-totals-label">Outstanding</span><span class="mob-totals-val" style="color:#F87171">$440</span></div>
-  </div>
-  <div class="mob-scroll"><div style="background:var(--white);border-radius:10px;overflow:hidden">
-    <table style="width:100%;border-collapse:collapse">
-      <thead><tr>
-        <th style="background:var(--navy);color:rgba(255,255,255,0.6);font-size:10px;letter-spacing:2px;text-transform:uppercase;padding:12px 20px;text-align:left;font-weight:600">Member</th>
-        <th style="background:var(--navy);color:rgba(255,255,255,0.6);font-size:10px;letter-spacing:2px;text-transform:uppercase;padding:12px 20px;text-align:center;font-weight:600">Annual Total</th>
-        <th style="background:var(--navy);color:rgba(255,255,255,0.6);font-size:10px;letter-spacing:2px;text-transform:uppercase;padding:12px 20px;text-align:center;font-weight:600">Paid</th>
-        <th style="background:var(--navy);color:rgba(255,255,255,0.6);font-size:10px;letter-spacing:2px;text-transform:uppercase;padding:12px 20px;text-align:center;font-weight:600">Outstanding</th>
-        <th style="background:var(--navy);color:rgba(255,255,255,0.6);font-size:10px;letter-spacing:2px;text-transform:uppercase;padding:12px 20px;text-align:center;font-weight:600">Status</th>
-      </tr></thead>
-      <tbody>
-        <tr style="border-bottom:1px solid var(--grey-line)"><td style="padding:16px 20px;font-weight:700;font-size:15px">Charlie</td><td style="padding:16px 20px;text-align:center;font-family:monospace">$360.00</td><td style="padding:16px 20px;text-align:center;font-family:monospace;font-weight:700;color:var(--green)">$360.00</td><td style="padding:16px 20px;text-align:center;font-family:monospace;color:var(--grey-text)">—</td><td style="padding:16px 20px;text-align:center"><span style="background:#DCFCE7;color:#15803D;padding:4px 12px;border-radius:20px;font-size:11px;font-weight:700;letter-spacing:1px">✓ PAID IN FULL</span></td></tr>
-        <tr style="border-bottom:1px solid var(--grey-line)"><td style="padding:16px 20px;font-weight:700;font-size:15px">Douchie</td><td style="padding:16px 20px;text-align:center;font-family:monospace">$360.00</td><td style="padding:16px 20px;text-align:center;font-family:monospace;font-weight:700;color:var(--green)">$360.00</td><td style="padding:16px 20px;text-align:center;font-family:monospace;color:var(--grey-text)">—</td><td style="padding:16px 20px;text-align:center"><span style="background:#DCFCE7;color:#15803D;padding:4px 12px;border-radius:20px;font-size:11px;font-weight:700;letter-spacing:1px">✓ PAID IN FULL</span></td></tr>
-        <tr style="border-bottom:1px solid var(--grey-line)"><td style="padding:16px 20px;font-weight:700;font-size:15px">Nic</td><td style="padding:16px 20px;text-align:center;font-family:monospace">$360.00</td><td style="padding:16px 20px;text-align:center;font-family:monospace;font-weight:700;color:#D97706">$280.00</td><td style="padding:16px 20px;text-align:center;font-family:monospace;font-weight:700;color:#D97706">$80.00</td><td style="padding:16px 20px;text-align:center"><span style="background:#FEF3C7;color:#B45309;padding:4px 12px;border-radius:20px;font-size:11px;font-weight:700;letter-spacing:1px">⚠ PARTIAL</span></td></tr>
-        <tr style="border-bottom:1px solid var(--grey-line)"><td style="padding:16px 20px;font-weight:700;font-size:15px">Shannon</td><td style="padding:16px 20px;text-align:center;font-family:monospace">$360.00</td><td style="padding:16px 20px;text-align:center;font-family:monospace;font-weight:700;color:var(--red)">$0.00</td><td style="padding:16px 20px;text-align:center;font-family:monospace;font-weight:700;color:var(--red)">$360.00</td><td style="padding:16px 20px;text-align:center"><span style="background:#FEE2E2;color:#B91C1C;padding:4px 12px;border-radius:20px;font-size:11px;font-weight:700;letter-spacing:1px">✗ OVERDUE</span></td></tr>
-        <tr style="background:#F8F9FA;border-top:2px solid var(--navy)"><td style="padding:14px 20px;font-weight:700;font-size:13px;text-transform:uppercase;letter-spacing:1px">Total</td><td style="padding:14px 20px;text-align:center;font-family:monospace;font-weight:700">$1,440.00</td><td style="padding:14px 20px;text-align:center;font-family:monospace;font-weight:700;color:var(--green)">$1,000.00</td><td style="padding:14px 20px;text-align:center;font-family:monospace;font-weight:700;color:var(--red)">$440.00</td><td style="padding:14px 20px;font-size:12px;color:var(--grey-text)">$440 outstanding</td></tr>
-      </tbody>
-    </table>
-  </div></div>
-
-  <div class="section-title">Bet Returns<span class="mob-hide"> — 2026 Season to Date</span></div>
-  <!-- Mobile cards for returns -->
-  <div class="mob-returns-cards">
-    <div class="mob-member-row"><div><div class="mob-member-name">Charlie</div><div class="mob-member-sub">7 bets · 3W 4L · 43%</div></div><div class="mob-member-right"><div class="mob-member-val" style="color:var(--green)">+$182.45</div><div class="mob-member-sub">$362.45 returned</div></div></div>
-    <div class="mob-member-row"><div><div class="mob-member-name">Nic</div><div class="mob-member-sub">3 bets · 1W 2L · 33%</div></div><div class="mob-member-right"><div class="mob-member-val" style="color:var(--red)">-$18.75</div><div class="mob-member-sub">$71.25 returned</div></div></div>
-    <div class="mob-member-row"><div><div class="mob-member-name">Shannon</div><div class="mob-member-sub">5 bets · 1W 4L · 20%</div></div><div class="mob-member-right"><div class="mob-member-val" style="color:var(--red)">-$30.00</div><div class="mob-member-sub">$120.00 returned</div></div></div>
-    <div class="mob-member-row"><div><div class="mob-member-name">Douchie</div><div class="mob-member-sub">6 bets · 1W 5L · 17%</div></div><div class="mob-member-right"><div class="mob-member-val" style="color:var(--red)">-$50.66</div><div class="mob-member-sub">$129.34 returned</div></div></div>
-    <div class="mob-totals-row"><span class="mob-totals-label">21 bets · 6W 15L · 29%</span><span class="mob-totals-val" style="color:#4ADE80">+$83.04</span></div>
-  </div>
-  <div class="mob-scroll"><div style="background:var(--white);border-radius:10px;overflow:hidden">
-    <table style="width:100%;border-collapse:collapse">
-      <thead><tr>
-        <th style="background:var(--navy);color:rgba(255,255,255,0.6);font-size:10px;letter-spacing:2px;text-transform:uppercase;padding:12px 20px;text-align:left;font-weight:600">Member</th>
-        <th style="background:var(--navy);color:rgba(255,255,255,0.6);font-size:10px;letter-spacing:2px;text-transform:uppercase;padding:12px 20px;text-align:center;font-weight:600">Bets</th>
-        <th style="background:var(--navy);color:rgba(255,255,255,0.6);font-size:10px;letter-spacing:2px;text-transform:uppercase;padding:12px 20px;text-align:center;font-weight:600">Record</th>
-        <th style="background:var(--navy);color:rgba(255,255,255,0.6);font-size:10px;letter-spacing:2px;text-transform:uppercase;padding:12px 20px;text-align:center;font-weight:600">Win Rate</th>
-        <th style="background:var(--navy);color:rgba(255,255,255,0.6);font-size:10px;letter-spacing:2px;text-transform:uppercase;padding:12px 20px;text-align:center;font-weight:600">Return to Pool</th>
-        <th style="background:var(--navy);color:rgba(255,255,255,0.6);font-size:10px;letter-spacing:2px;text-transform:uppercase;padding:12px 20px;text-align:center;font-weight:600">Net P&amp;L</th>
-      </tr></thead>
-      <tbody>
-        <tr style="border-bottom:1px solid var(--grey-line)"><td style="padding:14px 20px;font-weight:700">Charlie</td><td style="padding:14px 20px;text-align:center">7</td><td style="padding:14px 20px;text-align:center">3W &nbsp;4L</td><td style="padding:14px 20px;text-align:center">43%</td><td style="padding:14px 20px;text-align:center;font-family:monospace">$362.45</td><td style="padding:14px 20px;text-align:center;font-family:monospace;font-weight:700;color:var(--green)">+$182.45</td></tr>
-        <tr style="border-bottom:1px solid var(--grey-line)"><td style="padding:14px 20px;font-weight:700">Nic</td><td style="padding:14px 20px;text-align:center">3</td><td style="padding:14px 20px;text-align:center">1W &nbsp;2L</td><td style="padding:14px 20px;text-align:center">33%</td><td style="padding:14px 20px;text-align:center;font-family:monospace">$71.25</td><td style="padding:14px 20px;text-align:center;font-family:monospace;font-weight:700;color:var(--red)">-$18.75</td></tr>
-        <tr style="border-bottom:1px solid var(--grey-line)"><td style="padding:14px 20px;font-weight:700">Shannon</td><td style="padding:14px 20px;text-align:center">5</td><td style="padding:14px 20px;text-align:center">1W &nbsp;4L</td><td style="padding:14px 20px;text-align:center">20%</td><td style="padding:14px 20px;text-align:center;font-family:monospace">$120.00</td><td style="padding:14px 20px;text-align:center;font-family:monospace;font-weight:700;color:var(--red)">-$30.00</td></tr>
-        <tr style="border-bottom:1px solid var(--grey-line)"><td style="padding:14px 20px;font-weight:700">Douchie</td><td style="padding:14px 20px;text-align:center">6</td><td style="padding:14px 20px;text-align:center">1W &nbsp;5L</td><td style="padding:14px 20px;text-align:center">17%</td><td style="padding:14px 20px;text-align:center;font-family:monospace">$129.34</td><td style="padding:14px 20px;text-align:center;font-family:monospace;font-weight:700;color:var(--red)">-$50.66</td></tr>
-        <tr style="background:#F8F9FA;border-top:2px solid var(--navy)"><td style="padding:14px 20px;font-weight:700;font-size:13px;text-transform:uppercase;letter-spacing:1px">Total</td><td style="padding:14px 20px;text-align:center;font-weight:700">21</td><td style="padding:14px 20px;text-align:center;font-weight:700">6W &nbsp;15L</td><td style="padding:14px 20px;text-align:center;font-weight:700">29%</td><td style="padding:14px 20px;text-align:center;font-family:monospace;font-weight:700">$683.04</td><td style="padding:14px 20px;text-align:center;font-family:monospace;font-weight:700;color:var(--green)">+$83.04</td></tr>
-      </tbody>
-    </table>
-  </div></div>
-  <footer>Account balance as at 03 Jul 2026 &nbsp;·&nbsp; Net P&amp;L = Bet return minus stake &nbsp;·&nbsp; Stake from captain's own pocket</footer>
-</div>
-
-<!-- ═══════════════ LEADERBOARD -->
+<!-- ═══════════ LEADERBOARD ═══════════ -->
 <div class="page" id="page-leaderboard">
-  <div style="height:8px"></div>
-  <div class="stats-bar">
-    <div class="stat-item"><div class="stat-label">Total Bets</div><div class="stat-value">21</div></div>
-    <div class="stat-item"><div class="stat-label">Wins</div><div class="stat-value">6</div></div>
-    <div class="stat-item"><div class="stat-label">Losses</div><div class="stat-value">15</div></div>
-    <div class="stat-item"><div class="stat-label">Win Rate</div><div class="stat-value">29%</div></div>
-    <div class="stat-item"><div class="stat-label">Total Staked</div><div class="stat-value">$600</div></div>
-    <div class="stat-item"><div class="stat-label">Total Return</div><div class="stat-value">$683.04</div></div>
-    <div class="stat-item"><div class="stat-label">Net P&amp;L</div><div class="stat-value positive">+$83.04</div></div>
-  </div>
-  <div class="section-title">Individual Rankings<span class="mob-hide"> — as at 03 Jul 2026 · Click to view bet history</span></div>
-  <div class="leaderboard">
-    <div class="lb-card" onclick="showPage('charlie')">
-      <div class="lb-rank rank-1">#1</div><div class="lb-stripe" style="background:#0D1B2A"></div>
-      <div class="lb-name-block"><div class="lb-name">Charlie</div><div class="lb-record">3W &nbsp;4L &nbsp;·&nbsp; 7 Bets</div></div>
-      <div class="lb-stats">
-        <div class="lb-stat"><div class="lb-stat-label">Return</div><div class="lb-stat-value">$362.45</div></div>
-        <div class="lb-stat"><div class="lb-stat-label">Staked</div><div class="lb-stat-value">$180.00</div></div>
-        <div class="lb-stat"><div class="lb-stat-label">Net P&amp;L</div><div class="lb-stat-value positive">+$182.45</div></div>
-        <div class="lb-stat"><div class="lb-stat-label">Win %</div><div class="lb-stat-value">43%</div></div>
-      </div><div class="lb-arrow">›</div>
-    </div>
-    <div class="lb-card" onclick="showPage('nic')">
-      <div class="lb-rank rank-2">#2</div><div class="lb-stripe" style="background:#555"></div>
-      <div class="lb-name-block"><div class="lb-name">Nic</div><div class="lb-record">1W &nbsp;2L &nbsp;·&nbsp; 3 Bets &nbsp;<span style="background:#FEF3C7;color:#B45309;font-size:11px;font-weight:700;padding:2px 8px;border-radius:12px;letter-spacing:1px">⚠ 2 BETS OUTSTANDING</span></div></div>
-      <div class="lb-stats">
-        <div class="lb-stat"><div class="lb-stat-label">Return</div><div class="lb-stat-value">$71.25</div></div>
-        <div class="lb-stat"><div class="lb-stat-label">Staked</div><div class="lb-stat-value">$90.00</div></div>
-        <div class="lb-stat"><div class="lb-stat-label">Net P&amp;L</div><div class="lb-stat-value negative">-$18.75</div></div>
-        <div class="lb-stat"><div class="lb-stat-label">Win %</div><div class="lb-stat-value">33%</div></div>
-      </div><div class="lb-arrow">›</div>
-    </div>
-    <div class="lb-card" onclick="showPage('shannon')">
-      <div class="lb-rank rank-3">#3</div><div class="lb-stripe" style="background:#8B5E1A"></div>
-      <div class="lb-name-block"><div class="lb-name">Shannon</div><div class="lb-record">1W &nbsp;4L &nbsp;·&nbsp; 5 Bets &nbsp;<span style="background:#FEF3C7;color:#B45309;font-size:11px;font-weight:700;padding:2px 8px;border-radius:12px;letter-spacing:1px">⚠ BET OUTSTANDING</span></div></div>
-      <div class="lb-stats">
-        <div class="lb-stat"><div class="lb-stat-label">Return</div><div class="lb-stat-value">$120.00</div></div>
-        <div class="lb-stat"><div class="lb-stat-label">Staked</div><div class="lb-stat-value">$150.00</div></div>
-        <div class="lb-stat"><div class="lb-stat-label">Net P&amp;L</div><div class="lb-stat-value negative">-$30.00</div></div>
-        <div class="lb-stat"><div class="lb-stat-label">Win %</div><div class="lb-stat-value">20%</div></div>
-      </div><div class="lb-arrow">›</div>
-    </div>
-    <div class="lb-card" onclick="showPage('douchie')">
-      <div class="lb-rank rank-4">#4</div><div class="lb-stripe" style="background:#999"></div>
-      <div class="lb-name-block"><div class="lb-name">Douchie</div><div class="lb-record">1W &nbsp;5L &nbsp;·&nbsp; 6 Bets</div></div>
-      <div class="lb-stats">
-        <div class="lb-stat"><div class="lb-stat-label">Return</div><div class="lb-stat-value">$129.34</div></div>
-        <div class="lb-stat"><div class="lb-stat-label">Staked</div><div class="lb-stat-value">$180.00</div></div>
-        <div class="lb-stat"><div class="lb-stat-label">Net P&amp;L</div><div class="lb-stat-value negative">-$50.66</div></div>
-        <div class="lb-stat"><div class="lb-stat-label">Win %</div><div class="lb-stat-value">17%</div></div>
-      </div><div class="lb-arrow">›</div>
-    </div>
-  </div>
-  <footer>Net P&amp;L = Bet return minus stake &nbsp;·&nbsp; Stake from captain's own pocket</footer>
+  <div class="stats-bar" id="stats-bar"></div>
+  <div class="section-title"><span class="gold">◆</span> Individual Rankings — tap a member for full bet history</div>
+  <div id="leaderboard-list"></div>
+  <footer>Net P&amp;L = Bet return minus stake <span class="gold">◆</span> Stake from captain's own pocket</footer>
 </div>
 
-<!-- ═══════════════ CHARLIE -->
-<div class="page" id="page-charlie">
+<!-- ═══════════ MEMBER (dynamic) ═══════════ -->
+<div class="page" id="page-member">
   <div class="back-btn" onclick="showPage('leaderboard')"><span>‹</span> Back to Leaderboard</div>
-  <div class="bettor-header">
-    <div><div class="bettor-name">Charlie</div><div style="color:rgba(255,255,255,0.5);font-size:12px;letter-spacing:2px;text-transform:uppercase;margin-top:4px">#1 · 7 Bets · 2026 Season</div></div>
-    <div class="bettor-stats">
-      <div class="bettor-stat"><div class="bettor-stat-label">Staked</div><div class="bettor-stat-value">$180.00</div></div>
-      <div class="bettor-stat"><div class="bettor-stat-label">Return</div><div class="bettor-stat-value">$362.45</div></div>
-      <div class="bettor-stat"><div class="bettor-stat-label">Net P&amp;L</div><div class="bettor-stat-value positive">+$182.45</div></div>
-      <div class="bettor-stat"><div class="bettor-stat-label">Win Rate</div><div class="bettor-stat-value">43%</div></div>
-    </div>
-  </div>
-  <div class="section-title">Bet History</div>
-  <div class="bet-table-wrap"><table class="bet-table">
-    <thead><tr><th>Date</th><th>Bet</th><th>Odds</th><th>Stake</th><th>Return</th><th>Result</th><th>Net</th></tr></thead>
-    <tbody>
-      <tr><td><span class="month-badge">Jan</span>31 Jan 2026</td><td>Bet Lost</td><td>—</td><td class="monospace">$30.00</td><td class="monospace">$0.00</td><td><span class="badge badge-loss">Loss</span></td><td class="monospace net-negative">-$30.00</td></tr>
-      <tr><td><span class="month-badge">Feb</span>28 Feb 2026</td><td>Flemington Race 8 — Ahha Ahha</td><td>5.50</td><td class="monospace">$30.00</td><td class="monospace">$165.00</td><td><span class="badge badge-win">Win</span></td><td class="monospace net-positive">+$135.00</td></tr>
-      <tr><td><span class="month-badge">Mar</span>28 Mar 2026</td><td>Bet Lost</td><td>—</td><td class="monospace">$30.00</td><td class="monospace">$0.00</td><td><span class="badge badge-loss">Loss</span></td><td class="monospace net-negative">-$30.00</td></tr>
-      <tr><td><span class="month-badge">Apr</span>25 Apr 2026</td><td>Morphetville R1 — Staand Deel ($25) &amp; Multi: Lions 40+, Cats 40+, St Kilda 1-39, Swans H2H ($5)</td><td>2.35 / Multi</td><td class="monospace">$30.00</td><td class="monospace">$111.05</td><td><span class="badge badge-win">Win</span></td><td class="monospace net-positive">+$81.05</td></tr>
-      <tr><td><span class="month-badge">May</span>23 May 2026</td><td>Bet Lost ($20 stake)</td><td>—</td><td class="monospace">$20.00</td><td class="monospace">$0.00</td><td><span class="badge badge-loss">Loss</span></td><td class="monospace net-negative">-$20.00</td></tr>
-      <tr><td><span class="month-badge">May</span>23 May 2026</td><td>SGM — Carlton v Geelong Cats (9-leg)</td><td>11.75</td><td class="monospace">$10.00</td><td class="monospace">$0.00</td><td><span class="badge badge-loss">Loss</span></td><td class="monospace net-negative">-$10.00</td></tr>
-      <tr><td><span class="month-badge">Jun</span>20 Jun 2026</td><td>Flemington Race 3 — Vegas Jack (Place)</td><td>2.88</td><td class="monospace">$30.00</td><td class="monospace">$86.40</td><td><span class="badge badge-win">Win</span></td><td class="monospace net-positive">+$56.40</td></tr>
-      <tr class="totals-row"><td colspan="3"><strong>TOTAL</strong></td><td class="monospace"><strong>$180.00</strong></td><td class="monospace"><strong>$362.45</strong></td><td></td><td class="monospace net-positive"><strong>+$182.45</strong></td></tr>
-    </tbody>
-  </table></div>
-  <div class="bet-cards">
-    <div class="bet-card loss"><div class="bet-card-top"><span class="bet-card-date">31 Jan 2026</span><span class="badge badge-loss">Loss</span></div><div class="bet-card-desc">Bet Lost</div><div class="bet-card-row"><div class="bet-card-stat"><strong>-$30.00</strong>Net</div></div></div>
-    <div class="bet-card win"><div class="bet-card-top"><span class="bet-card-date">28 Feb 2026</span><span class="badge badge-win">Win</span></div><div class="bet-card-desc">Flemington Race 8 — Ahha Ahha</div><div class="bet-card-row"><div class="bet-card-stat"><strong>5.50</strong>Odds</div><div class="bet-card-stat"><strong>$165.00</strong>Return</div><div class="bet-card-stat" style="color:var(--green)"><strong style="color:var(--green)">+$135.00</strong>Net</div></div></div>
-    <div class="bet-card loss"><div class="bet-card-top"><span class="bet-card-date">28 Mar 2026</span><span class="badge badge-loss">Loss</span></div><div class="bet-card-desc">Bet Lost</div><div class="bet-card-row"><div class="bet-card-stat"><strong>-$30.00</strong>Net</div></div></div>
-    <div class="bet-card win"><div class="bet-card-top"><span class="bet-card-date">25 Apr 2026</span><span class="badge badge-win">Win</span></div><div class="bet-card-desc">Morphetville R1 — Staand Deel ($25) &amp; Multi: Lions 40+, Cats 40+, St Kilda 1-39, Swans H2H ($5)</div><div class="bet-card-row"><div class="bet-card-stat"><strong>$111.05</strong>Return</div><div class="bet-card-stat" style="color:var(--green)"><strong style="color:var(--green)">+$81.05</strong>Net</div></div></div>
-    <div class="bet-card loss"><div class="bet-card-top"><span class="bet-card-date">23 May 2026</span><span class="badge badge-loss">Loss</span></div><div class="bet-card-desc">Bet Lost ($20 stake)</div><div class="bet-card-row"><div class="bet-card-stat"><strong>-$20.00</strong>Net</div></div></div>
-    <div class="bet-card loss"><div class="bet-card-top"><span class="bet-card-date">23 May 2026</span><span class="badge badge-loss">Loss</span></div><div class="bet-card-desc">SGM — Carlton v Geelong Cats (9-leg)</div><div class="bet-card-row"><div class="bet-card-stat"><strong>11.75</strong>Odds</div><div class="bet-card-stat"><strong>$10.00</strong>Stake</div><div class="bet-card-stat" style="color:var(--red)"><strong style="color:var(--red)">-$10.00</strong>Net</div></div></div>
-    <div class="bet-card win"><div class="bet-card-top"><span class="bet-card-date">20 Jun 2026</span><span class="badge badge-win">Win</span></div><div class="bet-card-desc">Flemington Race 3 — Vegas Jack (Place)</div><div class="bet-card-row"><div class="bet-card-stat"><strong>2.88</strong>Odds</div><div class="bet-card-stat"><strong>$86.40</strong>Return</div><div class="bet-card-stat" style="color:var(--green)"><strong style="color:var(--green)">+$56.40</strong>Net</div></div></div>
-    <div class="bet-cards-total"><span>Total · 7 bets · 3W 4L</span><span class="net-positive">+$182.45</span></div>
-  </div>
+  <div id="member-content"></div>
 </div>
 
-<!-- ═══════════════ SHANNON -->
-<div class="page" id="page-shannon">
-  <div class="back-btn" onclick="showPage('leaderboard')"><span>‹</span> Back to Leaderboard</div>
-  <div class="bettor-header">
-    <div><div class="bettor-name">Shannon</div><div style="color:rgba(255,255,255,0.5);font-size:12px;letter-spacing:2px;text-transform:uppercase;margin-top:4px">#3 · 5 Bets · 2026 Season</div></div>
-    <div class="bettor-stats">
-      <div class="bettor-stat"><div class="bettor-stat-label">Staked</div><div class="bettor-stat-value">$150.00</div></div>
-      <div class="bettor-stat"><div class="bettor-stat-label">Return</div><div class="bettor-stat-value">$120.00</div></div>
-      <div class="bettor-stat"><div class="bettor-stat-label">Net P&amp;L</div><div class="bettor-stat-value negative">-$30.00</div></div>
-      <div class="bettor-stat"><div class="bettor-stat-label">Win Rate</div><div class="bettor-stat-value">20%</div></div>
-    </div>
+<!-- ═══════════ THE POST ═══════════ -->
+<div class="page" id="page-post">
+  <div class="post-masthead">
+    <div class="post-title">The Pundicci <span class="amp">Post</span></div>
+    <div class="post-rules"><span class="post-tagline">Authoritative Coverage · 2026 Season</span></div>
   </div>
-  <div class="section-title">Bet History</div>
-  <div class="bet-table-wrap"><table class="bet-table">
-    <thead><tr><th>Date</th><th>Bet</th><th>Odds</th><th>Stake</th><th>Return</th><th>Result</th><th>Net</th></tr></thead>
-    <tbody>
-      <tr><td><span class="month-badge">Feb</span>07 Feb 2026</td><td>Bet Lost</td><td>—</td><td class="monospace">$30.00</td><td class="monospace">$0.00</td><td><span class="badge badge-loss">Loss</span></td><td class="monospace net-negative">-$30.00</td></tr>
-      <tr><td><span class="month-badge">Mar</span>07 Mar 2026</td><td>Bet Lost</td><td>—</td><td class="monospace">$30.00</td><td class="monospace">$0.00</td><td><span class="badge badge-loss">Loss</span></td><td class="monospace net-negative">-$30.00</td></tr>
-      <tr><td><span class="month-badge">Apr</span>04 Apr 2026</td><td>Randwick Race 7 — Joliestar</td><td>4.00</td><td class="monospace">$30.00</td><td class="monospace">$120.00</td><td><span class="badge badge-win">Win</span></td><td class="monospace net-positive">+$90.00</td></tr>
-      <tr><td><span class="month-badge">May</span>02 May 2026</td><td>Bet Lost</td><td>—</td><td class="monospace">$30.00</td><td class="monospace">$0.00</td><td><span class="badge badge-loss">Loss</span></td><td class="monospace net-negative">-$30.00</td></tr>
-      <tr><td><span class="month-badge">May</span>30 May 2026</td><td>Eagle Farm Race 6 — Brave Monarch</td><td>3.90</td><td class="monospace">$30.00</td><td class="monospace">$0.00</td><td><span class="badge badge-loss">Loss</span></td><td class="monospace net-negative">-$30.00</td></tr>
-      <tr class="totals-row"><td colspan="3"><strong>TOTAL</strong></td><td class="monospace"><strong>$150.00</strong></td><td class="monospace"><strong>$120.00</strong></td><td></td><td class="monospace net-negative"><strong>-$30.00</strong></td></tr>
-    </tbody>
-  </table></div>
-  <div class="bet-cards">
-    <div class="bet-card loss"><div class="bet-card-top"><span class="bet-card-date">07 Feb 2026</span><span class="badge badge-loss">Loss</span></div><div class="bet-card-desc">Bet Lost</div><div class="bet-card-row"><div class="bet-card-stat"><strong>-$30.00</strong>Net</div></div></div>
-    <div class="bet-card loss"><div class="bet-card-top"><span class="bet-card-date">07 Mar 2026</span><span class="badge badge-loss">Loss</span></div><div class="bet-card-desc">Bet Lost</div><div class="bet-card-row"><div class="bet-card-stat"><strong>-$30.00</strong>Net</div></div></div>
-    <div class="bet-card win"><div class="bet-card-top"><span class="bet-card-date">04 Apr 2026</span><span class="badge badge-win">Win</span></div><div class="bet-card-desc">Randwick Race 7 — Joliestar</div><div class="bet-card-row"><div class="bet-card-stat"><strong>4.00</strong>Odds</div><div class="bet-card-stat"><strong>$120.00</strong>Return</div><div class="bet-card-stat" style="color:var(--green)"><strong style="color:var(--green)">+$90.00</strong>Net</div></div></div>
-    <div class="bet-card loss"><div class="bet-card-top"><span class="bet-card-date">02 May 2026</span><span class="badge badge-loss">Loss</span></div><div class="bet-card-desc">Bet Lost</div><div class="bet-card-row"><div class="bet-card-stat"><strong>-$30.00</strong>Net</div></div></div>
-    <div class="bet-card loss"><div class="bet-card-top"><span class="bet-card-date">30 May 2026</span><span class="badge badge-loss">Loss</span></div><div class="bet-card-desc">Eagle Farm Race 6 — Brave Monarch</div><div class="bet-card-row"><div class="bet-card-stat"><strong>3.90</strong>Odds</div><div class="bet-card-stat"><strong>$0.00</strong>Return</div><div class="bet-card-stat" style="color:var(--red)"><strong style="color:var(--red)">-$30.00</strong>Net</div></div></div>
-    <div class="bet-cards-total"><span>Total · 5 bets · 1W 4L</span><span class="net-negative">-$30.00</span></div>
-  </div>
+  <div id="post-feed"></div>
+  <footer>All quotes verified by nobody <span class="gold">◆</span> The Post regrets nothing</footer>
 </div>
 
-<!-- ═══════════════ DOUCHIE -->
-<div class="page" id="page-douchie">
-  <div class="back-btn" onclick="showPage('leaderboard')"><span>‹</span> Back to Leaderboard</div>
-  <div class="bettor-header">
-    <div><div class="bettor-name">Douchie</div><div style="color:rgba(255,255,255,0.5);font-size:12px;letter-spacing:2px;text-transform:uppercase;margin-top:4px">#4 · 6 Bets · 2026 Season</div></div>
-    <div class="bettor-stats">
-      <div class="bettor-stat"><div class="bettor-stat-label">Staked</div><div class="bettor-stat-value">$180.00</div></div>
-      <div class="bettor-stat"><div class="bettor-stat-label">Return</div><div class="bettor-stat-value">$129.34</div></div>
-      <div class="bettor-stat"><div class="bettor-stat-label">Net P&amp;L</div><div class="bettor-stat-value negative">-$50.66</div></div>
-      <div class="bettor-stat"><div class="bettor-stat-label">Win Rate</div><div class="bettor-stat-value">17%</div></div>
+<!-- ═══════════ ACCOUNT ═══════════ -->
+<div class="page" id="page-account">
+  <div class="hero" style="margin-bottom:6px">
+    <div>
+      <div class="hero-label">Collective Account Balance</div>
+      <div class="hero-balance" id="acct-balance">$0.00</div>
+      <div class="hero-asat">As at 03 Jul 2026</div>
+    </div>
+    <div class="hero-side">
+      <div><div class="hero-stat-label">Opening Balance<br>(30 Dec 2025)</div><div class="hero-stat-value">$5,138.12</div></div>
+      <div><div class="hero-stat-label">Total Bet Returns<br>(2026)</div><div class="hero-stat-value up">+$596.64</div></div>
+      <div><div class="hero-stat-label">Savings Collected<br>(2026)</div><div class="hero-stat-value gold">$1,000.00</div></div>
+      <div><div class="hero-stat-label">Savings<br>Outstanding</div><div class="hero-stat-value" style="color:var(--red)">$440.00</div></div>
     </div>
   </div>
-  <div class="section-title">Bet History</div>
-  <div class="bet-table-wrap"><table class="bet-table">
-    <thead><tr><th>Date</th><th>Bet</th><th>Odds</th><th>Stake</th><th>Return</th><th>Result</th><th>Net</th></tr></thead>
-    <tbody>
-      <tr><td><span class="month-badge">Jan</span>24 Jan 2026</td><td>Bet Lost</td><td>—</td><td class="monospace">$30.00</td><td class="monospace">$0.00</td><td><span class="badge badge-loss">Loss</span></td><td class="monospace net-negative">-$30.00</td></tr>
-      <tr><td><span class="month-badge">Feb</span>21 Feb 2026</td><td>Flemington Quaddie</td><td>—</td><td class="monospace">$30.00</td><td class="monospace">$129.34</td><td><span class="badge badge-win">Win</span></td><td class="monospace net-positive">+$99.34</td></tr>
-      <tr><td><span class="month-badge">Mar</span>21 Mar 2026</td><td>Bet Lost</td><td>—</td><td class="monospace">$30.00</td><td class="monospace">$0.00</td><td><span class="badge badge-loss">Loss</span></td><td class="monospace net-negative">-$30.00</td></tr>
-      <tr><td><span class="month-badge">Apr</span>18 Apr 2026</td><td>Bet Lost</td><td>—</td><td class="monospace">$30.00</td><td class="monospace">$0.00</td><td><span class="badge badge-loss">Loss</span></td><td class="monospace net-negative">-$30.00</td></tr>
-      <tr><td><span class="month-badge">May</span>16 May 2026</td><td>Bet Lost</td><td>—</td><td class="monospace">$30.00</td><td class="monospace">$0.00</td><td><span class="badge badge-loss">Loss</span></td><td class="monospace net-negative">-$30.00</td></tr>
-      <tr><td><span class="month-badge">Jun</span>13 Jun 2026</td><td>Various Horses</td><td>—</td><td class="monospace">$30.00</td><td class="monospace">$0.00</td><td><span class="badge badge-loss">Loss</span></td><td class="monospace net-negative">-$30.00</td></tr>
-      <tr class="totals-row"><td colspan="3"><strong>TOTAL</strong></td><td class="monospace"><strong>$180.00</strong></td><td class="monospace"><strong>$129.34</strong></td><td></td><td class="monospace net-negative"><strong>-$50.66</strong></td></tr>
-    </tbody>
-  </table></div>
-  <div class="bet-cards">
-    <div class="bet-card loss"><div class="bet-card-top"><span class="bet-card-date">24 Jan 2026</span><span class="badge badge-loss">Loss</span></div><div class="bet-card-desc">Bet Lost</div><div class="bet-card-row"><div class="bet-card-stat"><strong>-$30.00</strong>Net</div></div></div>
-    <div class="bet-card win"><div class="bet-card-top"><span class="bet-card-date">21 Feb 2026</span><span class="badge badge-win">Win</span></div><div class="bet-card-desc">Flemington Quaddie</div><div class="bet-card-row"><div class="bet-card-stat"><strong>$129.34</strong>Return</div><div class="bet-card-stat" style="color:var(--green)"><strong style="color:var(--green)">+$99.34</strong>Net</div></div></div>
-    <div class="bet-card loss"><div class="bet-card-top"><span class="bet-card-date">21 Mar 2026</span><span class="badge badge-loss">Loss</span></div><div class="bet-card-desc">Bet Lost</div><div class="bet-card-row"><div class="bet-card-stat"><strong>-$30.00</strong>Net</div></div></div>
-    <div class="bet-card loss"><div class="bet-card-top"><span class="bet-card-date">18 Apr 2026</span><span class="badge badge-loss">Loss</span></div><div class="bet-card-desc">Bet Lost</div><div class="bet-card-row"><div class="bet-card-stat"><strong>-$30.00</strong>Net</div></div></div>
-    <div class="bet-card loss"><div class="bet-card-top"><span class="bet-card-date">16 May 2026</span><span class="badge badge-loss">Loss</span></div><div class="bet-card-desc">Bet Lost</div><div class="bet-card-row"><div class="bet-card-stat"><strong>-$30.00</strong>Net</div></div></div>
-    <div class="bet-card loss"><div class="bet-card-top"><span class="bet-card-date">13 Jun 2026</span><span class="badge badge-loss">Loss</span></div><div class="bet-card-desc">Various Horses</div><div class="bet-card-row"><div class="bet-card-stat"><strong>-$30.00</strong>Net</div></div></div>
-    <div class="bet-cards-total"><span>Total · 6 bets · 1W 5L</span><span class="net-negative">-$50.66</span></div>
-  </div>
-</div>
 
-<!-- ═══════════════ NIC -->
-<div class="page" id="page-nic">
-  <div class="back-btn" onclick="showPage('leaderboard')"><span>‹</span> Back to Leaderboard</div>
-  <div class="bettor-header">
-    <div><div class="bettor-name">Nic</div><div style="color:rgba(255,255,255,0.5);font-size:12px;letter-spacing:2px;text-transform:uppercase;margin-top:4px">#2 · 3 Bets · 2026 Season</div></div>
-    <div class="bettor-stats">
-      <div class="bettor-stat"><div class="bettor-stat-label">Staked</div><div class="bettor-stat-value">$90.00</div></div>
-      <div class="bettor-stat"><div class="bettor-stat-label">Return</div><div class="bettor-stat-value">$71.25</div></div>
-      <div class="bettor-stat"><div class="bettor-stat-label">Net P&amp;L</div><div class="bettor-stat-value negative">-$18.75</div></div>
-      <div class="bettor-stat"><div class="bettor-stat-label">Win Rate</div><div class="bettor-stat-value">33%</div></div>
-    </div>
-  </div>
-  <div class="section-title">Bet History</div>
-  <div class="bet-table-wrap"><table class="bet-table">
-    <thead><tr><th>Date</th><th>Bet</th><th>Odds</th><th>Stake</th><th>Return</th><th>Result</th><th>Net</th></tr></thead>
-    <tbody>
-      <tr><td><span class="month-badge">Feb</span>14 Feb 2026</td><td>Bet Lost</td><td>—</td><td class="monospace">$30.00</td><td class="monospace">$0.00</td><td><span class="badge badge-loss">Loss</span></td><td class="monospace net-negative">-$30.00</td></tr>
-      <tr><td><span class="month-badge">Mar</span>14 Mar 2026</td><td>Multi — Melbourne Storm, Penrith Panthers, Queensland Reds</td><td>2.37</td><td class="monospace">$30.00</td><td class="monospace">$71.25</td><td><span class="badge badge-win">Win</span></td><td class="monospace net-positive">+$41.25</td></tr>
-      <tr><td><span class="month-badge">Jun</span>06 Jun 2026</td><td>Sports Multi — Crusaders, Broncos, Panthers, Bulldogs, QLD State of Origin</td><td>—</td><td class="monospace">$30.00</td><td class="monospace">$0.00</td><td><span class="badge badge-loss">Loss</span></td><td class="monospace net-negative">-$30.00</td></tr>
-      <tr class="totals-row"><td colspan="3"><strong>TOTAL</strong></td><td class="monospace"><strong>$90.00</strong></td><td class="monospace"><strong>$71.25</strong></td><td></td><td class="monospace net-negative"><strong>-$18.75</strong></td></tr>
-    </tbody>
-  </table></div>
-  <div class="bet-cards">
-    <div class="bet-card loss"><div class="bet-card-top"><span class="bet-card-date">14 Feb 2026</span><span class="badge badge-loss">Loss</span></div><div class="bet-card-desc">Bet Lost</div><div class="bet-card-row"><div class="bet-card-stat"><strong>-$30.00</strong>Net</div></div></div>
-    <div class="bet-card win"><div class="bet-card-top"><span class="bet-card-date">14 Mar 2026</span><span class="badge badge-win">Win</span></div><div class="bet-card-desc">Multi — Melbourne Storm, Penrith Panthers, Queensland Reds</div><div class="bet-card-row"><div class="bet-card-stat"><strong>2.37</strong>Odds</div><div class="bet-card-stat"><strong>$71.25</strong>Return</div><div class="bet-card-stat" style="color:var(--green)"><strong style="color:var(--green)">+$41.25</strong>Net</div></div></div>
-    <div class="bet-card loss"><div class="bet-card-top"><span class="bet-card-date">06 Jun 2026</span><span class="badge badge-loss">Loss</span></div><div class="bet-card-desc">Sports Multi — Crusaders, Broncos, Panthers, Bulldogs, QLD State of Origin</div><div class="bet-card-row"><div class="bet-card-stat"><strong>-$30.00</strong>Net</div></div></div>
-    <div class="bet-cards-total"><span>Total · 3 bets · 1W 2L</span><span class="net-negative">-$18.75</span></div>
-  </div>
+  <div class="section-title"><span class="gold">◆</span> Savings Contributions — 2026 (12 × $30 = $360 per member)</div>
+  <div id="savings-list"></div>
+
+  <div class="section-title"><span class="gold">◆</span> Bet Returns — 2026 Season to Date</div>
+  <div class="ret-grid" id="returns-grid"></div>
+
+  <footer>Account balance as at 03 Jul 2026 <span class="gold">◆</span> Net P&amp;L = Bet return minus stake <span class="gold">◆</span> Stake from captain's own pocket</footer>
 </div>
 
 <script>
-var SCHEDULE = [
-  { date: '24 Jan 2026', captain: 'Douchie',  logged: true  },
-  { date: '31 Jan 2026', captain: 'Charlie',  logged: true  },
-  { date: '07 Feb 2026', captain: 'Shannon',  logged: true  },
-  { date: '14 Feb 2026', captain: 'Nic',      logged: true  },
-  { date: '21 Feb 2026', captain: 'Douchie',  logged: true  },
-  { date: '28 Feb 2026', captain: 'Charlie',  logged: true  },
-  { date: '07 Mar 2026', captain: 'Shannon',  logged: true  },
-  { date: '14 Mar 2026', captain: 'Nic',      logged: true  },
-  { date: '21 Mar 2026', captain: 'Douchie',  logged: true  },
-  { date: '28 Mar 2026', captain: 'Charlie',  logged: true  },
-  { date: '04 Apr 2026', captain: 'Shannon',  logged: true  },
-  { date: '11 Apr 2026', captain: 'Nic',      logged: true,  noBet: true },
-  { date: '18 Apr 2026', captain: 'Douchie',  logged: true  },
-  { date: '25 Apr 2026', captain: 'Charlie',  logged: true  },
-  { date: '02 May 2026', captain: 'Shannon',  logged: true  },
-  { date: '09 May 2026', captain: 'Nic',      logged: true,  noBet: true },
-  { date: '16 May 2026', captain: 'Douchie',  logged: true  },
-  { date: '23 May 2026', captain: 'Charlie',  logged: true  },
-  { date: '30 May 2026', captain: 'Shannon',  logged: true  },
-  { date: '06 Jun 2026', captain: 'Nic',      logged: true  },
-  { date: '13 Jun 2026', captain: 'Douchie',  logged: true  },
-  { date: '20 Jun 2026', captain: 'Charlie',  logged: true  },
-  { date: '27 Jun 2026', captain: 'Shannon',  logged: false },
-  { date: '04 Jul 2026', captain: 'Nic',      logged: true  },
-  { date: '11 Jul 2026', captain: 'Douchie',  logged: false },
-  { date: '18 Jul 2026', captain: 'Charlie',  logged: false },
-  { date: '25 Jul 2026', captain: 'Shannon',  logged: false },
-  { date: '01 Aug 2026', captain: 'Nic',      logged: false },
-  { date: '08 Aug 2026', captain: 'Douchie',  logged: false },
-  { date: '15 Aug 2026', captain: 'Charlie',  logged: false },
-  { date: '22 Aug 2026', captain: 'Shannon',  logged: false },
-  { date: '29 Aug 2026', captain: 'Nic',      logged: false },
-  { date: '05 Sep 2026', captain: 'Douchie',  logged: false },
-  { date: '12 Sep 2026', captain: 'Charlie',  logged: false },
-  { date: '19 Sep 2026', captain: 'Shannon',  logged: false },
-  { date: '26 Sep 2026', captain: 'Nic',      logged: false },
-  { date: '03 Oct 2026', captain: 'Douchie',  logged: false },
-  { date: '10 Oct 2026', captain: 'Charlie',  logged: false },
-  { date: '17 Oct 2026', captain: 'Shannon',  logged: false },
-  { date: '24 Oct 2026', captain: 'Nic',      logged: false },
-  { date: '31 Oct 2026', captain: 'Douchie',  logged: false },
-  { date: '07 Nov 2026', captain: 'Charlie',  logged: false },
-  { date: '14 Nov 2026', captain: 'Shannon',  logged: false },
-  { date: '21 Nov 2026', captain: 'Nic',      logged: false },
-  { date: '28 Nov 2026', captain: 'Douchie',  logged: false },
-  { date: '05 Dec 2026', captain: 'Charlie',  logged: false },
-  { date: '12 Dec 2026', captain: 'Shannon',  logged: false },
-  { date: '19 Dec 2026', captain: 'Nic',      logged: false }
+/* ══════════════════════════════════════════════════════════════
+   DATA — edit this block to update the dashboard
+   ══════════════════════════════════════════════════════════════ */
+const BALANCE = { current: 6822.01, asAt: '03 Jul 2026', opening: 5138.12, openingDate: '30 Dec 2025', betReturns2026: 596.64 };
+
+const MEMBERS = {
+  charlie: { name:'Charlie', color:'var(--charlie)', hex:'#3DDC97', outstanding:0 },
+  nic:     { name:'Nic',     color:'var(--nic)',     hex:'#B48CFF', outstanding:2 },
+  shannon: { name:'Shannon', color:'var(--shannon)', hex:'#FFB454', outstanding:1 },
+  douchie: { name:'Douchie', color:'var(--douchie)', hex:'#5EA0FF', outstanding:0 }
+};
+
+/* result: 'W' | 'L' — settled bets only */
+const BETS = [
+  { m:'douchie', date:'24 Jan 2026', desc:'Bet Lost', odds:null, stake:30, ret:0, result:'L' },
+  { m:'charlie', date:'31 Jan 2026', desc:'Bet Lost', odds:null, stake:30, ret:0, result:'L' },
+  { m:'shannon', date:'07 Feb 2026', desc:'Bet Lost', odds:null, stake:30, ret:0, result:'L' },
+  { m:'nic',     date:'14 Feb 2026', desc:'Bet Lost', odds:null, stake:30, ret:0, result:'L' },
+  { m:'douchie', date:'21 Feb 2026', desc:'Flemington Quaddie', odds:null, stake:30, ret:129.34, result:'W' },
+  { m:'charlie', date:'28 Feb 2026', desc:'Flemington Race 8 — Ahha Ahha', odds:'5.50', stake:30, ret:165.00, result:'W' },
+  { m:'shannon', date:'07 Mar 2026', desc:'Bet Lost', odds:null, stake:30, ret:0, result:'L' },
+  { m:'nic',     date:'14 Mar 2026', desc:'Multi — Melbourne Storm, Penrith Panthers, Queensland Reds', odds:'2.37', stake:30, ret:71.25, result:'W' },
+  { m:'douchie', date:'21 Mar 2026', desc:'Bet Lost', odds:null, stake:30, ret:0, result:'L' },
+  { m:'charlie', date:'28 Mar 2026', desc:'Bet Lost', odds:null, stake:30, ret:0, result:'L' },
+  { m:'shannon', date:'04 Apr 2026', desc:'Randwick Race 7 — Joliestar', odds:'4.00', stake:30, ret:120.00, result:'W' },
+  { m:'douchie', date:'18 Apr 2026', desc:'Bet Lost', odds:null, stake:30, ret:0, result:'L' },
+  { m:'charlie', date:'25 Apr 2026', desc:'Morphetville R1 — Staand Deel ($25) & Multi: Lions 40+, Cats 40+, St Kilda 1-39, Swans H2H ($5)', odds:'2.35 / Multi', stake:30, ret:111.05, result:'W' },
+  { m:'shannon', date:'02 May 2026', desc:'Bet Lost', odds:null, stake:30, ret:0, result:'L' },
+  { m:'douchie', date:'16 May 2026', desc:'Bet Lost', odds:null, stake:30, ret:0, result:'L' },
+  { m:'charlie', date:'23 May 2026', desc:'Bet Lost ($20 stake)', odds:null, stake:20, ret:0, result:'L' },
+  { m:'charlie', date:'23 May 2026', desc:'SGM — Carlton v Geelong Cats (9-leg)', odds:'11.75', stake:10, ret:0, result:'L' },
+  { m:'shannon', date:'30 May 2026', desc:'Eagle Farm Race 6 — Brave Monarch', odds:'3.90', stake:30, ret:0, result:'L' },
+  { m:'nic',     date:'06 Jun 2026', desc:'Sports Multi — Crusaders, Broncos, Panthers, Bulldogs, QLD State of Origin', odds:null, stake:30, ret:0, result:'L' },
+  { m:'douchie', date:'13 Jun 2026', desc:'Various Horses', odds:null, stake:30, ret:0, result:'L' },
+  { m:'charlie', date:'20 Jun 2026', desc:'Flemington Race 3 — Vegas Jack (Place)', odds:'2.88', stake:30, ret:86.40, result:'W' }
 ];
 
-
-var PENDING_BETS = [
+const PENDING_BETS = [
   {
-    captain: 'Nic',
-    date: '04 Jul 2026',
-    event: 'Multi @ 3.41 (4 Legs)',
-    details: 'NZ v France · Aus v Ireland · SA v England · QLD v NSW — Final leg pending 08 Jul',
-    odds: '3.41',
-    stake: '$30.00',
-    potential: '$102.30',
-    legs: [
-      'New Zealand ✓ (04 Jul)',
-      'Ireland ✓ (04 Jul)',
-      'South Africa ✓ (05 Jul)',
-      'Queensland — 08 Jul'
+    captain:'nic', date:'04 Jul 2026',
+    event:'Multi @ 3.41 (4 Legs)',
+    details:'NZ v France · Aus v Ireland · SA v England · QLD v NSW — Final leg pending 08 Jul',
+    odds:'3.41', stake:'$30.00', potential:'$102.30',
+    legs:[
+      { label:'New Zealand (04 Jul)', done:true },
+      { label:'Ireland (04 Jul)', done:true },
+      { label:'South Africa (05 Jul)', done:true },
+      { label:'Queensland — 08 Jul', done:false }
     ]
   }
 ];
 
-function buildPendingBets() {
-  var widget = document.getElementById('pending-bets-widget');
-  if (!widget) return;
-  if (PENDING_BETS.length === 0) { widget.style.display = 'none'; return; }
+const SCHEDULE = [
+  { date:'24 Jan 2026', captain:'douchie', logged:true },
+  { date:'31 Jan 2026', captain:'charlie', logged:true },
+  { date:'07 Feb 2026', captain:'shannon', logged:true },
+  { date:'14 Feb 2026', captain:'nic',     logged:true },
+  { date:'21 Feb 2026', captain:'douchie', logged:true },
+  { date:'28 Feb 2026', captain:'charlie', logged:true },
+  { date:'07 Mar 2026', captain:'shannon', logged:true },
+  { date:'14 Mar 2026', captain:'nic',     logged:true },
+  { date:'21 Mar 2026', captain:'douchie', logged:true },
+  { date:'28 Mar 2026', captain:'charlie', logged:true },
+  { date:'04 Apr 2026', captain:'shannon', logged:true },
+  { date:'11 Apr 2026', captain:'nic',     logged:true, noBet:true },
+  { date:'18 Apr 2026', captain:'douchie', logged:true },
+  { date:'25 Apr 2026', captain:'charlie', logged:true },
+  { date:'02 May 2026', captain:'shannon', logged:true },
+  { date:'09 May 2026', captain:'nic',     logged:true, noBet:true },
+  { date:'16 May 2026', captain:'douchie', logged:true },
+  { date:'23 May 2026', captain:'charlie', logged:true },
+  { date:'30 May 2026', captain:'shannon', logged:true },
+  { date:'06 Jun 2026', captain:'nic',     logged:true },
+  { date:'13 Jun 2026', captain:'douchie', logged:true },
+  { date:'20 Jun 2026', captain:'charlie', logged:true },
+  { date:'27 Jun 2026', captain:'shannon', logged:false },
+  { date:'04 Jul 2026', captain:'nic',     logged:true },
+  { date:'11 Jul 2026', captain:'douchie', logged:false },
+  { date:'18 Jul 2026', captain:'charlie', logged:false },
+  { date:'25 Jul 2026', captain:'shannon', logged:false },
+  { date:'01 Aug 2026', captain:'nic',     logged:false },
+  { date:'08 Aug 2026', captain:'douchie', logged:false },
+  { date:'15 Aug 2026', captain:'charlie', logged:false },
+  { date:'22 Aug 2026', captain:'shannon', logged:false },
+  { date:'29 Aug 2026', captain:'nic',     logged:false },
+  { date:'05 Sep 2026', captain:'douchie', logged:false },
+  { date:'12 Sep 2026', captain:'charlie', logged:false },
+  { date:'19 Sep 2026', captain:'shannon', logged:false },
+  { date:'26 Sep 2026', captain:'nic',     logged:false },
+  { date:'03 Oct 2026', captain:'douchie', logged:false },
+  { date:'10 Oct 2026', captain:'charlie', logged:false },
+  { date:'17 Oct 2026', captain:'shannon', logged:false },
+  { date:'24 Oct 2026', captain:'nic',     logged:false },
+  { date:'31 Oct 2026', captain:'douchie', logged:false },
+  { date:'07 Nov 2026', captain:'charlie', logged:false },
+  { date:'14 Nov 2026', captain:'shannon', logged:false },
+  { date:'21 Nov 2026', captain:'nic',     logged:false },
+  { date:'28 Nov 2026', captain:'douchie', logged:false },
+  { date:'05 Dec 2026', captain:'charlie', logged:false },
+  { date:'12 Dec 2026', captain:'shannon', logged:false },
+  { date:'19 Dec 2026', captain:'nic',     logged:false }
+];
 
-  var MEMBER_BG = { 'Douchie':'#D6E4F0', 'Charlie':'#D5F5E3', 'Shannon':'#FAD7A0', 'Nic':'#E8DAEF' };
+const SAVINGS = [
+  { m:'charlie', paid:360, note:'Full year pre-paid', status:'paid' },
+  { m:'douchie', paid:360, note:'Full year pre-paid', status:'paid' },
+  { m:'nic',     paid:280, note:'$80 still outstanding', status:'partial' },
+  { m:'shannon', paid:0,   note:'$120 owed now (4 weeks behind)', status:'overdue' }
+];
+const SAVINGS_ANNUAL = 360;
 
-  var html = '<div style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--grey-text);margin-bottom:10px">🕐 Pending Bets</div>';
-
-  PENDING_BETS.forEach(function(bet) {
-    var accentBg = MEMBER_BG[bet.captain] || '#EFF6FF';
-    var legsHtml = '';
-    if (bet.legs && bet.legs.length) {
-      legsHtml = '<div style="margin-top:10px;border-top:1px solid rgba(0,0,0,0.07);padding-top:10px">'
-        + '<div style="font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--grey-text);margin-bottom:6px">Legs</div>'
-        + '<div style="display:flex;flex-wrap:wrap;gap:5px">'
-        + bet.legs.map(function(l, i) {
-            return '<span style="font-size:11px;background:#F0F4FF;color:#1D4ED8;border-radius:4px;padding:2px 8px;font-weight:600">' + (i+1) + '. ' + l + '</span>';
-          }).join('')
-        + '</div></div>';
-    }
-
-    html += '<div style="background:var(--white);border-radius:10px;padding:18px 22px;box-shadow:0 1px 4px rgba(0,0,0,0.06);border-left:4px solid #3B82F6">'
-      + '<div style="display:flex;align-items:flex-start;justify-content:space-between;gap:16px;flex-wrap:wrap">'
-      + '<div style="flex:1;min-width:180px">'
-      + '<div style="display:flex;align-items:center;gap:8px;margin-bottom:4px">'
-      + '<span style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;background:' + accentBg + ';color:var(--navy);padding:2px 10px;border-radius:20px">' + bet.captain + '</span>'
-      + '<span style="font-size:11px;color:var(--grey-text)">' + bet.date + '</span>'
-      + '</div>'
-      + '<div style="font-size:16px;font-weight:800;color:var(--navy);line-height:1.2">' + bet.event + '</div>'
-      + '<div style="font-size:12px;color:var(--grey-text);margin-top:3px">' + bet.details + '</div>'
-      + legsHtml
-      + '</div>'
-      + '<div style="display:flex;gap:20px;align-items:center;flex-shrink:0">'
-      + '<div style="text-align:center"><div style="font-size:10px;text-transform:uppercase;letter-spacing:1px;color:var(--grey-text);margin-bottom:2px">Odds</div><div style="font-size:18px;font-weight:800;color:var(--navy)">@' + bet.odds + '</div></div>'
-      + '<div style="text-align:center"><div style="font-size:10px;text-transform:uppercase;letter-spacing:1px;color:var(--grey-text);margin-bottom:2px">Stake</div><div style="font-size:18px;font-weight:800;color:var(--navy)">' + bet.stake + '</div></div>'
-      + '<div style="text-align:center"><div style="font-size:10px;text-transform:uppercase;letter-spacing:1px;color:var(--grey-text);margin-bottom:2px">Potential</div><div style="font-size:18px;font-weight:800;color:#1D4ED8">' + bet.potential + '</div></div>'
-      + '</div>'
-      + '</div>'
-      + '</div>';
-  });
-
-  widget.innerHTML = html;
-  widget.style.display = 'block';
-}
-
-function buildNextUp() {
-  var today = new Date();
-  today.setHours(0,0,0,0);
-  var upcoming = SCHEDULE.filter(function(s) {
-    var parts = s.date.split(' ');
-    var months = {Jan:0,Feb:1,Mar:2,Apr:3,May:4,Jun:5,Jul:6,Aug:7,Sep:8,Oct:9,Nov:10,Dec:11};
-    var d = new Date(parseInt(parts[2]), months[parts[1]], parseInt(parts[0]));
-    return d >= today;
-  });
-  var row = document.getElementById('next-up-row');
-  if (!row) return;
-  var MEMBER_BG = { 'Douchie':'#D6E4F0', 'Charlie':'#D5F5E3', 'Shannon':'#FAD7A0', 'Nic':'#E8DAEF' };
-  var html = '';
-  if (upcoming.length > 0) {
-    var next = upcoming[0];
-    var bg = MEMBER_BG[next.captain] || '#F2F4F7';
-    var parts = next.date.split(' ');
-    var months = {Jan:0,Feb:1,Mar:2,Apr:3,May:4,Jun:5,Jul:6,Aug:7,Sep:8,Oct:9,Nov:10,Dec:11};
-    var nextDate = new Date(parseInt(parts[2]), months[parts[1]], parseInt(parts[0]));
-    var diff = Math.round((nextDate - today) / (1000*60*60*24));
-    var daysLabel = diff === 0 ? '🎯 Today!' : diff === 1 ? 'Tomorrow' : 'In ' + diff + ' days';
-    html += '<div style="flex:1;min-width:220px;background:' + bg + ';border-radius:10px;padding:18px 22px;border:2px solid rgba(0,0,0,0.06)">'
-      + '<div style="font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--grey-text);margin-bottom:8px">🎲 Next Up</div>'
-      + '<div style="font-size:26px;font-weight:900;text-transform:uppercase;letter-spacing:1px;color:var(--navy);line-height:1">' + next.captain + '</div>'
-      + '<div style="font-size:13px;color:var(--navy);margin-top:6px;font-weight:600">' + next.date + '</div>'
-      + '<div style="font-size:12px;color:var(--grey-text);margin-top:3px">' + daysLabel + '</div>'
-      + '</div>';
-    if (upcoming.length > 1) {
-      var after = upcoming[1];
-      html += '<div style="flex:1;min-width:180px;background:var(--white);border-radius:10px;padding:18px 22px;border:2px solid var(--grey-line)">'
-        + '<div style="font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--grey-text);margin-bottom:8px">Then</div>'
-        + '<div style="font-size:20px;font-weight:900;text-transform:uppercase;letter-spacing:1px;color:var(--navy);line-height:1">' + after.captain + '</div>'
-        + '<div style="font-size:13px;color:var(--grey-text);margin-top:6px">' + after.date + '</div>'
-        + '</div>';
-    }
-  }
-  row.innerHTML = html;
-}
-
-function showPage(id) {
-  document.querySelectorAll('.page').forEach(function(p) { p.classList.remove('active'); });
-  document.querySelectorAll('.nav-tab').forEach(function(t) { t.classList.remove('active'); });
-  document.getElementById('page-' + id).classList.add('active');
-  var order = ['home','leaderboard','account'];
-  var idx = order.indexOf(id);
-  var tabs = document.querySelectorAll('.nav-tab');
-  var memberPages = ['charlie','shannon','douchie','nic'];
-  var activeIdx = memberPages.indexOf(id) >= 0 ? order.indexOf('leaderboard') : idx;
-  if (activeIdx >= 0) {
-    tabs[activeIdx].classList.add('active');
-    var nav = document.getElementById('main-nav');
-    var tab = tabs[activeIdx];
-    if (nav && tab) {
-      nav.scrollTo({ left: tab.offsetLeft - nav.offsetWidth/2 + tab.offsetWidth/2, behavior: 'smooth' });
-    }
-  }
-  updateNavFade();
-  window.scrollTo(0, 0);
-  if (id === 'home') { buildNextUp(); buildPendingBets(); }
-}
-
-function updateNavFade() {
-  var nav = document.getElementById('main-nav');
-  var fade = document.getElementById('nav-fade');
-  if (!nav || !fade) return;
-  var atEnd = nav.scrollLeft + nav.offsetWidth >= nav.scrollWidth - 4;
-  fade.style.display = atEnd ? 'none' : 'block';
-}
-
-window.addEventListener('load', function() {
-  var nav = document.getElementById('main-nav');
-  if (nav) nav.addEventListener('scroll', updateNavFade);
-  updateNavFade();
-});
-
-buildNextUp();
-buildPendingBets();
-</script>
-</body>
-</html
-      <!-- Pundicci Post News Feed -->
-      <div style="margin-bottom:24px">
-        <div style="display:flex;align-items:baseline;gap:12px;margin-bottom:14px">
-          <div style="font-size:20px;font-weight:900;letter-spacing:2px;text-transform:uppercase;color:var(--navy);font-family:Georgia,serif;border-bottom:3px solid var(--navy);padding-bottom:4px">The Pundicci Post</div>
-          <div style="font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--grey-text)">Authoritative Coverage · 2026 Season</div>
-        </div>
-        <div style="display:flex;flex-direction:column">
-
-          <!-- 04 Jul 2026 · Nic · PENDING -->
-          <div style="display:flex;gap:16px">
-            <div style="display:flex;flex-direction:column;align-items:center;width:14px;flex-shrink:0">
-              <div style="width:12px;height:12px;border-radius:50%;background:#1D4ED8;flex-shrink:0;margin-top:3px"></div>
-              <div style="width:1px;flex:1;background:var(--grey-line);margin-top:4px"></div>
-            </div>
-            <div style="flex:1;padding-bottom:28px">
-              <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">
-                <span style="background:#EFF6FF;color:#1D4ED8;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:3px 8px;border-radius:12px">&#128336; Pending</span>
-                <span style="font-size:11px;color:var(--grey-text);font-weight:600">04 Jul 2026 &nbsp;&middot;&nbsp; Nic</span>
-              </div>
-              <div style="font-size:15px;font-weight:800;color:var(--navy);line-height:1.3;margin-bottom:5px;font-family:Georgia,serif">Nic Puts Fate Back in Queensland's Hands. Queensland Has Done This Before.</div>
-              <div style="font-size:11px;font-weight:700;color:var(--grey-text);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px">By our Rugby League &amp; Recurring Trauma Desk</div>
-              <div style="font-size:13px;color:#374151;line-height:1.65">Exactly twenty-eight days ago, Nic watched a five-leg multi unravel in the final seconds of State of Origin Game 2. The culprit was Queensland. Nic has apparently reflected on this experience and concluded that the correct response is to do it again.<br><br>Three legs down, three legs won. New Zealand, Ireland, and South Africa all cooperated. The multi sits at 3.41, the stake is $30, and $102.30 is a single rugby league match away. That match is Queensland versus New South Wales. On Tuesday. In State of Origin. The Pundicci Post will report back.</div>
-            </div>
-          </div>
-
-          <!-- 30 Jun 2026 · Investigative Report -->
-          <div style="display:flex;gap:16px">
-            <div style="display:flex;flex-direction:column;align-items:center;width:14px;flex-shrink:0">
-              <div style="width:12px;height:12px;border-radius:50%;background:#92400E;flex-shrink:0;margin-top:3px"></div>
-              <div style="width:1px;flex:1;background:var(--grey-line);margin-top:4px"></div>
-            </div>
-            <div style="flex:1;padding-bottom:28px">
-              <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">
-                <span style="background:#FEF3C7;color:#92400E;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:3px 8px;border-radius:12px">&#128202; Investigative Report</span>
-                <span style="font-size:11px;color:var(--grey-text);font-weight:600">30 Jun 2026 &nbsp;&middot;&nbsp; The Post</span>
-              </div>
-              <div style="font-size:15px;font-weight:800;color:var(--navy);line-height:1.3;margin-bottom:5px;font-family:Georgia,serif">"We Should Have Bought Bitcoin." We Checked. It's Complicated.</div>
-              <div style="font-size:11px;font-weight:700;color:var(--grey-text);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px">By our Cryptocurrency &amp; Accountability Desk</div>
-              <div style="font-size:13px;color:#374151;line-height:1.65;margin-bottom:14px">For approximately three years, a member of the Pundicci Investment Collective &mdash; who shall remain unnamed, but whose initials are consistent with a man who has bet three times, won once, and currently owes the collective two outstanding captain weeks &mdash; has maintained a consistent position: <em>"We should have put it all in Bitcoin."</em><br><br>The Pundicci Post has conducted a thorough three-year retrospective. At its peak in Q3 2025, the hypothetical Bitcoin portfolio would have reached <strong>$10,527</strong>. This is the figure our unnamed source has been referencing. He has not, however, been referencing what happened next. Bitcoin declined. Then declined further. The portfolio now sits at <strong>$6,074</strong> &mdash; a fall of 42% from peak. The actual PIC pool stands at <strong>$6,822</strong>. The collective, through the disciplined application of horse racing and rugby league multis, is currently <em>ahead of Bitcoin</em>. The unnamed member was unavailable for comment.</div>
-              <div style="font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--grey-text);margin-bottom:8px">3-Year Portfolio Comparison — Jan 2023 to Jun 2026 (AUD)</div>
-              <svg viewBox="0 0 620 260" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:560px">
+const ARTICLES = [
+  { tag:'Pending', tagClass:'tag-pending', date:'04 Jul 2026', who:'Nic',
+    title:"Nic Puts Fate Back in Queensland's Hands. Queensland Has Done This Before.",
+    byline:'By our Rugby League & Recurring Trauma Desk',
+    body:`Exactly twenty-eight days ago, Nic watched a five-leg multi unravel in the final seconds of State of Origin Game 2. The culprit was Queensland. Nic has apparently reflected on this experience and concluded that the correct response is to do it again.<br><br>Three legs down, three legs won. New Zealand, Ireland, and South Africa all cooperated. The multi sits at 3.41, the stake is $30, and $102.30 is a single rugby league match away. That match is Queensland versus New South Wales. On Tuesday. In State of Origin. The Pundicci Post will report back.` },
+  { tag:'Investigative Report', tagClass:'tag-editorial', date:'30 Jun 2026', who:'The Post',
+    title:'"We Should Have Bought Bitcoin." We Checked. It\'s Complicated.',
+    byline:'By our Cryptocurrency & Accountability Desk',
+    body:`For approximately three years, a member of the Pundicci Investment Collective &mdash; who shall remain unnamed, but whose initials are consistent with a man who has bet three times, won once, and currently owes the collective two outstanding captain weeks &mdash; has maintained a consistent position: <em>"We should have put it all in Bitcoin."</em><br><br>The Pundicci Post has conducted a thorough three-year retrospective. At its peak in Q3 2025, the hypothetical Bitcoin portfolio would have reached <strong>$10,527</strong>. This is the figure our unnamed source has been referencing. He has not, however, been referencing what happened next. Bitcoin declined. Then declined further. The portfolio now sits at <strong>$6,074</strong> &mdash; a fall of 42% from peak. The actual PIC pool stands at <strong>$6,822</strong>. The collective, through the disciplined application of horse racing and rugby league multis, is currently <em>ahead of Bitcoin</em>. The unnamed member was unavailable for comment.`,
+    extra:`<div class="chart-label">3-Year Portfolio Comparison — Jan 2023 to Jun 2026 (AUD)</div>
+<svg viewBox="0 0 620 260" xmlns="http://www.w3.org/2000/svg">
   <line x1="58" y1="167.5" x2="600" y2="167.5" stroke="#E5E7EB" stroke-width="1"/><text x="52" y="171.5" font-size="9" fill="#9CA3AF" text-anchor="end">$3k</text><line x1="58" y1="120.0" x2="600" y2="120.0" stroke="#E5E7EB" stroke-width="1"/><text x="52" y="124.0" font-size="9" fill="#9CA3AF" text-anchor="end">$6k</text><line x1="58" y1="72.5" x2="600" y2="72.5" stroke="#E5E7EB" stroke-width="1"/><text x="52" y="76.5" font-size="9" fill="#9CA3AF" text-anchor="end">$9k</text><line x1="58" y1="25.0" x2="600" y2="25.0" stroke="#E5E7EB" stroke-width="1"/><text x="52" y="29.0" font-size="9" fill="#9CA3AF" text-anchor="end">$12k</text>
   <line x1="58" y1="215" x2="600" y2="215" stroke="#D1D5DB" stroke-width="1"/>
-  <text x="58.0" y="229" font-size="8.5" fill="#6B7280" text-anchor="middle">Q1&#39;23</text><text x="141.4" y="229" font-size="8.5" fill="#6B7280" text-anchor="middle">Q3&#39;23</text><text x="224.8" y="229" font-size="8.5" fill="#6B7280" text-anchor="middle">Q1&#39;24</text><text x="308.2" y="229" font-size="8.5" fill="#6B7280" text-anchor="middle">Q3&#39;24</text><text x="391.5" y="229" font-size="8.5" fill="#6B7280" text-anchor="middle">Q1&#39;25</text><text x="474.9" y="229" font-size="8.5" fill="#6B7280" text-anchor="middle">Q3&#39;25</text><text x="558.3" y="229" font-size="8.5" fill="#6B7280" text-anchor="middle">Q1&#39;26</text><text x="600.0" y="229" font-size="8.5" fill="#6B7280" text-anchor="middle">Q2&#39;26</text>
+  <text x="58.0" y="229" font-size="8.5" fill="#6B7280" text-anchor="middle">Q1'23</text><text x="141.4" y="229" font-size="8.5" fill="#6B7280" text-anchor="middle">Q3'23</text><text x="224.8" y="229" font-size="8.5" fill="#6B7280" text-anchor="middle">Q1'24</text><text x="308.2" y="229" font-size="8.5" fill="#6B7280" text-anchor="middle">Q3'24</text><text x="391.5" y="229" font-size="8.5" fill="#6B7280" text-anchor="middle">Q1'25</text><text x="474.9" y="229" font-size="8.5" fill="#6B7280" text-anchor="middle">Q3'25</text><text x="558.3" y="229" font-size="8.5" fill="#6B7280" text-anchor="middle">Q1'26</text><text x="600.0" y="229" font-size="8.5" fill="#6B7280" text-anchor="middle">Q2'26</text>
   <line x1="58" y1="107.0" x2="600" y2="107.0" stroke="#6366F1" stroke-width="1.5" stroke-dasharray="4,3"/>
   <text x="596" y="102.0" font-size="9" fill="#6366F1" text-anchor="end" font-weight="700">PIC Pool $6,822</text>
   <polyline points="58.0,208.8 99.7,202.7 141.4,196.5 183.1,190.3 224.8,184.1 266.5,177.9 308.2,171.8 349.8,165.6 391.5,159.4 433.2,153.2 474.9,147.1 516.6,140.9 558.3,134.7 600.0,128.6" fill="none" stroke="#9CA3AF" stroke-width="2" stroke-dasharray="5,3"/>
@@ -787,231 +596,446 @@ buildPendingBets();
   <line x1="368" y1="17" x2="386" y2="17" stroke="#6366F1" stroke-width="1.5" stroke-dasharray="4,3"/>
   <text x="390" y="21" font-size="9" fill="#6366F1">Actual PIC pool</text>
 </svg>
-              <div style="font-size:10px;color:#9CA3AF;margin-top:6px">Based on $30/wk DCA from Q1 2023. BTC/AUD quarterly average prices. Estimates only.</div>
-            </div>
-          </div>
+<div class="chart-note">Based on $30/wk DCA from Q1 2023. BTC/AUD quarterly average prices. Estimates only.</div>` },
+  { tag:'Editorial', tagClass:'tag-editorial', date:'30 Jun 2026', who:'The Post',
+    title:'Collective Constitution Under Strain as Members Lag on Bet Commitments',
+    byline:'By our Constitutional Affairs Editor',
+    body:`The Pundicci Investment Collective entered the second half of 2026 under a cloud this week, with multiple members yet to fulfil their betting obligations under the founding charter. Shannon, who carries one outstanding bet as captain, and Nic, who is understood to owe the collective <em>two</em> separate captain weeks, have both been referred to as "a concern" by sources familiar with the constitution. The Post has obtained no copy of the constitution. It is not clear a constitution exists. Nevertheless, the precedent being set is troubling. Senior collective figures declined to comment on whether formal sanctions &mdash; including but not limited to public shaming, forfeiture of snack privileges, and mandatory bet submission by end of week &mdash; are under consideration. Charlie, currently leading the leaderboard, described the situation as "unacceptable." Douchie nodded.` },
+  { tag:'Win', tagClass:'tag-win', date:'20 Jun 2026', who:'Charlie',
+    title:'"I Knew All Along," Claims Man Who Had Lost Four in a Row',
+    byline:'By our Racing Correspondent',
+    body:`Vegas Jack, a horse whose name suggests it had no business being at Flemington, romped home at 2.88 to deliver Charlie a tidy $86.40 return on Race 3. Witnesses confirm Charlie spent approximately forty minutes explaining his "place bet strategy" to Shannon, who had already stopped listening. "He's not wrong," admitted Douchie reluctantly.` },
+  { tag:'Loss', tagClass:'tag-loss', date:'13 Jun 2026', who:'Douchie',
+    title:'Source Confirms "Various Horses" Did Not Win',
+    byline:'By our Investigations Desk',
+    body:`The Pundicci Post can confirm that Douchie's June 13 wager, described in official records only as "Various Horses," did not return a profit. Which horses. How many horses. What races. These questions were not answered at time of press and, frankly, may never be answered. The $30 is gone. The horses remain various.` },
+  { tag:'Loss', tagClass:'tag-loss', date:'06 Jun 2026', who:'Nic',
+    title:'Five-Leg Multi Collapses. Queensland Blamed.',
+    byline:'By our State of Origin Analyst',
+    body:`Nic's June multi required the Crusaders, Broncos, Panthers, Bulldogs, and Queensland in State of Origin to all cooperate. Four of them did. The fifth leg &mdash; the one involving seventeen men from Queensland and the concept of "Origin pride" &mdash; had other ideas. The $30 was lost. Nic has not confirmed which leg killed it, which tells you everything about which leg killed it.` },
+  { tag:'Loss', tagClass:'tag-loss', date:'30 May 2026', who:'Shannon',
+    title:'Brave Monarch Neither Brave Nor Monarchical, Finishes Somewhere Else',
+    byline:'By our Eagle Farm Bureau',
+    body:`Eagle Farm Race 6 promised much. At 3.90 odds, Brave Monarch represented Shannon's bid to extend his winning record. The horse, however, interpreted the phrase "brave monarch" as an aspiration rather than a directive, and declined to finish in a position that paid money. Shannon has since opted not to discuss it. This article exists anyway.` },
+  { tag:'Loss', tagClass:'tag-loss', date:'23 May 2026', who:'Charlie',
+    title:'Nine-Leg SGM Survives Eight Legs, Immediately Dies on Ninth',
+    byline:'By our Same Game Multi Correspondent',
+    body:`At odds of 11.75, Charlie's nine-leg Carlton v Geelong same-game multi required Brodie Kemp to kick one goal. Brodie Kemp did not kick one goal. Kemp, reached for comment, was unavailable as he was presumably doing anything other than kicking a goal. The potential payout of $117.50 will never be mentioned in public again, though Charlie has mentioned it privately approximately forty times since.` },
+  { tag:'Win', tagClass:'tag-win', date:'25 Apr 2026', who:'Charlie',
+    title:'Local Man Submits Six-Part Bet on Anzac Day, Somehow Nails It',
+    byline:'By our Multi-Bet Analyst',
+    body:`In a move described by colleagues as "unnecessarily complicated," Charlie split his $30 across a Morphetville race winner and a four-leg AFL multi, collecting $111.05 in return. Staand Deel won Race 1. The Lions, Cats, and Swans all did exactly what Charlie said they would. St Kilda scored between one and thirty-nine points. "It was obvious," said Charlie.` },
+  { tag:'Win', tagClass:'tag-win', date:'04 Apr 2026', who:'Shannon',
+    title:'Joliestar Jolts the Collective as Shannon Finally Gets Off the Mark',
+    byline:'By our Randwick Correspondent',
+    body:`After two painful losses to open his 2026 campaign, Shannon turned to Randwick Race 7 and a 4.00-priced filly named Joliestar, who duly obliged and returned $120. Shannon accepted congratulations with the quiet dignity of someone who had been hearing "maybe next week" for two months straight. Nic said "fair play." Douchie said nothing but looked uncomfortable.` },
+  { tag:'Win', tagClass:'tag-win', date:'14 Mar 2026', who:'Nic',
+    title:"Storm, Panthers, Reds: Nic's NRL Multi Pays Out, Nic Acts Surprised",
+    byline:'By our Rugby League Desk',
+    body:`Melbourne Storm, Penrith Panthers, and Queensland Reds all came through in the same weekend, delivering Nic a $71.25 return on a $30 outlay at odds of 2.37. Sources close to Nic report he "had a feeling." These same sources note Nic also had a feeling the week prior, when he lost. Statistically, this is how feelings work.` },
+  { tag:'Win', tagClass:'tag-win', date:'28 Feb 2026', who:'Charlie',
+    title:'Horse Named "Ahha Ahha" Wins Race, Collective Unsure How to React',
+    byline:'By our Chief Equine Correspondent',
+    body:`Flemington Race 8 produced scenes of mild chaos on Saturday when a horse named Ahha Ahha &mdash; a name best understood as the noise one makes upon reading the name &mdash; cruised home at 5.50, handing Charlie $165 and a swagger that reportedly lasted the entire following week. "It's a great name," said Charlie. Nobody agreed but nobody could explain why not.` },
+  { tag:'Win', tagClass:'tag-win', date:'21 Feb 2026', who:'Douchie',
+    title:'Douchie Lands Flemington Quaddie in Season Opener, Immediately Squanders Moral High Ground',
+    byline:'By our Flemington Bureau',
+    body:`In the opening weeks of the 2026 PIC season, Douchie drew first blood with a Flemington Quaddie that returned $129.34 from a $30 stake. The collective's resident optimist chose not to dwell on the achievement &mdash; opting instead to immediately begin losing the next five bets in succession. Historians will note that this win represented 100% of Douchie's 2026 win rate.` },
+  { tag:'Loss', tagClass:'tag-loss', date:'Feb–Mar 2026', who:'Shannon',
+    title:'Shannon Opens Season with Back-to-Back Losses, Remains Calm',
+    byline:'By our Composure Correspondent',
+    body:`Shannon's 2026 campaign opened with losses in February and March, both recorded in the official ledger simply as "Bet Lost." What the bet was, what it was on, what hope existed &mdash; none of this is documented. What is documented is $60 gone and a composure maintained throughout that the rest of the collective found slightly unnerving. Shannon did not complain once, which is arguably worse.` },
+  { tag:'Loss', tagClass:'tag-loss', date:'Mar–May 2026', who:'Douchie',
+    title:'Douchie Loses Three Straight, Describes Self as "Due"',
+    byline:'By our Statistics Correspondent',
+    body:`Following his February Quaddie triumph, Douchie entered a run of form best described as sustained and comprehensive losing. March, April, and May each produced a loss, with Douchie noting after each one that he was "due for a big one." Mathematically speaking, being due is not a betting strategy. Douchie is aware of this. He remains due.` }
+];
 
-          <!-- 30 Jun 2026 · Editorial · SANCTIONS -->
-          <div style="display:flex;gap:16px">
-            <div style="display:flex;flex-direction:column;align-items:center;width:14px;flex-shrink:0">
-              <div style="width:12px;height:12px;border-radius:50%;background:#B45309;flex-shrink:0;margin-top:3px"></div>
-              <div style="width:1px;flex:1;background:var(--grey-line);margin-top:4px"></div>
-            </div>
-            <div style="flex:1;padding-bottom:28px">
-              <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">
-                <span style="background:#FEF3C7;color:#B45309;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:3px 8px;border-radius:12px">&#9888; Editorial</span>
-                <span style="font-size:11px;color:var(--grey-text);font-weight:600">30 Jun 2026 &nbsp;&middot;&nbsp; The Post</span>
-              </div>
-              <div style="font-size:15px;font-weight:800;color:var(--navy);line-height:1.3;margin-bottom:5px;font-family:Georgia,serif">Collective Constitution Under Strain as Members Lag on Bet Commitments</div>
-              <div style="font-size:11px;font-weight:700;color:var(--grey-text);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px">By our Constitutional Affairs Editor</div>
-              <div style="font-size:13px;color:#374151;line-height:1.65">The Pundicci Investment Collective entered the second half of 2026 under a cloud this week, with multiple members yet to fulfil their betting obligations under the founding charter. Shannon, who carries one outstanding bet as captain, and Nic, who is understood to owe the collective <em>two</em> separate captain weeks, have both been referred to as "a concern" by sources familiar with the constitution. The Post has obtained no copy of the constitution. It is not clear a constitution exists. Nevertheless, the precedent being set is troubling. Senior collective figures declined to comment on whether formal sanctions &mdash; including but not limited to public shaming, forfeiture of snack privileges, and mandatory bet submission by end of week &mdash; are under consideration. Charlie, currently leading the leaderboard, described the situation as "unacceptable." Douchie nodded.</div>
-            </div>
-          </div>
+/* ══════════════════════════════════════════════════════════════
+   HELPERS
+   ══════════════════════════════════════════════════════════════ */
+const MONTHS = { Jan:0, Feb:1, Mar:2, Apr:3, May:4, Jun:5, Jul:6, Aug:7, Sep:8, Oct:9, Nov:10, Dec:11 };
+function parseDate(s) { const p = s.split(' '); return new Date(+p[2], MONTHS[p[1]], +p[0]); }
+function money(n, sign) {
+  const abs = Math.abs(n);
+  const str = '$' + abs.toLocaleString('en-AU', { minimumFractionDigits:2, maximumFractionDigits:2 });
+  if (sign) return (n >= 0 ? '+' : '-') + str;
+  return (n < 0 ? '-' : '') + str;
+}
+function memberStats(id) {
+  const bets = BETS.filter(b => b.m === id);
+  const staked = bets.reduce((a,b) => a + b.stake, 0);
+  const ret = bets.reduce((a,b) => a + b.ret, 0);
+  const wins = bets.filter(b => b.result === 'W').length;
+  const losses = bets.length - wins;
+  return { bets, staked, ret, net: ret - staked, wins, losses,
+           winRate: bets.length ? Math.round(wins / bets.length * 100) : 0 };
+}
+function rankedMembers() {
+  return Object.keys(MEMBERS)
+    .map(id => ({ id, ...memberStats(id) }))
+    .sort((a,b) => b.net - a.net);
+}
+function animateNumber(el, target, opts) {
+  opts = opts || {};
+  const dur = opts.dur || 1400, start = performance.now();
+  function frame(t) {
+    const p = Math.min((t - start) / dur, 1);
+    const eased = 1 - Math.pow(1 - p, 3);
+    el.textContent = money(target * eased, opts.sign);
+    if (p < 1) requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+}
 
-          <!-- 20 Jun 2026 · Charlie · WIN -->
-          <div style="display:flex;gap:16px">
-            <div style="display:flex;flex-direction:column;align-items:center;width:14px;flex-shrink:0">
-              <div style="width:12px;height:12px;border-radius:50%;background:#15803D;flex-shrink:0;margin-top:3px"></div>
-              <div style="width:1px;flex:1;background:var(--grey-line);margin-top:4px"></div>
-            </div>
-            <div style="flex:1;padding-bottom:28px">
-              <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">
-                <span style="background:#DCFCE7;color:#15803D;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:3px 8px;border-radius:12px">Win</span>
-                <span style="font-size:11px;color:var(--grey-text);font-weight:600">20 Jun 2026 &nbsp;&middot;&nbsp; Charlie</span>
-              </div>
-              <div style="font-size:15px;font-weight:800;color:var(--navy);line-height:1.3;margin-bottom:5px;font-family:Georgia,serif">"I Knew All Along," Claims Man Who Had Lost Four in a Row</div>
-              <div style="font-size:11px;font-weight:700;color:var(--grey-text);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px">By our Racing Correspondent</div>
-              <div style="font-size:13px;color:#374151;line-height:1.65">Vegas Jack, a horse whose name suggests it had no business being at Flemington, romped home at 2.88 to deliver Charlie a tidy $86.40 return on Race 3. Witnesses confirm Charlie spent approximately forty minutes explaining his "place bet strategy" to Shannon, who had already stopped listening. "He's not wrong," admitted Douchie reluctantly.</div>
-            </div>
-          </div>
+/* ══════════════════════════════════════════════════════════════
+   RENDER — Ticker
+   ══════════════════════════════════════════════════════════════ */
+function buildTicker() {
+  const items = [];
+  PENDING_BETS.forEach(p => {
+    const m = MEMBERS[p.captain];
+    items.push(`<div class="tick"><b>${m.name}</b> ${p.event} <span class="pend">LIVE · 3 OF 4 LEGS ✓</span></div>`);
+  });
+  [...BETS].reverse().forEach(b => {
+    const m = MEMBERS[b.m];
+    const net = b.ret - b.stake;
+    items.push(`<div class="tick">${b.date.slice(0,6).toUpperCase()} <b>${m.name}</b> ${b.result === 'W' ? '<span class="up">WIN ' + money(net, true) + '</span>' : '<span class="down">LOSS ' + money(net, true) + '</span>'}</div>`);
+  });
+  const half = items.join('');
+  document.getElementById('ticker').innerHTML = half + half; /* duplicated for seamless loop */
+}
 
-          <!-- 13 Jun 2026 · Douchie · LOSS -->
-          <div style="display:flex;gap:16px">
-            <div style="display:flex;flex-direction:column;align-items:center;width:14px;flex-shrink:0">
-              <div style="width:12px;height:12px;border-radius:50%;background:#DC2626;flex-shrink:0;margin-top:3px"></div>
-              <div style="width:1px;flex:1;background:var(--grey-line);margin-top:4px"></div>
-            </div>
-            <div style="flex:1;padding-bottom:28px">
-              <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">
-                <span style="background:#FEE2E2;color:#DC2626;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:3px 8px;border-radius:12px">Loss</span>
-                <span style="font-size:11px;color:var(--grey-text);font-weight:600">13 Jun 2026 &nbsp;&middot;&nbsp; Douchie</span>
-              </div>
-              <div style="font-size:15px;font-weight:800;color:var(--navy);line-height:1.3;margin-bottom:5px;font-family:Georgia,serif">Source Confirms "Various Horses" Did Not Win</div>
-              <div style="font-size:11px;font-weight:700;color:var(--grey-text);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px">By our Investigations Desk</div>
-              <div style="font-size:13px;color:#374151;line-height:1.65">The Pundicci Post can confirm that Douchie's June 13 wager, described in official records only as "Various Horses," did not return a profit. Which horses. How many horses. What races. These questions were not answered at time of press and, frankly, may never be answered. The $30 is gone. The horses remain various.</div>
-            </div>
-          </div>
+/* ══════════════════════════════════════════════════════════════
+   RENDER — Home
+   ══════════════════════════════════════════════════════════════ */
+function buildHome() {
+  const totalNet = BETS.reduce((a,b) => a + (b.ret - b.stake), 0);
+  animateNumber(document.getElementById('hero-balance'), BALANCE.current);
+  animateNumber(document.getElementById('hero-returns'), BALANCE.betReturns2026, { sign:true });
+  animateNumber(document.getElementById('hero-net'), totalNet, { sign:true });
 
-          <!-- 06 Jun 2026 · Nic · LOSS -->
-          <div style="display:flex;gap:16px">
-            <div style="display:flex;flex-direction:column;align-items:center;width:14px;flex-shrink:0">
-              <div style="width:12px;height:12px;border-radius:50%;background:#DC2626;flex-shrink:0;margin-top:3px"></div>
-              <div style="width:1px;flex:1;background:var(--grey-line);margin-top:4px"></div>
-            </div>
-            <div style="flex:1;padding-bottom:28px">
-              <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">
-                <span style="background:#FEE2E2;color:#DC2626;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:3px 8px;border-radius:12px">Loss</span>
-                <span style="font-size:11px;color:var(--grey-text);font-weight:600">06 Jun 2026 &nbsp;&middot;&nbsp; Nic</span>
-              </div>
-              <div style="font-size:15px;font-weight:800;color:var(--navy);line-height:1.3;margin-bottom:5px;font-family:Georgia,serif">Five-Leg Multi Collapses. Queensland Blamed.</div>
-              <div style="font-size:11px;font-weight:700;color:var(--grey-text);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px">By our State of Origin Analyst</div>
-              <div style="font-size:13px;color:#374151;line-height:1.65">Nic's June multi required the Crusaders, Broncos, Panthers, Bulldogs, and Queensland in State of Origin to all cooperate. Four of them did. The fifth leg &mdash; the one involving seventeen men from Queensland and the concept of "Origin pride" &mdash; had other ideas. The $30 was lost. Nic has not confirmed which leg killed it, which tells you everything about which leg killed it.</div>
-            </div>
-          </div>
+  /* season progress */
+  const done = SCHEDULE.filter(s => s.logged).length;
+  const total = SCHEDULE.length;
+  document.getElementById('progress-text').textContent = `Week ${done} of ${total} · ${Math.round(done/total*100)}% complete`;
+  setTimeout(() => { document.getElementById('progress-fill').style.width = (done/total*100) + '%'; }, 150);
 
-          <!-- 30 May 2026 · Shannon · LOSS -->
-          <div style="display:flex;gap:16px">
-            <div style="display:flex;flex-direction:column;align-items:center;width:14px;flex-shrink:0">
-              <div style="width:12px;height:12px;border-radius:50%;background:#DC2626;flex-shrink:0;margin-top:3px"></div>
-              <div style="width:1px;flex:1;background:var(--grey-line);margin-top:4px"></div>
-            </div>
-            <div style="flex:1;padding-bottom:28px">
-              <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">
-                <span style="background:#FEE2E2;color:#DC2626;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:3px 8px;border-radius:12px">Loss</span>
-                <span style="font-size:11px;color:var(--grey-text);font-weight:600">30 May 2026 &nbsp;&middot;&nbsp; Shannon</span>
-              </div>
-              <div style="font-size:15px;font-weight:800;color:var(--navy);line-height:1.3;margin-bottom:5px;font-family:Georgia,serif">Brave Monarch Neither Brave Nor Monarchical, Finishes Somewhere Else</div>
-              <div style="font-size:11px;font-weight:700;color:var(--grey-text);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px">By our Eagle Farm Bureau</div>
-              <div style="font-size:13px;color:#374151;line-height:1.65">Eagle Farm Race 6 promised much. At 3.90 odds, Brave Monarch represented Shannon's bid to extend his winning record. The horse, however, interpreted the phrase "brave monarch" as an aspiration rather than a directive, and declined to finish in a position that paid money. Shannon has since opted not to discuss it. This article exists anyway.</div>
-            </div>
-          </div>
+  buildPending();
+  buildDuty();
+  buildPoolChart();
+}
 
-          <!-- 23 May 2026 · Charlie · LOSS -->
-          <div style="display:flex;gap:16px">
-            <div style="display:flex;flex-direction:column;align-items:center;width:14px;flex-shrink:0">
-              <div style="width:12px;height:12px;border-radius:50%;background:#DC2626;flex-shrink:0;margin-top:3px"></div>
-              <div style="width:1px;flex:1;background:var(--grey-line);margin-top:4px"></div>
-            </div>
-            <div style="flex:1;padding-bottom:28px">
-              <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">
-                <span style="background:#FEE2E2;color:#DC2626;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:3px 8px;border-radius:12px">Loss</span>
-                <span style="font-size:11px;color:var(--grey-text);font-weight:600">23 May 2026 &nbsp;&middot;&nbsp; Charlie</span>
-              </div>
-              <div style="font-size:15px;font-weight:800;color:var(--navy);line-height:1.3;margin-bottom:5px;font-family:Georgia,serif">Nine-Leg SGM Survives Eight Legs, Immediately Dies on Ninth</div>
-              <div style="font-size:11px;font-weight:700;color:var(--grey-text);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px">By our Same Game Multi Correspondent</div>
-              <div style="font-size:13px;color:#374151;line-height:1.65">At odds of 11.75, Charlie's nine-leg Carlton v Geelong same-game multi required Brodie Kemp to kick one goal. Brodie Kemp did not kick one goal. Kemp, reached for comment, was unavailable as he was presumably doing anything other than kicking a goal. The potential payout of $117.50 will never be mentioned in public again, though Charlie has mentioned it privately approximately forty times since.</div>
-            </div>
-          </div>
-
-          <!-- 25 Apr 2026 · Charlie · WIN -->
-          <div style="display:flex;gap:16px">
-            <div style="display:flex;flex-direction:column;align-items:center;width:14px;flex-shrink:0">
-              <div style="width:12px;height:12px;border-radius:50%;background:#15803D;flex-shrink:0;margin-top:3px"></div>
-              <div style="width:1px;flex:1;background:var(--grey-line);margin-top:4px"></div>
-            </div>
-            <div style="flex:1;padding-bottom:28px">
-              <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">
-                <span style="background:#DCFCE7;color:#15803D;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:3px 8px;border-radius:12px">Win</span>
-                <span style="font-size:11px;color:var(--grey-text);font-weight:600">25 Apr 2026 &nbsp;&middot;&nbsp; Charlie</span>
-              </div>
-              <div style="font-size:15px;font-weight:800;color:var(--navy);line-height:1.3;margin-bottom:5px;font-family:Georgia,serif">Local Man Submits Six-Part Bet on Anzac Day, Somehow Nails It</div>
-              <div style="font-size:11px;font-weight:700;color:var(--grey-text);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px">By our Multi-Bet Analyst</div>
-              <div style="font-size:13px;color:#374151;line-height:1.65">In a move described by colleagues as "unnecessarily complicated," Charlie split his $30 across a Morphetville race winner and a four-leg AFL multi, collecting $111.05 in return. Staand Deel won Race 1. The Lions, Cats, and Swans all did exactly what Charlie said they would. St Kilda scored between one and thirty-nine points. "It was obvious," said Charlie.</div>
-            </div>
-          </div>
-
-          <!-- 04 Apr 2026 · Shannon · WIN -->
-          <div style="display:flex;gap:16px">
-            <div style="display:flex;flex-direction:column;align-items:center;width:14px;flex-shrink:0">
-              <div style="width:12px;height:12px;border-radius:50%;background:#15803D;flex-shrink:0;margin-top:3px"></div>
-              <div style="width:1px;flex:1;background:var(--grey-line);margin-top:4px"></div>
-            </div>
-            <div style="flex:1;padding-bottom:28px">
-              <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">
-                <span style="background:#DCFCE7;color:#15803D;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:3px 8px;border-radius:12px">Win</span>
-                <span style="font-size:11px;color:var(--grey-text);font-weight:600">04 Apr 2026 &nbsp;&middot;&nbsp; Shannon</span>
-              </div>
-              <div style="font-size:15px;font-weight:800;color:var(--navy);line-height:1.3;margin-bottom:5px;font-family:Georgia,serif">Joliestar Jolts the Collective as Shannon Finally Gets Off the Mark</div>
-              <div style="font-size:11px;font-weight:700;color:var(--grey-text);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px">By our Randwick Correspondent</div>
-              <div style="font-size:13px;color:#374151;line-height:1.65">After two painful losses to open his 2026 campaign, Shannon turned to Randwick Race 7 and a 4.00-priced filly named Joliestar, who duly obliged and returned $120. Shannon accepted congratulations with the quiet dignity of someone who had been hearing "maybe next week" for two months straight. Nic said "fair play." Douchie said nothing but looked uncomfortable.</div>
-            </div>
-          </div>
-
-          <!-- 14 Mar 2026 · Nic · WIN -->
-          <div style="display:flex;gap:16px">
-            <div style="display:flex;flex-direction:column;align-items:center;width:14px;flex-shrink:0">
-              <div style="width:12px;height:12px;border-radius:50%;background:#15803D;flex-shrink:0;margin-top:3px"></div>
-              <div style="width:1px;flex:1;background:var(--grey-line);margin-top:4px"></div>
-            </div>
-            <div style="flex:1;padding-bottom:28px">
-              <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">
-                <span style="background:#DCFCE7;color:#15803D;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:3px 8px;border-radius:12px">Win</span>
-                <span style="font-size:11px;color:var(--grey-text);font-weight:600">14 Mar 2026 &nbsp;&middot;&nbsp; Nic</span>
-              </div>
-              <div style="font-size:15px;font-weight:800;color:var(--navy);line-height:1.3;margin-bottom:5px;font-family:Georgia,serif">Storm, Panthers, Reds: Nic's NRL Multi Pays Out, Nic Acts Surprised</div>
-              <div style="font-size:11px;font-weight:700;color:var(--grey-text);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px">By our Rugby League Desk</div>
-              <div style="font-size:13px;color:#374151;line-height:1.65">Melbourne Storm, Penrith Panthers, and Queensland Reds all came through in the same weekend, delivering Nic a $71.25 return on a $30 outlay at odds of 2.37. Sources close to Nic report he "had a feeling." These same sources note Nic also had a feeling the week prior, when he lost. Statistically, this is how feelings work.</div>
-            </div>
-          </div>
-
-          <!-- 28 Feb 2026 · Charlie · WIN -->
-          <div style="display:flex;gap:16px">
-            <div style="display:flex;flex-direction:column;align-items:center;width:14px;flex-shrink:0">
-              <div style="width:12px;height:12px;border-radius:50%;background:#15803D;flex-shrink:0;margin-top:3px"></div>
-              <div style="width:1px;flex:1;background:var(--grey-line);margin-top:4px"></div>
-            </div>
-            <div style="flex:1;padding-bottom:28px">
-              <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">
-                <span style="background:#DCFCE7;color:#15803D;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:3px 8px;border-radius:12px">Win</span>
-                <span style="font-size:11px;color:var(--grey-text);font-weight:600">28 Feb 2026 &nbsp;&middot;&nbsp; Charlie</span>
-              </div>
-              <div style="font-size:15px;font-weight:800;color:var(--navy);line-height:1.3;margin-bottom:5px;font-family:Georgia,serif">Horse Named "Ahha Ahha" Wins Race, Collective Unsure How to React</div>
-              <div style="font-size:11px;font-weight:700;color:var(--grey-text);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px">By our Chief Equine Correspondent</div>
-              <div style="font-size:13px;color:#374151;line-height:1.65">Flemington Race 8 produced scenes of mild chaos on Saturday when a horse named Ahha Ahha &mdash; a name best understood as the noise one makes upon reading the name &mdash; cruised home at 5.50, handing Charlie $165 and a swagger that reportedly lasted the entire following week. "It's a great name," said Charlie. Nobody agreed but nobody could explain why not.</div>
-            </div>
-          </div>
-
-          <!-- 21 Feb 2026 · Douchie · WIN -->
-          <div style="display:flex;gap:16px">
-            <div style="display:flex;flex-direction:column;align-items:center;width:14px;flex-shrink:0">
-              <div style="width:12px;height:12px;border-radius:50%;background:#15803D;flex-shrink:0;margin-top:3px"></div>
-              <div style="width:1px;flex:1;background:var(--grey-line);margin-top:4px"></div>
-            </div>
-            <div style="flex:1;padding-bottom:28px">
-              <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">
-                <span style="background:#DCFCE7;color:#15803D;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:3px 8px;border-radius:12px">Win</span>
-                <span style="font-size:11px;color:var(--grey-text);font-weight:600">21 Feb 2026 &nbsp;&middot;&nbsp; Douchie</span>
-              </div>
-              <div style="font-size:15px;font-weight:800;color:var(--navy);line-height:1.3;margin-bottom:5px;font-family:Georgia,serif">Douchie Lands Flemington Quaddie in Season Opener, Immediately Squanders Moral High Ground</div>
-              <div style="font-size:11px;font-weight:700;color:var(--grey-text);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px">By our Flemington Bureau</div>
-              <div style="font-size:13px;color:#374151;line-height:1.65">In the opening weeks of the 2026 PIC season, Douchie drew first blood with a Flemington Quaddie that returned $129.34 from a $30 stake. The collective's resident optimist chose not to dwell on the achievement &mdash; opting instead to immediately begin losing the next five bets in succession. Historians will note that this win represented 100% of Douchie's 2026 win rate.</div>
-            </div>
-          </div>
-
-          <!-- Feb–Mar 2026 · Shannon · LOSS (composite) -->
-          <div style="display:flex;gap:16px">
-            <div style="display:flex;flex-direction:column;align-items:center;width:14px;flex-shrink:0">
-              <div style="width:12px;height:12px;border-radius:50%;background:#DC2626;flex-shrink:0;margin-top:3px"></div>
-              <div style="width:1px;flex:1;background:var(--grey-line);margin-top:4px"></div>
-            </div>
-            <div style="flex:1;padding-bottom:28px">
-              <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">
-                <span style="background:#FEE2E2;color:#DC2626;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:3px 8px;border-radius:12px">Loss</span>
-                <span style="font-size:11px;color:var(--grey-text);font-weight:600">Feb&ndash;Mar 2026 &nbsp;&middot;&nbsp; Shannon</span>
-              </div>
-              <div style="font-size:15px;font-weight:800;color:var(--navy);line-height:1.3;margin-bottom:5px;font-family:Georgia,serif">Shannon Opens Season with Back-to-Back Losses, Remains Calm</div>
-              <div style="font-size:11px;font-weight:700;color:var(--grey-text);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px">By our Composure Correspondent</div>
-              <div style="font-size:13px;color:#374151;line-height:1.65">Shannon's 2026 campaign opened with losses in February and March, both recorded in the official ledger simply as "Bet Lost." What the bet was, what it was on, what hope existed &mdash; none of this is documented. What is documented is $60 gone and a composure maintained throughout that the rest of the collective found slightly unnerving. Shannon did not complain once, which is arguably worse.</div>
-            </div>
-          </div>
-
-          <!-- Mar–May 2026 · Douchie · LOSS (composite) — last item, no line -->
-          <div style="display:flex;gap:16px">
-            <div style="display:flex;flex-direction:column;align-items:center;width:14px;flex-shrink:0">
-              <div style="width:12px;height:12px;border-radius:50%;background:#DC2626;flex-shrink:0;margin-top:3px"></div>
-            </div>
-            <div style="flex:1;padding-bottom:8px">
-              <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">
-                <span style="background:#FEE2E2;color:#DC2626;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:3px 8px;border-radius:12px">Loss</span>
-                <span style="font-size:11px;color:var(--grey-text);font-weight:600">Mar&ndash;May 2026 &nbsp;&middot;&nbsp; Douchie</span>
-              </div>
-              <div style="font-size:15px;font-weight:800;color:var(--navy);line-height:1.3;margin-bottom:5px;font-family:Georgia,serif">Douchie Loses Three Straight, Describes Self as "Due"</div>
-              <div style="font-size:11px;font-weight:700;color:var(--grey-text);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px">By our Statistics Correspondent</div>
-              <div style="font-size:13px;color:#374151;line-height:1.65">Following his February Quaddie triumph, Douchie entered a run of form best described as sustained and comprehensive losing. March, April, and May each produced a loss, with Douchie noting after each one that he was "due for a big one." Mathematically speaking, being due is not a betting strategy. Douchie is aware of this. He remains due.</div>
-            </div>
-          </div>
-
+function buildPending() {
+  const el = document.getElementById('pending-widget');
+  if (!PENDING_BETS.length) {
+    el.innerHTML = '<div class="chart-card" style="text-align:center;color:var(--muted);font-size:13px;padding:26px">No bets currently pending settlement.</div>';
+    return;
+  }
+  el.innerHTML = PENDING_BETS.map(p => {
+    const m = MEMBERS[p.captain];
+    const legs = p.legs.map(l =>
+      `<span class="leg ${l.done ? 'done' : 'wait'}">${l.done ? '✓ ' : '⏳ '}${l.label}</span>`).join('');
+    return `<div class="pending-card">
+      <span class="pending-pulse">Pending Settlement</span>
+      <div class="pending-main">
+        <div style="flex:1;min-width:220px">
+          <div style="margin:6px 0 8px"><span class="member-chip" style="background:${m.hex}22;color:${m.hex};border:1px solid ${m.hex}55">${m.name}</span><span style="font-size:11px;color:var(--muted)">${p.date}</span></div>
+          <div class="pending-event">${p.event}</div>
+          <div class="pending-details">${p.details}</div>
         </div>
-      <!-- End Pundicci Post -->
+        <div class="pending-nums">
+          <div class="pnum"><div class="l">Odds</div><div class="v">@${p.odds}</div></div>
+          <div class="pnum"><div class="l">Stake</div><div class="v">${p.stake}</div></div>
+          <div class="pnum"><div class="l">Collect</div><div class="v blue">${p.potential}</div></div>
+        </div>
+      </div>
+      <div class="legs">${legs}</div>
+    </div>`;
+  }).join('');
+}
 
-      >                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
+function buildDuty() {
+  const today = new Date(); today.setHours(0,0,0,0);
+  const upcoming = SCHEDULE.filter(s => parseDate(s.date) >= today);
+  const row = document.getElementById('duty-row');
+  let html = '';
+  if (upcoming.length) {
+    const next = upcoming[0], m = MEMBERS[next.captain];
+    const diff = Math.round((parseDate(next.date) - today) / 86400000);
+    const when = diff === 0 ? '🎯 Today' : diff === 1 ? 'Tomorrow' : 'In ' + diff + ' days';
+    html += `<div class="duty-card primary">
+      <div class="duty-glow" style="background:${m.hex}"></div>
+      <div class="duty-tag">🎲 Next Up</div>
+      <div class="duty-name" style="color:${m.hex}">${m.name}</div>
+      <div class="duty-date">${next.date}</div>
+      <span class="duty-when">${when}</span>
+    </div>`;
+    if (upcoming.length > 1) {
+      const after = upcoming[1], m2 = MEMBERS[after.captain];
+      html += `<div class="duty-card">
+        <div class="duty-tag">Then</div>
+        <div class="duty-name" style="font-size:24px;color:${m2.hex}">${m2.name}</div>
+        <div class="duty-date">${after.date}</div>
+      </div>`;
+    }
+  }
+  row.innerHTML = html;
+}
+
+function buildPoolChart() {
+  const W = 980, H = 300, padL = 56, padR = 20, padT = 24, padB = 34;
+  let cum = 0;
+  const pts = [{ label:'Start', v:0 }];
+  BETS.forEach(b => { cum += b.ret - b.stake; pts.push({ label:b.date.slice(0,6), v:cum, m:b.m, w:b.result === 'W' }); });
+  const vals = pts.map(p => p.v);
+  const min = Math.min(...vals, 0), max = Math.max(...vals);
+  const range = (max - min) || 1;
+  const x = i => padL + i * (W - padL - padR) / (pts.length - 1);
+  const y = v => padT + (max - v) * (H - padT - padB) / range;
+
+  let grid = '';
+  const steps = 4;
+  for (let i = 0; i <= steps; i++) {
+    const v = min + range * i / steps;
+    grid += `<line x1="${padL}" y1="${y(v).toFixed(1)}" x2="${W-padR}" y2="${y(v).toFixed(1)}" stroke="rgba(255,255,255,0.06)"/>` +
+            `<text x="${padL-8}" y="${(y(v)+3).toFixed(1)}" font-size="10" fill="#5A6675" text-anchor="end">${v >= 0 ? '+' : '-'}$${Math.abs(Math.round(v))}</text>`;
+  }
+  const zeroY = y(0);
+  const line = pts.map((p,i) => `${x(i).toFixed(1)},${y(p.v).toFixed(1)}`).join(' ');
+  const area = `${padL},${zeroY.toFixed(1)} ` + line + ` ${x(pts.length-1).toFixed(1)},${zeroY.toFixed(1)}`;
+  const dots = pts.map((p,i) => i === 0 ? '' :
+    `<circle cx="${x(i).toFixed(1)}" cy="${y(p.v).toFixed(1)}" r="3.5" fill="${p.w ? '#3DDC97' : '#FF6B6B'}" stroke="#0A111D" stroke-width="1.5"><title>${p.label} · ${MEMBERS[p.m].name} · ${p.w ? 'Win' : 'Loss'} · running ${money(p.v, true)}</title></circle>`).join('');
+  const labels = pts.map((p,i) => (i > 0 && i % 3 === 0) ?
+    `<text x="${x(i).toFixed(1)}" y="${H-10}" font-size="9" fill="#5A6675" text-anchor="middle">${p.label.toUpperCase()}</text>` : '').join('');
+
+  const final = pts[pts.length-1].v;
+  document.getElementById('chart-now').textContent = money(final, true);
+  document.getElementById('chart-now').className = 'chart-now ' + (final >= 0 ? 'up' : 'down');
+
+  document.getElementById('pool-chart').innerHTML =
+  `<svg viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="areaGrad" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#E8C56A" stop-opacity="0.28"/>
+        <stop offset="1" stop-color="#E8C56A" stop-opacity="0"/>
+      </linearGradient>
+    </defs>
+    ${grid}
+    <line x1="${padL}" y1="${zeroY.toFixed(1)}" x2="${W-padR}" y2="${zeroY.toFixed(1)}" stroke="rgba(255,255,255,0.22)" stroke-dasharray="4,4"/>
+    <polygon points="${area}" fill="url(#areaGrad)"/>
+    <polyline id="pool-line" points="${line}" fill="none" stroke="#E8C56A" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+    ${dots}${labels}
+  </svg>`;
+
+  const lineEl = document.getElementById('pool-line');
+  const len = lineEl.getTotalLength();
+  lineEl.style.strokeDasharray = len;
+  lineEl.style.strokeDashoffset = len;
+  lineEl.getBoundingClientRect();
+  lineEl.style.transition = 'stroke-dashoffset 1.8s cubic-bezier(.3,.6,.3,1)';
+  lineEl.style.strokeDashoffset = '0';
+}
+
+/* ══════════════════════════════════════════════════════════════
+   RENDER — Leaderboard
+   ══════════════════════════════════════════════════════════════ */
+function buildLeaderboard() {
+  const all = rankedMembers();
+  const tBets = BETS.length;
+  const tWins = BETS.filter(b => b.result === 'W').length;
+  const tStake = BETS.reduce((a,b) => a + b.stake, 0);
+  const tRet = BETS.reduce((a,b) => a + b.ret, 0);
+  const tNet = tRet - tStake;
+
+  document.getElementById('stats-bar').innerHTML = `
+    <div class="stat-item"><div class="stat-label">Total Bets</div><div class="stat-value">${tBets}</div></div>
+    <div class="stat-item"><div class="stat-label">Wins</div><div class="stat-value up">${tWins}</div></div>
+    <div class="stat-item"><div class="stat-label">Losses</div><div class="stat-value down">${tBets - tWins}</div></div>
+    <div class="stat-item"><div class="stat-label">Win Rate</div><div class="stat-value">${Math.round(tWins/tBets*100)}%</div></div>
+    <div class="stat-item"><div class="stat-label">Total Staked</div><div class="stat-value">$${tStake}</div></div>
+    <div class="stat-item"><div class="stat-label">Total Return</div><div class="stat-value">${money(tRet)}</div></div>
+    <div class="stat-item"><div class="stat-label">Net P&amp;L</div><div class="stat-value ${tNet >= 0 ? 'up' : 'down'}">${money(tNet, true)}</div></div>`;
+
+  document.getElementById('leaderboard-list').innerHTML = all.map((s, i) => {
+    const m = MEMBERS[s.id];
+    const owe = m.outstanding ? `<span class="owe-badge">⚠ ${m.outstanding} BET${m.outstanding > 1 ? 'S' : ''} OUTSTANDING</span>` : '';
+    return `<div class="lb-card" style="--mc:${m.hex}" onclick="showMember('${s.id}')">
+      <div class="lb-rank r${i+1}">#${i+1}</div>
+      <div class="lb-name-block">
+        <div class="lb-name">${m.name}</div>
+        <div class="lb-record">${s.wins}W · ${s.losses}L · ${s.bets.length} BETS ${owe}</div>
+        <div class="lb-bar"><i style="width:${s.winRate}%"></i></div>
+      </div>
+      <div class="lb-stats">
+        <div class="lb-stat"><div class="lb-stat-label">Return</div><div class="lb-stat-value">${money(s.ret)}</div></div>
+        <div class="lb-stat"><div class="lb-stat-label">Staked</div><div class="lb-stat-value">${money(s.staked)}</div></div>
+        <div class="lb-stat"><div class="lb-stat-label">Net P&amp;L</div><div class="lb-stat-value ${s.net >= 0 ? 'up' : 'down'}">${money(s.net, true)}</div></div>
+        <div class="lb-stat"><div class="lb-stat-label">Win %</div><div class="lb-stat-value">${s.winRate}%</div></div>
+      </div>
+      <div class="lb-arrow">›</div>
+    </div>`;
+  }).join('');
+}
+
+/* ══════════════════════════════════════════════════════════════
+   RENDER — Member page
+   ══════════════════════════════════════════════════════════════ */
+function showMember(id) {
+  const m = MEMBERS[id];
+  const s = memberStats(id);
+  const rank = rankedMembers().findIndex(r => r.id === id) + 1;
+
+  /* sparkline of cumulative member net */
+  let cum = 0;
+  const pts = [0, ...s.bets.map(b => (cum += b.ret - b.stake))];
+  const sW = 560, sH = 90, sp = 8;
+  const smin = Math.min(...pts, 0), smax = Math.max(...pts, 0), srange = (smax - smin) || 1;
+  const sx = i => sp + i * (sW - sp*2) / (pts.length - 1);
+  const sy = v => sp + (smax - v) * (sH - sp*2) / srange;
+  const sline = pts.map((v,i) => `${sx(i).toFixed(1)},${sy(v).toFixed(1)}`).join(' ');
+  const zline = sy(0);
+
+  const rows = s.bets.map(b => {
+    const net = b.ret - b.stake;
+    const [dd, mon] = b.date.split(' ');
+    return `<div class="bet-row">
+      <div class="bet-date"><div class="d">${dd} ${mon}</div><div class="m">2026</div></div>
+      <span class="result-chip ${b.result === 'W' ? 'win' : 'loss'}">${b.result === 'W' ? 'Win' : 'Loss'}</span>
+      <div class="bet-desc">${b.desc}${b.odds ? `<span class="odds">@${b.odds}</span>` : ''}</div>
+      <div class="bet-nums">
+        <div class="bn"><div class="l">Stake</div><div class="v">${money(b.stake)}</div></div>
+        <div class="bn"><div class="l">Return</div><div class="v">${money(b.ret)}</div></div>
+        <div class="bn"><div class="l">Net</div><div class="v net ${net >= 0 ? 'up' : 'down'}">${money(net, true)}</div></div>
+      </div>
+    </div>`;
+  }).join('');
+
+  document.getElementById('member-content').innerHTML = `
+    <div class="member-hero" style="--mc:${m.hex}">
+      <div>
+        <div class="member-name" style="color:${m.hex}">${m.name}</div>
+        <div class="member-sub">#${rank} · ${s.bets.length} Bets · 2026 Season${m.outstanding ? ` · <span style="color:var(--shannon)">⚠ ${m.outstanding} outstanding</span>` : ''}</div>
+      </div>
+      <div class="member-stats">
+        <div class="m-stat"><div class="l">Staked</div><div class="v">${money(s.staked)}</div></div>
+        <div class="m-stat"><div class="l">Return</div><div class="v">${money(s.ret)}</div></div>
+        <div class="m-stat"><div class="l">Net P&amp;L</div><div class="v ${s.net >= 0 ? 'up' : 'down'}">${money(s.net, true)}</div></div>
+        <div class="m-stat"><div class="l">Win Rate</div><div class="v">${s.winRate}%</div></div>
+      </div>
+    </div>
+    <div class="spark-wrap">
+      <div class="chart-title" style="margin-bottom:4px">Season Form — Running Net P&amp;L</div>
+      <svg viewBox="0 0 ${sW} ${sH}" style="width:100%;display:block" xmlns="http://www.w3.org/2000/svg">
+        <line x1="${sp}" y1="${zline.toFixed(1)}" x2="${sW-sp}" y2="${zline.toFixed(1)}" stroke="rgba(255,255,255,0.15)" stroke-dasharray="3,4"/>
+        <polyline points="${sline}" fill="none" stroke="${m.hex}" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+        <circle cx="${sx(pts.length-1).toFixed(1)}" cy="${sy(pts[pts.length-1]).toFixed(1)}" r="4" fill="${m.hex}"/>
+      </svg>
+    </div>
+    <div class="section-title"><span class="gold">◆</span> Bet History</div>
+    ${rows}
+    <div class="bet-total">
+      <span class="lbl">Total · ${s.bets.length} bets · ${s.wins}W ${s.losses}L</span>
+      <span class="val ${s.net >= 0 ? 'net up' : 'net down'}">${money(s.net, true)}</span>
+    </div>`;
+
+  showPage('member');
+}
+
+/* ══════════════════════════════════════════════════════════════
+   RENDER — The Post
+   ══════════════════════════════════════════════════════════════ */
+function buildPost() {
+  document.getElementById('post-feed').innerHTML = ARTICLES.map(a => `
+    <div class="article">
+      <div class="article-meta">
+        <span class="article-tag ${a.tagClass}">${a.tag}</span>
+        <span class="article-date">${a.date} · ${a.who}</span>
+      </div>
+      <h3>${a.title}</h3>
+      <div class="byline">${a.byline}</div>
+      <div class="body">${a.body}</div>
+      ${a.extra || ''}
+    </div>`).join('');
+}
+
+/* ══════════════════════════════════════════════════════════════
+   RENDER — Account
+   ══════════════════════════════════════════════════════════════ */
+function buildAccount() {
+  animateNumber(document.getElementById('acct-balance'), BALANCE.current);
+
+  document.getElementById('savings-list').innerHTML = SAVINGS.map(s => {
+    const m = MEMBERS[s.m];
+    const pct = Math.round(s.paid / SAVINGS_ANNUAL * 100);
+    const chip = s.status === 'paid' ? '<span class="status-chip paid">✓ Paid in full</span>'
+               : s.status === 'partial' ? '<span class="status-chip partial">⚠ Partial</span>'
+               : '<span class="status-chip overdue">✗ Overdue</span>';
+    const noteClass = s.status === 'overdue' ? 'bad' : s.status === 'partial' ? 'warn' : '';
+    const fillColor = s.status === 'paid' ? 'var(--green)' : s.status === 'partial' ? 'var(--shannon)' : 'var(--red)';
+    return `<div class="sav-row">
+      <div class="sav-name" style="color:${m.hex}">${m.name}</div>
+      <div class="sav-mid">
+        <div class="sav-note ${noteClass}">${s.note}</div>
+        <div class="sav-track"><div class="sav-fill" data-w="${pct}" style="background:${fillColor}"></div></div>
+      </div>
+      <div class="sav-right">
+        <div class="sav-amt">${money(s.paid)}</div>
+        <div class="sav-of">of ${money(SAVINGS_ANNUAL)}</div>
+        ${chip}
+      </div>
+    </div>`;
+  }).join('') + `
+    <div class="bet-total" style="border-color:rgba(255,107,107,0.35);background:rgba(255,107,107,0.08)">
+      <span class="lbl" style="color:var(--red)">Total Outstanding</span>
+      <span class="val" style="color:var(--red)">$440.00</span>
+    </div>`;
+
+  setTimeout(() => {
+    document.querySelectorAll('.sav-fill').forEach(f => { f.style.width = f.dataset.w + '%'; });
+  }, 150);
+
+  const all = rankedMembers();
+  const tBets = BETS.length, tWins = BETS.filter(b => b.result === 'W').length;
+  const tStake = BETS.reduce((a,b) => a + b.stake, 0), tRet = BETS.reduce((a,b) => a + b.ret, 0);
+  document.getElementById('returns-grid').innerHTML = `
+    <div class="ret-row head"><div>Member</div><div class="r">Bets</div><div class="r">Record</div><div class="r">Win %</div><div class="r">Returned</div><div class="r">Net P&amp;L</div></div>
+    ${all.map(s => {
+      const m = MEMBERS[s.id];
+      return `<div class="ret-row">
+        <div class="name" style="color:${m.hex}">${m.name}</div>
+        <div class="r">${s.bets.length}</div>
+        <div class="r">${s.wins}W ${s.losses}L</div>
+        <div class="r">${s.winRate}%</div>
+        <div class="r">${money(s.ret)}</div>
+        <div class="r ${s.net >= 0 ? 'up' : 'down'}">${money(s.net, true)}</div>
+      </div>`;
+    }).join('')}
+    <div class="ret-row foot"><div>Total</div><div class="r">${tBets}</div><div class="r">${tWins}W ${tBets-tWins}L</div><div class="r">${Math.round(tWins/tBets*100)}%</div><div class="r">${money(tRet)}</div><div class="r ${tRet-tStake >= 0 ? 'up' : 'down'}">${money(tRet - tStake, true)}</div></div>`;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   NAV
+   ══════════════════════════════════════════════════════════════ */
+function showPage(id) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('page-' + id).classList.add('active');
+  const navId = id === 'member' ? 'leaderboard' : id;
+  const tab = document.querySelector(`.nav-tab[data-nav="${navId}"]`);
+  if (tab) tab.classList.add('active');
+  window.scrollTo(0, 0);
+  if (id === 'home') buildHome();
+  if (id === 'account') buildAccount();
+}
+
+/* ══════════════════════════════════════════════════════════════
+   INIT
+   ══════════════════════════════════════════════════════════════ */
+buildTicker();
+buildLeaderboard();
+buildPost();
+buildHome();
+</script>
+</body>
+</html>
