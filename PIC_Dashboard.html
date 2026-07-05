@@ -276,6 +276,49 @@
   .ret-row .name { font-weight:800; }
   .ret-row .up { color:var(--green); font-weight:800; } .ret-row .down { color:var(--red); font-weight:800; }
 
+  /* ─────────── Form guide ─────────── */
+  .form-row { display:flex; align-items:center; gap:10px; margin-top:10px; }
+  .form-dots { display:flex; gap:4px; }
+  .fdot { width:17px; height:17px; border-radius:50%; font-size:8px; font-weight:800; display:flex; align-items:center; justify-content:center; }
+  .fdot.w { background:rgba(61,220,151,0.16); color:var(--green); border:1px solid rgba(61,220,151,0.5); }
+  .fdot.l { background:rgba(255,107,107,0.12); color:var(--red); border:1px solid rgba(255,107,107,0.4); }
+  .streak-chip { font-size:9px; font-weight:800; letter-spacing:1px; padding:3px 9px; border-radius:999px; text-transform:uppercase; }
+  .streak-chip.hot { background:rgba(61,220,151,0.13); color:var(--green); border:1px solid rgba(61,220,151,0.4); }
+  .streak-chip.cold { background:rgba(255,107,107,0.11); color:var(--red); border:1px solid rgba(255,107,107,0.35); }
+
+  /* ─────────── Records ─────────── */
+  .rec-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:12px; }
+  .rec-card { border:1px solid var(--line); border-radius:16px; background:var(--card); padding:22px 24px; position:relative; overflow:hidden; }
+  .rec-card.fame { border-color:rgba(232,197,106,0.3); }
+  .rec-card.fame::after { content:''; position:absolute; right:-40px; top:-40px; width:130px; height:130px; border-radius:50%; background:var(--gold); filter:blur(70px); opacity:0.10; }
+  .rec-card.shame { border-color:rgba(255,107,107,0.25); }
+  .rec-icon { font-size:26px; margin-bottom:10px; }
+  .rec-label { font-size:10px; font-weight:800; letter-spacing:2.5px; text-transform:uppercase; color:var(--muted); margin-bottom:8px; }
+  .rec-holder { font-family:var(--display); font-size:21px; text-transform:uppercase; letter-spacing:0.5px; }
+  .rec-value { font-size:19px; font-weight:800; margin-top:4px; font-variant-numeric:tabular-nums; }
+  .rec-card.fame .rec-value { color:var(--gold); }
+  .rec-card.shame .rec-value { color:var(--red); }
+  .rec-detail { font-size:12px; color:var(--muted); margin-top:8px; line-height:1.55; }
+  .memorial {
+    margin-top:14px; border:1px solid var(--line2); border-radius:16px; padding:30px 26px; text-align:center;
+    background:linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.015));
+  }
+  .memorial .m-icon { font-size:30px; }
+  .memorial .m-title { font-family:var(--serif); font-style:italic; font-size:14px; letter-spacing:2px; color:var(--muted); margin-top:10px; text-transform:uppercase; }
+  .memorial .m-name { font-family:var(--serif); font-weight:800; font-size:28px; margin-top:6px; }
+  .memorial .m-dates { font-size:11px; letter-spacing:2px; color:var(--faint); margin-top:6px; }
+  .memorial .m-words { font-family:var(--serif); font-style:italic; font-size:14px; color:var(--muted); margin-top:12px; line-height:1.7; }
+
+  /* ─────────── Debt ledger ─────────── */
+  .debt-row { display:flex; align-items:center; gap:16px; padding:15px 20px; border:1px solid var(--line); border-radius:12px; background:var(--card); margin-bottom:8px; flex-wrap:wrap; }
+  .debt-who { font-family:var(--display); font-size:15px; text-transform:uppercase; width:100px; flex-shrink:0; }
+  .debt-what { flex:1; min-width:160px; font-size:12px; color:var(--muted); line-height:1.5; }
+  .debt-amt { font-size:16px; font-weight:800; font-variant-numeric:tabular-nums; text-align:right; min-width:80px; }
+  .debt-status { font-size:8px; font-weight:800; letter-spacing:1.2px; text-transform:uppercase; padding:4px 10px; border-radius:999px; flex-shrink:0; }
+  .debt-status.bad { background:rgba(255,107,107,0.12); color:var(--red); border:1px solid rgba(255,107,107,0.4); }
+  .debt-status.warn { background:rgba(255,180,84,0.12); color:var(--shannon); border:1px solid rgba(255,180,84,0.4); }
+  .debt-fine-print { font-size:10px; color:var(--faint); letter-spacing:1px; text-transform:uppercase; margin-top:10px; text-align:center; line-height:1.8; }
+
   footer { text-align:center; padding:30px 20px 40px; font-size:10px; color:var(--faint); letter-spacing:2px; text-transform:uppercase; line-height:2; }
   footer .gold { color:var(--gold2); }
 
@@ -325,6 +368,10 @@
     .sav-mid { flex-basis:100%; order:3; }
     .pending-nums { width:100%; justify-content:space-between; }
     .duty-card { min-width:100%; }
+    .rec-grid { grid-template-columns:1fr; }
+    .debt-who { width:auto; }
+    .debt-amt { margin-left:auto; }
+    .debt-what { flex-basis:100%; order:4; }
     .hero-asat { margin-top:8px; }
   }
 </style>
@@ -358,6 +405,7 @@
 <div class="nav" id="main-nav">
   <div class="nav-tab active" data-nav="home" onclick="showPage('home')">Home</div>
   <div class="nav-tab" data-nav="leaderboard" onclick="showPage('leaderboard')">Leaderboard</div>
+  <div class="nav-tab" data-nav="records" onclick="showPage('records')">Records</div>
   <div class="nav-tab" data-nav="post" onclick="showPage('post')">The Post</div>
   <div class="nav-tab" data-nav="account" onclick="showPage('account')">Account</div>
 </div>
@@ -412,6 +460,16 @@
   <footer>Net P&amp;L = Bet return minus stake <span class="gold">◆</span> Stake from captain's own pocket</footer>
 </div>
 
+<!-- ═══════════ RECORDS ═══════════ -->
+<div class="page" id="page-records">
+  <div class="section-title"><span class="gold">◆</span> Hall of Fame</div>
+  <div class="rec-grid" id="fame-grid"></div>
+  <div class="section-title"><span class="gold">◆</span> Hall of Shame</div>
+  <div class="rec-grid" id="shame-grid"></div>
+  <div id="memorial"></div>
+  <footer>Records as at 03 Jul 2026 <span class="gold">◆</span> All achievements permanent and legally binding</footer>
+</div>
+
 <!-- ═══════════ MEMBER (dynamic) ═══════════ -->
 <div class="page" id="page-member">
   <div class="back-btn" onclick="showPage('leaderboard')"><span>‹</span> Back to Leaderboard</div>
@@ -446,6 +504,9 @@
 
   <div class="section-title"><span class="gold">◆</span> Savings Contributions — 2026 (12 × $30 = $360 per member)</div>
   <div id="savings-list"></div>
+
+  <div class="section-title"><span class="gold">◆</span> Outstanding Obligations — The Ledger of Shame</div>
+  <div id="debt-list"></div>
 
   <div class="section-title"><span class="gold">◆</span> Bet Returns — 2026 Season to Date</div>
   <div class="ret-grid" id="returns-grid"></div>
@@ -565,6 +626,15 @@ const SAVINGS = [
 ];
 const SAVINGS_ANNUAL = 360;
 
+/* Outstanding obligations — cash owed and unfulfilled captain weeks */
+const DEBTS = [
+  { m:'shannon', what:'Savings arrears — 4 weeks overdue and counting', amt:120, status:'Sanctions pending', level:'bad' },
+  { m:'shannon', what:'Savings — remainder of 2026 schedule', amt:240, status:'Accruing', level:'warn' },
+  { m:'nic',     what:'Savings balance — 2026', amt:80, status:'Under review', level:'warn' },
+  { m:'nic',     what:'Captain weeks not bet — 11 Apr & 09 May (2 × $30 stakes)', amt:60, status:'Referred to committee', level:'bad' },
+  { m:'shannon', what:'Captain week not bet — 27 Jun ($30 stake)', amt:30, status:'Referred to committee', level:'bad' }
+];
+
 const ARTICLES = [
   { tag:'Pending', tagClass:'tag-pending', date:'04 Jul 2026', who:'Nic',
     title:"Nic Puts Fate Back in Queensland's Hands. Queensland Has Done This Before.",
@@ -675,6 +745,20 @@ function rankedMembers() {
   return Object.keys(MEMBERS)
     .map(id => ({ id, ...memberStats(id) }))
     .sort((a,b) => b.net - a.net);
+}
+function formOf(id) {
+  const seq = memberStats(id).bets.map(b => b.result);
+  const lastR = seq[seq.length - 1];
+  let count = 0;
+  for (let i = seq.length - 1; i >= 0; i--) { if (seq[i] === lastR) count++; else break; }
+  return { last5: seq.slice(-5), type: lastR, count };
+}
+function formHtml(id) {
+  const f = formOf(id);
+  const dots = f.last5.map(r => `<span class="fdot ${r === 'W' ? 'w' : 'l'}">${r}</span>`).join('');
+  const hot = f.type === 'W';
+  const label = (hot ? 'W' : 'L') + f.count + (hot && f.count >= 2 ? ' 🔥' : !hot && f.count >= 3 ? ' 🥶' : '');
+  return `<div class="form-row"><div class="form-dots">${dots}</div><span class="streak-chip ${hot ? 'hot' : 'cold'}">${label}</span></div>`;
 }
 function animateNumber(el, target, opts) {
   opts = opts || {};
@@ -865,7 +949,7 @@ function buildLeaderboard() {
       <div class="lb-name-block">
         <div class="lb-name">${m.name}</div>
         <div class="lb-record">${s.wins}W · ${s.losses}L · ${s.bets.length} BETS ${owe}</div>
-        <div class="lb-bar"><i style="width:${s.winRate}%"></i></div>
+        ${formHtml(s.id)}
       </div>
       <div class="lb-stats">
         <div class="lb-stat"><div class="lb-stat-label">Return</div><div class="lb-stat-value">${money(s.ret)}</div></div>
@@ -960,6 +1044,84 @@ function buildPost() {
 }
 
 /* ══════════════════════════════════════════════════════════════
+   RENDER — Records
+   ══════════════════════════════════════════════════════════════ */
+function recCard(cls, icon, label, holder, holderColor, value, detail) {
+  return `<div class="rec-card ${cls}">
+    <div class="rec-icon">${icon}</div>
+    <div class="rec-label">${label}</div>
+    <div class="rec-holder" style="color:${holderColor}">${holder}</div>
+    <div class="rec-value">${value}</div>
+    <div class="rec-detail">${detail}</div>
+  </div>`;
+}
+
+function buildRecords() {
+  /* biggest collect */
+  const big = BETS.reduce((a,b) => b.ret > a.ret ? b : a);
+  const bigM = MEMBERS[big.m];
+  /* first win of the season */
+  const first = BETS.find(b => b.result === 'W');
+  const firstM = MEMBERS[first.m];
+  /* collective high water mark */
+  let cum = 0, hw = { v:-Infinity, date:'' };
+  BETS.forEach(b => { cum += b.ret - b.stake; if (cum > hw.v) hw = { v:cum, date:b.date }; });
+  /* win rate king (min 3 bets) */
+  const king = rankedMembers().filter(r => r.bets.length >= 3).sort((a,b) => b.winRate - a.winRate)[0];
+  const kingM = MEMBERS[king.id];
+
+  document.getElementById('fame-grid').innerHTML =
+    recCard('fame', '🏆', 'Biggest Collect', bigM.name, bigM.hex, money(big.ret),
+      `${big.desc}${big.odds ? ' @' + big.odds : ''} · ${big.date}`) +
+    recCard('fame', '🥇', 'Win Rate King', kingM.name, kingM.hex, king.winRate + '%',
+      `${king.wins}W ${king.losses}L from ${king.bets.length} bets. The rest of the field respectfully disagrees with the methodology.`) +
+    recCard('fame', '🩸', 'First Blood 2026', firstM.name, firstM.hex, money(first.ret),
+      `${first.desc} · ${first.date}. The moral high ground was surrendered shortly afterwards.`) +
+    recCard('fame', '📈', 'Season High Water Mark', 'The Collective', 'var(--gold)', money(hw.v, true),
+      `Peak collective P&L, reached ${hw.date}. It has not been seen since.`);
+
+  /* longest losing streak */
+  let worst = { count:0, id:null, active:false, from:'', to:'' };
+  Object.keys(MEMBERS).forEach(id => {
+    const bets = memberStats(id).bets;
+    let cur = 0, max = 0, start = 0, bestStart = 0;
+    bets.forEach((b, i) => {
+      if (b.result === 'L') { if (cur === 0) start = i; cur++; if (cur > max) { max = cur; bestStart = start; } }
+      else cur = 0;
+    });
+    if (max > worst.count) {
+      worst = { count:max, id, active:cur === max && max > 0,
+                from:bets[bestStart].date, to:bets[bestStart + max - 1].date };
+    }
+  });
+  const worstM = MEMBERS[worst.id];
+  /* biggest TAB donor: stakes lost on losing bets */
+  const donor = Object.keys(MEMBERS).map(id => ({
+    id, lost: memberStats(id).bets.filter(b => b.result === 'L').reduce((a,b) => a + b.stake, 0)
+  })).sort((a,b) => b.lost - a.lost)[0];
+  const donorM = MEMBERS[donor.id];
+
+  document.getElementById('shame-grid').innerHTML =
+    recCard('shame', '🥶', 'Longest Losing Streak', worstM.name, worstM.hex, worst.count + ' straight' + (worst.active ? ' · ACTIVE' : ''),
+      `${worst.from} → ${worst.to}${worst.active ? '. Still running. He remains due.' : ''}`) +
+    recCard('shame', '💸', 'Top TAB Donor', donorM.name, donorM.hex, money(donor.lost),
+      'Total stakes lost this season. The TAB thanks him for his continued service.') +
+    recCard('shame', '🪦', 'The One That Got Away', 'Charlie', MEMBERS.charlie.hex, '$117.50',
+      '9-leg SGM @11.75 survived eight legs, then died on Brodie Kemp\'s boot. 23 May 2026. Do not mention it.') +
+    recCard('shame', '⚖️', 'The Warrant List', 'Nic & Shannon', 'var(--red)', '3 bets owed',
+      'Two captain weeks outstanding (Nic), one outstanding (Shannon). See Account → Ledger of Shame for full charges.');
+
+  document.getElementById('memorial').innerHTML = `<div class="memorial">
+    <div class="m-icon">🐎</div>
+    <div class="m-title">In Memoriam</div>
+    <div class="m-name">"Various Horses"</div>
+    <div class="m-dates">13 June 2026 · Trainer: Douchie · Odds: Undisclosed</div>
+    <div class="m-words">Number unknown. Names unknown. Races unknown.<br>
+    $30, gone. The horses remain various.<br>Lest we forget.</div>
+  </div>`;
+}
+
+/* ══════════════════════════════════════════════════════════════
    RENDER — Account
    ══════════════════════════════════════════════════════════════ */
 function buildAccount() {
@@ -994,6 +1156,24 @@ function buildAccount() {
   setTimeout(() => {
     document.querySelectorAll('.sav-fill').forEach(f => { f.style.width = f.dataset.w + '%'; });
   }, 150);
+
+  /* debt ledger */
+  const cashOwed = DEBTS.filter(d => !d.what.includes('Captain week')).reduce((a,d) => a + d.amt, 0);
+  const stakesOwed = DEBTS.filter(d => d.what.includes('Captain week')).reduce((a,d) => a + d.amt, 0);
+  document.getElementById('debt-list').innerHTML = DEBTS.map(d => {
+    const m = MEMBERS[d.m];
+    return `<div class="debt-row">
+      <div class="debt-who" style="color:${m.hex}">${m.name}</div>
+      <div class="debt-what">${d.what}</div>
+      <span class="debt-status ${d.level}">${d.status}</span>
+      <div class="debt-amt">${money(d.amt)}</div>
+    </div>`;
+  }).join('') + `
+    <div class="bet-total" style="border-color:rgba(255,107,107,0.35);background:rgba(255,107,107,0.08)">
+      <span class="lbl" style="color:var(--red)">Total owed to the Collective</span>
+      <span class="val" style="color:var(--red)">${money(cashOwed)} + ${money(stakesOwed)} in unlodged stakes</span>
+    </div>
+    <div class="debt-fine-print">Sanctions include but are not limited to: public shaming · forfeiture of snack privileges · mandatory bet submission by end of week</div>`;
 
   const all = rankedMembers();
   const tBets = BETS.length, tWins = BETS.filter(b => b.result === 'W').length;
@@ -1034,6 +1214,7 @@ function showPage(id) {
    ══════════════════════════════════════════════════════════════ */
 buildTicker();
 buildLeaderboard();
+buildRecords();
 buildPost();
 buildHome();
 </script>
