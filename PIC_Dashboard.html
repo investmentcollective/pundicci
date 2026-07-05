@@ -554,7 +554,7 @@ var SCHEDULE = [
   { date: '13 Jun 2026', captain: 'Douchie',  logged: true  },
   { date: '20 Jun 2026', captain: 'Charlie',  logged: true  },
   { date: '27 Jun 2026', captain: 'Shannon',  logged: false },
-  { date: '04 Jul 2026', captain: 'Nic',      logged: false },
+  { date: '04 Jul 2026', captain: 'Nic',      logged: true  },
   { date: '11 Jul 2026', captain: 'Douchie',  logged: false },
   { date: '18 Jul 2026', captain: 'Charlie',  logged: false },
   { date: '25 Jul 2026', captain: 'Shannon',  logged: false },
@@ -582,7 +582,23 @@ var SCHEDULE = [
 ];
 
 
-var PENDING_BETS = [];
+var PENDING_BETS = [
+  {
+    captain: 'Nic',
+    date: '04 Jul 2026',
+    event: 'Multi @ 3.41 (4 Legs)',
+    details: 'NZ v France · Aus v Ireland · SA v England · QLD v NSW — Final leg pending 08 Jul',
+    odds: '3.41',
+    stake: '$30.00',
+    potential: '$102.30',
+    legs: [
+      'New Zealand ✓ (04 Jul)',
+      'Ireland ✓ (04 Jul)',
+      'South Africa ✓ (05 Jul)',
+      'Queensland — 08 Jul'
+    ]
+  }
+];
 
 function buildPendingBets() {
   var widget = document.getElementById('pending-bets-widget');
