@@ -518,12 +518,12 @@
 /* ══════════════════════════════════════════════════════════════
    DATA — edit this block to update the dashboard
    ══════════════════════════════════════════════════════════════ */
-const BALANCE = { current: 6822.01, asAt: '03 Jul 2026', opening: 5138.12, openingDate: '30 Dec 2025', betReturns2026: 596.64 };
+const BALANCE = { current: 6780.51, asAt: '25 Jul 2026', opening: 5138.12, openingDate: '30 Dec 2025', betReturns2026: 715.14 };
 
 const MEMBERS = {
   charlie: { name:'Charlie', color:'var(--charlie)', hex:'#3DDC97', outstanding:0 },
   nic:     { name:'Nic',     color:'var(--nic)',     hex:'#B48CFF', outstanding:2 },
-  shannon: { name:'Shannon', color:'var(--shannon)', hex:'#FFB454', outstanding:1 },
+  shannon: { name:'Shannon', color:'var(--shannon)', hex:'#FFB454', outstanding:0 },
   douchie: { name:'Douchie', color:'var(--douchie)', hex:'#5EA0FF', outstanding:0 }
 };
 
@@ -549,23 +549,16 @@ const BETS = [
   { m:'shannon', date:'30 May 2026', desc:'Eagle Farm Race 6 — Brave Monarch', odds:'3.90', stake:30, ret:0, result:'L' },
   { m:'nic',     date:'06 Jun 2026', desc:'Sports Multi — Crusaders, Broncos, Panthers, Bulldogs, QLD State of Origin', odds:null, stake:30, ret:0, result:'L' },
   { m:'douchie', date:'13 Jun 2026', desc:'Various Horses', odds:null, stake:30, ret:0, result:'L' },
-  { m:'charlie', date:'20 Jun 2026', desc:'Flemington Race 3 — Vegas Jack (Place)', odds:'2.88', stake:30, ret:86.40, result:'W' }
+  { m:'charlie', date:'20 Jun 2026', desc:'Flemington Race 3 — Vegas Jack (Place)', odds:'2.88', stake:30, ret:86.40, result:'W' },
+  { m:'nic',     date:'04 Jul 2026', desc:'Rugby Union 4-leg Multi — New Zealand, Ireland, South Africa, Queensland', odds:'3.41', stake:30, ret:0, result:'L' },
+  { m:'douchie', date:'11 Jul 2026', desc:'Caulfield R5 — Amleto (single)', odds:'2.70', stake:30, ret:0, result:'L' },
+  { m:'douchie', date:'11 Jul 2026', desc:'Doomben 4-leg multi', odds:'4.88', stake:10, ret:0, result:'L' },
+  { m:'charlie', date:'18 Jul 2026', desc:'AFL SGM — WCE v Brisbane (6-leg)', odds:'3.95', stake:30, ret:118.50, result:'W' },
+  { m:'shannon', date:'27 Jun 2026', desc:'State of Origin SGM — QLD v NSW', odds:'20.25', stake:30, ret:0, result:'L' },
+  { m:'shannon', date:'27 Jun 2026', desc:'England v DR Congo SGM', odds:'6.20', stake:30, ret:0, result:'L' }
 ];
 
-const PENDING_BETS = [
-  {
-    captain:'nic', date:'04 Jul 2026',
-    event:'Multi @ 3.41 (4 Legs)',
-    details:'NZ v France · Aus v Ireland · SA v England · QLD v NSW — Final leg pending 08 Jul',
-    odds:'3.41', stake:'$30.00', potential:'$102.30',
-    legs:[
-      { label:'New Zealand (04 Jul)', done:true },
-      { label:'Ireland (04 Jul)', done:true },
-      { label:'South Africa (05 Jul)', done:true },
-      { label:'Queensland — 08 Jul', done:false }
-    ]
-  }
-];
+const PENDING_BETS = [];
 
 const SCHEDULE = [
   { date:'24 Jan 2026', captain:'douchie', logged:true },
@@ -590,10 +583,10 @@ const SCHEDULE = [
   { date:'06 Jun 2026', captain:'nic',     logged:true },
   { date:'13 Jun 2026', captain:'douchie', logged:true },
   { date:'20 Jun 2026', captain:'charlie', logged:true },
-  { date:'27 Jun 2026', captain:'shannon', logged:false },
+  { date:'27 Jun 2026', captain:'shannon', logged:true },
   { date:'04 Jul 2026', captain:'nic',     logged:true },
-  { date:'11 Jul 2026', captain:'douchie', logged:false },
-  { date:'18 Jul 2026', captain:'charlie', logged:false },
+  { date:'11 Jul 2026', captain:'douchie', logged:true },
+  { date:'18 Jul 2026', captain:'charlie', logged:true },
   { date:'25 Jul 2026', captain:'shannon', logged:false },
   { date:'01 Aug 2026', captain:'nic',     logged:false },
   { date:'08 Aug 2026', captain:'douchie', logged:false },
@@ -636,10 +629,22 @@ const DEBTS = [
 ];
 
 const ARTICLES = [
-  { tag:'Pending', tagClass:'tag-pending', date:'04 Jul 2026', who:'Nic',
-    title:"Nic Puts Fate Back in Queensland's Hands. Queensland Has Done This Before.",
-    byline:'By our Rugby League & Recurring Trauma Desk',
-    body:`Exactly twenty-eight days ago, Nic watched a five-leg multi unravel in the final seconds of State of Origin Game 2. The culprit was Queensland. Nic has apparently reflected on this experience and concluded that the correct response is to do it again.<br><br>Three legs down, three legs won. New Zealand, Ireland, and South Africa all cooperated. The multi sits at 3.41, the stake is $30, and $102.30 is a single rugby league match away. That match is Queensland versus New South Wales. On Tuesday. In State of Origin. The Pundicci Post will report back.` },
+  { tag:'Loss', tagClass:'tag-loss', date:'27 Jun 2026', who:'Shannon',
+    title:"Shannon Shoots for 20/1. Shannon Misses. England Also Fail to Cooperate.",
+    byline:'By our Two-Bet, No-Return Correspondent',
+    body:`Shannon arrived for her July captain week with two bets and genuine ambition. The first: a State of Origin same-game multi at 20.25 — a bet that requires not simply Queensland to win, but Queensland to win in ways that are specific, documentable, and evidently optimistic. Queensland did not win in those ways. The second: an England versus DR Congo same-game multi at 6.20. England presumably won the match, but the SGM market, as it tends to, introduced conditions. The conditions were not met. Shannon's July return is $0. Her combined odds across the two bets were 26.45 — the highest single-week ambition index in the collective's 2026 history. The Post acknowledges this achievement.` },
+  { tag:'Loss', tagClass:'tag-loss', date:'11 Jul 2026', who:'Douchie',
+    title:"Douchie Tables Two Bets in One Week, Returns Nothing From Either",
+    byline:'By our Caulfield &amp; Doomben Bureau',
+    body:`In an act of what he described as "diversification," Douchie entered his July captain week with two separate bets: a $30 single on Amleto in Caulfield Race 5 at 2.70, and a $10 four-leg Doomben multi at 4.88. Amleto did not win. The Doomben multi did not win. Douchie has declined to identify which leg of the multi failed first, which is consistent with his approach to transparency. The $40 combined outlay is gone. Douchie remains optimistic, which those who know him will recognise as his default state regardless of outcome.` },
+  { tag:'Win', tagClass:'tag-win', date:'18 Jul 2026', who:'Charlie',
+    title:"WCE and Brisbane Give Charlie Exactly What He Asked For, Which Is Unusual",
+    byline:'By our AFL SGM Correspondent',
+    body:`Charlie's 6-leg same-game multi on West Coast Eagles versus Brisbane required the AFL to cooperate across a range of specific and increasingly unlikely outcomes. The AFL cooperated. At 3.95 odds, $30 became $118.50. Charlie accepted the result with characteristic modesty, which in practice means he has explained the thinking behind each leg in some detail to each member of the collective. Twice. The collective is pleased for him. The collective is also familiar with the story.` },
+  { tag:'Loss', tagClass:'tag-loss', date:'08 Jul 2026', who:'Nic',
+    title:"Queensland. Again.",
+    byline:'By our Rugby League &amp; Recurring Trauma Desk',
+    body:`When The Pundicci Post published its preview of Nic's 4-leg rugby multi last week, we noted that everything hinged on Queensland defeating New South Wales in State of Origin. We committed to reporting back. We are reporting back.<br><br>Queensland did not defeat New South Wales. Nic's multi &mdash; which had cleared New Zealand, Ireland, and South Africa with something approaching elegance &mdash; fell at the final hurdle for the second time in two months. For context: in June, Nic's multi was also killed by Queensland in State of Origin. Nic is aware. The Post declines to dwell on this further. This sentence is the end of our dwelling.` },
   { tag:'Investigative Report', tagClass:'tag-editorial', date:'30 Jun 2026', who:'The Post',
     title:'"We Should Have Bought Bitcoin." We Checked. It\'s Complicated.',
     byline:'By our Cryptocurrency & Accountability Desk',
