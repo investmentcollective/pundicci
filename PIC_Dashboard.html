@@ -518,11 +518,11 @@
 /* ══════════════════════════════════════════════════════════════
    DATA — edit this block to update the dashboard
    ══════════════════════════════════════════════════════════════ */
-const BALANCE = { current: 6939.11, asAt: '25 Jul 2026', opening: 5138.12, openingDate: '30 Dec 2025', betReturns2026: 715.14 };
+const BALANCE = { current: 7097.51, asAt: '07 Aug 2026', opening: 5138.12, openingDate: '30 Dec 2025', betReturns2026: 843.54 };
 
 const MEMBERS = {
   charlie: { name:'Charlie', color:'var(--charlie)', hex:'#3DDC97', outstanding:0 },
-  nic:     { name:'Nic',     color:'var(--nic)',     hex:'#B48CFF', outstanding:2 },
+  nic:     { name:'Nic',     color:'var(--nic)',     hex:'#B48CFF', outstanding:3 },
   shannon: { name:'Shannon', color:'var(--shannon)', hex:'#FFB454', outstanding:0 },
   douchie: { name:'Douchie', color:'var(--douchie)', hex:'#5EA0FF', outstanding:0 }
 };
@@ -555,7 +555,9 @@ const BETS = [
   { m:'douchie', date:'11 Jul 2026', desc:'Doomben 4-leg multi', odds:'4.88', stake:10, ret:0, result:'L' },
   { m:'charlie', date:'18 Jul 2026', desc:'AFL SGM — WCE v Brisbane (6-leg)', odds:'3.95', stake:30, ret:118.50, result:'W' },
   { m:'shannon', date:'27 Jun 2026', desc:'State of Origin SGM — QLD v NSW', odds:'20.25', stake:30, ret:0, result:'L' },
-  { m:'shannon', date:'27 Jun 2026', desc:'England v DR Congo SGM', odds:'6.20', stake:30, ret:0, result:'L' }
+  { m:'shannon', date:'27 Jun 2026', desc:'England v DR Congo SGM', odds:'6.20', stake:30, ret:0, result:'L' },
+  { m:'douchie', date:'26 Jul 2026', desc:"Caulfield R8 — Amletto (bonus collective bet)", odds:'5.28', stake:30, ret:158.40, result:'W' },
+  { m:'shannon', date:'25 Jul 2026', desc:'Horses multi', odds:null, stake:30, ret:0, result:'L' }
 ];
 
 const PENDING_BETS = [];
@@ -587,8 +589,8 @@ const SCHEDULE = [
   { date:'04 Jul 2026', captain:'nic',     logged:true },
   { date:'11 Jul 2026', captain:'douchie', logged:true },
   { date:'18 Jul 2026', captain:'charlie', logged:true },
-  { date:'25 Jul 2026', captain:'shannon', logged:false },
-  { date:'01 Aug 2026', captain:'nic',     logged:false },
+  { date:'25 Jul 2026', captain:'shannon', logged:true },
+  { date:'01 Aug 2026', captain:'nic',     logged:true, noBet:true },
   { date:'08 Aug 2026', captain:'douchie', logged:false },
   { date:'15 Aug 2026', captain:'charlie', logged:false },
   { date:'22 Aug 2026', captain:'shannon', logged:false },
@@ -624,11 +626,22 @@ const DEBTS = [
   { m:'shannon', what:'Savings arrears — 4 weeks overdue and counting', amt:120, status:'Sanctions pending', level:'bad' },
   { m:'shannon', what:'Savings — remainder of 2026 schedule', amt:240, status:'Accruing', level:'warn' },
   { m:'nic',     what:'Savings balance — 2026', amt:80, status:'Under review', level:'warn' },
-  { m:'nic',     what:'Captain weeks not bet — 11 Apr & 09 May (2 × $30 stakes)', amt:60, status:'Referred to committee', level:'bad' },
-  { m:'shannon', what:'Captain week not bet — 27 Jun ($30 stake)', amt:30, status:'Referred to committee', level:'bad' }
+  { m:'nic',     what:'Captain weeks not bet — 11 Apr, 09 May & 01 Aug (3 × $30 stakes)', amt:90, status:'Referred to committee', level:'bad' }
 ];
 
 const ARTICLES = [
+  { tag:'Loss', tagClass:'tag-loss', date:'25 Jul 2026', who:'Shannon',
+    title:"Shannon Goes to the Horses. The Horses Were Not Interested.",
+    byline:'By our Turf Correspondent',
+    body:`For his 25 July captain week, Shannon opted for a multi on the horses &mdash; a full $30 committed, a field of runners assessed, a ticket lodged. The ambition was clear. The outcome was not. The multi did not return. Shannon, who has now experienced the full spectrum of racing disappointment across multiple formats in 2026, accepted the result in the manner of a man who is developing a deep and nuanced understanding of what horses do when you need them to win. They do not win.` },
+  { tag:'Win', tagClass:'tag-win', date:'26 Jul 2026', who:'Douchie',
+    title:"Amletto Gets Up. Douchie's Black Book Vindicated. The Collective Is $158.40 Richer.",
+    byline:'By our Caulfield Bureau',
+    body:`On a weekend when the collective was otherwise being tested by Shannon's multi-horse expedition, Douchie quietly placed a $30 bonus bet on Amletto in Caulfield Race 8. This was not Douchie's captain week. This was not an obligation. This was a man who believed in a horse, believed strongly enough to put the collective's money behind it at 5.28, and said nothing until the race was run.<br><br>Amletto won. The return was $158.40. The collective's account is $128.40 better off than it was before the race. Douchie has been asked to say more about Amletto. Douchie has said only that it was "in the black book." The Post has no further questions.` },
+  { tag:'Loss', tagClass:'tag-loss', date:'01 Aug 2026', who:'Nic',
+    title:"Nic Misses Third Captain Week. The Committee Has Run Out of Euphemisms.",
+    byline:'By our Constitutional Affairs Editor',
+    body:`Nic's 01 August captain week has passed without a bet being submitted. This is the third such occasion in the 2026 season — following identical outcomes in April and May — and the Pundicci Investment Collective's internal debt ledger now records $90 in outstanding obligations against his name.<br><br>Attempts to reach Nic for comment were unsuccessful. Sources close to the situation suggest he is "going to get to it." These same sources said the same thing in April. And May. The Post will not speculate on August. We will simply note that Douchie, unprompted, placed a winning bonus bet on the same weekend. The contrast has been noted. It will continue to be noted.` },
   { tag:'Loss', tagClass:'tag-loss', date:'27 Jun 2026', who:'Shannon',
     title:"Shannon Shoots for 20/1. Shannon Misses. England Also Fail to Cooperate.",
     byline:'By our Two-Bet, No-Return Correspondent',
