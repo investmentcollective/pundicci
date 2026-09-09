@@ -44,13 +44,12 @@
   ::selection { background:var(--ink); color:#FFFFFF; }
 
   /* ─────────── Header ─────────── */
-  body { padding-top:env(safe-area-inset-top); background-color:var(--ink); }
+  body { background-color:var(--ink); }
   .header {
-    position:sticky; top:calc(-1 * env(safe-area-inset-top)); z-index:50;
+    position:sticky; top:0; z-index:50;
     display:flex; align-items:center; justify-content:space-between;
     padding:14px 36px;
-    margin-top:calc(-1 * env(safe-area-inset-top));
-    padding-top:calc(14px + env(safe-area-inset-top));
+    padding-top:calc(22px + env(safe-area-inset-top, 0px));
     background:var(--ink);
     border-bottom:1px solid var(--on-dark-line);
   }
@@ -326,7 +325,7 @@
 
   /* ─────────── Mobile ─────────── */
   @media (max-width: 700px) {
-    .header { padding:12px 16px; }
+    .header { padding:12px 16px; padding-top:calc(18px + env(safe-area-inset-top, 0px)); }
     .brand-mark { height:30px; width:auto; }
     .wm.wm1 { height:11px; } .wm.wm2 { height:11px; }
     .brand-text .brand-sub { display:none; }

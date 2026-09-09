@@ -2,7 +2,7 @@
    Strategy: network-first for the dashboard so a fresh push shows immediately,
    cache-first for icons and fonts. Offline falls back to the last good copy. */
 
-const VERSION = 'pic-v1';
+const VERSION = 'pic-v2';
 const SHELL = [
   './',
   './index.html',
