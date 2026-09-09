@@ -323,6 +323,34 @@
   footer { text-align:center; padding:30px 20px 40px; font-size:10px; color:var(--faint); letter-spacing:2px; text-transform:uppercase; line-height:2; }
   footer .gold { color:var(--brand2); }
 
+  /* ─────────── The Wire ─────────── */
+  .wire-filters { display:flex; gap:7px; flex-wrap:wrap; justify-content:center; margin:0 0 20px; }
+  .wire-chip {
+    font-size:10px; font-weight:600; letter-spacing:1.6px; text-transform:uppercase;
+    padding:6px 14px; border-radius:999px; cursor:pointer; user-select:none;
+    border:1px solid var(--line2); color:var(--muted); background:var(--card);
+    transition:all .15s ease;
+  }
+  .wire-chip:hover { border-color:var(--line3); color:var(--ink); }
+  .wire-chip.active { background:var(--ink); border-color:var(--ink); color:#FFFFFF; }
+  .wire-item {
+    display:block; text-decoration:none; color:inherit;
+    background:var(--card); border:1px solid var(--line); border-radius:12px;
+    padding:18px 22px; margin-bottom:10px; transition:all .15s ease;
+  }
+  .wire-item:hover { border-color:var(--line3); transform:translateY(-1px); }
+  .wire-meta { display:flex; align-items:center; gap:9px; flex-wrap:wrap; margin-bottom:8px; }
+  .wire-src {
+    font-size:9px; font-weight:600; letter-spacing:1.4px; text-transform:uppercase;
+    padding:2px 8px; border-radius:3px; background:var(--card2); color:var(--muted);
+    border:1px solid var(--line);
+  }
+  .wire-cat { font-size:9px; font-weight:600; letter-spacing:1.4px; text-transform:uppercase; }
+  .wire-time { font-size:10px; color:var(--faint); letter-spacing:0.4px; margin-left:auto; }
+  .wire-title { font-family:var(--serif); font-weight:600; font-size:19px; line-height:1.3; color:var(--ink); }
+  .wire-excerpt { font-size:13px; line-height:1.6; color:var(--muted); margin-top:7px; }
+  .wire-empty { text-align:center; padding:44px 24px; color:var(--muted); font-size:13px; }
+
   /* ─────────── Mobile ─────────── */
   @media (max-width: 700px) {
     .header { padding:12px 16px; padding-top:calc(18px + env(safe-area-inset-top, 0px)); }
@@ -403,6 +431,7 @@
   <div class="nav-tab" data-nav="leaderboard" onclick="showPage('leaderboard')">Leaderboard</div>
   <div class="nav-tab" data-nav="records" onclick="showPage('records')">Records</div>
   <div class="nav-tab" data-nav="post" onclick="showPage('post')">The Post</div>
+  <div class="nav-tab" data-nav="wire" onclick="showPage('wire')">The Wire</div>
   <div class="nav-tab" data-nav="account" onclick="showPage('account')">Account</div>
 </div>
 
@@ -479,6 +508,17 @@
   </div>
   <div id="post-feed"></div>
   <footer>All quotes verified by nobody <span class="gold">◆</span> The Post regrets nothing</footer>
+</div>
+
+<!-- ═══════════ THE WIRE ═══════════ -->
+<div class="page" id="page-wire">
+  <div class="post-masthead">
+    <div class="post-title">The <span class="amp">Wire</span></div>
+    <div class="post-rules"><span class="post-tagline">Racing &amp; Sport · Incoming</span></div>
+  </div>
+  <div class="wire-filters" id="wire-filters"></div>
+  <div id="wire-feed"></div>
+  <footer>Headlines syndicated from public feeds <span class="gold">◆</span> <span id="wire-stamp"></span></footer>
 </div>
 
 <!-- ═══════════ ACCOUNT ═══════════ -->
@@ -1236,6 +1276,7 @@ function showPage(id) {
   window.scrollTo(0, 0);
   if (id === 'home') buildHome();
   if (id === 'account') buildAccount();
+  if (id === 'wire') buildWire();
   stampAsAt();
 }
 
@@ -1246,6 +1287,85 @@ buildTicker();
 buildLeaderboard();
 buildRecords();
 buildPost();
+const WIRE_CATS = [
+  ['all','All'], ['racing','Racing'], ['afl','AFL'],
+  ['nrl','NRL'], ['union','Union'], ['sport','Sport']
+];
+const WIRE_CAT_COLOR = {
+  racing:'var(--charlie)', afl:'var(--shannon)',
+  nrl:'var(--douchie)', union:'var(--nic)', sport:'var(--muted)'
+};
+let WIRE = null, wireFilter = 'all';
+
+function timeAgo(ts) {
+  if (!ts) return '';
+  const mins = Math.floor((Date.now()/1000 - ts) / 60);
+  if (mins < 1) return 'just now';
+  if (mins < 60) return mins + 'm ago';
+  const hrs = Math.floor(mins/60);
+  if (hrs < 24) return hrs + 'h ago';
+  const days = Math.floor(hrs/24);
+  return days === 1 ? 'yesterday' : days + 'd ago';
+}
+
+function esc(s) {
+  return String(s).replace(/[&<>"']/g, c =>
+    ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+
+function renderWire() {
+  const feed = document.getElementById('wire-feed');
+  if (!feed) return;
+
+  if (!WIRE) {
+    feed.innerHTML = '<div class="wire-empty">Loading the wire…</div>';
+    return;
+  }
+  if (!WIRE.items || !WIRE.items.length) {
+    feed.innerHTML = '<div class="wire-empty">No stories yet. The feed refreshes twice daily &mdash; ' +
+      'run the <strong>Fetch racing &amp; sport feeds</strong> action to pull now.</div>';
+    return;
+  }
+
+  const cats = new Set(WIRE.items.map(i => i.category));
+  document.getElementById('wire-filters').innerHTML = WIRE_CATS
+    .filter(([k]) => k === 'all' || cats.has(k))
+    .map(([k, label]) =>
+      `<div class="wire-chip${k === wireFilter ? ' active' : ''}" onclick="setWireFilter('${k}')">${label}</div>`)
+    .join('');
+
+  const shown = WIRE.items.filter(i => wireFilter === 'all' || i.category === wireFilter);
+  feed.innerHTML = shown.map(i => `
+    <a class="wire-item" href="${esc(i.link)}" target="_blank" rel="noopener noreferrer">
+      <div class="wire-meta">
+        <span class="wire-src">${esc(i.source)}</span>
+        <span class="wire-cat" style="color:${WIRE_CAT_COLOR[i.category] || 'var(--muted)'}">${esc(i.category)}</span>
+        <span class="wire-time">${timeAgo(i.ts)}</span>
+      </div>
+      <div class="wire-title">${esc(i.title)}</div>
+      ${i.excerpt ? `<div class="wire-excerpt">${esc(i.excerpt)}</div>` : ''}
+    </a>`).join('');
+
+  const stamp = document.getElementById('wire-stamp');
+  if (stamp && WIRE.generated) {
+    stamp.textContent = 'Updated ' + timeAgo(Math.floor(Date.parse(WIRE.generated)/1000));
+  }
+}
+
+function setWireFilter(cat) { wireFilter = cat; renderWire(); }
+
+function buildWire() {
+  if (WIRE) { renderWire(); return; }
+  renderWire();
+  fetch('feeds.json', { cache: 'no-cache' })
+    .then(r => r.ok ? r.json() : Promise.reject(r.status))
+    .then(data => { WIRE = data; renderWire(); })
+    .catch(() => {
+      document.getElementById('wire-feed').innerHTML =
+        '<div class="wire-empty">Could not load the wire. It refreshes twice daily via GitHub Actions.</div>';
+    });
+}
+
 function stampAsAt() {
   const set = (sel, val) => document.querySelectorAll(sel).forEach(el => el.textContent = val);
   const w = BETS.filter(b => b.result === 'W').length;

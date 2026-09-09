@@ -2,7 +2,7 @@
    Strategy: network-first for the dashboard so a fresh push shows immediately,
    cache-first for icons and fonts. Offline falls back to the last good copy. */
 
-const VERSION = 'pic-v4';
+const VERSION = 'pic-v5';
 const SHELL = [
   './',
   './index.html',
@@ -37,8 +37,10 @@ self.addEventListener('fetch', event => {
   if (req.method !== 'GET') return;
 
   const isDoc = req.mode === 'navigate' || req.destination === 'document';
+  // the feed changes on a schedule - never serve it from cache first
+  const isFeed = new URL(req.url).pathname.endsWith('/feeds.json');
 
-  if (isDoc) {
+  if (isDoc || isFeed) {
     event.respondWith(
       fetch(req)
         .then(res => {
