@@ -518,7 +518,7 @@
 /* ══════════════════════════════════════════════════════════════
    DATA — edit this block to update the dashboard
    ══════════════════════════════════════════════════════════════ */
-const BALANCE = { current: 7097.51, asAt: '07 Aug 2026', opening: 5138.12, openingDate: '30 Dec 2025', betReturns2026: 959.94 };
+const BALANCE = { current: 7175.51, asAt: '09 Sep 2026', opening: 5138.12, openingDate: '30 Dec 2025', betReturns2026: 1037.94 };
 
 const MEMBERS = {
   charlie: { name:'Charlie', color:'var(--charlie)', hex:'#3DDC97', outstanding:0 },
@@ -557,10 +557,27 @@ const BETS = [
   { m:'shannon', date:'27 Jun 2026', desc:'State of Origin SGM — QLD v NSW', odds:'20.25', stake:30, ret:0, result:'L' },
   { m:'shannon', date:'27 Jun 2026', desc:'England v DR Congo SGM', odds:'6.20', stake:30, ret:0, result:'L' },
   { m:'douchie', date:'26 Jul 2026', desc:"Caulfield R8 — Amletto (bonus collective bet)", odds:'5.28', stake:30, ret:158.40, result:'W' },
-  { m:'shannon', date:'25 Jul 2026', desc:'Horses multi', odds:null, stake:30, ret:0, result:'L' }
+  { m:'shannon', date:'25 Jul 2026', desc:'Horses multi', odds:null, stake:30, ret:0, result:'L' },
+  { m:'douchie', date:'08 Aug 2026', desc:'Bet Lost', odds:null, stake:30, ret:0, result:'L' },
+  { m:'charlie', date:'15 Aug 2026', desc:'Cavalry Girl — Caulfield Heath Race 3', odds:'2.60', stake:30, ret:78.00, result:'W' },
+  { m:'shannon', date:'22 Aug 2026', desc:'Horses — bet lost ($20 stake)', odds:null, stake:20, ret:0, result:'L' },
+  { m:'nic',     date:'29 Aug 2026', desc:'NRL/Rugby multi — Sydney Roosters + NZ All Blacks', odds:null, stake:30, ret:0, result:'L' },
+  { m:'douchie', date:'05 Sep 2026', desc:'5-leg multi (horses & sports)', odds:null, stake:30, ret:0, result:'L' }
 ];
 
-const PENDING_BETS = [];
+const PENDING_BETS = [
+  { captain:'shannon', date:'22 Aug 2026',
+    event:'AFL Premiership Exacta — Brisbane Lions / Sydney Swans',
+    details:'Brisbane to win premiership · Sydney runner-up · Grand Final 26 Sep, MCG · $10 stake placed 25 Aug',
+    odds:'18.00', stake:'$10', potential:'$180.00',
+    legs:[
+      { done:false, label:'Brisbane beat Adelaide — Gabba, Sat 12 Sep' },
+      { done:false, label:'Sydney win home prelim — SCG (vs Freo or Geelong)' },
+      { done:false, label:'Brisbane win away prelim at Hawthorn' },
+      { done:false, label:'Brisbane win Grand Final — MCG, 26 Sep' }
+    ]
+  }
+];
 
 const SCHEDULE = [
   { date:'24 Jan 2026', captain:'douchie', logged:true },
@@ -591,11 +608,11 @@ const SCHEDULE = [
   { date:'18 Jul 2026', captain:'charlie', logged:true },
   { date:'25 Jul 2026', captain:'shannon', logged:true },
   { date:'01 Aug 2026', captain:'nic',     logged:true, noBet:true },
-  { date:'08 Aug 2026', captain:'douchie', logged:false },
-  { date:'15 Aug 2026', captain:'charlie', logged:false },
-  { date:'22 Aug 2026', captain:'shannon', logged:false },
-  { date:'29 Aug 2026', captain:'nic',     logged:false },
-  { date:'05 Sep 2026', captain:'douchie', logged:false },
+  { date:'08 Aug 2026', captain:'douchie', logged:true },
+  { date:'15 Aug 2026', captain:'charlie', logged:true },
+  { date:'22 Aug 2026', captain:'shannon', logged:true },
+  { date:'29 Aug 2026', captain:'nic',     logged:true },
+  { date:'05 Sep 2026', captain:'douchie', logged:true },
   { date:'12 Sep 2026', captain:'charlie', logged:false },
   { date:'19 Sep 2026', captain:'shannon', logged:false },
   { date:'26 Sep 2026', captain:'nic',     logged:false },
@@ -630,6 +647,14 @@ const DEBTS = [
 ];
 
 const ARTICLES = [
+  { tag:'Pending', tagClass:'tag-pending', date:'09 Sep 2026', who:'Shannon',
+    title:"Shannon's $10 Is Still Alive. Brisbane Just Need to Win Three in a Row. On the Road. No Pressure.",
+    byline:'By our Grand Final Bureau',
+    body:`On 25 August, Shannon committed $10 of the collective's capital to an AFL Premiership Exacta: Brisbane Lions to win the flag, Sydney Swans to finish runner-up, at $18. The potential return is $180. The potential path is, let us say, demanding.<br><br>The ticket has two legs. The first: Sydney must win a home preliminary final at the SCG against either Fremantle or Geelong. Sydney won a qualifying final, carry form, and play at home. The Post rates this leg at a reasonable probability and declines to be alarmist about it.<br><br>The second leg is where the eighteen dollars lives. Brisbane, having been beaten by Sydney in the qualifying final, must now win three consecutive finals &mdash; beginning with Adelaide at the Gabba this Saturday 12 September, then a preliminary final away at Hawthorn (minor premiers, home advantage, one of the better sides in the competition), and then the Grand Final at the MCG on 26 September. They must do this. In that order. Brisbane first. The Exacta is explicit: a Sydney premiership with Brisbane as runner-up returns nothing. The order is non-negotiable.<br><br>Shannon placed this bet on 25 August, when $18 was a defensible price. After Brisbane's qualifying final loss to the Swans, the true market price for this Exacta would be longer. Shannon has been made aware of this. Shannon remains, in his words, "confident." The Post cannot speak to what confidence means in the context of an away preliminary final at Hawthorn, but we acknowledge the feeling.<br><br>The Gabba hosts Brisbane v Adelaide this Saturday. The Post will be watching. Shannon definitely will be.` },
+  { tag:'Win', tagClass:'tag-win', date:'15 Aug 2026', who:'Charlie',
+    title:"Cavalry Girl. Race 3. Caulfield Heath. Charlie Is Insufferable Again.",
+    byline:'By our Turf Correspondent',
+    body:`Charlie's August captain week produced a $30 win bet on Cavalry Girl in Caulfield Heath Race 3, at odds of 2.60. Cavalry Girl won. The return was $78.00. Charlie accepted this outcome in the manner the collective has come to expect: with absolute composure in the moment, followed by a detailed debrief on his assessment of the field that showed, in his view, the result was never really in doubt. Cavalry Girl has been told. She appeared unbothered.` },
   { tag:'Loss', tagClass:'tag-loss', date:'25 Jul 2026', who:'Shannon',
     title:"Shannon Goes to the Horses. The Horses Were Not Interested.",
     byline:'By our Turf Correspondent',
