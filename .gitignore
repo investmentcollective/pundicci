@@ -12,3 +12,17 @@ desktop.ini
 
 # Setup script (delete after first run)
 setup-github.ps1
+
+# Working files — keep local, not on the public site
+Pundicci Logo.html
+PIC_Mobile_App_Brief.md
+PIC_Dashboard_Turf.html
+PIC_Dashboard_dark_archive.html
+PIC_Dashboard_classic.html
+Banner.html
+
+# Logo source assets (the mark is inlined in the dashboard)
+pic_mark.svg
+pic_wordmark_*.svg
+pic_logo_*.png
+pic_app_icon*.png

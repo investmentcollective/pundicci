@@ -2,23 +2,33 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Pundicci Investment Collective — 2026</title>
 <link rel="icon" type="image/png" href="logo-icon.png">
-<link rel="apple-touch-icon" href="logo-icon.png">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#14181F">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Pundicci">
+<link rel="apple-touch-icon" sizes="180x180" href="icon-180.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=Archivo+Black&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg0:#05080F; --bg1:#0A111D; --bg2:#0E1726;
-    --card:rgba(255,255,255,0.035); --card2:rgba(255,255,255,0.06);
-    --line:rgba(255,255,255,0.09); --line2:rgba(255,255,255,0.16);
-    --ink:#E9EEF5; --muted:#8A97A8; --faint:#5A6675;
-    --gold:#E8C56A; --gold2:#C9A24B; --gold-dim:rgba(232,197,106,0.14);
-    --green:#3DDC97; --red:#FF6B6B; --blue:#6AA8FF;
-    --charlie:#3DDC97; --nic:#B48CFF; --shannon:#FFB454; --douchie:#5EA0FF;
-    --paper:#F6F1E4; --paper2:#EFE8D6; --paper-ink:#1E2430; --paper-muted:#6B6353;
+    --bg0:#EEEFF2; --bg1:#F7F8FA; --bg2:#FFFFFF;
+    --card:#FFFFFF; --card2:#F7F8FA;
+    --line:#E0E2E8; --line2:#C9CDD6; --line3:#AEB4BF;
+    --ink:#14181F; --ink2:#262C36; --muted:#5C6472; --faint:#868D99; --ghost:#AEB4BF;
+    --navy:#14181F;
+    --brand:#14181F; --brand2:#262C36; --brand-dim:rgba(20,24,31,0.055);
+    --green:#12A150; --red:#E5484D; --amber:#B8801F; --blue:#2264C4;
+    --charlie:#127A5E; --nic:#5B4FC7; --shannon:#B85C22; --douchie:#2264C4;
+    --paper:#FFFFFF; --paper2:#F2F3F6; --paper-ink:#14181F; --paper-muted:#5C6472;
+    --on-dark:#FFFFFF; --on-dark-mute:rgba(255,255,255,0.52); --on-dark-faint:rgba(255,255,255,0.38);
+    --on-dark-line:rgba(255,255,255,0.14);
+    --green-d:#35D08A; --red-d:#FF7B80; --amber-d:#E8B44A; --blue-d:#6BA6F5;
     --font:'Archivo',-apple-system,'Segoe UI',Arial,sans-serif;
     --display:'Archivo Black','Arial Black',Arial,sans-serif;
     --serif:'Playfair Display',Georgia,'Times New Roman',serif;
@@ -28,45 +38,48 @@
   body {
     font-family:var(--font); color:var(--ink); min-height:100vh;
     background:
-      radial-gradient(1100px 500px at 85% -10%, rgba(232,197,106,0.07), transparent 60%),
-      radial-gradient(900px 600px at -10% 15%, rgba(94,160,255,0.06), transparent 55%),
       linear-gradient(180deg, var(--bg1) 0%, var(--bg0) 100%);
     background-attachment:fixed;
   }
-  ::selection { background:var(--gold); color:#111; }
+  ::selection { background:var(--ink); color:#FFFFFF; }
 
   /* ─────────── Header ─────────── */
+  body { padding-top:env(safe-area-inset-top); background-color:var(--ink); }
   .header {
-    position:sticky; top:0; z-index:50;
+    position:sticky; top:calc(-1 * env(safe-area-inset-top)); z-index:50;
     display:flex; align-items:center; justify-content:space-between;
     padding:14px 36px;
-    background:rgba(7,11,19,0.82); backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px);
-    border-bottom:1px solid var(--line);
+    margin-top:calc(-1 * env(safe-area-inset-top));
+    padding-top:calc(14px + env(safe-area-inset-top));
+    background:var(--ink);
+    border-bottom:1px solid var(--on-dark-line);
   }
   .brand { display:flex; align-items:center; gap:14px; }
-  .brand-mark { width:44px; height:44px; flex-shrink:0; filter:drop-shadow(0 0 12px rgba(232,197,106,0.35)); }
-  .brand-text .brand-name { font-family:var(--display); font-size:15px; letter-spacing:2.5px; line-height:1.15; }
-  .brand-text .brand-name span { color:var(--gold); }
-  .brand-text .brand-sub { font-size:9px; letter-spacing:4px; text-transform:uppercase; color:var(--muted); margin-top:3px; }
+  .brand-mark { height:40px; width:auto; flex-shrink:0; display:block; color:var(--on-dark); }
+  .brand-text { display:flex; flex-direction:column; gap:5px; color:var(--on-dark); }
+  .brand-text .wm { display:block; width:auto; }
+  .brand-text .wm1 { height:13px; }
+  .brand-text .wm2 { height:13px; }
+  .brand-text .wm-row { display:flex; align-items:center; gap:11px; }
+  .brand-text .brand-sub { font-size:9px; letter-spacing:3.5px; text-transform:uppercase; color:var(--on-dark-mute); white-space:nowrap; }
   .header-right { text-align:right; }
   .season-chip {
     display:inline-block; font-size:11px; font-weight:800; letter-spacing:2.5px; text-transform:uppercase;
-    color:var(--gold); border:1px solid rgba(232,197,106,0.4); border-radius:999px; padding:5px 14px;
-    background:var(--gold-dim);
+    color:var(--on-dark); background:transparent; border:1px solid rgba(255,255,255,0.34); border-radius:999px; padding:5px 14px;
   }
-  .updated { font-size:10px; letter-spacing:1.5px; text-transform:uppercase; color:var(--faint); margin-top:6px; }
+  .updated { font-size:10px; letter-spacing:1.5px; text-transform:uppercase; color:var(--on-dark-faint); margin-top:6px; }
 
   /* ─────────── Ticker ─────────── */
-  .ticker-wrap { overflow:hidden; border-bottom:1px solid var(--line); background:rgba(255,255,255,0.02); }
+  .ticker-wrap { overflow:hidden; border-bottom:1px solid var(--line); background:var(--ink); }
   .ticker { display:flex; width:max-content; animation:ticker 55s linear infinite; }
   .ticker-wrap:hover .ticker { animation-play-state:paused; }
   @keyframes ticker { from { transform:translateX(0); } to { transform:translateX(-50%); } }
-  .tick { display:flex; align-items:center; gap:10px; padding:9px 22px; font-size:11px; letter-spacing:1.2px; text-transform:uppercase; white-space:nowrap; color:var(--muted); }
-  .tick b { color:var(--ink); font-weight:800; }
-  .tick .up { color:var(--green); font-weight:800; }
-  .tick .down { color:var(--red); font-weight:800; }
-  .tick .pend { color:var(--blue); font-weight:800; }
-  .tick::after { content:'◆'; color:var(--gold2); font-size:8px; margin-left:22px; opacity:0.7; }
+  .tick { display:flex; align-items:center; gap:10px; padding:9px 22px; font-size:11px; letter-spacing:1.2px; text-transform:uppercase; white-space:nowrap; color:var(--on-dark-mute); }
+  .tick b { color:var(--on-dark); font-weight:800; }
+  .tick .up { color:var(--green-d); font-weight:800; }
+  .tick .down { color:var(--red-d); font-weight:800; }
+  .tick .pend { color:var(--blue-d); font-weight:800; }
+  .tick::after { content:'◆'; color:rgba(255,255,255,0.28); font-size:8px; margin-left:22px; opacity:0.7; }
 
   /* ─────────── Nav ─────────── */
   .nav { display:flex; justify-content:center; gap:6px; padding:14px 20px 0; position:relative; z-index:5; flex-wrap:wrap; }
@@ -76,7 +89,7 @@
     border:1px solid transparent; transition:all .22s;
   }
   .nav-tab:hover { color:var(--ink); background:var(--card); }
-  .nav-tab.active { color:var(--gold); background:var(--gold-dim); border-color:rgba(232,197,106,0.35); }
+  .nav-tab.active { color:#FFFFFF; background:var(--ink); border-color:var(--ink); }
 
   /* ─────────── Pages ─────────── */
   .page { display:none; max-width:1080px; margin:0 auto; padding:28px 32px 60px; }
@@ -84,27 +97,25 @@
   @keyframes pageIn { from { opacity:0; transform:translateY(14px); } to { opacity:1; transform:none; } }
   .section-title { font-size:11px; font-weight:800; letter-spacing:3px; text-transform:uppercase; color:var(--muted); margin:30px 0 14px; display:flex; align-items:center; gap:12px; }
   .section-title::after { content:''; flex:1; height:1px; background:linear-gradient(90deg, var(--line2), transparent); }
-  .section-title .gold { color:var(--gold); }
+  .section-title .gold { color:var(--brand); }
 
   /* ─────────── Hero ─────────── */
   .hero {
     position:relative; overflow:hidden; border-radius:20px; padding:38px 40px;
-    background:linear-gradient(135deg, rgba(232,197,106,0.10) 0%, rgba(255,255,255,0.03) 38%, rgba(94,160,255,0.05) 100%);
+    background:var(--card);
     border:1px solid var(--line2);
     display:flex; justify-content:space-between; align-items:flex-end; gap:30px; flex-wrap:wrap;
   }
   .hero::before {
     content:''; position:absolute; top:-60%; left:-20%; width:60%; height:220%;
-    background:linear-gradient(100deg, transparent 30%, rgba(232,197,106,0.07) 50%, transparent 70%);
+    background:linear-gradient(100deg, transparent 30%, rgba(20,24,31,0.035) 50%, transparent 70%);
     transform:rotate(8deg); animation:sheen 7s ease-in-out infinite;
   }
   @keyframes sheen { 0%,100% { transform:translateX(-30%) rotate(8deg);} 50% { transform:translateX(160%) rotate(8deg);} }
   .hero-label { font-size:11px; letter-spacing:3.5px; text-transform:uppercase; color:var(--muted); margin-bottom:12px; }
   .hero-balance {
     font-family:var(--display); font-size:72px; line-height:0.95; letter-spacing:-1px;
-    background:linear-gradient(160deg, #FFF6DF 10%, var(--gold) 55%, var(--gold2) 90%);
-    -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent;
-    filter:drop-shadow(0 6px 26px rgba(232,197,106,0.25));
+    color:var(--ink);
     font-variant-numeric:tabular-nums;
   }
   .hero-asat { font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--faint); margin-top:14px; }
@@ -112,15 +123,15 @@
   .hero-stat-label { font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--muted); margin-bottom:6px; }
   .hero-stat-value { font-size:21px; font-weight:800; font-variant-numeric:tabular-nums; }
   .hero-stat-value.up { color:var(--green); }
-  .hero-stat-value.gold { color:var(--gold); }
+  .hero-stat-value.gold { color:var(--brand); }
 
   /* Season progress */
   .progress-card { margin-top:14px; border:1px solid var(--line); border-radius:14px; background:var(--card); padding:16px 22px; }
   .progress-head { display:flex; justify-content:space-between; align-items:baseline; margin-bottom:10px; }
   .progress-head .pl { font-size:10px; letter-spacing:2.5px; text-transform:uppercase; color:var(--muted); }
-  .progress-head .pv { font-size:12px; font-weight:800; color:var(--gold); letter-spacing:1px; }
-  .progress-track { height:7px; border-radius:99px; background:rgba(255,255,255,0.07); overflow:hidden; }
-  .progress-fill { height:100%; width:0; border-radius:99px; background:linear-gradient(90deg, var(--gold2), var(--gold)); box-shadow:0 0 14px rgba(232,197,106,0.5); transition:width 1.4s cubic-bezier(.2,.7,.2,1); }
+  .progress-head .pv { font-size:12px; font-weight:800; color:var(--brand); letter-spacing:1px; }
+  .progress-track { height:7px; border-radius:99px; background:rgba(20,24,31,0.10); overflow:hidden; }
+  .progress-fill { height:100%; width:0; border-radius:99px; background:linear-gradient(90deg, var(--brand2), var(--brand)); transition:width 1.4s cubic-bezier(.2,.7,.2,1); }
 
   /* ─────────── Chart card ─────────── */
   .chart-card { border:1px solid var(--line); border-radius:16px; background:var(--card); padding:22px 24px 12px; }
@@ -133,17 +144,17 @@
   /* ─────────── Next up / pending ─────────── */
   .duty-row { display:flex; gap:14px; flex-wrap:wrap; }
   .duty-card { flex:1; min-width:230px; border-radius:16px; padding:20px 24px; border:1px solid var(--line2); background:var(--card2); position:relative; overflow:hidden; }
-  .duty-card.primary { border-color:rgba(232,197,106,0.35); }
+  .duty-card.primary { border-color:var(--line3); }
   .duty-tag { font-size:10px; font-weight:800; letter-spacing:3px; text-transform:uppercase; color:var(--muted); margin-bottom:10px; }
   .duty-name { font-family:var(--display); font-size:30px; letter-spacing:1px; line-height:1; text-transform:uppercase; }
   .duty-date { font-size:13px; color:var(--muted); margin-top:8px; font-weight:600; }
-  .duty-when { display:inline-block; margin-top:10px; font-size:10px; font-weight:800; letter-spacing:1.5px; text-transform:uppercase; padding:4px 12px; border-radius:999px; background:var(--gold-dim); color:var(--gold); }
+  .duty-when { display:inline-block; margin-top:10px; font-size:10px; font-weight:800; letter-spacing:1.5px; text-transform:uppercase; padding:4px 12px; border-radius:999px; background:var(--brand-dim); color:var(--brand); }
   .duty-glow { position:absolute; right:-30px; top:-30px; width:130px; height:130px; border-radius:50%; filter:blur(46px); opacity:0.35; }
 
-  .pending-card { border:1px solid rgba(106,168,255,0.4); border-radius:16px; background:linear-gradient(135deg, rgba(106,168,255,0.10), rgba(255,255,255,0.02)); padding:22px 26px; position:relative; overflow:hidden; }
-  .pending-pulse { display:inline-flex; align-items:center; gap:8px; font-size:10px; font-weight:800; letter-spacing:2.5px; text-transform:uppercase; color:var(--blue); }
-  .pending-pulse::before { content:''; width:8px; height:8px; border-radius:50%; background:var(--blue); animation:pulse 1.6s ease-in-out infinite; }
-  @keyframes pulse { 0%,100% { box-shadow:0 0 0 0 rgba(106,168,255,0.6);} 50% { box-shadow:0 0 0 7px rgba(106,168,255,0);} }
+  .pending-card { border:1px solid var(--line3); border-radius:16px; background:var(--card2); padding:22px 26px; position:relative; overflow:hidden; }
+  .pending-pulse { display:inline-flex; align-items:center; gap:8px; font-size:10px; font-weight:800; letter-spacing:2.5px; text-transform:uppercase; color:var(--amber); }
+  .pending-pulse::before { content:''; width:8px; height:8px; border-radius:50%; background:var(--amber); animation:pulse 1.6s ease-in-out infinite; }
+  @keyframes pulse { 0%,100% { box-shadow:0 0 0 0 rgba(184,128,31,0.45);} 50% { box-shadow:0 0 0 7px rgba(184,128,31,0);} }
   .pending-main { display:flex; justify-content:space-between; gap:20px; flex-wrap:wrap; margin-top:12px; }
   .pending-event { font-size:20px; font-weight:800; }
   .pending-details { font-size:12px; color:var(--muted); margin-top:5px; line-height:1.5; }
@@ -154,7 +165,7 @@
   .pnum .v.blue { color:var(--blue); }
   .legs { display:flex; flex-wrap:wrap; gap:7px; margin-top:16px; padding-top:14px; border-top:1px solid rgba(106,168,255,0.2); }
   .leg { font-size:11px; font-weight:700; padding:5px 12px; border-radius:999px; letter-spacing:0.4px; }
-  .leg.done { background:rgba(61,220,151,0.14); color:var(--green); border:1px solid rgba(61,220,151,0.35); }
+  .leg.done { background:rgba(18,161,80,0.10); color:var(--green); border:1px solid rgba(18,161,80,0.30); }
   .leg.wait { background:rgba(106,168,255,0.10); color:var(--blue); border:1px dashed rgba(106,168,255,0.45); }
   .member-chip { display:inline-block; font-size:10px; font-weight:800; letter-spacing:1.5px; text-transform:uppercase; padding:3px 11px; border-radius:999px; margin-right:8px; }
 
@@ -164,7 +175,7 @@
   .stat-item:last-child { border-right:none; }
   .stat-label { font-size:9px; letter-spacing:2px; text-transform:uppercase; color:var(--muted); margin-bottom:7px; }
   .stat-value { font-size:22px; font-weight:800; font-variant-numeric:tabular-nums; }
-  .stat-value.up { color:var(--green); } .stat-value.down { color:var(--red); } .stat-value.gold { color:var(--gold); }
+  .stat-value.up { color:var(--green); } .stat-value.down { color:var(--red); } .stat-value.gold { color:var(--brand); }
 
   /* ─────────── Leaderboard ─────────── */
   .lb-card {
@@ -172,28 +183,28 @@
     border:1px solid var(--line); border-radius:16px; background:var(--card); cursor:pointer;
     transition:all .25s; position:relative; overflow:hidden;
   }
-  .lb-card:hover { transform:translateY(-2px); border-color:var(--line2); background:var(--card2); box-shadow:0 14px 34px rgba(0,0,0,0.35); }
-  .lb-card::before { content:''; position:absolute; left:0; top:0; bottom:0; width:4px; background:var(--mc, var(--gold)); }
+  .lb-card:hover { transform:translateY(-2px); border-color:var(--line2); background:var(--card2); box-shadow:0 8px 22px rgba(20,24,31,0.10); }
+  .lb-card::before { content:''; position:absolute; left:0; top:0; bottom:0; width:4px; background:var(--mc, var(--brand)); }
   .lb-rank { font-family:var(--display); font-size:38px; width:66px; text-align:center; flex-shrink:0; }
-  .lb-rank.r1 { background:linear-gradient(160deg,#FFF3CE,var(--gold),var(--gold2)); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
-  .lb-rank.r2 { color:#C9D4E0; } .lb-rank.r3 { color:#C88A4E; } .lb-rank.r4 { color:#5A6675; }
+  .lb-rank.r1 { color:var(--ink); }
+  .lb-rank.r2 { color:var(--muted); } .lb-rank.r3 { color:var(--faint); } .lb-rank.r4 { color:var(--line2); }
   .lb-name-block { flex:1; min-width:0; }
   .lb-name { font-family:var(--display); font-size:25px; letter-spacing:1px; text-transform:uppercase; line-height:1.05; }
   .lb-record { font-size:11px; color:var(--muted); margin-top:6px; font-weight:700; letter-spacing:1px; display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
-  .owe-badge { font-size:9px; font-weight:800; letter-spacing:1px; padding:3px 9px; border-radius:999px; background:rgba(255,180,84,0.15); color:var(--shannon); border:1px solid rgba(255,180,84,0.4); }
-  .lb-bar { height:4px; border-radius:99px; background:rgba(255,255,255,0.07); margin-top:10px; max-width:280px; overflow:hidden; }
-  .lb-bar i { display:block; height:100%; border-radius:99px; background:var(--mc, var(--gold)); }
+  .owe-badge { font-size:9px; font-weight:800; letter-spacing:1px; padding:3px 9px; border-radius:999px; background:rgba(184,92,34,0.10); color:var(--shannon); border:1px solid rgba(184,92,34,0.30); }
+  .lb-bar { height:4px; border-radius:99px; background:rgba(20,24,31,0.10); margin-top:10px; max-width:280px; overflow:hidden; }
+  .lb-bar i { display:block; height:100%; border-radius:99px; background:var(--mc, var(--brand)); }
   .lb-stats { display:flex; gap:30px; }
   .lb-stat { text-align:right; min-width:74px; }
   .lb-stat-label { font-size:9px; letter-spacing:1.5px; text-transform:uppercase; color:var(--muted); margin-bottom:4px; }
   .lb-stat-value { font-size:17px; font-weight:800; font-variant-numeric:tabular-nums; }
   .lb-stat-value.up { color:var(--green); } .lb-stat-value.down { color:var(--red); }
   .lb-arrow { color:var(--faint); font-size:22px; transition:all .2s; }
-  .lb-card:hover .lb-arrow { color:var(--gold); transform:translateX(3px); }
+  .lb-card:hover .lb-arrow { color:var(--brand); transform:translateX(3px); }
 
   /* ─────────── Member page ─────────── */
   .back-btn { display:inline-flex; align-items:center; gap:8px; font-size:11px; font-weight:800; letter-spacing:2px; text-transform:uppercase; color:var(--muted); cursor:pointer; padding:8px 0; margin-bottom:16px; transition:color .2s; }
-  .back-btn:hover { color:var(--gold); }
+  .back-btn:hover { color:var(--brand); }
   .member-hero { border-radius:18px; border:1px solid var(--line2); padding:30px 32px; display:flex; justify-content:space-between; align-items:center; gap:24px; flex-wrap:wrap; position:relative; overflow:hidden; background:var(--card2); }
   .member-hero::before { content:''; position:absolute; left:0; top:0; bottom:0; width:5px; background:var(--mc); }
   .member-hero::after { content:''; position:absolute; right:-60px; top:-60px; width:210px; height:210px; border-radius:50%; background:var(--mc); filter:blur(90px); opacity:0.16; }
@@ -212,36 +223,36 @@
   .bet-date .d { font-size:12px; font-weight:800; }
   .bet-date .m { font-size:9px; letter-spacing:2px; text-transform:uppercase; color:var(--muted); margin-top:2px; }
   .bet-desc { flex:1; min-width:0; font-size:14px; font-weight:600; line-height:1.45; }
-  .bet-desc .odds { display:inline-block; font-size:10px; font-weight:800; color:var(--gold); background:var(--gold-dim); border-radius:6px; padding:2px 8px; margin-left:8px; letter-spacing:0.5px; }
+  .bet-desc .odds { display:inline-block; font-size:10px; font-weight:800; color:var(--brand); background:var(--brand-dim); border-radius:6px; padding:2px 8px; margin-left:8px; letter-spacing:0.5px; }
   .bet-nums { display:flex; gap:22px; align-items:center; flex-shrink:0; }
   .bn { text-align:right; min-width:64px; }
   .bn .l { font-size:9px; letter-spacing:1.5px; text-transform:uppercase; color:var(--muted); margin-bottom:3px; }
   .bn .v { font-size:14px; font-weight:800; font-variant-numeric:tabular-nums; }
   .result-chip { font-size:10px; font-weight:800; letter-spacing:1.5px; text-transform:uppercase; padding:5px 13px; border-radius:999px; flex-shrink:0; }
-  .result-chip.win { background:rgba(61,220,151,0.13); color:var(--green); border:1px solid rgba(61,220,151,0.4); }
-  .result-chip.loss { background:rgba(255,107,107,0.11); color:var(--red); border:1px solid rgba(255,107,107,0.35); }
+  .result-chip.win { background:rgba(18,161,80,0.10); color:var(--green); border:1px solid rgba(18,161,80,0.30); }
+  .result-chip.loss { background:rgba(229,72,77,0.09); color:var(--red); border:1px solid rgba(229,72,77,0.28); }
   .net.up { color:var(--green); } .net.down { color:var(--red); }
-  .bet-total { display:flex; justify-content:space-between; align-items:center; padding:16px 22px; border-radius:14px; border:1px solid rgba(232,197,106,0.3); background:var(--gold-dim); margin-top:4px; font-weight:800; }
-  .bet-total .lbl { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold); }
+  .bet-total { display:flex; justify-content:space-between; align-items:center; padding:16px 22px; border-radius:14px; border:1px solid var(--line2); background:var(--card2); margin-top:4px; font-weight:800; }
+  .bet-total .lbl { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--brand); }
   .bet-total .val { font-size:17px; font-variant-numeric:tabular-nums; }
 
   /* ─────────── The Post ─────────── */
   .post-masthead { text-align:center; padding:26px 0 18px; }
-  .post-title { font-family:var(--serif); font-weight:800; font-size:46px; letter-spacing:1px; color:var(--paper); }
-  .post-title .amp { color:var(--gold); }
+  .post-title { font-family:var(--serif); font-weight:800; font-size:46px; letter-spacing:1px; color:var(--ink); }
+  .post-title .amp { color:var(--brand); }
   .post-rules { display:flex; align-items:center; gap:14px; margin:12px auto 0; max-width:640px; }
   .post-rules::before, .post-rules::after { content:''; flex:1; height:3px; border-top:1px solid var(--line2); border-bottom:1px solid var(--line2); }
   .post-tagline { font-size:10px; letter-spacing:3.5px; text-transform:uppercase; color:var(--muted); white-space:nowrap; }
   .article {
     background:var(--paper); color:var(--paper-ink); border-radius:14px; padding:26px 30px; margin-bottom:16px;
-    box-shadow:0 10px 30px rgba(0,0,0,0.35), inset 0 0 0 1px rgba(0,0,0,0.05);
+    box-shadow:0 4px 18px rgba(20,24,31,0.09), inset 0 0 0 1px rgba(20,24,31,0.05);
     position:relative;
   }
   .article::before { content:''; position:absolute; top:0; left:24px; right:24px; height:3px; background:var(--paper-ink); opacity:0.85; }
   .article-meta { display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:10px; }
   .article-tag { font-size:9px; font-weight:800; letter-spacing:1.5px; text-transform:uppercase; padding:3px 10px; border-radius:3px; }
-  .tag-win { background:#D7EFDD; color:#166534; } .tag-loss { background:#F6DBD7; color:#991B1B; }
-  .tag-pending { background:#DBE7F6; color:#1E40AF; } .tag-editorial { background:#F3E8C9; color:#92400E; }
+  .tag-win { background:#DCF0E4; color:#0B6B36; } .tag-loss { background:#FADEDF; color:#A32126; }
+  .tag-pending { background:#F6EBD3; color:#7A5410; } .tag-editorial { background:#E6E8ED; color:#333B47; }
   .article-date { font-size:11px; color:var(--paper-muted); font-weight:700; letter-spacing:0.5px; }
   .article h3 { font-family:var(--serif); font-size:23px; font-weight:800; line-height:1.25; margin-bottom:7px; }
   .article .byline { font-size:10px; font-weight:800; letter-spacing:1.8px; text-transform:uppercase; color:var(--paper-muted); margin-bottom:12px; }
@@ -257,21 +268,21 @@
   .sav-mid { flex:1; min-width:140px; }
   .sav-note { font-size:11px; color:var(--muted); margin-bottom:8px; font-weight:600; }
   .sav-note.warn { color:var(--shannon); } .sav-note.bad { color:var(--red); }
-  .sav-track { height:6px; border-radius:99px; background:rgba(255,255,255,0.07); overflow:hidden; }
+  .sav-track { height:6px; border-radius:99px; background:rgba(20,24,31,0.10); overflow:hidden; }
   .sav-fill { height:100%; width:0; border-radius:99px; transition:width 1.2s cubic-bezier(.2,.7,.2,1); }
   .sav-right { text-align:right; flex-shrink:0; min-width:110px; }
   .sav-amt { font-size:17px; font-weight:800; font-variant-numeric:tabular-nums; }
   .sav-of { font-size:10px; color:var(--muted); margin-top:2px; }
   .status-chip { display:inline-block; font-size:9px; font-weight:800; letter-spacing:1.2px; text-transform:uppercase; padding:4px 11px; border-radius:999px; margin-top:6px; }
-  .status-chip.paid { background:rgba(61,220,151,0.13); color:var(--green); border:1px solid rgba(61,220,151,0.4); }
-  .status-chip.partial { background:rgba(255,180,84,0.13); color:var(--shannon); border:1px solid rgba(255,180,84,0.4); }
-  .status-chip.overdue { background:rgba(255,107,107,0.12); color:var(--red); border:1px solid rgba(255,107,107,0.4); }
+  .status-chip.paid { background:rgba(18,161,80,0.10); color:var(--green); border:1px solid rgba(18,161,80,0.30); }
+  .status-chip.partial { background:rgba(184,128,31,0.11); color:var(--amber); border:1px solid rgba(184,128,31,0.30); }
+  .status-chip.overdue { background:rgba(229,72,77,0.09); color:var(--red); border:1px solid rgba(229,72,77,0.28); }
 
   .ret-grid { border:1px solid var(--line2); border-radius:16px; overflow:hidden; }
   .ret-row { display:grid; grid-template-columns:1.3fr 0.7fr 1fr 0.8fr 1fr 1fr; align-items:center; padding:15px 22px; border-bottom:1px solid var(--line); background:var(--card); font-size:14px; }
   .ret-row:last-child { border-bottom:none; }
-  .ret-row.head { background:rgba(255,255,255,0.05); font-size:9px; letter-spacing:2px; text-transform:uppercase; color:var(--muted); font-weight:800; padding:12px 22px; }
-  .ret-row.foot { background:var(--gold-dim); font-weight:800; border-top:1px solid rgba(232,197,106,0.3); }
+  .ret-row.head { background:rgba(20,24,31,0.05); font-size:9px; letter-spacing:2px; text-transform:uppercase; color:var(--muted); font-weight:800; padding:12px 22px; }
+  .ret-row.foot { background:var(--card2); font-weight:800; border-top:1px solid var(--line2); }
   .ret-row .r { text-align:right; font-variant-numeric:tabular-nums; }
   .ret-row .name { font-weight:800; }
   .ret-row .up { color:var(--green); font-weight:800; } .ret-row .down { color:var(--red); font-weight:800; }
@@ -280,34 +291,25 @@
   .form-row { display:flex; align-items:center; gap:10px; margin-top:10px; }
   .form-dots { display:flex; gap:4px; }
   .fdot { width:17px; height:17px; border-radius:50%; font-size:8px; font-weight:800; display:flex; align-items:center; justify-content:center; }
-  .fdot.w { background:rgba(61,220,151,0.16); color:var(--green); border:1px solid rgba(61,220,151,0.5); }
-  .fdot.l { background:rgba(255,107,107,0.12); color:var(--red); border:1px solid rgba(255,107,107,0.4); }
+  .fdot.w { background:rgba(18,161,80,0.12); color:var(--green); border:1px solid rgba(18,161,80,0.38); }
+  .fdot.l { background:rgba(229,72,77,0.09); color:var(--red); border:1px solid rgba(229,72,77,0.30); }
   .streak-chip { font-size:9px; font-weight:800; letter-spacing:1px; padding:3px 9px; border-radius:999px; text-transform:uppercase; }
-  .streak-chip.hot { background:rgba(61,220,151,0.13); color:var(--green); border:1px solid rgba(61,220,151,0.4); }
-  .streak-chip.cold { background:rgba(255,107,107,0.11); color:var(--red); border:1px solid rgba(255,107,107,0.35); }
+  .streak-chip.hot { background:rgba(18,161,80,0.10); color:var(--green); border:1px solid rgba(18,161,80,0.30); }
+  .streak-chip.cold { background:rgba(229,72,77,0.09); color:var(--red); border:1px solid rgba(229,72,77,0.28); }
 
   /* ─────────── Records ─────────── */
   .rec-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:12px; }
   .rec-card { border:1px solid var(--line); border-radius:16px; background:var(--card); padding:22px 24px; position:relative; overflow:hidden; }
-  .rec-card.fame { border-color:rgba(232,197,106,0.3); }
-  .rec-card.fame::after { content:''; position:absolute; right:-40px; top:-40px; width:130px; height:130px; border-radius:50%; background:var(--gold); filter:blur(70px); opacity:0.10; }
-  .rec-card.shame { border-color:rgba(255,107,107,0.25); }
+  .rec-card.fame { border-color:var(--line3); }
+  .rec-card.fame::after { content:''; position:absolute; right:-40px; top:-40px; width:130px; height:130px; border-radius:50%; background:var(--brand); filter:blur(70px); opacity:0.10; }
+  .rec-card.shame { border-color:rgba(229,72,77,0.28); }
   .rec-icon { font-size:26px; margin-bottom:10px; }
   .rec-label { font-size:10px; font-weight:800; letter-spacing:2.5px; text-transform:uppercase; color:var(--muted); margin-bottom:8px; }
   .rec-holder { font-family:var(--display); font-size:21px; text-transform:uppercase; letter-spacing:0.5px; }
   .rec-value { font-size:19px; font-weight:800; margin-top:4px; font-variant-numeric:tabular-nums; }
-  .rec-card.fame .rec-value { color:var(--gold); }
+  .rec-card.fame .rec-value { color:var(--brand); }
   .rec-card.shame .rec-value { color:var(--red); }
   .rec-detail { font-size:12px; color:var(--muted); margin-top:8px; line-height:1.55; }
-  .memorial {
-    margin-top:14px; border:1px solid var(--line2); border-radius:16px; padding:30px 26px; text-align:center;
-    background:linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.015));
-  }
-  .memorial .m-icon { font-size:30px; }
-  .memorial .m-title { font-family:var(--serif); font-style:italic; font-size:14px; letter-spacing:2px; color:var(--muted); margin-top:10px; text-transform:uppercase; }
-  .memorial .m-name { font-family:var(--serif); font-weight:800; font-size:28px; margin-top:6px; }
-  .memorial .m-dates { font-size:11px; letter-spacing:2px; color:var(--faint); margin-top:6px; }
-  .memorial .m-words { font-family:var(--serif); font-style:italic; font-size:14px; color:var(--muted); margin-top:12px; line-height:1.7; }
 
   /* ─────────── Debt ledger ─────────── */
   .debt-row { display:flex; align-items:center; gap:16px; padding:15px 20px; border:1px solid var(--line); border-radius:12px; background:var(--card); margin-bottom:8px; flex-wrap:wrap; }
@@ -315,18 +317,18 @@
   .debt-what { flex:1; min-width:160px; font-size:12px; color:var(--muted); line-height:1.5; }
   .debt-amt { font-size:16px; font-weight:800; font-variant-numeric:tabular-nums; text-align:right; min-width:80px; }
   .debt-status { font-size:8px; font-weight:800; letter-spacing:1.2px; text-transform:uppercase; padding:4px 10px; border-radius:999px; flex-shrink:0; }
-  .debt-status.bad { background:rgba(255,107,107,0.12); color:var(--red); border:1px solid rgba(255,107,107,0.4); }
-  .debt-status.warn { background:rgba(255,180,84,0.12); color:var(--shannon); border:1px solid rgba(255,180,84,0.4); }
+  .debt-status.bad { background:rgba(229,72,77,0.09); color:var(--red); border:1px solid rgba(229,72,77,0.28); }
+  .debt-status.warn { background:rgba(184,128,31,0.11); color:var(--amber); border:1px solid rgba(184,128,31,0.30); }
   .debt-fine-print { font-size:10px; color:var(--faint); letter-spacing:1px; text-transform:uppercase; margin-top:10px; text-align:center; line-height:1.8; }
 
   footer { text-align:center; padding:30px 20px 40px; font-size:10px; color:var(--faint); letter-spacing:2px; text-transform:uppercase; line-height:2; }
-  footer .gold { color:var(--gold2); }
+  footer .gold { color:var(--brand2); }
 
   /* ─────────── Mobile ─────────── */
   @media (max-width: 700px) {
     .header { padding:12px 16px; }
-    .brand-mark { width:36px; height:36px; }
-    .brand-text .brand-name { font-size:12px; letter-spacing:1.5px; }
+    .brand-mark { height:30px; width:auto; }
+    .wm.wm1 { height:11px; } .wm.wm2 { height:11px; }
     .brand-text .brand-sub { display:none; }
     .season-chip { font-size:9px; padding:4px 10px; letter-spacing:1.5px; }
     .updated { font-size:8px; }
@@ -380,23 +382,18 @@
 
 <div class="header">
   <div class="brand">
-    <svg class="brand-mark" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-label="PIC">
-      <defs>
-        <linearGradient id="goldgrad" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0" stop-color="#FFF0C4"/><stop offset="0.5" stop-color="#E8C56A"/><stop offset="1" stop-color="#B8933F"/>
-        </linearGradient>
-      </defs>
-      <path d="M50 3 L91 13 L91 52 C91 74 74 90 50 97 C26 90 9 74 9 52 L9 13 Z" fill="rgba(232,197,106,0.08)" stroke="url(#goldgrad)" stroke-width="3"/>
-      <text x="50" y="67" text-anchor="middle" font-family="'Archivo Black','Arial Black',Arial,sans-serif" font-size="48" fill="url(#goldgrad)" font-style="italic">P</text>
-    </svg>
+    <svg class="brand-mark" viewBox="0 0 600 450" xmlns="http://www.w3.org/2000/svg" aria-label="Pundicci Investment Collective"><path d="M0 0 L560 0 L600 40 L600 230 L510 320 L250 320 L224 450 L61 450 L115 180 L395 180 L395 166 L126 126 Z" fill="currentColor"/></svg>
     <div class="brand-text">
-      <div class="brand-name">PUNDICCI <span>INVESTMENT</span> COLLECTIVE</div>
-      <div class="brand-sub">Est. 2023 · Fortune Favours The Collective</div>
+      <svg class="wm wm1" viewBox="0 0 1732 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Pundicci Investment"><path d="M0,100 V0 H57 Q83,0 83,29 Q83,58 57,58 H22 V100 Z M22,22 H55 Q61,22 61,29 Q61,36 55,36 H22 Z" transform="translate(0 0)" fill="currentColor" fill-rule="evenodd"></path><path d="M0,0 V70 Q0,100 30,100 H53 Q83,100 83,70 V0 H61 V70 Q61,78 53,78 H30 Q22,78 22,70 V0 Z" transform="translate(99 0)" fill="currentColor" fill-rule="evenodd"></path><path d="M0,100 V0 H26 L61,60 V0 H83 V100 H57 L22,40 V100 Z" transform="translate(198 0)" fill="currentColor" fill-rule="evenodd"></path><path d="M0,0 H55 Q83,0 83,32 V68 Q83,100 55,100 H0 Z M22,22 V78 H53 Q61,78 61,68 V32 Q61,22 53,22 Z" transform="translate(297 0)" fill="currentColor" fill-rule="evenodd"></path><path d="M0,0 H56 V22 H0 Z M17,22 H39 V78 H17 Z M0,78 H56 V100 H0 Z" transform="translate(396 0)" fill="currentColor" fill-rule="evenodd"></path><path d="M83,30 Q83,0 53,0 H30 Q0,0 0,32 V68 Q0,100 30,100 H53 Q83,100 83,70 H61 Q61,78 53,78 H30 Q22,78 22,68 V32 Q22,22 30,22 H53 Q61,22 61,30 Z" transform="translate(468 0)" fill="currentColor" fill-rule="evenodd"></path><path d="M83,30 Q83,0 53,0 H30 Q0,0 0,32 V68 Q0,100 30,100 H53 Q83,100 83,70 H61 Q61,78 53,78 H30 Q22,78 22,68 V32 Q22,22 30,22 H53 Q61,22 61,30 Z" transform="translate(567 0)" fill="currentColor" fill-rule="evenodd"></path><path d="M0,0 H56 V22 H0 Z M17,22 H39 V78 H17 Z M0,78 H56 V100 H0 Z" transform="translate(666 0)" fill="currentColor" fill-rule="evenodd"></path><path d="M0,0 H56 V22 H0 Z M17,22 H39 V78 H17 Z M0,78 H56 V100 H0 Z" transform="translate(794 0)" fill="currentColor" fill-rule="evenodd"></path><path d="M0,100 V0 H26 L61,60 V0 H83 V100 H57 L22,40 V100 Z" transform="translate(866 0)" fill="currentColor" fill-rule="evenodd"></path><path d="M0,0 H23 L41.5,73 L60,0 H83 L53,100 H30 Z" transform="translate(965 0)" fill="currentColor" fill-rule="evenodd"></path><path d="M0,0 H75 V22 H0 Z M0,39 H75 V61 H0 Z M0,78 H75 V100 H0 Z" transform="translate(1064 0)" fill="currentColor" fill-rule="evenodd"></path><path d="M83,30 Q83,0 53,0 H30 Q0,0 0,29 Q0,55 30,55 H53 Q61,55 61,66 Q61,78 53,78 H30 Q22,78 22,68 H0 Q0,100 30,100 H53 Q83,100 83,66 Q83,40 53,40 H30 Q22,40 22,31 Q22,22 30,22 H53 Q61,22 61,30 Z" transform="translate(1155 0)" fill="currentColor" fill-rule="evenodd"></path><path d="M0,0 H78 V22 H50 V100 H28 V22 H0 Z" transform="translate(1254 0)" fill="currentColor" fill-rule="evenodd"></path><path d="M0,100 V0 H26 L50,48 L74,0 H100 V100 H78 V44 L57,84 H43 L22,44 V100 Z" transform="translate(1348 0)" fill="currentColor" fill-rule="evenodd"></path><path d="M0,0 H75 V22 H0 Z M0,39 H75 V61 H0 Z M0,78 H75 V100 H0 Z" transform="translate(1464 0)" fill="currentColor" fill-rule="evenodd"></path><path d="M0,100 V0 H26 L61,60 V0 H83 V100 H57 L22,40 V100 Z" transform="translate(1555 0)" fill="currentColor" fill-rule="evenodd"></path><path d="M0,0 H78 V22 H50 V100 H28 V22 H0 Z" transform="translate(1654 0)" fill="currentColor" fill-rule="evenodd"></path></svg>
+      <div class="wm-row">
+        <svg class="wm wm2" viewBox="0 0 900 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Collective"><path d="M83,30 Q83,0 53,0 H30 Q0,0 0,32 V68 Q0,100 30,100 H53 Q83,100 83,70 H61 Q61,78 53,78 H30 Q22,78 22,68 V32 Q22,22 30,22 H53 Q61,22 61,30 Z" transform="translate(0 0)" fill="currentColor" fill-rule="evenodd"></path><path d="M30,0 Q0,0 0,32 V68 Q0,100 30,100 H53 Q83,100 83,68 V32 Q83,0 53,0 Z M30,22 H53 Q61,22 61,32 V68 Q61,78 53,78 H30 Q22,78 22,68 V32 Q22,22 30,22 Z" transform="translate(99 0)" fill="currentColor" fill-rule="evenodd"></path><path d="M0,0 H22 V78 H70 V100 H0 Z" transform="translate(198 0)" fill="currentColor" fill-rule="evenodd"></path><path d="M0,0 H22 V78 H70 V100 H0 Z" transform="translate(284 0)" fill="currentColor" fill-rule="evenodd"></path><path d="M0,0 H75 V22 H0 Z M0,39 H75 V61 H0 Z M0,78 H75 V100 H0 Z" transform="translate(370 0)" fill="currentColor" fill-rule="evenodd"></path><path d="M83,30 Q83,0 53,0 H30 Q0,0 0,32 V68 Q0,100 30,100 H53 Q83,100 83,70 H61 Q61,78 53,78 H30 Q22,78 22,68 V32 Q22,22 30,22 H53 Q61,22 61,30 Z" transform="translate(461 0)" fill="currentColor" fill-rule="evenodd"></path><path d="M0,0 H78 V22 H50 V100 H28 V22 H0 Z" transform="translate(560 0)" fill="currentColor" fill-rule="evenodd"></path><path d="M0,0 H56 V22 H0 Z M17,22 H39 V78 H17 Z M0,78 H56 V100 H0 Z" transform="translate(654 0)" fill="currentColor" fill-rule="evenodd"></path><path d="M0,0 H23 L41.5,73 L60,0 H83 L53,100 H30 Z" transform="translate(726 0)" fill="currentColor" fill-rule="evenodd"></path><path d="M0,0 H75 V22 H0 Z M0,39 H75 V61 H0 Z M0,78 H75 V100 H0 Z" transform="translate(825 0)" fill="currentColor" fill-rule="evenodd"></path></svg>
+        <span class="brand-sub">Invest To Win</span>
+      </div>
     </div>
   </div>
   <div class="header-right">
     <span class="season-chip">2026 Season</span>
-    <div class="updated">Updated 03 Jul 2026</div>
+    <div class="updated">Updated <span class="js-asat"></span></div>
   </div>
 </div>
 
@@ -416,13 +413,13 @@
     <div>
       <div class="hero-label">Collective Account Balance</div>
       <div class="hero-balance" id="hero-balance">$0.00</div>
-      <div class="hero-asat">As at 03 Jul 2026</div>
+      <div class="hero-asat">As at <span class="js-asat"></span></div>
     </div>
     <div class="hero-side">
-      <div><div class="hero-stat-label">Opening Balance<br>(30 Dec 2025)</div><div class="hero-stat-value">$5,138.12</div></div>
+      <div><div class="hero-stat-label">Opening Balance<br>(<span class="js-opendate"></span>)</div><div class="hero-stat-value js-opening"></div></div>
       <div><div class="hero-stat-label">Bet Returns<br>(2026)</div><div class="hero-stat-value up" id="hero-returns">+$0.00</div></div>
       <div><div class="hero-stat-label">Season Net<br>P&amp;L</div><div class="hero-stat-value up" id="hero-net">+$0.00</div></div>
-      <div><div class="hero-stat-label">Record<br>(2026)</div><div class="hero-stat-value gold">6W – 15L</div></div>
+      <div><div class="hero-stat-label">Record<br>(2026)</div><div class="hero-stat-value gold js-record"></div></div>
     </div>
   </div>
 
@@ -466,8 +463,7 @@
   <div class="rec-grid" id="fame-grid"></div>
   <div class="section-title"><span class="gold">◆</span> Hall of Shame</div>
   <div class="rec-grid" id="shame-grid"></div>
-  <div id="memorial"></div>
-  <footer>Records as at 03 Jul 2026 <span class="gold">◆</span> All achievements permanent and legally binding</footer>
+  <footer>Records as at <span class="js-asat"></span> <span class="gold">◆</span> All achievements permanent and legally binding</footer>
 </div>
 
 <!-- ═══════════ MEMBER (dynamic) ═══════════ -->
@@ -492,13 +488,13 @@
     <div>
       <div class="hero-label">Collective Account Balance</div>
       <div class="hero-balance" id="acct-balance">$0.00</div>
-      <div class="hero-asat">As at 03 Jul 2026</div>
+      <div class="hero-asat">As at <span class="js-asat"></span></div>
     </div>
     <div class="hero-side">
-      <div><div class="hero-stat-label">Opening Balance<br>(30 Dec 2025)</div><div class="hero-stat-value">$5,138.12</div></div>
-      <div><div class="hero-stat-label">Total Bet Returns<br>(2026)</div><div class="hero-stat-value up">+$596.64</div></div>
-      <div><div class="hero-stat-label">Savings Collected<br>(2026)</div><div class="hero-stat-value gold">$1,000.00</div></div>
-      <div><div class="hero-stat-label">Savings<br>Outstanding</div><div class="hero-stat-value" style="color:var(--red)">$440.00</div></div>
+      <div><div class="hero-stat-label">Opening Balance<br>(<span class="js-opendate"></span>)</div><div class="hero-stat-value js-opening"></div></div>
+      <div><div class="hero-stat-label">Total Bet Returns<br>(2026)</div><div class="hero-stat-value up js-returns"></div></div>
+      <div><div class="hero-stat-label">Savings Collected<br>(2026)</div><div class="hero-stat-value gold js-sav-paid"></div></div>
+      <div><div class="hero-stat-label">Savings<br>Outstanding</div><div class="hero-stat-value js-sav-owed" style="color:var(--red)"></div></div>
     </div>
   </div>
 
@@ -511,7 +507,7 @@
   <div class="section-title"><span class="gold">◆</span> Bet Returns — 2026 Season to Date</div>
   <div class="ret-grid" id="returns-grid"></div>
 
-  <footer>Account balance as at 03 Jul 2026 <span class="gold">◆</span> Net P&amp;L = Bet return minus stake <span class="gold">◆</span> Stake from captain's own pocket</footer>
+  <footer>Account balance as at <span class="js-asat"></span> <span class="gold">◆</span> Net P&amp;L = Bet return minus stake <span class="gold">◆</span> Stake from captain's own pocket</footer>
 </div>
 
 <script>
@@ -521,10 +517,10 @@
 const BALANCE = { current: 7175.51, asAt: '09 Sep 2026', opening: 5138.12, openingDate: '30 Dec 2025', betReturns2026: 1037.94 };
 
 const MEMBERS = {
-  charlie: { name:'Charlie', color:'var(--charlie)', hex:'#3DDC97', outstanding:0 },
-  nic:     { name:'Nic',     color:'var(--nic)',     hex:'#B48CFF', outstanding:3 },
-  shannon: { name:'Shannon', color:'var(--shannon)', hex:'#FFB454', outstanding:0 },
-  douchie: { name:'Douchie', color:'var(--douchie)', hex:'#5EA0FF', outstanding:0 }
+  charlie: { name:'Charlie', color:'var(--charlie)', hex:'#127A5E', outstanding:0 },
+  nic:     { name:'Nic',     color:'var(--nic)',     hex:'#5B4FC7', outstanding:3 },
+  shannon: { name:'Shannon', color:'var(--shannon)', hex:'#B85C22', outstanding:0 },
+  douchie: { name:'Douchie', color:'var(--douchie)', hex:'#2264C4', outstanding:0 }
 };
 
 /* result: 'W' | 'L' — settled bets only */
@@ -689,25 +685,25 @@ const ARTICLES = [
     body:`For approximately three years, a member of the Pundicci Investment Collective &mdash; who shall remain unnamed, but whose initials are consistent with a man who has bet three times, won once, and currently owes the collective two outstanding captain weeks &mdash; has maintained a consistent position: <em>"We should have put it all in Bitcoin."</em><br><br>The Pundicci Post has conducted a thorough three-year retrospective. At its peak in Q3 2025, the hypothetical Bitcoin portfolio would have reached <strong>$10,527</strong>. This is the figure our unnamed source has been referencing. He has not, however, been referencing what happened next. Bitcoin declined. Then declined further. The portfolio now sits at <strong>$6,074</strong> &mdash; a fall of 42% from peak. The actual PIC pool stands at <strong>$6,822</strong>. The collective, through the disciplined application of horse racing and rugby league multis, is currently <em>ahead of Bitcoin</em>. The unnamed member was unavailable for comment.`,
     extra:`<div class="chart-label">3-Year Portfolio Comparison — Jan 2023 to Jun 2026 (AUD)</div>
 <svg viewBox="0 0 620 260" xmlns="http://www.w3.org/2000/svg">
-  <line x1="58" y1="167.5" x2="600" y2="167.5" stroke="#E5E7EB" stroke-width="1"/><text x="52" y="171.5" font-size="9" fill="#9CA3AF" text-anchor="end">$3k</text><line x1="58" y1="120.0" x2="600" y2="120.0" stroke="#E5E7EB" stroke-width="1"/><text x="52" y="124.0" font-size="9" fill="#9CA3AF" text-anchor="end">$6k</text><line x1="58" y1="72.5" x2="600" y2="72.5" stroke="#E5E7EB" stroke-width="1"/><text x="52" y="76.5" font-size="9" fill="#9CA3AF" text-anchor="end">$9k</text><line x1="58" y1="25.0" x2="600" y2="25.0" stroke="#E5E7EB" stroke-width="1"/><text x="52" y="29.0" font-size="9" fill="#9CA3AF" text-anchor="end">$12k</text>
+  <line x1="58" y1="167.5" x2="600" y2="167.5" stroke="#E0E2E8" stroke-width="1"/><text x="52" y="171.5" font-size="9" fill="#868D99" text-anchor="end">$3k</text><line x1="58" y1="120.0" x2="600" y2="120.0" stroke="#E0E2E8" stroke-width="1"/><text x="52" y="124.0" font-size="9" fill="#868D99" text-anchor="end">$6k</text><line x1="58" y1="72.5" x2="600" y2="72.5" stroke="#E0E2E8" stroke-width="1"/><text x="52" y="76.5" font-size="9" fill="#868D99" text-anchor="end">$9k</text><line x1="58" y1="25.0" x2="600" y2="25.0" stroke="#E0E2E8" stroke-width="1"/><text x="52" y="29.0" font-size="9" fill="#868D99" text-anchor="end">$12k</text>
   <line x1="58" y1="215" x2="600" y2="215" stroke="#D1D5DB" stroke-width="1"/>
-  <text x="58.0" y="229" font-size="8.5" fill="#6B7280" text-anchor="middle">Q1'23</text><text x="141.4" y="229" font-size="8.5" fill="#6B7280" text-anchor="middle">Q3'23</text><text x="224.8" y="229" font-size="8.5" fill="#6B7280" text-anchor="middle">Q1'24</text><text x="308.2" y="229" font-size="8.5" fill="#6B7280" text-anchor="middle">Q3'24</text><text x="391.5" y="229" font-size="8.5" fill="#6B7280" text-anchor="middle">Q1'25</text><text x="474.9" y="229" font-size="8.5" fill="#6B7280" text-anchor="middle">Q3'25</text><text x="558.3" y="229" font-size="8.5" fill="#6B7280" text-anchor="middle">Q1'26</text><text x="600.0" y="229" font-size="8.5" fill="#6B7280" text-anchor="middle">Q2'26</text>
-  <line x1="58" y1="107.0" x2="600" y2="107.0" stroke="#6366F1" stroke-width="1.5" stroke-dasharray="4,3"/>
-  <text x="596" y="102.0" font-size="9" fill="#6366F1" text-anchor="end" font-weight="700">PIC Pool $6,822</text>
-  <polyline points="58.0,208.8 99.7,202.7 141.4,196.5 183.1,190.3 224.8,184.1 266.5,177.9 308.2,171.8 349.8,165.6 391.5,159.4 433.2,153.2 474.9,147.1 516.6,140.9 558.3,134.7 600.0,128.6" fill="none" stroke="#9CA3AF" stroke-width="2" stroke-dasharray="5,3"/>
-  <polyline points="58.0,208.8 99.7,200.9 141.4,194.2 183.1,180.6 224.8,157.2 266.5,142.9 308.2,142.3 349.8,105.8 391.5,89.5 433.2,76.4 474.9,48.3 516.6,49.7 558.3,65.7 600.0,118.8" fill="none" stroke="#F59E0B" stroke-width="2.5"/>
-  <circle cx="474.9" cy="25.0" r="3" fill="#F59E0B"/>
-  <text x="474.9" y="21" font-size="8.5" fill="#D97706" text-anchor="middle" font-weight="700">&#9650; Peak $10,527</text>
-  <circle cx="600.0" cy="118.8" r="4" fill="#F59E0B"/>
-  <text x="594.0" y="111.8" font-size="9" fill="#D97706" text-anchor="end" font-weight="700">BTC $6,074</text>
-  <circle cx="600.0" cy="128.6" r="3.5" fill="#9CA3AF"/>
-  <text x="594.0" y="140.6" font-size="9" fill="#6B7280" text-anchor="end">Savings $5,460</text>
-  <line x1="68" y1="17" x2="86" y2="17" stroke="#F59E0B" stroke-width="2.5"/>
-  <text x="90" y="21" font-size="9" fill="#92400E">Bitcoin DCA ($30/wk)</text>
-  <line x1="213" y1="17" x2="231" y2="17" stroke="#9CA3AF" stroke-width="2" stroke-dasharray="5,3"/>
-  <text x="235" y="21" font-size="9" fill="#6B7280">Cash savings ($30/wk)</text>
-  <line x1="368" y1="17" x2="386" y2="17" stroke="#6366F1" stroke-width="1.5" stroke-dasharray="4,3"/>
-  <text x="390" y="21" font-size="9" fill="#6366F1">Actual PIC pool</text>
+  <text x="58.0" y="229" font-size="8.5" fill="#5C6472" text-anchor="middle">Q1'23</text><text x="141.4" y="229" font-size="8.5" fill="#5C6472" text-anchor="middle">Q3'23</text><text x="224.8" y="229" font-size="8.5" fill="#5C6472" text-anchor="middle">Q1'24</text><text x="308.2" y="229" font-size="8.5" fill="#5C6472" text-anchor="middle">Q3'24</text><text x="391.5" y="229" font-size="8.5" fill="#5C6472" text-anchor="middle">Q1'25</text><text x="474.9" y="229" font-size="8.5" fill="#5C6472" text-anchor="middle">Q3'25</text><text x="558.3" y="229" font-size="8.5" fill="#5C6472" text-anchor="middle">Q1'26</text><text x="600.0" y="229" font-size="8.5" fill="#5C6472" text-anchor="middle">Q2'26</text>
+  <line x1="58" y1="107.0" x2="600" y2="107.0" stroke="#14181F" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <text x="596" y="102.0" font-size="9" fill="#14181F" text-anchor="end" font-weight="700">PIC Pool $6,822</text>
+  <polyline points="58.0,208.8 99.7,202.7 141.4,196.5 183.1,190.3 224.8,184.1 266.5,177.9 308.2,171.8 349.8,165.6 391.5,159.4 433.2,153.2 474.9,147.1 516.6,140.9 558.3,134.7 600.0,128.6" fill="none" stroke="#868D99" stroke-width="2" stroke-dasharray="5,3"/>
+  <polyline points="58.0,208.8 99.7,200.9 141.4,194.2 183.1,180.6 224.8,157.2 266.5,142.9 308.2,142.3 349.8,105.8 391.5,89.5 433.2,76.4 474.9,48.3 516.6,49.7 558.3,65.7 600.0,118.8" fill="none" stroke="#B8801F" stroke-width="2.5"/>
+  <circle cx="474.9" cy="25.0" r="3" fill="#B8801F"/>
+  <text x="474.9" y="21" font-size="8.5" fill="#8A5F14" text-anchor="middle" font-weight="700">&#9650; Peak $10,527</text>
+  <circle cx="600.0" cy="118.8" r="4" fill="#B8801F"/>
+  <text x="594.0" y="111.8" font-size="9" fill="#8A5F14" text-anchor="end" font-weight="700">BTC $6,074</text>
+  <circle cx="600.0" cy="128.6" r="3.5" fill="#868D99"/>
+  <text x="594.0" y="140.6" font-size="9" fill="#5C6472" text-anchor="end">Savings $5,460</text>
+  <line x1="68" y1="17" x2="86" y2="17" stroke="#B8801F" stroke-width="2.5"/>
+  <text x="90" y="21" font-size="9" fill="#5C3E0B">Bitcoin DCA ($30/wk)</text>
+  <line x1="213" y1="17" x2="231" y2="17" stroke="#868D99" stroke-width="2" stroke-dasharray="5,3"/>
+  <text x="235" y="21" font-size="9" fill="#5C6472">Cash savings ($30/wk)</text>
+  <line x1="368" y1="17" x2="386" y2="17" stroke="#14181F" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <text x="390" y="21" font-size="9" fill="#14181F">Actual PIC pool</text>
 </svg>
 <div class="chart-note">Based on $30/wk DCA from Q1 2023. BTC/AUD quarterly average prices. Estimates only.</div>` },
   { tag:'Editorial', tagClass:'tag-editorial', date:'30 Jun 2026', who:'The Post',
@@ -925,16 +921,16 @@ function buildPoolChart() {
   const steps = 4;
   for (let i = 0; i <= steps; i++) {
     const v = min + range * i / steps;
-    grid += `<line x1="${padL}" y1="${y(v).toFixed(1)}" x2="${W-padR}" y2="${y(v).toFixed(1)}" stroke="rgba(255,255,255,0.06)"/>` +
-            `<text x="${padL-8}" y="${(y(v)+3).toFixed(1)}" font-size="10" fill="#5A6675" text-anchor="end">${v >= 0 ? '+' : '-'}$${Math.abs(Math.round(v))}</text>`;
+    grid += `<line x1="${padL}" y1="${y(v).toFixed(1)}" x2="${W-padR}" y2="${y(v).toFixed(1)}" stroke="rgba(20,24,31,0.10)"/>` +
+            `<text x="${padL-8}" y="${(y(v)+3).toFixed(1)}" font-size="10" fill="#868D99" text-anchor="end">${v >= 0 ? '+' : '-'}$${Math.abs(Math.round(v))}</text>`;
   }
   const zeroY = y(0);
   const line = pts.map((p,i) => `${x(i).toFixed(1)},${y(p.v).toFixed(1)}`).join(' ');
   const area = `${padL},${zeroY.toFixed(1)} ` + line + ` ${x(pts.length-1).toFixed(1)},${zeroY.toFixed(1)}`;
   const dots = pts.map((p,i) => i === 0 ? '' :
-    `<circle cx="${x(i).toFixed(1)}" cy="${y(p.v).toFixed(1)}" r="3.5" fill="${p.w ? '#3DDC97' : '#FF6B6B'}" stroke="#0A111D" stroke-width="1.5"><title>${p.label} · ${MEMBERS[p.m].name} · ${p.w ? 'Win' : 'Loss'} · running ${money(p.v, true)}</title></circle>`).join('');
+    `<circle cx="${x(i).toFixed(1)}" cy="${y(p.v).toFixed(1)}" r="3.5" fill="${p.w ? '#12A150' : '#E5484D'}" stroke="#FFFFFF" stroke-width="1.5"><title>${p.label} · ${MEMBERS[p.m].name} · ${p.w ? 'Win' : 'Loss'} · running ${money(p.v, true)}</title></circle>`).join('');
   const labels = pts.map((p,i) => (i > 0 && i % 3 === 0) ?
-    `<text x="${x(i).toFixed(1)}" y="${H-10}" font-size="9" fill="#5A6675" text-anchor="middle">${p.label.toUpperCase()}</text>` : '').join('');
+    `<text x="${x(i).toFixed(1)}" y="${H-10}" font-size="9" fill="#868D99" text-anchor="middle">${p.label.toUpperCase()}</text>` : '').join('');
 
   const final = pts[pts.length-1].v;
   document.getElementById('chart-now').textContent = money(final, true);
@@ -944,14 +940,14 @@ function buildPoolChart() {
   `<svg viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg">
     <defs>
       <linearGradient id="areaGrad" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0" stop-color="#E8C56A" stop-opacity="0.28"/>
-        <stop offset="1" stop-color="#E8C56A" stop-opacity="0"/>
+        <stop offset="0" stop-color="#14181F" stop-opacity="0.14"/>
+        <stop offset="1" stop-color="#14181F" stop-opacity="0"/>
       </linearGradient>
     </defs>
     ${grid}
-    <line x1="${padL}" y1="${zeroY.toFixed(1)}" x2="${W-padR}" y2="${zeroY.toFixed(1)}" stroke="rgba(255,255,255,0.22)" stroke-dasharray="4,4"/>
+    <line x1="${padL}" y1="${zeroY.toFixed(1)}" x2="${W-padR}" y2="${zeroY.toFixed(1)}" stroke="rgba(20,24,31,0.28)" stroke-dasharray="4,4"/>
     <polygon points="${area}" fill="url(#areaGrad)"/>
-    <polyline id="pool-line" points="${line}" fill="none" stroke="#E8C56A" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+    <polyline id="pool-line" points="${line}" fill="none" stroke="#14181F" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
     ${dots}${labels}
   </svg>`;
 
@@ -1054,7 +1050,7 @@ function showMember(id) {
     <div class="spark-wrap">
       <div class="chart-title" style="margin-bottom:4px">Season Form — Running Net P&amp;L</div>
       <svg viewBox="0 0 ${sW} ${sH}" style="width:100%;display:block" xmlns="http://www.w3.org/2000/svg">
-        <line x1="${sp}" y1="${zline.toFixed(1)}" x2="${sW-sp}" y2="${zline.toFixed(1)}" stroke="rgba(255,255,255,0.15)" stroke-dasharray="3,4"/>
+        <line x1="${sp}" y1="${zline.toFixed(1)}" x2="${sW-sp}" y2="${zline.toFixed(1)}" stroke="rgba(20,24,31,0.20)" stroke-dasharray="3,4"/>
         <polyline points="${sline}" fill="none" stroke="${m.hex}" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
         <circle cx="${sx(pts.length-1).toFixed(1)}" cy="${sy(pts[pts.length-1]).toFixed(1)}" r="4" fill="${m.hex}"/>
       </svg>
@@ -1120,7 +1116,7 @@ function buildRecords() {
       `${king.wins}W ${king.losses}L from ${king.bets.length} bets. The rest of the field respectfully disagrees with the methodology.`) +
     recCard('fame', '🩸', 'First Blood 2026', firstM.name, firstM.hex, money(first.ret),
       `${first.desc} · ${first.date}. The moral high ground was surrendered shortly afterwards.`) +
-    recCard('fame', '📈', 'Season High Water Mark', 'The Collective', 'var(--gold)', money(hw.v, true),
+    recCard('fame', '📈', 'Season High Water Mark', 'The Collective', 'var(--brand)', money(hw.v, true),
       `Peak collective P&L, reached ${hw.date}. It has not been seen since.`);
 
   /* longest losing streak */
@@ -1153,15 +1149,6 @@ function buildRecords() {
       '9-leg SGM @11.75 survived eight legs, then died on Brodie Kemp\'s boot. 23 May 2026. Do not mention it.') +
     recCard('shame', '⚖️', 'The Warrant List', 'Nic & Shannon', 'var(--red)', '3 bets owed',
       'Two captain weeks outstanding (Nic), one outstanding (Shannon). See Account → Ledger of Shame for full charges.');
-
-  document.getElementById('memorial').innerHTML = `<div class="memorial">
-    <div class="m-icon">🐎</div>
-    <div class="m-title">In Memoriam</div>
-    <div class="m-name">"Various Horses"</div>
-    <div class="m-dates">13 June 2026 · Trainer: Douchie · Odds: Undisclosed</div>
-    <div class="m-words">Number unknown. Names unknown. Races unknown.<br>
-    $30, gone. The horses remain various.<br>Lest we forget.</div>
-  </div>`;
 }
 
 /* ══════════════════════════════════════════════════════════════
@@ -1191,9 +1178,9 @@ function buildAccount() {
       </div>
     </div>`;
   }).join('') + `
-    <div class="bet-total" style="border-color:rgba(255,107,107,0.35);background:rgba(255,107,107,0.08)">
+    <div class="bet-total" style="border-color:rgba(229,72,77,0.28);background:rgba(229,72,77,0.06)">
       <span class="lbl" style="color:var(--red)">Total Outstanding</span>
-      <span class="val" style="color:var(--red)">$440.00</span>
+      <span class="val" style="color:var(--red)">${money(SAVINGS.reduce((s,x)=>s+(SAVINGS_ANNUAL-x.paid),0))}</span>
     </div>`;
 
   setTimeout(() => {
@@ -1212,7 +1199,7 @@ function buildAccount() {
       <div class="debt-amt">${money(d.amt)}</div>
     </div>`;
   }).join('') + `
-    <div class="bet-total" style="border-color:rgba(255,107,107,0.35);background:rgba(255,107,107,0.08)">
+    <div class="bet-total" style="border-color:rgba(229,72,77,0.28);background:rgba(229,72,77,0.06)">
       <span class="lbl" style="color:var(--red)">Total owed to the Collective</span>
       <span class="val" style="color:var(--red)">${money(cashOwed)} + ${money(stakesOwed)} in unlodged stakes</span>
     </div>
@@ -1250,6 +1237,7 @@ function showPage(id) {
   window.scrollTo(0, 0);
   if (id === 'home') buildHome();
   if (id === 'account') buildAccount();
+  stampAsAt();
 }
 
 /* ══════════════════════════════════════════════════════════════
@@ -1259,7 +1247,28 @@ buildTicker();
 buildLeaderboard();
 buildRecords();
 buildPost();
+function stampAsAt() {
+  const set = (sel, val) => document.querySelectorAll(sel).forEach(el => el.textContent = val);
+  const w = BETS.filter(b => b.result === 'W').length;
+  const l = BETS.filter(b => b.result === 'L').length;
+  const paid = SAVINGS.reduce((s, x) => s + x.paid, 0);
+  const owed = SAVINGS.reduce((s, x) => s + (SAVINGS_ANNUAL - x.paid), 0);
+  set('.js-asat',     BALANCE.asAt);
+  set('.js-opendate', BALANCE.openingDate);
+  set('.js-opening',  money(BALANCE.opening));
+  set('.js-record',   w + 'W – ' + l + 'L');
+  set('.js-returns',  money(BALANCE.betReturns2026, true));
+  set('.js-sav-paid', money(paid));
+  set('.js-sav-owed', money(owed));
+}
 buildHome();
+stampAsAt();
+
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('sw.js').catch(() => {});
+  });
+}
 </script>
 </body>
 </html>
