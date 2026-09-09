@@ -1,6 +1,650 @@
 {
- "generated": "2026-09-09T12:05:37.291500+00:00",
- "sources_ok": [],
- "sources_failed": [],
- "items": []
+ "generated": "2026-09-09T12:10:59.040513+00:00",
+ "sources_ok": [
+  "Guardian Racing",
+  "Guardian AFL",
+  "AFL.com.au",
+  "Guardian NRL",
+  "Guardian Union",
+  "Guardian AU Sport",
+  "ABC Sport"
+ ],
+ "sources_failed": [
+  "Racenet",
+  "Racing.com",
+  "Punters",
+  "NRL.com"
+ ],
+ "items": [
+  {
+   "title": "England to extend Borthwick contract as Pollock closes on £400,000 Northampton deal",
+   "link": "https://www.theguardian.com/sport/2026/sep/09/england-extend-borthwick-deal-pollock-400k-northampton-deal-rugby-world-cup",
+   "excerpt": "RFU eager to avoid uncertainty heading into World Cup Lloyds Bank to pay £5m a year for logo on back of jerseys Steve Borthwick will be handed a contract extension until after the 2028 Six Nations, giving the…",
+   "source": "Guardian Union",
+   "category": "union",
+   "published": "2026-09-09T09:25:48+00:00",
+   "ts": 1788945948
+  },
+  {
+   "title": "Hollands opens up on axing from Carlton AFL roster",
+   "link": "https://www.abc.net.au/news/2026-09-09/elijah-hollands-opens-up-on-axing-from-carlton-afl-roster/107135600",
+   "excerpt": "Elijah Hollands is at peace with the end of his Carlton career, saying he realises there are more important things in life that he needs to focus on.",
+   "source": "ABC Sport",
+   "category": "sport",
+   "published": "2026-09-09T09:15:57+00:00",
+   "ts": 1788945357
+  },
+  {
+   "title": "Cashed-up Crows to go big-name hunting again after missing Lions star",
+   "link": "https://www.afl.com.au/news/1607010/cashed-up-adelaide-crows-to-go-big-name-hunting-again-after-missing-brisbane-lions-star-zac-bailey",
+   "excerpt": "Adelaide coach Matthew Nicks says the Crows will continue to make big plays for rival talent after missing out on luring a Brisbane star",
+   "source": "AFL.com.au",
+   "category": "afl",
+   "published": "2026-09-09T07:57:00+00:00",
+   "ts": 1788940620
+  },
+  {
+   "title": "Elijah Hollands releases heartfelt statement after being delisted by Carlton",
+   "link": "https://www.afl.com.au/news/1607018/elijah-hollands-releases-statement-after-delisting-by-carlton-blues",
+   "excerpt": "Elijah Hollands has taken to Instagram following his delisting from Carlton",
+   "source": "AFL.com.au",
+   "category": "afl",
+   "published": "2026-09-09T07:33:00+00:00",
+   "ts": 1788939180
+  },
+  {
+   "title": "Blues delist seven players, including two-club veteran",
+   "link": "https://www.afl.com.au/news/1607012/carlton-blues-delist-seven-players-including-two-club-veteran-zac-williams-and-elijah-hollands",
+   "excerpt": "Former Giant's 183-game career in limbo after Blues make tough list calls",
+   "source": "AFL.com.au",
+   "category": "afl",
+   "published": "2026-09-09T07:04:00+00:00",
+   "ts": 1788937440
+  },
+  {
+   "title": "Clubs begin trade talks, Hawks staying put, Saint signs on",
+   "link": "https://www.afl.com.au/news/1606783/inside-trading-clubs-begin-trade-talks-hawthorn-hawk-staying-put-st-kilda-saint-signs-on",
+   "excerpt": "Check out all the latest trade news from around the League",
+   "source": "AFL.com.au",
+   "category": "afl",
+   "published": "2026-09-09T07:00:00+00:00",
+   "ts": 1788937200
+  },
+  {
+   "title": "SA government backed a risky horse in LIV Golf — lucky it hedged its bets",
+   "link": "https://www.abc.net.au/news/2026-09-09/australian-open-saves-sa-government-from-a-liv-golf-bunker/107132384",
+   "excerpt": "The catalyst for the Malinauskas government's $45 million upgrade of the North Adelaide Golf Course has filed for bankruptcy. But the story could have been far worse.",
+   "source": "ABC Sport",
+   "category": "sport",
+   "published": "2026-09-09T06:49:19+00:00",
+   "ts": 1788936559
+  },
+  {
+   "title": "Trade Talk: Pies to make Hogan an offer, Magpies veteran re-signs, Roos confirm trade request",
+   "link": "https://www.afl.com.au/news/1606757/trade-talk-all-the-latest-contract-news-free-agency-and-trade-rumours-ahead-of-october",
+   "excerpt": "Get all the latest contract news and trade rumours ahead of the player movement period",
+   "source": "AFL.com.au",
+   "category": "afl",
+   "published": "2026-09-09T06:31:00+00:00",
+   "ts": 1788935460
+  },
+  {
+   "title": "LISTEN: Big off-season looms for Dogs, can Freo shake off 'mental baggage'?",
+   "link": "https://www.afl.com.au/news/1606971/listen-big-off-season-looms-for-dogs-can-dockers-shake-off-mental-baggage",
+   "excerpt": "Join Damian Barrett, Nat Edwards and Riley Beveridge for AFL Daily",
+   "source": "AFL.com.au",
+   "category": "afl",
+   "published": "2026-09-09T06:09:00+00:00",
+   "ts": 1788934140
+  },
+  {
+   "title": "In the mix: Who could play for your club in FW3?",
+   "link": "https://www.afl.com.au/news/1606737/medical-room-the-full-afl-injury-list-fw3",
+   "excerpt": "Who's struggling, who's a test, check out the players from your list who are a little sore",
+   "source": "AFL.com.au",
+   "category": "afl",
+   "published": "2026-09-09T06:00:00+00:00",
+   "ts": 1788933600
+  },
+  {
+   "title": "Lynagh makes timely return after Wallabies fly half Gordon breaks leg",
+   "link": "https://www.abc.net.au/news/2026-09-09/tom-lynagh-makes-queensland-reds-returns/107134570",
+   "excerpt": "Tom Lynagh's timely return at number 10 for the Queensland Reds and Zac Lomax's move to the centres for the Western Force will have Wallabies ramifications in a pre-season Ballymore hit-out.",
+   "source": "ABC Sport",
+   "category": "sport",
+   "published": "2026-09-09T05:58:04+00:00",
+   "ts": 1788933484
+  },
+  {
+   "title": "From the Pocket: Alastair Clarkson kneecapping shows the difficulty of moving on an AFL legend",
+   "link": "https://www.theguardian.com/sport/2026/sep/09/alastair-clarkson-kneecapping-shows-the-difficulty-of-moving-on-an-afl-legend",
+   "excerpt": "Want to get this in your inbox every Wednesday afternoon? Sign up for the AFL newsletter here. Every sacked coach reacts differently. Some turn up in civvies and conduct what is essentially a job interview for…",
+   "source": "Guardian AFL",
+   "category": "afl",
+   "published": "2026-09-09T05:31:26+00:00",
+   "ts": 1788931886
+  },
+  {
+   "title": "More than a game: NFL hopes Melbourne visit will advance case for Olympic flag football",
+   "link": "https://www.theguardian.com/sport/2026/sep/09/nfl-2026-game-australia-rams-vs-49ers-melbourne-mcg-flag-football",
+   "excerpt": "NFL executives use this week to push for inclusion at Brisbane 2032 Possibility a key reason Melbourne secured Rams v 49ers match The NFL’s regular season debut in Australia will deliver a significant…",
+   "source": "Guardian AU Sport",
+   "category": "sport",
+   "published": "2026-09-09T05:24:52+00:00",
+   "ts": 1788931492
+  },
+  {
+   "title": "AFLW list sizes back in spotlight as clubs feel injury squeeze",
+   "link": "https://www.afl.com.au/aflw/news/1606963/aflw-list-sizes-back-in-spotlight-as-clubs-feel-injury-squeeze",
+   "excerpt": "Mick Stinear says he'd support a move to a 32-player team list to help mitigate the need for top-up players",
+   "source": "AFL.com.au",
+   "category": "afl",
+   "published": "2026-09-09T04:42:00+00:00",
+   "ts": 1788928920
+  },
+  {
+   "title": "Cristian Volpato’s Socceroos fate uncertain after second sample confirms positive cocaine test",
+   "link": "https://www.theguardian.com/football/2026/sep/09/cristian-volpato-cocaine-positive-test-socceroos-australia-ntwnfb",
+   "excerpt": "Football Australia has power to suspend him from national team Striker has maintained his innocence over failed drugs test Cristian Volpato’s immediate availability for the Socceroos rests in the hands of…",
+   "source": "Guardian AU Sport",
+   "category": "sport",
+   "published": "2026-09-09T04:08:35+00:00",
+   "ts": 1788926915
+  },
+  {
+   "title": "The 'imperfection' Dockers must embrace to avoid straight-sets exit",
+   "link": "https://www.afl.com.au/news/1606902/the-imperfection-fremantle-dockers-must-embrace-to-avoid-straight-sets-exit",
+   "excerpt": "A familiar issue threatens to send the Dockers out of the finals in straight sets",
+   "source": "AFL.com.au",
+   "category": "afl",
+   "published": "2026-09-09T04:04:00+00:00",
+   "ts": 1788926640
+  },
+  {
+   "title": "I climbed into the car with three friends. I woke in hospital to find I’d lost them all – and my legs",
+   "link": "https://www.theguardian.com/lifeandstyle/2026/sep/09/i-lost-everything-lost-my-friends-lost-my-legs-rob-pike-accident-changed-life",
+   "excerpt": "Rob Pike was 17 when he and three of his closest friends were in a car that smashed into a tree and split in half. He explains how he coped with the devastation After the car stopped rolling and came to rest…",
+   "source": "Guardian AU Sport",
+   "category": "sport",
+   "published": "2026-09-09T04:00:59+00:00",
+   "ts": 1788926459
+  },
+  {
+   "title": "Cats forward finds his spark again after September heartbreak",
+   "link": "https://www.afl.com.au/news/1606955/geelong-cats-forward-ollie-henry-finds-his-spark-again-after-september-heartbreak",
+   "excerpt": "Ollie Henry missed out on finals last year but knuckled down and became a crucial part of the Cats' attack for this campaign",
+   "source": "AFL.com.au",
+   "category": "afl",
+   "published": "2026-09-09T03:59:00+00:00",
+   "ts": 1788926340
+  },
+  {
+   "title": "Major state fears cricket will be worse off with private investment",
+   "link": "https://www.abc.net.au/news/2026-09-09/nsw-cricket-private-investment-big-bash-reply/107133326",
+   "excerpt": "The decision to introduce private investment into the Big Bash leagues risks leaving cricket in Australia \"strategically and financially worse off\", according to Cricket NSW.",
+   "source": "ABC Sport",
+   "category": "sport",
+   "published": "2026-09-09T03:23:47+00:00",
+   "ts": 1788924227
+  },
+  {
+   "title": "The departing Panther who shapes as Penrith's finals wildcard",
+   "link": "https://www.abc.net.au/news/2026-09-09/jack-cole-penrith-panthers-nrl-finals-perth/107133130",
+   "excerpt": "Jack Cole's time at Penrith is coming to an end, but ahead of his NRL finals debut his final weeks as a Panther could prove to be his most important.",
+   "source": "ABC Sport",
+   "category": "sport",
+   "published": "2026-09-09T03:19:48+00:00",
+   "ts": 1788923988
+  },
+  {
+   "title": "Morphett 'disappointed' for teammates, Swans sweat on key duo ahead of Derby",
+   "link": "https://www.afl.com.au/aflw/news/1606944/ally-morphett-disappointed-for-teammates-sydney-swans-sweat-on-key-duo-taylor-smith-and-lucy-mcevoy-ahead-of-derby",
+   "excerpt": "Colin O'Riordan says Ally Morphett feels like she's let her side down after being suspended for one match",
+   "source": "AFL.com.au",
+   "category": "afl",
+   "published": "2026-09-09T02:38:00+00:00",
+   "ts": 1788921480
+  },
+  {
+   "title": "The AFLW Fantasy Download: Who to buy and sell ahead of R5",
+   "link": "https://www.afl.com.au/aflw/news/1606745/the-aflw-fantasy-download-who-to-buy-and-sell-ahead-of-r5",
+   "excerpt": "Who are the players we should be thinking about ahead of round five of the 2026 AFLW Fantasy season?",
+   "source": "AFL.com.au",
+   "category": "afl",
+   "published": "2026-09-09T02:34:00+00:00",
+   "ts": 1788921240
+  },
+  {
+   "title": "Socceroo Cristian Volpato's fate uncertain after failed cocaine test",
+   "link": "https://www.abc.net.au/news/2026-09-09/socceroo-cristian-volpato-future-doubt-cocaine-test/107132924",
+   "excerpt": "Cristian Volpato's immediate availability for the Socceroos rests in the hands of Football Australia after NSW Police confirmed the World Cup star had tested positive for cocaine on a secondary test.",
+   "source": "ABC Sport",
+   "category": "sport",
+   "published": "2026-09-09T02:16:20+00:00",
+   "ts": 1788920180
+  },
+  {
+   "title": "US Open thriller finishes after 3:30am as Shelton knocks out Alcaraz",
+   "link": "https://www.abc.net.au/news/2026-09-09/alex-michelsen-frances-tiafoe-us-open-carlos-alcaraz-ben-shelton/107131770",
+   "excerpt": "Ben Shelton has triumphed in a five-set thriller that set a new US Open record as the latest finish ever to a match at the New York grand slam.",
+   "source": "ABC Sport",
+   "category": "sport",
+   "published": "2026-09-09T01:03:22+00:00",
+   "ts": 1788915802
+  },
+  {
+   "title": "How Ned overcame a decade of pain to return to running",
+   "link": "https://www.abc.net.au/news/2026-09-09/melbourne-marathon-festival-ballarat-runner-ned-buckell/107128898",
+   "excerpt": "Ned Buckell often asks himself why he continues to run after enduring a decade of hell with a life-threatening infection and a hip replacement operation at 20 years old. The answer is pretty simple.",
+   "source": "ABC Sport",
+   "category": "sport",
+   "published": "2026-09-09T00:23:39+00:00",
+   "ts": 1788913419
+  },
+  {
+   "title": "LIV Golf players used to 'turbulence' as league files for bankruptcy",
+   "link": "https://www.abc.net.au/news/2026-09-09/liv-golf-files-for-bankruptcy-protection/107131864",
+   "excerpt": "LIV Golf files for bankruptcy, flagging a restructure with a massive loan from the Public Investment Fund of Saudi Arabia.",
+   "source": "ABC Sport",
+   "category": "sport",
+   "published": "2026-09-08T23:40:15+00:00",
+   "ts": 1788910815
+  },
+  {
+   "title": "Returning Rams superstar to miss MCG NFL clash with 49ers",
+   "link": "https://www.abc.net.au/news/2026-09-09/la-rams-star-aaron-donald-to-miss-nfl-melbourne-game/107131774",
+   "excerpt": "After two years in the wilderness, LA Rams defensive superstar Aaron Donald's return will be delayed a few more weeks as he opts not to travel to Australia for the season opener against the 49ers.",
+   "source": "ABC Sport",
+   "category": "sport",
+   "published": "2026-09-08T22:56:26+00:00",
+   "ts": 1788908186
+  },
+  {
+   "title": "Sabalenka stays alive at US Open by telling herself 'the match is over'",
+   "link": "https://www.abc.net.au/news/2026-09-09/aryna-sabalenka-scrapes-into-us-open-semifinals/107131594",
+   "excerpt": "Down a break to the Wimbledon champion in the decisive third set of her US Open quarterfinal, Aryna Sabalenka tells herself \"the match is over\" to loosen herself up and storm into the semis for a sixth…",
+   "source": "ABC Sport",
+   "category": "sport",
+   "published": "2026-09-08T20:59:58+00:00",
+   "ts": 1788901198
+  },
+  {
+   "title": "Schumacher comparisons made as Antonelli continues historic F1 season",
+   "link": "https://www.abc.net.au/news/2026-09-09/f1-kimi-antonelli-compared-to-michael-schumacher/107130402",
+   "excerpt": "Kimi Antonelli's win from 19th on the grid in Monza was epic, and the way his rivals raced with him has drawn comparisons with Ferrari legend Michael Schumacher.",
+   "source": "ABC Sport",
+   "category": "sport",
+   "published": "2026-09-08T18:53:14+00:00",
+   "ts": 1788893594
+  },
+  {
+   "title": "England coaches tell Lawes and Marchant they need to prove themselves in Prem",
+   "link": "https://www.theguardian.com/sport/2026/sep/08/england-coaches-tell-lawes-and-marchant-they-need-to-prove-themselves-in-prem",
+   "excerpt": "Pair have joined Sale after spells in France Duo last played for England at 2023 World Cup Courtney Lawes and Joe Marchant have been warned they must go “over and above” the performances of their rivals in the…",
+   "source": "Guardian Union",
+   "category": "union",
+   "published": "2026-09-08T17:00:45+00:00",
+   "ts": 1788886845
+  },
+  {
+   "title": "AFL finals 2026: where the Fremantle v Geelong semi-final will be won and lost | Martin Pegan",
+   "link": "https://www.theguardian.com/sport/blog/2026/sep/09/afl-finals-2026-fremantle-dockers-vs-geelong-cats-semi-final-prediction",
+   "excerpt": "The minor premiers are staring at a straight-sets exit as they host the experienced Cats with a preliminary final against the Swans up for grabs Sign up for our free weekly AFL newsletter Fremantle were…",
+   "source": "Guardian AFL",
+   "category": "afl",
+   "published": "2026-09-08T15:00:42+00:00",
+   "ts": 1788879642
+  },
+  {
+   "title": "Najidi Storm earns unwelcome tag of shortest-priced loser in British racing history",
+   "link": "https://www.theguardian.com/sport/2026/sep/08/najidi-storm-shortest-priced-loser-british-horse-racing-history",
+   "excerpt": "Favourite beaten at odds of 1-33 at Goodwood Bookies still claim they lost on race outcome His father is Frankel, the greatest horse that looked through a bridle. And there must have been high hopes for Najidi…",
+   "source": "Guardian Racing",
+   "category": "racing",
+   "published": "2026-09-08T14:32:20+00:00",
+   "ts": 1788877940
+  },
+  {
+   "title": "Table-topping Wigan hit ominous form at season’s sharp end in pursuit of treble",
+   "link": "https://www.theguardian.com/sport/2026/sep/08/super-league-wigan-leeds-wakefield-leigh-warrington-hull-kr-toulouse-york-knights",
+   "excerpt": "The Super League leaders are ahead of the pack for the first time since March with the playoffs in view September is upon us and the business end of the Super League season is here – but if you squinted your…",
+   "source": "Guardian NRL",
+   "category": "nrl",
+   "published": "2026-09-08T14:17:28+00:00",
+   "ts": 1788877048
+  },
+  {
+   "title": "The Breakdown | How the smaller ball trial in WXV has brought ‘mixed bag of emotions’",
+   "link": "https://www.theguardian.com/sport/2026/sep/08/how-the-smaller-ball-trial-in-wxv-has-brought-mixed-bag-of-emotions",
+   "excerpt": "The trial has caused heated debate in women’s rugby, with England’s Zoe Harrison calling it the ‘worst decision ever’, but others more open to it “We won a World Cup with a size five so it can’t have been that…",
+   "source": "Guardian Union",
+   "category": "union",
+   "published": "2026-09-08T09:24:44+00:00",
+   "ts": 1788859484
+  },
+  {
+   "title": "AFL boss calls for zero tolerance on players’ poor behaviour in wake of Swans scandal",
+   "link": "https://www.theguardian.com/sport/2026/sep/08/afl-boss-craig-drummond-zero-tolerance-on-players-poor-behaviour-swans-scandal-ntwnfb",
+   "excerpt": "Commission chair Craig Drummond says values must be respected ‘Other opportunities outside sport’ for those who fail to meet standards AFL Commission chair Craig Drummond has declared players must abide by the…",
+   "source": "Guardian AFL",
+   "category": "afl",
+   "published": "2026-09-08T04:28:48+00:00",
+   "ts": 1788841728
+  },
+  {
+   "title": "‘We’ve got grand final tickets’: Belief builds in Auckland amid Warriors NRL fever | James Borrowdale",
+   "link": "https://www.theguardian.com/sport/2026/sep/08/nrl-finals-belief-builds-in-auckland-warriors-fans",
+   "excerpt": "Despite just missing out on the minor premiership, fans are daring to dream as the Wahs emerge as the most-loved rugby team in the city From the concourse above Go Media Stadium’s northern bank, in the hour…",
+   "source": "Guardian NRL",
+   "category": "nrl",
+   "published": "2026-09-08T01:49:38+00:00",
+   "ts": 1788832178
+  },
+  {
+   "title": "Sale’s Courtney Lawes ‘not worried about legacy’ in drive to make England return",
+   "link": "https://www.theguardian.com/sport/2026/sep/07/sales-courtney-lawes-not-worried-about-legacy-in-drive-to-make-england-return",
+   "excerpt": "Lawes is back in the Prem after two years in France and has unfinished business at international level Courtney Lawes was not expecting to be named in Steve Borthwick’s pre‑season England squad over the…",
+   "source": "Guardian Union",
+   "category": "union",
+   "published": "2026-09-07T16:00:23+00:00",
+   "ts": 1788796823
+  },
+  {
+   "title": "Wallabies’ Carter Gordon set for stint on sidelines after breaking leg in latest injury blow",
+   "link": "https://www.theguardian.com/sport/2026/sep/07/wallabies-carter-gordon-broken-leg-injury-blow-bledisloe-cup",
+   "excerpt": "Flyhalf sustains injury in weekend’s draw with Argentina Expected to miss Springboks Test and Bledisloe Cup series The Wallabies are bracing to be without first-choice playmaker Carter Gordon for the Bledisloe…",
+   "source": "Guardian Union",
+   "category": "union",
+   "published": "2026-09-07T06:07:14+00:00",
+   "ts": 1788761234
+  },
+  {
+   "title": "The complacent Lions reappear as the Swans show they have spirit amid the turmoil | Jonathan Horn",
+   "link": "https://www.theguardian.com/sport/blog/2026/sep/07/the-complacent-lions-reappear-as-the-swans-show-they-have-spirit-amid-the-turmoil-ntwnfb",
+   "excerpt": "Chris Fagan tried to warn his Brisbane players the game would be tough but he doubts his words sunk in Chris Fagan was seething on Saturday night. His team had lost for just the second time since May. They’d…",
+   "source": "Guardian AFL",
+   "category": "afl",
+   "published": "2026-09-06T15:00:09+00:00",
+   "ts": 1788706809
+  },
+  {
+   "title": "‘It was tough to be Jonah Lomu’: new film sheds light on late All Blacks hero",
+   "link": "https://www.theguardian.com/sport/2026/sep/06/jonah-lomu-new-film-late-all-blacks-rugby-union-hero",
+   "excerpt": "New Zealand great made his name at 1995 Rugby World Cup but rapid rise to fame took a toll as his health worsened Making a film about Jonah Lomu’s life was never going to thrill everyone. The big man’s widow,…",
+   "source": "Guardian Union",
+   "category": "union",
+   "published": "2026-09-06T07:00:01+00:00",
+   "ts": 1788678001
+  },
+  {
+   "title": "Wallabies’ key weakness lets Argentina off the hook, but Les Kiss won’t ‘catastrophise it’ | Jack Snape",
+   "link": "https://www.theguardian.com/sport/2026/sep/06/wallabies-key-weakness-lets-argentina-off-the-hook-but-les-kiss-wont-catastrophise-it",
+   "excerpt": "In a yo-yo performance, Australia’s defensive effort set up what should have been a win if not for poor execution with the ball A charitable Wallabies performance handed Argentina their share of the 28-28 draw…",
+   "source": "Guardian Union",
+   "category": "union",
+   "published": "2026-09-06T04:07:37+00:00",
+   "ts": 1788667657
+  },
+  {
+   "title": "Argentina 28-28 Australia: rugby union second Test – as it happened",
+   "link": "https://www.theguardian.com/sport/live/2026/sep/05/arg-vs-aus-wallabies-rugby-union-second-test-live-updates",
+   "excerpt": "Australia secure series win in Argentina for first time in history after an eight-try slugfest ends in a draw It’s not a packed house unfortunately. Perhaps its economic reasons, perhaps it’s a sign of the…",
+   "source": "Guardian Union",
+   "category": "union",
+   "published": "2026-09-06T00:10:37+00:00",
+   "ts": 1788653437
+  },
+  {
+   "title": "Wallabies fight out draw with Argentina to clinch series as Les Kiss remains unbeaten",
+   "link": "https://www.theguardian.com/sport/2026/sep/06/argentina-australia-wallabies-rugby-union-second-test-match-report",
+   "excerpt": "Argentina 28-28 Australia in Mendoza Wallabies rue missed opportunity but claim historic first series win in Argentina Australia’s bright start under new coach Les Kiss is becoming a golden run after the…",
+   "source": "Guardian Union",
+   "category": "union",
+   "published": "2026-09-06T00:05:48+00:00",
+   "ts": 1788653148
+  },
+  {
+   "title": "South Africa 29-24 New Zealand: rugby union third Test – as it happened",
+   "link": "https://www.theguardian.com/sport/live/2026/sep/05/south-africa-v-new-zealand-rugby-union-international-live",
+   "excerpt": "South Africa produce epic second-half performance in comeback win to take a 2-1 series lead over the All Blacks Anthems done. A great rendition of Nkosi Sikelel’ iAfrika. But does every second person in the…",
+   "source": "Guardian Union",
+   "category": "union",
+   "published": "2026-09-05T18:00:35+00:00",
+   "ts": 1788631235
+  },
+  {
+   "title": "Kriel and Marx tries help South Africa power past All Blacks to take series lead",
+   "link": "https://www.theguardian.com/sport/2026/sep/05/south-africa-new-zealand-greatest-rivalry-third-test-match-report",
+   "excerpt": "South Africa 29-24 New Zealand All Blacks captain Ardie Savea out of final Test There have been moments over the past couple of weeks that have made us question South Africa’s status as the standard bearers in…",
+   "source": "Guardian Union",
+   "category": "union",
+   "published": "2026-09-05T17:41:30+00:00",
+   "ts": 1788630090
+  },
+  {
+   "title": "Adelaide banish AFL finals demons with victory against wasteful Western Bulldogs",
+   "link": "https://www.theguardian.com/sport/2026/sep/05/afl-finals-adelaide-crows-western-bulldogs-elimination-final-report-izak-rankine",
+   "excerpt": "Crows defeat Bulldogs 14.6 (90) to 9.14 (68) in elimination final Adelaide head to Brisbane for semi-final against reigning premiers Sign up for our free weekly AFL newsletter Adelaide have survived a late…",
+   "source": "Guardian AFL",
+   "category": "afl",
+   "published": "2026-09-05T12:36:38+00:00",
+   "ts": 1788611798
+  },
+  {
+   "title": "Sydney blow away shellshocked Brisbane to revive ‘torpedoed’ AFL season",
+   "link": "https://www.theguardian.com/sport/2026/sep/05/afl-finals-sydney-swans-brisbane-lions-qualifying-final-report-charlie-curnow",
+   "excerpt": "Swans defeat Lions 21.15 (141) to 13.10 (88) in qualifying final at SCG Reigning premiers to host Crows or Bulldogs in semi-final Sign up for our free weekly AFL newsletter Sydney’s season had been “torpedoed”…",
+   "source": "Guardian AFL",
+   "category": "afl",
+   "published": "2026-09-05T08:26:35+00:00",
+   "ts": 1788596795
+  },
+  {
+   "title": "St Helens miss out on playoffs after Charnley news caps Leigh’s perfect night",
+   "link": "https://www.theguardian.com/sport/2026/sep/04/leigh-st-helens-super-league-match-report",
+   "excerpt": "Leigh 48-10 St Helens Charnley scores and agrees contract extension It ended not so much with a bang, but with a whimper. One of rugby league’s most extraordinary streaks has felt as though it was coming to an…",
+   "source": "Guardian NRL",
+   "category": "nrl",
+   "published": "2026-09-04T21:26:18+00:00",
+   "ts": 1788557178
+  },
+  {
+   "title": "Premier League, Italian GP, WSL and US Open tennis – follow with us",
+   "link": "https://www.theguardian.com/sport/2026/sep/04/premier-league-italian-gp-wsl-and-us-open-tennis-follow-with-us",
+   "excerpt": "Here’s how to follow along with our coverage – the finest writing and up-to-the-minute reports Continue reading...",
+   "source": "Guardian Union",
+   "category": "union",
+   "published": "2026-09-04T14:43:02+00:00",
+   "ts": 1788532982
+  },
+  {
+   "title": "Dangerfield bends AFL elimination final to his will as Geelong end Carlton’s fairytale run",
+   "link": "https://www.theguardian.com/sport/2026/sep/04/afl-finals-geelong-carlton-elimination-final-patrick-dangerfield-report",
+   "excerpt": "Cats defeat Blues 14.23 (107) to 11.8 (74) at the MCG Veteran kicks five goals to set up semi-final showdown with Dockers Sign up for our free weekly AFL newsletter Geelong used to be notorious for being…",
+   "source": "Guardian AFL",
+   "category": "afl",
+   "published": "2026-09-04T12:48:18+00:00",
+   "ts": 1788526098
+  },
+  {
+   "title": "NRL rivals stand with Jai Arrow as Rabbitohs meet the moment on emotion-charged night",
+   "link": "https://www.theguardian.com/sport/2026/sep/04/nrl-jai-arrow-mnd-100-south-sydney-rabbitohs-vs-roosters",
+   "excerpt": "Arrow plays 100th game for South Sydney three months after MND diagnosis as Rabbitohs’ win against the Roosters takes a back seat This time last year Jai Arrow ran out for his final game. At the time it was…",
+   "source": "Guardian NRL",
+   "category": "nrl",
+   "published": "2026-09-04T12:30:24+00:00",
+   "ts": 1788525024
+  },
+  {
+   "title": "Hawthorn stun Fremantle and record Perth crowd with qualifying final win",
+   "link": "https://www.theguardian.com/sport/2026/sep/03/afl-finals-fremantle-hawthorn-qualifying-final-report",
+   "excerpt": "Hawks beat Dockers 10.12 (72) to 5.10 (40) at Optus Stadium Minor premiers suffer first home loss of AFL season Sign up for our free weekly AFL newsletter Nick Watson produced his usual bag of wizardry tricks…",
+   "source": "Guardian AFL",
+   "category": "afl",
+   "published": "2026-09-03T13:43:55+00:00",
+   "ts": 1788443035
+  },
+  {
+   "title": "Darius Boyd: Maroons’ surprise choice of coach shows Origin is now in a league of its own | Jack Snape",
+   "link": "https://www.theguardian.com/sport/blog/2026/sep/03/darius-boyd-state-of-origin-queensland-maroons-coach",
+   "excerpt": "Former Queensland player’s appointment as head coach highlights how State of Origin has become disconnected from the proving ground of the NRL The grandest stage of rugby league has lost its lustre for top…",
+   "source": "Guardian NRL",
+   "category": "nrl",
+   "published": "2026-09-03T07:25:09+00:00",
+   "ts": 1788420309
+  },
+  {
+   "title": "Fremantle thrive on jeopardy – luckily for them qualifying finals are nerve shredders | Jonathan Horn",
+   "link": "https://www.theguardian.com/sport/blog/2026/sep/03/fremantle-hawthorn-afl-qualifying-finals-2026",
+   "excerpt": "The minor premiers face Hawthorn with the gap between first and fourth on the AFL ladder having noticeably narrowed over the past decade Sign up for our free weekly AFL newsletter For three decades, the AFL’s…",
+   "source": "Guardian AFL",
+   "category": "afl",
+   "published": "2026-09-02T15:00:28+00:00",
+   "ts": 1788361228
+  },
+  {
+   "title": "Victoria police confirm they have spoken with four people over Sydney Swans scandal",
+   "link": "https://www.theguardian.com/sport/2026/sep/02/sexual-crimes-squad-police-investigation-sydney-swans-scandal-ntwnfb",
+   "excerpt": "Detectives from Sexual Crimes Squad travelled to NSW this week Investigation into sexual assault allegation continues Victoria police say they interviewed four people this week as part of the investigation…",
+   "source": "Guardian AFL",
+   "category": "afl",
+   "published": "2026-09-02T07:06:05+00:00",
+   "ts": 1788332765
+  },
+  {
+   "title": "From the Pocket: Alastair Clarkson’s exit makes sense but North Melbourne never got the best version of him",
+   "link": "https://www.theguardian.com/sport/2026/sep/02/alastair-clarksons-exit-makes-sense-but-north-melbourne-never-got-the-best-version-of-him",
+   "excerpt": "Want to get this in your inbox every Wednesday afternoon? Sign up for the AFL newsletter here. When Alastair Clarkson was appointed coach of North Melbourne in August 2022, he was the largest figure in the…",
+   "source": "Guardian AFL",
+   "category": "afl",
+   "published": "2026-09-02T05:31:54+00:00",
+   "ts": 1788327114
+  },
+  {
+   "title": "NRL hierarchy given rare refresh with last year’s top four all bombing out in 2026 | Jack Snape",
+   "link": "https://www.theguardian.com/sport/blog/2026/sep/01/nrl-finals-favourites-top-four-bomb-out-2026-warriors-panthers-dolphins-roosters",
+   "excerpt": "Humbling seasons for proven greats the Broncos, Raiders, Storm and Bulldogs highlight the game’s rapid change The sun sets on the NRL regular season this weekend, and it is clear the game has entered the…",
+   "source": "Guardian NRL",
+   "category": "nrl",
+   "published": "2026-09-01T03:33:21+00:00",
+   "ts": 1788233601
+  },
+  {
+   "title": "AFL star Darcy Moore’s partner to boycott Brownlow ceremony in wake of Sydney Swans scandal",
+   "link": "https://www.theguardian.com/sport/2026/aug/31/dee-salmin-darcy-moore-girlfriend-boycott-brownlows-sydney-swans-scandal-ntwnfb",
+   "excerpt": "Podcast host expresses discomfort at attending medal ceremony AFL’s attitude towards women needs to change, she says The partner of one of the AFL’s most prominent players will boycott next month’s Brownlow…",
+   "source": "Guardian AFL",
+   "category": "afl",
+   "published": "2026-08-31T08:10:44+00:00",
+   "ts": 1788163844
+  },
+  {
+   "title": "Emotional scenes as Jai Arrow appears for Souths three months after MND diagnosis",
+   "link": "https://www.theguardian.com/sport/2026/aug/29/emotional-scenes-as-jai-arrow-appears-for-souths-three-months-after-mnd-diagnosis",
+   "excerpt": "Rabbitoh granted dispensation by NRL to appear Forward will join 100 club next week Jai Arrow made a brief but heartwarming return on Saturday as the forward brought up his 99th game for South Sydney Rabbitohs…",
+   "source": "Guardian NRL",
+   "category": "nrl",
+   "published": "2026-08-29T05:27:02+00:00",
+   "ts": 1787981222
+  },
+  {
+   "title": "St Helens’ 60-year playoff record hangs by a thread after thrashing by Leeds",
+   "link": "https://www.theguardian.com/sport/2026/aug/28/st-helens-leeds-super-league-match-report",
+   "excerpt": "St Helens 6-34 Leeds Rhinos return to top of table after running in six tries If you needed any further proof that Super League’s two most successful sides are travelling in different directions, this was…",
+   "source": "Guardian NRL",
+   "category": "nrl",
+   "published": "2026-08-28T21:20:18+00:00",
+   "ts": 1787952018
+  },
+  {
+   "title": "‘I want to be seen as a bloody good trainer’: Gihan Arnolda’s journey from sleeping rough to beating Britain’s top stables",
+   "link": "https://www.theguardian.com/sport/2026/aug/28/gihan-arnolda-horse-racing-flat-trainer-sleeping-rough",
+   "excerpt": "Former jockey reflects on remarkable story from overcoming hardship to breaking barriers as the first trainer of black or Asian heritage at Flat racing’s HQ “It’s just unbelievable, isn’t it?” Gihan Arnolda…",
+   "source": "Guardian Racing",
+   "category": "racing",
+   "published": "2026-08-28T12:16:54+00:00",
+   "ts": 1787919414
+  },
+  {
+   "title": "Sports quiz of the week: US Open, Premier League and La Vuelta",
+   "link": "https://www.theguardian.com/sport/2026/aug/28/sports-quiz-week-football-athletics-rugby-cricket-boxing-golf-tennis-cycling-premier-league-us-open-vuelta",
+   "excerpt": "Have you been following the big stories in football, athletics, rugby league, cricket, boxing, tennis and cycling? Continue reading...",
+   "source": "Guardian NRL",
+   "category": "nrl",
+   "published": "2026-08-28T09:32:48+00:00",
+   "ts": 1787909568
+  },
+  {
+   "title": "Wigan rise to occasion against Hull KR as town unites to remember Sir Billy Boston",
+   "link": "https://www.theguardian.com/sport/2026/aug/27/wigan-hull-kr-super-league-match-report",
+   "excerpt": "Super League: Wigan Warriors 46-0 Hull KR Liam Marshall bags hat-trick of tries in rout On the night when Wigan celebrated one of their greatest players, perhaps it was fitting that the class of 2026 produced…",
+   "source": "Guardian NRL",
+   "category": "nrl",
+   "published": "2026-08-27T21:40:24+00:00",
+   "ts": 1787866824
+  },
+  {
+   "title": "‘Nothing ever seemed to faze him’: Ken Oliver, former racing editor of the Guardian, dies aged 86",
+   "link": "https://www.theguardian.com/sport/2026/aug/26/nothing-ever-seemed-to-faze-him-ken-oliver-former-racing-editor-of-the-guardian-dies-aged-86",
+   "excerpt": "Tributes are paid to the much-loved and respected Fleet Street veteran who also tipped as ‘Larry Lynx’ Ken Oliver, who has died at the age of 86, was the Guardian’s racing editor for many years until his…",
+   "source": "Guardian Racing",
+   "category": "racing",
+   "published": "2026-08-26T16:28:10+00:00",
+   "ts": 1787761690
+  },
+  {
+   "title": "Umyla Hanley was working as a builder two years ago. Now he hopes to play for England at a World Cup",
+   "link": "https://www.theguardian.com/sport/no-helmets-required/2026/aug/26/umyla-hanley-builder-england-world-cup-ellery-hanley",
+   "excerpt": "It looked as if his rugby league career was going nowhere but Ellery Hanley’s son timed his rise to the top perfectly By No Helmets Required Among the unlikeliest visitors to Leigh Leopards’ recent win at…",
+   "source": "Guardian NRL",
+   "category": "nrl",
+   "published": "2026-08-26T09:14:10+00:00",
+   "ts": 1787735650
+  },
+  {
+   "title": "Sir Billy Boston obituary",
+   "link": "https://www.theguardian.com/sport/2026/aug/25/sir-billy-boston-obituary",
+   "excerpt": "First rugby league player to be knighted who was an explosive winger for Wigan and Great Britain Sir Billy Boston, who has died aged 92, was one of the greatest, and most popular, rugby league players of all…",
+   "source": "Guardian NRL",
+   "category": "nrl",
+   "published": "2026-08-25T16:37:26+00:00",
+   "ts": 1787675846
+  },
+  {
+   "title": "The Sydney Swans scandal has left many outraged. But what happens if no police charges are laid? | Rana Hussain",
+   "link": "https://www.theguardian.com/commentisfree/2026/aug/25/sydney-swans-scandal-comment-what-happens-if-no-police-charges-laid-ntwnfb",
+   "excerpt": "Behaviour we once might have shrugged off now makes us deeply uncomfortable. But discomfort alone cannot define the standard The public response to the Sydney Swans scandal has been fascinating. Before we knew…",
+   "source": "Guardian AU Sport",
+   "category": "sport",
+   "published": "2026-08-25T03:20:15+00:00",
+   "ts": 1787628015
+  },
+  {
+   "title": "Andrew Balding making serious tilt at prestigious British Flat trainers’ crown",
+   "link": "https://www.theguardian.com/sport/2026/aug/24/andrew-balding-making-serious-tilt-at-prestigious-british-flat-trainers-crown",
+   "excerpt": "Balding says victory is ‘very unlikely’ but there is a good chance he will improve on second-place finishes achieved in 2021 and 2024 The British Flat trainers’ championship winners’ club is among the most…",
+   "source": "Guardian Racing",
+   "category": "racing",
+   "published": "2026-08-24T17:00:17+00:00",
+   "ts": 1787590817
+  },
+  {
+   "title": "Hull of a debut: Socceroos teenager ‘buzzing’ after win over Manchester United in first Premier League outing",
+   "link": "https://www.theguardian.com/football/2026/aug/23/hull-debut-socceroos-teenager-buzzing-after-win-over-manchester-united",
+   "excerpt": "Lucas Herrington, 18, came on as a second half substitute as Hull stunned the Premier League giants Teenage Socceroo Lucas Herrington has made a dream start to life in the Premier League, coming on as a…",
+   "source": "Guardian AU Sport",
+   "category": "sport",
+   "published": "2026-08-23T02:08:24+00:00",
+   "ts": 1787450904
+  },
+  {
+   "title": "Drinks are on Daiquiri Bay at York after Ebor win: horse racing – as it happened",
+   "link": "https://www.theguardian.com/sport/live/2026/aug/22/ebor-festivals-final-day-from-york-horse-racing-live",
+   "excerpt": "Alan King was ‘blown away’ after Daiquiri Bay’s fast finish delivered a memorable victory in Europe’s richest handicap Hamad Al Jehani had two big handicap winners at Glorious Goodwood. Archivist has just…",
+   "source": "Guardian Racing",
+   "category": "racing",
+   "published": "2026-08-22T16:08:46+00:00",
+   "ts": 1787414926
+  }
+ ]
 }
