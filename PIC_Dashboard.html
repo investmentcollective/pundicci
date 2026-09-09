@@ -14,7 +14,7 @@
 <link rel="apple-touch-icon" sizes="180x180" href="icon-180.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=Archivo+Black&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700;800;900&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;0,6..72,800;1,6..72,400;1,6..72,600&display=swap" rel="stylesheet">
 <style>
   :root {
     --bg0:#EEEFF2; --bg1:#F7F8FA; --bg2:#FFFFFF;
@@ -29,9 +29,9 @@
     --on-dark:#FFFFFF; --on-dark-mute:rgba(255,255,255,0.52); --on-dark-faint:rgba(255,255,255,0.38);
     --on-dark-line:rgba(255,255,255,0.14);
     --green-d:#35D08A; --red-d:#FF7B80; --amber-d:#E8B44A; --blue-d:#6BA6F5;
-    --font:'Archivo',-apple-system,'Segoe UI',Arial,sans-serif;
-    --display:'Archivo Black','Arial Black',Arial,sans-serif;
-    --serif:'Playfair Display',Georgia,'Times New Roman',serif;
+    --font:'Jost',-apple-system,'Segoe UI',Arial,sans-serif;
+    --display:'Jost','Archivo Black','Arial Black',Arial,sans-serif;
+    --serif:'Newsreader',Georgia,'Times New Roman',serif;
   }
   * { box-sizing:border-box; margin:0; padding:0; }
   html { scroll-behavior:smooth; }
@@ -111,9 +111,9 @@
     transform:rotate(8deg); animation:sheen 7s ease-in-out infinite;
   }
   @keyframes sheen { 0%,100% { transform:translateX(-30%) rotate(8deg);} 50% { transform:translateX(160%) rotate(8deg);} }
-  .hero-label { font-size:11px; letter-spacing:3.5px; text-transform:uppercase; color:var(--muted); margin-bottom:12px; }
+  .hero-label { font-size:11px; font-weight:500; letter-spacing:3.5px; text-transform:uppercase; color:var(--muted); margin-bottom:12px; }
   .hero-balance {
-    font-family:var(--display); font-size:72px; line-height:0.95; letter-spacing:-1px;
+    font-family:var(--display); font-weight:800; font-size:72px; line-height:0.95; letter-spacing:-1px;
     color:var(--ink);
     font-variant-numeric:tabular-nums;
   }
@@ -145,7 +145,7 @@
   .duty-card { flex:1; min-width:230px; border-radius:16px; padding:20px 24px; border:1px solid var(--line2); background:var(--card2); position:relative; overflow:hidden; }
   .duty-card.primary { border-color:var(--line3); }
   .duty-tag { font-size:10px; font-weight:800; letter-spacing:3px; text-transform:uppercase; color:var(--muted); margin-bottom:10px; }
-  .duty-name { font-family:var(--display); font-size:30px; letter-spacing:1px; line-height:1; text-transform:uppercase; }
+  .duty-name { font-family:var(--display); font-weight:800; font-size:30px; letter-spacing:1px; line-height:1; text-transform:uppercase; }
   .duty-date { font-size:13px; color:var(--muted); margin-top:8px; font-weight:600; }
   .duty-when { display:inline-block; margin-top:10px; font-size:10px; font-weight:800; letter-spacing:1.5px; text-transform:uppercase; padding:4px 12px; border-radius:999px; background:var(--brand-dim); color:var(--brand); }
   .duty-glow { position:absolute; right:-30px; top:-30px; width:130px; height:130px; border-radius:50%; filter:blur(46px); opacity:0.35; }
@@ -184,11 +184,11 @@
   }
   .lb-card:hover { transform:translateY(-2px); border-color:var(--line2); background:var(--card2); box-shadow:0 8px 22px rgba(20,24,31,0.10); }
   .lb-card::before { content:''; position:absolute; left:0; top:0; bottom:0; width:4px; background:var(--mc, var(--brand)); }
-  .lb-rank { font-family:var(--display); font-size:38px; width:66px; text-align:center; flex-shrink:0; }
+  .lb-rank { font-family:var(--display); font-weight:800; font-size:38px; width:66px; text-align:center; flex-shrink:0; }
   .lb-rank.r1 { color:var(--ink); }
   .lb-rank.r2 { color:var(--muted); } .lb-rank.r3 { color:var(--faint); } .lb-rank.r4 { color:var(--line2); }
   .lb-name-block { flex:1; min-width:0; }
-  .lb-name { font-family:var(--display); font-size:25px; letter-spacing:1px; text-transform:uppercase; line-height:1.05; }
+  .lb-name { font-family:var(--display); font-weight:800; font-size:25px; letter-spacing:1px; text-transform:uppercase; line-height:1.05; }
   .lb-record { font-size:11px; color:var(--muted); margin-top:6px; font-weight:700; letter-spacing:1px; display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
   .owe-badge { font-size:9px; font-weight:800; letter-spacing:1px; padding:3px 9px; border-radius:999px; background:rgba(184,92,34,0.10); color:var(--shannon); border:1px solid rgba(184,92,34,0.30); }
   .lb-bar { height:4px; border-radius:99px; background:rgba(20,24,31,0.10); margin-top:10px; max-width:280px; overflow:hidden; }
@@ -207,7 +207,7 @@
   .member-hero { border-radius:18px; border:1px solid var(--line2); padding:30px 32px; display:flex; justify-content:space-between; align-items:center; gap:24px; flex-wrap:wrap; position:relative; overflow:hidden; background:var(--card2); }
   .member-hero::before { content:''; position:absolute; left:0; top:0; bottom:0; width:5px; background:var(--mc); }
   .member-hero::after { content:''; position:absolute; right:-60px; top:-60px; width:210px; height:210px; border-radius:50%; background:var(--mc); filter:blur(90px); opacity:0.16; }
-  .member-name { font-family:var(--display); font-size:44px; text-transform:uppercase; letter-spacing:1px; line-height:1; }
+  .member-name { font-family:var(--display); font-weight:800; font-size:44px; text-transform:uppercase; letter-spacing:1px; line-height:1; }
   .member-sub { font-size:11px; letter-spacing:2.5px; text-transform:uppercase; color:var(--muted); margin-top:8px; }
   .member-stats { display:flex; gap:30px; flex-wrap:wrap; position:relative; z-index:1; }
   .m-stat { text-align:center; }
@@ -237,7 +237,7 @@
 
   /* ─────────── The Post ─────────── */
   .post-masthead { text-align:center; padding:26px 0 18px; }
-  .post-title { font-family:var(--serif); font-weight:800; font-size:46px; letter-spacing:1px; color:var(--ink); }
+  .post-title { font-family:var(--serif); font-weight:800; font-size:52px; letter-spacing:-0.5px; color:var(--ink); }
   .post-title .amp { color:var(--brand); }
   .post-rules { display:flex; align-items:center; gap:14px; margin:12px auto 0; max-width:640px; }
   .post-rules::before, .post-rules::after { content:''; flex:1; height:3px; border-top:1px solid var(--line2); border-bottom:1px solid var(--line2); }
@@ -253,9 +253,9 @@
   .tag-win { background:#DCF0E4; color:#0B6B36; } .tag-loss { background:#FADEDF; color:#A32126; }
   .tag-pending { background:#F6EBD3; color:#7A5410; } .tag-editorial { background:#E6E8ED; color:#333B47; }
   .article-date { font-size:11px; color:var(--paper-muted); font-weight:700; letter-spacing:0.5px; }
-  .article h3 { font-family:var(--serif); font-size:23px; font-weight:800; line-height:1.25; margin-bottom:7px; }
+  .article h3 { font-family:var(--serif); font-size:25px; font-weight:800; line-height:1.22; letter-spacing:-0.2px; margin-bottom:9px; }
   .article .byline { font-size:10px; font-weight:800; letter-spacing:1.8px; text-transform:uppercase; color:var(--paper-muted); margin-bottom:12px; }
-  .article .body { font-size:14px; line-height:1.7; color:#33394A; }
+  .article .body { font-family:var(--serif); font-size:16px; line-height:1.72; color:#2C333F; }
   .article .body strong { color:var(--paper-ink); }
   .article .chart-note { font-size:10px; color:var(--paper-muted); margin-top:6px; }
   .article .chart-label { font-size:10px; font-weight:800; letter-spacing:1.5px; text-transform:uppercase; color:var(--paper-muted); margin:16px 0 8px; }
@@ -263,7 +263,7 @@
 
   /* ─────────── Account ─────────── */
   .sav-row { display:flex; align-items:center; gap:20px; padding:18px 22px; border:1px solid var(--line); border-radius:14px; background:var(--card); margin-bottom:9px; }
-  .sav-name { width:110px; flex-shrink:0; font-family:var(--display); font-size:17px; text-transform:uppercase; letter-spacing:0.5px; }
+  .sav-name { width:110px; flex-shrink:0; font-family:var(--display); font-weight:800; font-size:17px; text-transform:uppercase; letter-spacing:0.5px; }
   .sav-mid { flex:1; min-width:140px; }
   .sav-note { font-size:11px; color:var(--muted); margin-bottom:8px; font-weight:600; }
   .sav-note.warn { color:var(--shannon); } .sav-note.bad { color:var(--red); }
@@ -304,7 +304,7 @@
   .rec-card.shame { border-color:rgba(229,72,77,0.28); }
   .rec-icon { font-size:26px; margin-bottom:10px; }
   .rec-label { font-size:10px; font-weight:800; letter-spacing:2.5px; text-transform:uppercase; color:var(--muted); margin-bottom:8px; }
-  .rec-holder { font-family:var(--display); font-size:21px; text-transform:uppercase; letter-spacing:0.5px; }
+  .rec-holder { font-family:var(--display); font-weight:800; font-size:21px; text-transform:uppercase; letter-spacing:0.5px; }
   .rec-value { font-size:19px; font-weight:800; margin-top:4px; font-variant-numeric:tabular-nums; }
   .rec-card.fame .rec-value { color:var(--brand); }
   .rec-card.shame .rec-value { color:var(--red); }
@@ -312,7 +312,7 @@
 
   /* ─────────── Debt ledger ─────────── */
   .debt-row { display:flex; align-items:center; gap:16px; padding:15px 20px; border:1px solid var(--line); border-radius:12px; background:var(--card); margin-bottom:8px; flex-wrap:wrap; }
-  .debt-who { font-family:var(--display); font-size:15px; text-transform:uppercase; width:100px; flex-shrink:0; }
+  .debt-who { font-family:var(--display); font-weight:800; font-size:15px; text-transform:uppercase; width:100px; flex-shrink:0; }
   .debt-what { flex:1; min-width:160px; font-size:12px; color:var(--muted); line-height:1.5; }
   .debt-amt { font-size:16px; font-weight:800; font-variant-numeric:tabular-nums; text-align:right; min-width:80px; }
   .debt-status { font-size:8px; font-weight:800; letter-spacing:1.2px; text-transform:uppercase; padding:4px 10px; border-radius:999px; flex-shrink:0; }
@@ -357,7 +357,7 @@
     .bet-nums { width:100%; order:4; justify-content:space-between; border-top:1px solid var(--line); padding-top:10px; }
     .bn { text-align:center; min-width:0; }
     .result-chip { order:2; margin-left:auto; }
-    .post-title { font-size:30px; }
+    .post-title { font-size:32px; }
     .article { padding:20px 18px; }
     .article h3 { font-size:19px; }
     .ret-row { grid-template-columns:1fr 1fr 1fr; row-gap:8px; font-size:12px; padding:12px 14px; }
