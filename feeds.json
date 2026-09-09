@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-09T12:10:59.040513+00:00",
+ "generated": "2026-09-09T22:22:42.798323+00:00",
  "sources_ok": [
   "Guardian Racing",
   "Guardian AFL",
@@ -17,6 +17,159 @@
  ],
  "items": [
   {
+   "title": "Victoria's largest amateur football league denies 'gender bias' accusations",
+   "link": "https://www.abc.net.au/news/2026-09-10/vafa-clubs-express-dissapointment-as-league-denies-gender-bias/107122870",
+   "excerpt": "Multiple Victorian Amateur Football Association (VAFA) clubs express disappointment with how women's competitions are being handled this season, as players across the league say the women's competition is…",
+   "source": "ABC Sport",
+   "category": "sport",
+   "published": "2026-09-09T22:20:05+00:00",
+   "ts": 1788992405
+  },
+  {
+   "title": "Lions veteran signs new deal for 2027",
+   "link": "https://www.afl.com.au/news/1607079/brisbane-lions-veteran-dayne-zorko-to-play-on-in-2027",
+   "excerpt": "Dayne Zorko has signed a contract to continue his career for a 17th season",
+   "source": "AFL.com.au",
+   "category": "afl",
+   "published": "2026-09-09T22:13:00+00:00",
+   "ts": 1788991980
+  },
+  {
+   "title": "Aging Australia's parallels with fallen Test giant too close for comfort",
+   "link": "https://www.abc.net.au/news/2026-09-10/cricket-australia-similarities-west-indies-aging-analysis/107128736",
+   "excerpt": "As much of Australia's selection chatter once again centres around the inclusion of Marnus Labuschagne, the No.3's struggles are a symptom of a far greater problem.",
+   "source": "ABC Sport",
+   "category": "sport",
+   "published": "2026-09-09T22:03:26+00:00",
+   "ts": 1788991406
+  },
+  {
+   "title": "The NFL's trip to Melbourne is only the beginning",
+   "link": "https://www.abc.net.au/news/2026-09-10/nfl-quest-for-world-domination-mcg-match/106703380",
+   "excerpt": "The NFL will open its 2026 season with a match in Melbourne, Australia, this week, one of a record nine matches to take place overseas this season. And it shows no signs of slowing down yet.",
+   "source": "ABC Sport",
+   "category": "sport",
+   "published": "2026-09-09T22:02:32+00:00",
+   "ts": 1788991352
+  },
+  {
+   "title": "Tassie's $880k war chest revealed as AFLW list build rules ticked off",
+   "link": "https://www.afl.com.au/aflw/news/1606958/tasmania-devils-880k-war-chest-revealed-as-aflw-list-build-rules-ticked-off",
+   "excerpt": "Tasmania's list rules were ratified by the AFL this week",
+   "source": "AFL.com.au",
+   "category": "afl",
+   "published": "2026-09-09T22:00:00+00:00",
+   "ts": 1788991200
+  },
+  {
+   "title": "LISTEN: Our surprise option for Swans captain, unsung Dockers hero",
+   "link": "https://www.afl.com.au/news/1606975/listen-our-surprise-option-for-swans-captain-unsung-dockers-hero",
+   "excerpt": "Join Michael Whiting, Nathan Schmook, Emily Patterson and Bharat Sundaresan for AFL Daily",
+   "source": "AFL.com.au",
+   "category": "afl",
+   "published": "2026-09-09T21:30:00+00:00",
+   "ts": 1788989400
+  },
+  {
+   "title": "Women's tennis has a new world number one as US Open showdown looms",
+   "link": "https://www.abc.net.au/news/2026-09-10/elena-rybakina-beats-qinwen-zheng-to-become-world-number-one/107136158",
+   "excerpt": "Elena Rybakina becomes world number one for the first time by reaching the US Open semifinals, despite defending champion and current top-ranked player Aryna Sabalenka still being alive in the tournament.",
+   "source": "ABC Sport",
+   "category": "sport",
+   "published": "2026-09-09T21:18:53+00:00",
+   "ts": 1788988733
+  },
+  {
+   "title": "Overlooked by the whole AFL, Isaiah Dudley used disappointment as fuel",
+   "link": "https://www.abc.net.au/news/2026-09-10/fremantle-docker-isaiah-dudley-reflects-on-improbable-afl-rise/107128738",
+   "excerpt": "As his Fremantle Dockers look to bounce back against Geelong in an AFL semifinal tomorrow night, Isaiah Dudley hopes his improbable story encourages other footballers to never give up on their dreams.",
+   "source": "ABC Sport",
+   "category": "sport",
+   "published": "2026-09-09T21:13:19+00:00",
+   "ts": 1788988399
+  },
+  {
+   "title": "Opals survive in last second after giving up 20-point lead at World Cup",
+   "link": "https://www.abc.net.au/news/2026-09-10/opals-survive-italy-in-fiba-womens-world-cup/107136188",
+   "excerpt": "A short-handed Australian team is still alive and into the quarterfinals at the FIBA Women's Basketball World Cup despite surrendering a 20-point three-quarter-time lead against Italy.",
+   "source": "ABC Sport",
+   "category": "sport",
+   "published": "2026-09-09T21:06:04+00:00",
+   "ts": 1788987964
+  },
+  {
+   "title": "Greyhound trainer handed lifetime ban for 'egregious' actions",
+   "link": "https://www.abc.net.au/news/2026-09-10/greyhound-trainer-gets-lifetime-ban-over-undisclosed-fracture/107133432",
+   "excerpt": "SA greyhound trainer Jack Clayton Trengove has been found \"entirely unfit\" to participate in the industry, with the state's governing body issuing him with a lifetime disqualification and a $5,000 fine.",
+   "source": "ABC Sport",
+   "category": "sport",
+   "published": "2026-09-09T20:24:31+00:00",
+   "ts": 1788985471
+  },
+  {
+   "title": "This Demon knew she had a glaring weakness in her game. This is how she fixed it",
+   "link": "https://www.afl.com.au/aflw/news/1607030/this-melbourne-demons-eliza-mcnamara-knew-she-had-a-glaring-weakness-in-her-game-this-is-how-she-fixed-it",
+   "excerpt": "Eliza McNamara explains what has changed to have become one of the most improved players in the game this season",
+   "source": "AFL.com.au",
+   "category": "afl",
+   "published": "2026-09-09T20:00:00+00:00",
+   "ts": 1788984000
+  },
+  {
+   "title": "The four clubs facing a defining stretch as fight for finals spots heats up",
+   "link": "https://www.afl.com.au/aflw/news/1607019/hawthorn-hawks-brisbane-lions-port-adelaide-power-and-adelaide-crows-facing-a-defining-stretch-as-fight-for-aflw-finals-spots-heats-up",
+   "excerpt": "We take a look at the four middle-rung teams that need to lift as the halfway point of the season approaches",
+   "source": "AFL.com.au",
+   "category": "afl",
+   "published": "2026-09-09T20:00:00+00:00",
+   "ts": 1788984000
+  },
+  {
+   "title": "Bounce-back kings: Why the first 15 minutes could define Lions' season",
+   "link": "https://www.afl.com.au/news/1606949/bounce-back-kings-why-the-first-15-minutes-could-define-lions-season",
+   "excerpt": "Michael Whiting delves into the numbers that show why the Lions usually bounce back after a heavy loss",
+   "source": "AFL.com.au",
+   "category": "afl",
+   "published": "2026-09-09T20:00:00+00:00",
+   "ts": 1788984000
+  },
+  {
+   "title": "The Swans tactic the Crows should adopt if they want to dethrone Lions",
+   "link": "https://www.afl.com.au/news/1606922/why-a-scramble-will-be-key-if-adelaide-crows-are-to-upset-brisbane-lions",
+   "excerpt": "A tactic used by the Swans against the Lions could come into play for the Crows",
+   "source": "AFL.com.au",
+   "category": "afl",
+   "published": "2026-09-09T20:00:00+00:00",
+   "ts": 1788984000
+  },
+  {
+   "title": "After 99 games, there's still one thing eluding this star Crow",
+   "link": "https://www.afl.com.au/aflw/news/1606921/after-99-games-theres-still-one-thing-eluding-star-adelaide-crow-sarah-allan",
+   "excerpt": "As she approaches game No.100, Sarah Allan is still yet to kick a goal at AFLW level",
+   "source": "AFL.com.au",
+   "category": "afl",
+   "published": "2026-09-09T20:00:00+00:00",
+   "ts": 1788984000
+  },
+  {
+   "title": "AFL finals: where the Brisbane v Adelaide semi-final will be won and lost | Martin Pegan",
+   "link": "https://www.theguardian.com/sport/blog/2026/sep/10/afl-finals-where-the-brisbane-v-adelaide-semi-final-will-be-won-and-lost",
+   "excerpt": "The Lions are now on the long road to a premiership three-peat as they host the Crows with a preliminary final clash with the Hawks on the line Sign up for our free weekly AFL newsletter Brisbane had a path…",
+   "source": "Guardian AFL",
+   "category": "afl",
+   "published": "2026-09-09T15:00:04+00:00",
+   "ts": 1788966004
+  },
+  {
+   "title": "Circus or spectacular? Either way, NFL’s exercise in cultural exchange has gripped Melbourne | Jack Snape",
+   "link": "https://www.theguardian.com/sport/2026/sep/10/nfl-exercise-in-cultural-exchange-has-gripped-melbourne",
+   "excerpt": "Friday’s game between the 49ers and Rams at the MCG is almost sold out with millions more set to watch on Netflix The assembled press kept asking, but the American would not give them what they wanted. Just…",
+   "source": "Guardian AU Sport",
+   "category": "sport",
+   "published": "2026-09-09T15:00:03+00:00",
+   "ts": 1788966003
+  },
+  {
    "title": "England to extend Borthwick contract as Pollock closes on £400,000 Northampton deal",
    "link": "https://www.theguardian.com/sport/2026/sep/09/england-extend-borthwick-deal-pollock-400k-northampton-deal-rugby-world-cup",
    "excerpt": "RFU eager to avoid uncertainty heading into World Cup Lloyds Bank to pay £5m a year for logo on back of jerseys Steve Borthwick will be handed a contract extension until after the 2028 Six Nations, giving the…",
@@ -26,7 +179,7 @@
    "ts": 1788945948
   },
   {
-   "title": "Hollands opens up on axing from Carlton AFL roster",
+   "title": "'Purpose I had is no longer': Hollands opens up on Blues axing",
    "link": "https://www.abc.net.au/news/2026-09-09/elijah-hollands-opens-up-on-axing-from-carlton-afl-roster/107135600",
    "excerpt": "Elijah Hollands is at peace with the end of his Carlton career, saying he realises there are more important things in life that he needs to focus on.",
    "source": "ABC Sport",
@@ -71,6 +224,15 @@
    "ts": 1788937200
   },
   {
+   "title": "Data centre builder's deal with AFL club defended by team boss",
+   "link": "https://www.abc.net.au/news/2026-09-09/ai-data-centre-firmus-sponsorship-tasmanian-devils-afl-club/107131762",
+   "excerpt": "The Tasmania Devils have signed a six-year sponsorship deal with artificial intelligence infrastructure company Firmus Technologies. The AI company and club say it's a natural pairing — but not all are…",
+   "source": "ABC Sport",
+   "category": "sport",
+   "published": "2026-09-09T06:53:41+00:00",
+   "ts": 1788936821
+  },
+  {
    "title": "SA government backed a risky horse in LIV Golf — lucky it hedged its bets",
    "link": "https://www.abc.net.au/news/2026-09-09/australian-open-saves-sa-government-from-a-liv-golf-bunker/107132384",
    "excerpt": "The catalyst for the Malinauskas government's $45 million upgrade of the North Adelaide Golf Course has filed for bankruptcy. But the story could have been far worse.",
@@ -78,33 +240,6 @@
    "category": "sport",
    "published": "2026-09-09T06:49:19+00:00",
    "ts": 1788936559
-  },
-  {
-   "title": "Trade Talk: Pies to make Hogan an offer, Magpies veteran re-signs, Roos confirm trade request",
-   "link": "https://www.afl.com.au/news/1606757/trade-talk-all-the-latest-contract-news-free-agency-and-trade-rumours-ahead-of-october",
-   "excerpt": "Get all the latest contract news and trade rumours ahead of the player movement period",
-   "source": "AFL.com.au",
-   "category": "afl",
-   "published": "2026-09-09T06:31:00+00:00",
-   "ts": 1788935460
-  },
-  {
-   "title": "LISTEN: Big off-season looms for Dogs, can Freo shake off 'mental baggage'?",
-   "link": "https://www.afl.com.au/news/1606971/listen-big-off-season-looms-for-dogs-can-dockers-shake-off-mental-baggage",
-   "excerpt": "Join Damian Barrett, Nat Edwards and Riley Beveridge for AFL Daily",
-   "source": "AFL.com.au",
-   "category": "afl",
-   "published": "2026-09-09T06:09:00+00:00",
-   "ts": 1788934140
-  },
-  {
-   "title": "In the mix: Who could play for your club in FW3?",
-   "link": "https://www.afl.com.au/news/1606737/medical-room-the-full-afl-injury-list-fw3",
-   "excerpt": "Who's struggling, who's a test, check out the players from your list who are a little sore",
-   "source": "AFL.com.au",
-   "category": "afl",
-   "published": "2026-09-09T06:00:00+00:00",
-   "ts": 1788933600
   },
   {
    "title": "Lynagh makes timely return after Wallabies fly half Gordon breaks leg",
@@ -134,51 +269,6 @@
    "ts": 1788931492
   },
   {
-   "title": "AFLW list sizes back in spotlight as clubs feel injury squeeze",
-   "link": "https://www.afl.com.au/aflw/news/1606963/aflw-list-sizes-back-in-spotlight-as-clubs-feel-injury-squeeze",
-   "excerpt": "Mick Stinear says he'd support a move to a 32-player team list to help mitigate the need for top-up players",
-   "source": "AFL.com.au",
-   "category": "afl",
-   "published": "2026-09-09T04:42:00+00:00",
-   "ts": 1788928920
-  },
-  {
-   "title": "Cristian Volpato’s Socceroos fate uncertain after second sample confirms positive cocaine test",
-   "link": "https://www.theguardian.com/football/2026/sep/09/cristian-volpato-cocaine-positive-test-socceroos-australia-ntwnfb",
-   "excerpt": "Football Australia has power to suspend him from national team Striker has maintained his innocence over failed drugs test Cristian Volpato’s immediate availability for the Socceroos rests in the hands of…",
-   "source": "Guardian AU Sport",
-   "category": "sport",
-   "published": "2026-09-09T04:08:35+00:00",
-   "ts": 1788926915
-  },
-  {
-   "title": "The 'imperfection' Dockers must embrace to avoid straight-sets exit",
-   "link": "https://www.afl.com.au/news/1606902/the-imperfection-fremantle-dockers-must-embrace-to-avoid-straight-sets-exit",
-   "excerpt": "A familiar issue threatens to send the Dockers out of the finals in straight sets",
-   "source": "AFL.com.au",
-   "category": "afl",
-   "published": "2026-09-09T04:04:00+00:00",
-   "ts": 1788926640
-  },
-  {
-   "title": "I climbed into the car with three friends. I woke in hospital to find I’d lost them all – and my legs",
-   "link": "https://www.theguardian.com/lifeandstyle/2026/sep/09/i-lost-everything-lost-my-friends-lost-my-legs-rob-pike-accident-changed-life",
-   "excerpt": "Rob Pike was 17 when he and three of his closest friends were in a car that smashed into a tree and split in half. He explains how he coped with the devastation After the car stopped rolling and came to rest…",
-   "source": "Guardian AU Sport",
-   "category": "sport",
-   "published": "2026-09-09T04:00:59+00:00",
-   "ts": 1788926459
-  },
-  {
-   "title": "Cats forward finds his spark again after September heartbreak",
-   "link": "https://www.afl.com.au/news/1606955/geelong-cats-forward-ollie-henry-finds-his-spark-again-after-september-heartbreak",
-   "excerpt": "Ollie Henry missed out on finals last year but knuckled down and became a crucial part of the Cats' attack for this campaign",
-   "source": "AFL.com.au",
-   "category": "afl",
-   "published": "2026-09-09T03:59:00+00:00",
-   "ts": 1788926340
-  },
-  {
    "title": "Major state fears cricket will be worse off with private investment",
    "link": "https://www.abc.net.au/news/2026-09-09/nsw-cricket-private-investment-big-bash-reply/107133326",
    "excerpt": "The decision to introduce private investment into the Big Bash leagues risks leaving cricket in Australia \"strategically and financially worse off\", according to Cricket NSW.",
@@ -186,96 +276,6 @@
    "category": "sport",
    "published": "2026-09-09T03:23:47+00:00",
    "ts": 1788924227
-  },
-  {
-   "title": "The departing Panther who shapes as Penrith's finals wildcard",
-   "link": "https://www.abc.net.au/news/2026-09-09/jack-cole-penrith-panthers-nrl-finals-perth/107133130",
-   "excerpt": "Jack Cole's time at Penrith is coming to an end, but ahead of his NRL finals debut his final weeks as a Panther could prove to be his most important.",
-   "source": "ABC Sport",
-   "category": "sport",
-   "published": "2026-09-09T03:19:48+00:00",
-   "ts": 1788923988
-  },
-  {
-   "title": "Morphett 'disappointed' for teammates, Swans sweat on key duo ahead of Derby",
-   "link": "https://www.afl.com.au/aflw/news/1606944/ally-morphett-disappointed-for-teammates-sydney-swans-sweat-on-key-duo-taylor-smith-and-lucy-mcevoy-ahead-of-derby",
-   "excerpt": "Colin O'Riordan says Ally Morphett feels like she's let her side down after being suspended for one match",
-   "source": "AFL.com.au",
-   "category": "afl",
-   "published": "2026-09-09T02:38:00+00:00",
-   "ts": 1788921480
-  },
-  {
-   "title": "The AFLW Fantasy Download: Who to buy and sell ahead of R5",
-   "link": "https://www.afl.com.au/aflw/news/1606745/the-aflw-fantasy-download-who-to-buy-and-sell-ahead-of-r5",
-   "excerpt": "Who are the players we should be thinking about ahead of round five of the 2026 AFLW Fantasy season?",
-   "source": "AFL.com.au",
-   "category": "afl",
-   "published": "2026-09-09T02:34:00+00:00",
-   "ts": 1788921240
-  },
-  {
-   "title": "Socceroo Cristian Volpato's fate uncertain after failed cocaine test",
-   "link": "https://www.abc.net.au/news/2026-09-09/socceroo-cristian-volpato-future-doubt-cocaine-test/107132924",
-   "excerpt": "Cristian Volpato's immediate availability for the Socceroos rests in the hands of Football Australia after NSW Police confirmed the World Cup star had tested positive for cocaine on a secondary test.",
-   "source": "ABC Sport",
-   "category": "sport",
-   "published": "2026-09-09T02:16:20+00:00",
-   "ts": 1788920180
-  },
-  {
-   "title": "US Open thriller finishes after 3:30am as Shelton knocks out Alcaraz",
-   "link": "https://www.abc.net.au/news/2026-09-09/alex-michelsen-frances-tiafoe-us-open-carlos-alcaraz-ben-shelton/107131770",
-   "excerpt": "Ben Shelton has triumphed in a five-set thriller that set a new US Open record as the latest finish ever to a match at the New York grand slam.",
-   "source": "ABC Sport",
-   "category": "sport",
-   "published": "2026-09-09T01:03:22+00:00",
-   "ts": 1788915802
-  },
-  {
-   "title": "How Ned overcame a decade of pain to return to running",
-   "link": "https://www.abc.net.au/news/2026-09-09/melbourne-marathon-festival-ballarat-runner-ned-buckell/107128898",
-   "excerpt": "Ned Buckell often asks himself why he continues to run after enduring a decade of hell with a life-threatening infection and a hip replacement operation at 20 years old. The answer is pretty simple.",
-   "source": "ABC Sport",
-   "category": "sport",
-   "published": "2026-09-09T00:23:39+00:00",
-   "ts": 1788913419
-  },
-  {
-   "title": "LIV Golf players used to 'turbulence' as league files for bankruptcy",
-   "link": "https://www.abc.net.au/news/2026-09-09/liv-golf-files-for-bankruptcy-protection/107131864",
-   "excerpt": "LIV Golf files for bankruptcy, flagging a restructure with a massive loan from the Public Investment Fund of Saudi Arabia.",
-   "source": "ABC Sport",
-   "category": "sport",
-   "published": "2026-09-08T23:40:15+00:00",
-   "ts": 1788910815
-  },
-  {
-   "title": "Returning Rams superstar to miss MCG NFL clash with 49ers",
-   "link": "https://www.abc.net.au/news/2026-09-09/la-rams-star-aaron-donald-to-miss-nfl-melbourne-game/107131774",
-   "excerpt": "After two years in the wilderness, LA Rams defensive superstar Aaron Donald's return will be delayed a few more weeks as he opts not to travel to Australia for the season opener against the 49ers.",
-   "source": "ABC Sport",
-   "category": "sport",
-   "published": "2026-09-08T22:56:26+00:00",
-   "ts": 1788908186
-  },
-  {
-   "title": "Sabalenka stays alive at US Open by telling herself 'the match is over'",
-   "link": "https://www.abc.net.au/news/2026-09-09/aryna-sabalenka-scrapes-into-us-open-semifinals/107131594",
-   "excerpt": "Down a break to the Wimbledon champion in the decisive third set of her US Open quarterfinal, Aryna Sabalenka tells herself \"the match is over\" to loosen herself up and storm into the semis for a sixth…",
-   "source": "ABC Sport",
-   "category": "sport",
-   "published": "2026-09-08T20:59:58+00:00",
-   "ts": 1788901198
-  },
-  {
-   "title": "Schumacher comparisons made as Antonelli continues historic F1 season",
-   "link": "https://www.abc.net.au/news/2026-09-09/f1-kimi-antonelli-compared-to-michael-schumacher/107130402",
-   "excerpt": "Kimi Antonelli's win from 19th on the grid in Monza was epic, and the way his rivals raced with him has drawn comparisons with Ferrari legend Michael Schumacher.",
-   "source": "ABC Sport",
-   "category": "sport",
-   "published": "2026-09-08T18:53:14+00:00",
-   "ts": 1788893594
   },
   {
    "title": "England coaches tell Lawes and Marchant they need to prove themselves in Prem",
@@ -530,15 +530,6 @@
    "ts": 1788233601
   },
   {
-   "title": "AFL star Darcy Moore’s partner to boycott Brownlow ceremony in wake of Sydney Swans scandal",
-   "link": "https://www.theguardian.com/sport/2026/aug/31/dee-salmin-darcy-moore-girlfriend-boycott-brownlows-sydney-swans-scandal-ntwnfb",
-   "excerpt": "Podcast host expresses discomfort at attending medal ceremony AFL’s attitude towards women needs to change, she says The partner of one of the AFL’s most prominent players will boycott next month’s Brownlow…",
-   "source": "Guardian AFL",
-   "category": "afl",
-   "published": "2026-08-31T08:10:44+00:00",
-   "ts": 1788163844
-  },
-  {
    "title": "Emotional scenes as Jai Arrow appears for Souths three months after MND diagnosis",
    "link": "https://www.theguardian.com/sport/2026/aug/29/emotional-scenes-as-jai-arrow-appears-for-souths-three-months-after-mnd-diagnosis",
    "excerpt": "Rabbitoh granted dispensation by NRL to appear Forward will join 100 club next week Jai Arrow made a brief but heartwarming return on Saturday as the forward brought up his 99th game for South Sydney Rabbitohs…",
@@ -645,6 +636,15 @@
    "category": "racing",
    "published": "2026-08-22T16:08:46+00:00",
    "ts": 1787414926
+  },
+  {
+   "title": "Love Me Tender can deliver a slice of history as Mullins looks for fourth Ebor win",
+   "link": "https://www.theguardian.com/sport/2026/aug/21/bacio-blasts-to-nunthorpe-stakes-success-at-york",
+   "excerpt": "Irishman can become the first trainer for more than a century to win the feature race at York four times and has William Buick on board to help him Having dominated National Hunt racing for two decades, Willie…",
+   "source": "Guardian Racing",
+   "category": "racing",
+   "published": "2026-08-21T16:04:45+00:00",
+   "ts": 1787328285
   }
  ]
 }
