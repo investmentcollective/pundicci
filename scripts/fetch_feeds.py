@@ -23,34 +23,43 @@ from xml.etree import ElementTree as ET
 
 # (label, category, url)  — category drives the filter chips in the dashboard
 FEEDS = [
-    # ── Racing ───────────────────────────────────────────────────────────
-    ("Guardian Racing",  "racing", "https://www.theguardian.com/sport/horse-racing/rss"),
-    ("Racenet",          "racing", "https://www.racenet.com.au/rss"),
-    ("Racing.com",       "racing", "https://www.racing.com/rss/news"),
-    ("Punters",          "racing", "https://www.punters.com.au/rss/"),
+    # ── Australian racing ────────────────────────────────────────────────
+    ("Racenet",           "racing", "https://www.racenet.com.au/rss"),
+    ("Racing.com",        "racing", "https://www.racing.com/rss"),
+    ("Punters",           "racing", "https://www.punters.com.au/rss/"),
+    ("Roar Racing",       "racing", "https://www.theroar.com.au/horse-racing/feed/"),
+    ("Just Horse Racing", "racing", "https://www.justhorseracing.com.au/feed/"),
+    ("Guardian Racing",   "racing", "https://www.theguardian.com/sport/horse-racing/rss"),
 
     # ── AFL ──────────────────────────────────────────────────────────────
-    ("Guardian AFL",     "afl",    "https://www.theguardian.com/sport/afl/rss"),
-    ("AFL.com.au",       "afl",    "https://www.afl.com.au/rss"),
+    ("AFL.com.au",        "afl",    "https://www.afl.com.au/rss"),
+    ("Roar AFL",          "afl",    "https://www.theroar.com.au/afl/feed/"),
+    ("Guardian AFL",      "afl",    "https://www.theguardian.com/sport/afl/rss"),
 
     # ── Rugby league ─────────────────────────────────────────────────────
-    ("Guardian NRL",     "nrl",    "https://www.theguardian.com/sport/rugbyleague/rss"),
-    ("NRL.com",          "nrl",    "https://www.nrl.com/news/rss"),
+    ("Roar NRL",          "nrl",    "https://www.theroar.com.au/nrl/feed/"),
+    ("Zero Tackle",       "nrl",    "https://www.zerotackle.com/feed/"),
+    ("Guardian League",   "nrl",    "https://www.theguardian.com/sport/rugbyleague/rss"),
 
     # ── Rugby union ──────────────────────────────────────────────────────
-    ("Guardian Union",   "union",  "https://www.theguardian.com/sport/rugby-union/rss"),
+    ("Roar Union",        "union",  "https://www.theroar.com.au/rugby-union/feed/"),
+    ("Guardian Union",    "union",  "https://www.theguardian.com/sport/rugby-union/rss"),
 
     # ── General Australian sport ─────────────────────────────────────────
-    ("Guardian AU Sport", "sport", "https://www.theguardian.com/sport/australia-sport/rss"),
-    ("ABC Sport",         "sport", "https://www.abc.net.au/news/feed/45924/rss.xml"),
+    ("ABC Sport",         "sport",  "https://www.abc.net.au/news/feed/45924/rss.xml"),
+    ("SMH Sport",         "sport",  "https://www.smh.com.au/rss/sport.xml"),
+    ("The Age Sport",     "sport",  "https://www.theage.com.au/rss/sport.xml"),
+    ("Roar Sport",        "sport",  "https://www.theroar.com.au/feed/"),
+    ("Guardian AU Sport", "sport",  "https://www.theguardian.com/sport/australia-sport/rss"),
 ]
 
-MAX_PER_FEED = 12
-MAX_TOTAL = 70
+MAX_PER_FEED = 10
+MAX_TOTAL = 90
 EXCERPT_CHARS = 210
 TIMEOUT = 20
 
-UA = "Mozilla/5.0 (compatible; PundicciBot/1.0; +https://investmentcollective.github.io/pundicci/)"
+UA = ("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
+      "(KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36")
 
 NS = {
     "atom": "http://www.w3.org/2005/Atom",
@@ -131,6 +140,11 @@ def parse_feed(xml_bytes, label, category):
         dt = parse_date(raw_date)
 
         desc = text_of(node, "description", "atom:summary", "atom:content")
+
+        # some feeds leak off-topic items - keep it to sport
+        if "theguardian.com" in link and not any(
+                seg in link for seg in ("/sport/", "/football/", "/sport-", "/afl", "/nrl")):
+            continue
 
         out.append({
             "title": title,
