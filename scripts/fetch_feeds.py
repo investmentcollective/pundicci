@@ -45,6 +45,19 @@ FEEDS = [
     ("Roar Union",        "union",  "https://www.theroar.com.au/rugby-union/feed/"),
     ("Guardian Union",    "union",  "https://www.theguardian.com/sport/rugby-union/rss"),
 
+    # ── Tipsters & form ──────────────────────────────────────────────────
+    # Mostly WordPress, so /feed/ and /category/<x>/feed/ are the conventions.
+    # These sites run on bookmaker affiliate revenue - PROMO_TERMS below
+    # strips the promo-code and "best betting site" filler they publish
+    # alongside genuine tips.
+    ("KRUZEY",            "tips",   "https://www.kruzey.com.au/feed/"),
+    ("JHR Tips",          "tips",   "https://www.justhorseracing.com.au/category/tips/feed/"),
+    ("Expert Footy Tips", "tips",   "https://expertfootytips.com.au/feed/"),
+    ("Racing & Sports",   "tips",   "https://www.racingandsports.com.au/rss"),
+    ("Just Racing",       "tips",   "https://www.justracing.com.au/feed/"),
+    ("RacingBase",        "tips",   "https://www.racingbase.com.au/feed/"),
+    ("Great Tip Off",     "tips",   "https://thegreattipoff.com/feed/"),
+
     # ── General Australian sport ─────────────────────────────────────────
     ("ABC Sport",         "sport",  "https://www.abc.net.au/news/feed/45924/rss.xml"),
     ("SMH Sport",         "sport",  "https://www.smh.com.au/rss/sport.xml"),
@@ -53,7 +66,122 @@ FEEDS = [
     ("Guardian AU Sport", "sport",  "https://www.theguardian.com/sport/australia-sport/rss"),
 ]
 
-MAX_PER_FEED = 10
+# ══════════════════════════════════════════════════════════════════════════
+#  Relevance filter
+#  Publishers mix Australian and overseas coverage in the same feed, so every
+#  item is screened on its title + excerpt. Edit these lists to tune it.
+# ══════════════════════════════════════════════════════════════════════════
+
+# Australian publishers. Their items pass without needing a positive AU
+# signal, but are still screened against BLOCK_TERMS and JUNK_TERMS.
+TRUSTED_AU_DOMAINS = (
+    "abc.net.au", "smh.com.au", "theage.com.au", "theroar.com.au",
+    "afl.com.au", "nrl.com", "racenet.com.au", "racing.com",
+    "punters.com.au", "justhorseracing.com.au", "zerotackle.com",
+)
+
+# Overseas competitions and venues. Terms are deliberately specific:
+# "Ascot", "Sandown", "Newcastle" and "Doncaster" all exist in both
+# Australia and Britain, so only unambiguous forms are listed.
+BLOCK_TERMS = (
+    # British & Irish racing
+    "goodwood", "royal ascot", "cheltenham", "aintree", "newmarket",
+    "epsom", "haydock", "kempton", "ebor", "grand national", "st leger",
+    "british flat", "curragh", "punchestown", "leopardstown",
+    "1,000 guineas", "2,000 guineas", "kentucky derby", "breeders' cup",
+    "sandown park", "doncaster cup", "dubai world cup",
+    # Super League / English rugby league
+    "super league", "wigan", "st helens", "leeds rhinos", "hull kr",
+    "hull fc", "warrington", "castleford", "catalans", "salford red",
+    "huddersfield", "leigh leopards", "wakefield trinity", "challenge cup",
+    # English & European rugby union
+    "premiership rugby", "gallagher premiership", "saracens",
+    "northampton saints", "sale sharks", "harlequins", "leicester tigers",
+    "gloucester rugby", "exeter chiefs", "six nations", "top 14",
+    # codes the collective never bets
+    "nfl", "nba", "mlb", "nhl", "super bowl", "liv golf", "pga tour",
+    "us open", "wimbledon", "roland garros", "formula one",
+    "premier league", "la liga", "serie a", "bundesliga",
+)
+
+# Positive Australian / trans-Tasman signals. Required from overseas outlets.
+AU_TERMS = (
+    # racing venues and features
+    "flemington", "caulfield", "randwick", "rosehill", "moonee valley",
+    "doomben", "eagle farm", "morphettville", "warwick farm", "canterbury",
+    "melbourne cup", "cox plate", "golden slipper", "caulfield cup",
+    "the everest", "doncaster mile", "blue diamond", "victoria derby",
+    "spring carnival", "racing victoria", "racing nsw", "racing queensland",
+    # NRL
+    "nrl", "state of origin", "maroons", "melbourne storm", "penrith",
+    "panthers", "broncos", "roosters", "rabbitohs", "bulldogs", "sharks",
+    "eels", "sea eagles", "knights", "titans", "cowboys", "raiders",
+    "dragons", "dolphins", "warriors",
+    # AFL
+    "afl", "carlton", "collingwood", "essendon", "geelong", "hawthorn",
+    "richmond", "st kilda", "western bulldogs", "adelaide", "brisbane lions",
+    "fremantle", "port adelaide", "west coast", "sydney swans", "gws",
+    "gold coast suns", "north melbourne", "brownlow",
+    # rugby union
+    "wallabies", "all blacks", "queensland reds", "waratahs", "brumbies",
+    "western force", "super rugby", "bledisloe", "wallaroos",
+    # everything else
+    "socceroos", "matildas", "a-league", "cricket australia", "big bash",
+    "australia", "australian", "aussie",
+)
+
+# Article shapes that carry no betting signal
+JUNK_TERMS = (
+    "quiz of the week", "crossword", "obituary", "listen:", "podcast",
+    "sign up for", "newsletter", "as it happened", "in pictures",
+    "gallery:", "watch:", "fantasy download", "your questions answered",
+)
+
+# Tipping sites fund themselves through bookmaker affiliate deals and publish
+# marketing in the same feed as their tips. This keeps the ads out.
+PROMO_TERMS = (
+    "promo code", "bonus code", "sign-up offer", "signup offer",
+    "welcome bonus", "deposit match", "free bet", "bet back",
+    "best betting site", "best betting app", "betting site review",
+    "bookmaker review", "new betting site", "refer a friend",
+    "exclusive offer", "claim your", "join now", "bonus bet",
+    "review:", "vs bet365", "odds boost",
+)
+
+
+def is_relevant(title, excerpt_text, link):
+    """Returns (keep, reason) so rejections can be counted and reported."""
+    text = (title + " " + excerpt_text).lower()
+
+    for term in PROMO_TERMS:
+        if term in text:
+            return False, "promo"
+
+    # bookmaker review and promo sections, caught by URL as well as by text
+    if any(seg in link for seg in ("/promo-codes/", "/reviews/",
+                                   "/betting-sites", "/betting-apps")):
+        return False, "promo"
+
+    for term in JUNK_TERMS:
+        if term in text:
+            return False, "junk"
+
+    for term in BLOCK_TERMS:
+        if term in text:
+            return False, "overseas"
+
+    if any(dom in link for dom in TRUSTED_AU_DOMAINS):
+        return True, "au-source"
+
+    if any(term in text for term in AU_TERMS):
+        return True, "au-signal"
+
+    return False, "no-au-context"
+
+
+REJECTS = {}
+
+MAX_PER_FEED = 14
 MAX_TOTAL = 90
 EXCERPT_CHARS = 210
 TIMEOUT = 20
@@ -141,15 +269,23 @@ def parse_feed(xml_bytes, label, category):
 
         desc = text_of(node, "description", "atom:summary", "atom:content")
 
-        # some feeds leak off-topic items - keep it to sport
+        # some feeds leak non-sport entirely (Guardian files lifestyle pieces
+        # under australia-sport), so gate on the URL path first
         if "theguardian.com" in link and not any(
                 seg in link for seg in ("/sport/", "/football/", "/sport-", "/afl", "/nrl")):
+            REJECTS["off-topic"] = REJECTS.get("off-topic", 0) + 1
+            continue
+
+        ex = excerpt(desc)
+        keep, reason = is_relevant(title, ex, link)
+        if not keep:
+            REJECTS[reason] = REJECTS.get(reason, 0) + 1
             continue
 
         out.append({
             "title": title,
             "link": link,
-            "excerpt": excerpt(desc),
+            "excerpt": ex,
             "source": label,
             "category": category,
             "published": dt.isoformat() if dt else None,
@@ -191,15 +327,25 @@ def main():
         "generated": datetime.now(timezone.utc).isoformat(),
         "sources_ok": ok,
         "sources_failed": failed,
+        "filtered": REJECTS,
         "items": unique[:MAX_TOTAL],
     }
 
     with open("feeds.json", "w", encoding="utf-8") as fh:
         json.dump(payload, fh, ensure_ascii=False, indent=1)
 
-    print(f"\n{len(payload['items'])} items from {len(ok)}/{len(FEEDS)} feeds")
+    print(f"\n{len(payload['items'])} items kept from {len(ok)}/{len(FEEDS)} feeds")
+    if REJECTS:
+        print("filtered out: " + ", ".join(
+            f"{count} {reason}" for reason, count in sorted(REJECTS.items())))
     if failed:
-        print(f"failed: {', '.join(failed)}")
+        print(f"feeds unreachable: {', '.join(failed)}")
+
+    # an empty result usually means the filter is too tight, not that the
+    # feeds are down - say so rather than failing silently
+    if ok and not payload["items"]:
+        print("WARNING: every item was filtered out - loosen the filter lists",
+              file=sys.stderr)
 
     # only a total wipeout is worth failing the run over
     if not ok:
