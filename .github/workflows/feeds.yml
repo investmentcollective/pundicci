@@ -19,6 +19,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          # full history so the rebase below has something to work with
+          fetch-depth: 0
 
       - uses: actions/setup-python@v5
         with:
@@ -27,14 +30,33 @@ jobs:
       - name: Fetch feeds
         run: python scripts/fetch_feeds.py
 
-      - name: Commit only if the feed actually changed
+      - name: Commit and push if the feed changed
         run: |
           git config user.name  "pic-feed-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
           git add feeds.json
           if git diff --staged --quiet; then
             echo "No change - nothing to commit."
-          else
-            git commit -m "Update racing & sport feeds [skip ci]"
-            git push
+            exit 0
           fi
+
+          git commit -m "Update racing & sport feeds [skip ci]"
+
+          # Someone may have pushed while we were out fetching feeds, so
+          # rebase onto whatever landed and retry rather than failing.
+          for attempt in 1 2 3; do
+            if git push origin main; then
+              echo "Pushed on attempt $attempt."
+              exit 0
+            fi
+            echo "Push rejected - remote moved. Rebasing (attempt $attempt)..."
+            git pull --rebase origin main || {
+              echo "Rebase failed; aborting cleanly."
+              git rebase --abort || true
+              exit 1
+            }
+          done
+
+          echo "Could not push after 3 attempts."
+          exit 1
