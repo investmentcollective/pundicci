@@ -22,11 +22,13 @@ from email.utils import parsedate_to_datetime
 from xml.etree import ElementTree as ET
 
 # (label, category, url)  — category drives the filter chips in the dashboard
+# Removed after two rounds of testing, do not re-add without new evidence:
+#   Racenet, Punters, Racing & Sports, RacingBase, KRUZEY  -> 403 even with a
+#     browser User-Agent. These sit behind bot management that also blocks
+#     datacentre IPs, and GitHub runners are Azure. Not fixable from here.
+#   Racing.com, Great Tip Off                              -> 404, no public feed.
 FEEDS = [
     # ── Australian racing ────────────────────────────────────────────────
-    ("Racenet",           "racing", "https://www.racenet.com.au/rss"),
-    ("Racing.com",        "racing", "https://www.racing.com/rss"),
-    ("Punters",           "racing", "https://www.punters.com.au/rss/"),
     ("Roar Racing",       "racing", "https://www.theroar.com.au/horse-racing/feed/"),
     ("Just Horse Racing", "racing", "https://www.justhorseracing.com.au/feed/"),
     ("Guardian Racing",   "racing", "https://www.theguardian.com/sport/horse-racing/rss"),
@@ -46,17 +48,16 @@ FEEDS = [
     ("Guardian Union",    "union",  "https://www.theguardian.com/sport/rugby-union/rss"),
 
     # ── Tipsters & form ──────────────────────────────────────────────────
-    # Mostly WordPress, so /feed/ and /category/<x>/feed/ are the conventions.
-    # These sites run on bookmaker affiliate revenue - PROMO_TERMS below
-    # strips the promo-code and "best betting site" filler they publish
-    # alongside genuine tips.
-    ("KRUZEY",            "tips",   "https://www.kruzey.com.au/feed/"),
+    # These sites run on bookmaker affiliate revenue, so PROMO_TERMS strips
+    # the promo-code and "best betting site" filler they publish alongside
+    # the genuine tips.
     ("JHR Tips",          "tips",   "https://www.justhorseracing.com.au/category/tips/feed/"),
     ("Expert Footy Tips", "tips",   "https://expertfootytips.com.au/feed/"),
-    ("Racing & Sports",   "tips",   "https://www.racingandsports.com.au/rss"),
     ("Just Racing",       "tips",   "https://www.justracing.com.au/feed/"),
-    ("RacingBase",        "tips",   "https://www.racingbase.com.au/feed/"),
-    ("Great Tip Off",     "tips",   "https://thegreattipoff.com/feed/"),
+    # WordPress category feeds off the two tipsters that answered
+    ("JHR Best Bets",     "tips",   "https://www.justhorseracing.com.au/category/betting/feed/"),
+    ("EFT NRL",           "tips",   "https://expertfootytips.com.au/nrl-tips/feed/"),
+    ("EFT AFL",           "tips",   "https://expertfootytips.com.au/afl-tips/feed/"),
 
     # ── General Australian sport ─────────────────────────────────────────
     ("ABC Sport",         "sport",  "https://www.abc.net.au/news/feed/45924/rss.xml"),
@@ -182,7 +183,8 @@ def is_relevant(title, excerpt_text, link):
 REJECTS = {}
 
 MAX_PER_FEED = 14
-MAX_TOTAL = 90
+MAX_TOTAL = 100
+PER_CATEGORY_FLOOR = 12   # slots each category is guaranteed before recency fills the rest
 EXCERPT_CHARS = 210
 TIMEOUT = 20
 
@@ -294,6 +296,35 @@ def parse_feed(xml_bytes, label, category):
     return out
 
 
+def select(items, max_total, per_cat_floor):
+    """Pick what makes the cut.
+
+    Sorting purely by recency lets a high-volume publisher swamp the feed -
+    AFL.com.au posts far more often than a tipster does, so on a straight
+    newest-first cut the tips would never appear. Guarantee every category a
+    floor first, then fill the remaining slots by recency.
+    """
+    by_cat = {}
+    for item in items:
+        by_cat.setdefault(item["category"], []).append(item)
+
+    chosen, taken = [], set()
+    for cat in sorted(by_cat):
+        for item in by_cat[cat][:per_cat_floor]:
+            chosen.append(item)
+            taken.add(item["link"])
+
+    for item in items:
+        if len(chosen) >= max_total:
+            break
+        if item["link"] not in taken:
+            chosen.append(item)
+            taken.add(item["link"])
+
+    chosen.sort(key=lambda i: i["ts"], reverse=True)
+    return chosen[:max_total]
+
+
 def fetch(url):
     req = urllib.request.Request(url, headers={
         "User-Agent": UA,
@@ -323,18 +354,24 @@ def main():
         seen.add(item["link"])
         unique.append(item)
 
+    chosen = select(unique, MAX_TOTAL, PER_CATEGORY_FLOOR)
+
     payload = {
         "generated": datetime.now(timezone.utc).isoformat(),
         "sources_ok": ok,
         "sources_failed": failed,
         "filtered": REJECTS,
-        "items": unique[:MAX_TOTAL],
+        "counts": {c: sum(1 for i in chosen if i["category"] == c)
+                   for c in sorted({i["category"] for i in chosen})},
+        "items": chosen,
     }
 
     with open("feeds.json", "w", encoding="utf-8") as fh:
         json.dump(payload, fh, ensure_ascii=False, indent=1)
 
     print(f"\n{len(payload['items'])} items kept from {len(ok)}/{len(FEEDS)} feeds")
+    print("by category: " + ", ".join(
+        f"{count} {cat}" for cat, count in payload["counts"].items()))
     if REJECTS:
         print("filtered out: " + ", ".join(
             f"{count} {reason}" for reason, count in sorted(REJECTS.items())))
