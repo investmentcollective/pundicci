@@ -60,9 +60,10 @@ FEEDS = [
     ("EFT AFL",           "tips",   "https://expertfootytips.com.au/afl-tips/feed/"),
 
     # ── General Australian sport ─────────────────────────────────────────
+    # SMH and The Age are both Nine mastheads and run near-identical sport
+    # sections, so only one is carried.
     ("ABC Sport",         "sport",  "https://www.abc.net.au/news/feed/45924/rss.xml"),
     ("SMH Sport",         "sport",  "https://www.smh.com.au/rss/sport.xml"),
-    ("The Age Sport",     "sport",  "https://www.theage.com.au/rss/sport.xml"),
     ("Roar Sport",        "sport",  "https://www.theroar.com.au/feed/"),
     ("Guardian AU Sport", "sport",  "https://www.theguardian.com/sport/australia-sport/rss"),
 ]
@@ -150,6 +151,76 @@ PROMO_TERMS = (
 )
 
 
+# ══════════════════════════════════════════════════════════════════════════
+#  Tip extraction
+#  Feeds publish a title, a short teaser and an author - never the selection
+#  itself, which is the tipster's product and stays behind the link. So we
+#  pull out what IS there: the meeting or fixture, who wrote it, and when.
+# ══════════════════════════════════════════════════════════════════════════
+
+# "Geelong Horse Racing Tips Fri 11/9/26", "Randwick Tips and Best Bets"
+RACE_VENUE_RE = re.compile(
+    r"^([A-Z][A-Za-z'\-]*(?:\s+[A-Z][A-Za-z'\-]*){0,2})\s+"
+    r"(?:Horse\s+)?Racing\s+Tips\b", re.I)
+# "Horse Racing Tips and Best Bets - Muswellbrook"
+RACE_VENUE_TAIL_RE = re.compile(
+    r"(?:Best\s+Bets|Tips)\s*[–—-]\s*"
+    r"([A-Z][A-Za-z'\-]*(?:\s+[A-Z][A-Za-z'\-]*){0,2})\s*$")
+# "Rabbitohs vs Knights Prediction", "Fremantle v Geelong"
+FIXTURE_RE = re.compile(
+    r"\b([A-Z][A-Za-z'\-]*(?:\s+[A-Z][A-Za-z'\-]*){0,2})\s+"
+    r"(?:vs?\.?|v)\s+"
+    r"([A-Z][A-Za-z'\-]*(?:\s+[A-Z][A-Za-z'\-]*){0,2})\b")
+# "11/9/26", "6/4/2026"
+TITLE_DATE_RE = re.compile(r"\b(\d{1,2})[/.](\d{1,2})[/.](\d{2,4})\b")
+
+# Words that look like a venue but aren't
+NOT_A_VENUE = {
+    "free", "today", "todays", "today's", "best", "latest", "daily",
+    "expert", "weekend", "saturday", "friday", "sunday", "all", "the",
+}
+
+
+def extract_tip(title, category, author):
+    """Returns a dict for the Live Tips card, or None if nothing parses."""
+    if category != "tips":
+        return None
+
+    when = None
+    m = TITLE_DATE_RE.search(title)
+    if m:
+        day, month, year = (int(g) for g in m.groups())
+        if year < 100:
+            year += 2000
+        try:
+            when = datetime(year, month, day, tzinfo=timezone.utc).date().isoformat()
+        except ValueError:
+            when = None
+
+    # racing meeting?
+    venue = None
+    for pattern in (RACE_VENUE_RE, RACE_VENUE_TAIL_RE):
+        m = pattern.search(title)
+        if m:
+            candidate = m.group(1).strip()
+            if candidate.lower() not in NOT_A_VENUE and len(candidate) > 2:
+                venue = candidate
+                break
+    if venue:
+        return {"kind": "race", "subject": venue,
+                "tipster": author or None, "when": when}
+
+    # sport fixture?
+    m = FIXTURE_RE.search(title)
+    if m:
+        home, away = m.group(1).strip(), m.group(2).strip()
+        if home.lower() not in NOT_A_VENUE and away.lower() not in NOT_A_VENUE:
+            return {"kind": "fixture", "subject": f"{home} v {away}",
+                    "tipster": author or None, "when": when}
+
+    return None
+
+
 def is_relevant(title, excerpt_text, link):
     """Returns (keep, reason) so rejections can be counted and reported."""
     text = (title + " " + excerpt_text).lower()
@@ -185,6 +256,20 @@ REJECTS = {}
 MAX_PER_FEED = 14
 MAX_TOTAL = 100
 PER_CATEGORY_FLOOR = 12   # slots each category is guaranteed before recency fills the rest
+
+# Ceilings weight the feed toward what the collective actually bets on.
+# 'sport' is the catch-all - tennis, golf, F1, cricket - so it is capped
+# hardest despite having the most feeds behind it.
+CATEGORY_CEILING = {
+    "racing": 30,
+    "tips":   26,
+    "afl":    20,
+    "nrl":    20,
+    "union":  14,
+    "sport":  14,
+}
+DEFAULT_CEILING = 20
+
 EXCERPT_CHARS = 210
 TIMEOUT = 20
 
@@ -284,7 +369,12 @@ def parse_feed(xml_bytes, label, category):
             REJECTS[reason] = REJECTS.get(reason, 0) + 1
             continue
 
-        out.append({
+        author = clean(text_of(node, "dc:creator", "author", "atom:author/atom:name"))
+        # RSS <author> is often an email address - not worth showing
+        if "@" in author:
+            author = ""
+
+        record = {
             "title": title,
             "link": link,
             "excerpt": ex,
@@ -292,34 +382,49 @@ def parse_feed(xml_bytes, label, category):
             "category": category,
             "published": dt.isoformat() if dt else None,
             "ts": int(dt.timestamp()) if dt else 0,
-        })
+        }
+
+        tip = extract_tip(title, category, author)
+        if tip:
+            record["tip"] = tip
+
+        out.append(record)
     return out
 
 
 def select(items, max_total, per_cat_floor):
     """Pick what makes the cut.
 
-    Sorting purely by recency lets a high-volume publisher swamp the feed -
-    AFL.com.au posts far more often than a tipster does, so on a straight
-    newest-first cut the tips would never appear. Guarantee every category a
-    floor first, then fill the remaining slots by recency.
+    Recency alone lets high-volume publishers swamp the feed: the general
+    sport desks post far more often than a tipster or a racing writer does.
+    So every category gets a guaranteed floor, the remaining slots are filled
+    by recency, and no category may exceed its ceiling - otherwise the
+    catch-all 'sport' bucket quietly becomes a third of the page.
     """
     by_cat = {}
     for item in items:
         by_cat.setdefault(item["category"], []).append(item)
 
-    chosen, taken = [], set()
+    chosen, taken, count = [], set(), {}
+
+    def take(item):
+        chosen.append(item)
+        taken.add(item["link"])
+        count[item["category"]] = count.get(item["category"], 0) + 1
+
+    # 1. floor: every category gets a guaranteed share
     for cat in sorted(by_cat):
         for item in by_cat[cat][:per_cat_floor]:
-            chosen.append(item)
-            taken.add(item["link"])
+            take(item)
 
+    # 2. fill the rest by recency, respecting each category's ceiling
     for item in items:
         if len(chosen) >= max_total:
             break
-        if item["link"] not in taken:
-            chosen.append(item)
-            taken.add(item["link"])
+        cat = item["category"]
+        ceiling = CATEGORY_CEILING.get(cat, DEFAULT_CEILING)
+        if item["link"] not in taken and count.get(cat, 0) < ceiling:
+            take(item)
 
     chosen.sort(key=lambda i: i["ts"], reverse=True)
     return chosen[:max_total]
@@ -372,6 +477,10 @@ def main():
     print(f"\n{len(payload['items'])} items kept from {len(ok)}/{len(FEEDS)} feeds")
     print("by category: " + ", ".join(
         f"{count} {cat}" for cat, count in payload["counts"].items()))
+    tips = [i for i in payload["items"] if i.get("tip")]
+    print(f"structured tips extracted: {len(tips)}"
+          f" ({sum(1 for t in tips if t['tip']['kind'] == 'race')} meetings,"
+          f" {sum(1 for t in tips if t['tip']['kind'] == 'fixture')} fixtures)")
     if REJECTS:
         print("filtered out: " + ", ".join(
             f"{count} {reason}" for reason, count in sorted(REJECTS.items())))
