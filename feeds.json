@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-10T22:21:59.847140+00:00",
+ "generated": "2026-09-10T22:33:58.933323+00:00",
  "sources_ok": [
   "Roar Racing",
   "Just Horse Racing",
@@ -15,27 +15,30 @@
   "JHR Tips",
   "Expert Footy Tips",
   "Just Racing",
+  "JHR Best Bets",
+  "EFT NRL",
+  "EFT AFL",
   "ABC Sport",
   "SMH Sport",
   "The Age Sport",
   "Roar Sport",
   "Guardian AU Sport"
  ],
- "sources_failed": [
-  "Racenet",
-  "Racing.com",
-  "Punters",
-  "KRUZEY",
-  "Racing & Sports",
-  "RacingBase",
-  "Great Tip Off"
- ],
+ "sources_failed": [],
  "filtered": {
-  "promo": 3,
-  "overseas": 28,
+  "promo": 4,
+  "overseas": 29,
   "no-au-context": 11,
   "junk": 21,
   "off-topic": 2
+ },
+ "counts": {
+  "afl": 13,
+  "nrl": 12,
+  "racing": 9,
+  "sport": 32,
+  "tips": 23,
+  "union": 11
  },
  "items": [
   {
@@ -46,6 +49,87 @@
    "category": "nrl",
    "published": "2026-09-10T22:17:05+00:00",
    "ts": 1789078625
+  },
+  {
+   "title": "12/9/2026 Horse Racing Tips and Best Bets – Flemington, Makybe Diva Stakes day",
+   "link": "https://www.justhorseracing.com.au/tips/12-9-2026-horse-racing-tips-and-best-bets-flemington-makybe-diva-stakes-day/905739",
+   "excerpt": "Group l racing returns to Flemington this Saturday with the Makybe Diva Stakes (1600m) highlighting a fab ten race program. The weather is fine, the track is good (4) and the rail is in the true position for…",
+   "source": "Just Horse Racing",
+   "category": "racing",
+   "published": "2026-09-10T22:14:31+00:00",
+   "ts": 1789078471
+  },
+  {
+   "title": "12/9/2026 Horse Racing Tips and Best Bets – Rosehill, Run To The Rose day",
+   "link": "https://www.justhorseracing.com.au/tips/12-9-2026-horse-racing-tips-and-best-bets-rosehill-run-to-the-rose-day/905738",
+   "excerpt": "Ten races will be run and won at Rosehill this Saturday as the Spring Carnival heats up. The weather is fine, the track is good (4) and the rail is out five metres for the entire circuit. Best Bookies 💰 👉 View…",
+   "source": "Just Horse Racing",
+   "category": "racing",
+   "published": "2026-09-10T22:13:15+00:00",
+   "ts": 1789078395
+  },
+  {
+   "title": "12/9/2026 Horse Racing Tips and Best Bets – Belmont",
+   "link": "https://www.justhorseracing.com.au/tips/12-9-2026-horse-racing-tips-and-best-bets-belmont/905741",
+   "excerpt": "Belmont will conduct an eight event program on Saturday for Nicopolis Stakes Day. The weather is fine, the track is soft (5) and the rail is out ten metres for the entire circuit. Best Bookies 💰 👉 View the…",
+   "source": "Just Horse Racing",
+   "category": "racing",
+   "published": "2026-09-10T22:11:28+00:00",
+   "ts": 1789078288
+  },
+  {
+   "title": "12/9/2026 Horse Racing Tips and Best Bets – Morphettville, Wylie Handicap day",
+   "link": "https://www.justhorseracing.com.au/tips/12-9-2026-horse-racing-tips-and-best-bets-morphettville-wylie-handicap-day/905742",
+   "excerpt": "Morphettville will play host to a ten race program on Saturday, headlined by the W H Whylie Handicap (1100m). The weather is fine, the track is soft (6) and the rail is out four metres for the entire circuit.…",
+   "source": "Just Horse Racing",
+   "category": "racing",
+   "published": "2026-09-10T22:10:01+00:00",
+   "ts": 1789078201
+  },
+  {
+   "title": "11/9/2026 Horse Racing Tips and Best Bets – Geelong",
+   "link": "https://www.justhorseracing.com.au/tips/11-9-2026-horse-racing-tips-and-best-bets-geelong/905626",
+   "excerpt": "Victorian racing this Friday heads to Geelong. The weather is fine, the track is soft (6) and the rail is in the true position for the entire circuit. Race One: 11 Eye Tracker Race Two: 8 Rockzino Race Three:…",
+   "source": "Just Horse Racing",
+   "category": "racing",
+   "published": "2026-09-10T22:06:59+00:00",
+   "ts": 1789078019
+  },
+  {
+   "title": "11/9/2026 Horse Racing Tips and Best Bets – Goulburn",
+   "link": "https://www.justhorseracing.com.au/tips/11-9-2026-horse-racing-tips-and-best-bets-goulburn/905624",
+   "excerpt": "Goulburn will conduct a seven race card this Friday. The weather is fine, the track is soft (5) and the rail is in the true position for the entire circuit. Race One: 4 Feazabeel Race Two: 3 Sea Level Race…",
+   "source": "Just Horse Racing",
+   "category": "racing",
+   "published": "2026-09-10T22:05:57+00:00",
+   "ts": 1789077957
+  },
+  {
+   "title": "11/9/2026 Horse Racing Tips and Best Bets – Tuncurry, Tuncurry-Forster Cup day",
+   "link": "https://www.justhorseracing.com.au/tips/11-9-2026-horse-racing-tips-and-best-bets-tuncurry-tuncurry-forster-cup-day/905625",
+   "excerpt": "Eight races will be run and won at Tuncurry this Friday. The weather is fine, the track is soft (5) and the rail is in the true position for the entire circuit. Race One: 12 Zous Apollo Race Two: 7 Wan Lost…",
+   "source": "Just Horse Racing",
+   "category": "racing",
+   "published": "2026-09-10T22:04:57+00:00",
+   "ts": 1789077897
+  },
+  {
+   "title": "11/9/2026 Horse Racing Tips and Best Bets – Sunshine Coast",
+   "link": "https://www.justhorseracing.com.au/tips/11-9-2026-horse-racing-tips-and-best-bets-sunshine-coast/905627",
+   "excerpt": "The Sunshine Coast is where QLD racing heads to on Friday. The weather is fine, the track is soft (5) and the rail is out two metres for the entire circuit. Race One: 3 Durness Race Two: 11 Pierantes Race…",
+   "source": "Just Horse Racing",
+   "category": "racing",
+   "published": "2026-09-10T22:03:02+00:00",
+   "ts": 1789077782
+  },
+  {
+   "title": "11/9/2026 Horse Racing Tips and Best Bets – Bordertown",
+   "link": "https://www.justhorseracing.com.au/tips/11-9-2026-horse-racing-tips-and-best-bets-bordertown/905628",
+   "excerpt": "Bordertown is where SA racing heads to this Friday. The weather is fine, the track is heavy (8) and the rail is out three metres from the 1400m-1200m; True for the remainder. Race One: 6 Gradivus Race Two: 10…",
+   "source": "Just Horse Racing",
+   "category": "racing",
+   "published": "2026-09-10T22:02:07+00:00",
+   "ts": 1789077727
   },
   {
    "title": "The big number Knights wingers must achieve to beat Rabbitohs",
@@ -408,96 +492,6 @@
    "ts": 1789027500
   },
   {
-   "title": "Sharks dish out new contract extension for 2027",
-   "link": "https://www.zerotackle.com/sharks-dish-out-new-contract-extension-for-2027-237951/",
-   "excerpt": "He is a recent club debutant, and has changed positions in recent years.",
-   "source": "Zero Tackle",
-   "category": "nrl",
-   "published": "2026-09-10T07:45:36+00:00",
-   "ts": 1789026336
-  },
-  {
-   "title": "12/9/2026 Horse Racing Tips and Best Bets – Flemington, Makybe Diva Stakes day",
-   "link": "https://www.justhorseracing.com.au/tips/12-9-2026-horse-racing-tips-and-best-bets-flemington-makybe-diva-stakes-day/905739",
-   "excerpt": "Group l racing returns to Flemington this Saturday with the Makybe Diva Stakes (1600m) highlighting a fab ten race program. The weather is fine, the track is good (4) and the rail is in the true position for…",
-   "source": "Just Horse Racing",
-   "category": "racing",
-   "published": "2026-09-10T07:14:31+00:00",
-   "ts": 1789024471
-  },
-  {
-   "title": "12/9/2026 Horse Racing Tips and Best Bets – Rosehill, Run To The Rose day",
-   "link": "https://www.justhorseracing.com.au/tips/12-9-2026-horse-racing-tips-and-best-bets-rosehill-run-to-the-rose-day/905738",
-   "excerpt": "Ten races will be run and won at Rosehill this Saturday as the Spring Carnival heats up. The weather is fine, the track is good (4) and the rail is out five metres for the entire circuit. Best Bookies 💰 👉 View…",
-   "source": "Just Horse Racing",
-   "category": "racing",
-   "published": "2026-09-10T07:13:15+00:00",
-   "ts": 1789024395
-  },
-  {
-   "title": "12/9/2026 Horse Racing Tips and Best Bets – Belmont",
-   "link": "https://www.justhorseracing.com.au/tips/12-9-2026-horse-racing-tips-and-best-bets-belmont/905741",
-   "excerpt": "Belmont will conduct an eight event program on Saturday for Nicopolis Stakes Day. The weather is fine, the track is soft (5) and the rail is out ten metres for the entire circuit. Best Bookies 💰 👉 View the…",
-   "source": "Just Horse Racing",
-   "category": "racing",
-   "published": "2026-09-10T07:11:28+00:00",
-   "ts": 1789024288
-  },
-  {
-   "title": "12/9/2026 Horse Racing Tips and Best Bets – Morphettville, Wylie Handicap day",
-   "link": "https://www.justhorseracing.com.au/tips/12-9-2026-horse-racing-tips-and-best-bets-morphettville-wylie-handicap-day/905742",
-   "excerpt": "Morphettville will play host to a ten race program on Saturday, headlined by the W H Whylie Handicap (1100m). The weather is fine, the track is soft (6) and the rail is out four metres for the entire circuit.…",
-   "source": "Just Horse Racing",
-   "category": "racing",
-   "published": "2026-09-10T07:10:01+00:00",
-   "ts": 1789024201
-  },
-  {
-   "title": "11/9/2026 Horse Racing Tips and Best Bets – Geelong",
-   "link": "https://www.justhorseracing.com.au/tips/11-9-2026-horse-racing-tips-and-best-bets-geelong/905626",
-   "excerpt": "Victorian racing this Friday heads to Geelong. The weather is fine, the track is soft (6) and the rail is in the true position for the entire circuit. Race One: 11 Eye Tracker Race Two: 8 Rockzino Race Three:…",
-   "source": "Just Horse Racing",
-   "category": "racing",
-   "published": "2026-09-10T07:06:59+00:00",
-   "ts": 1789024019
-  },
-  {
-   "title": "11/9/2026 Horse Racing Tips and Best Bets – Goulburn",
-   "link": "https://www.justhorseracing.com.au/tips/11-9-2026-horse-racing-tips-and-best-bets-goulburn/905624",
-   "excerpt": "Goulburn will conduct a seven race card this Friday. The weather is fine, the track is soft (5) and the rail is in the true position for the entire circuit. Race One: 4 Feazabeel Race Two: 3 Sea Level Race…",
-   "source": "Just Horse Racing",
-   "category": "racing",
-   "published": "2026-09-10T07:05:57+00:00",
-   "ts": 1789023957
-  },
-  {
-   "title": "11/9/2026 Horse Racing Tips and Best Bets – Tuncurry, Tuncurry-Forster Cup day",
-   "link": "https://www.justhorseracing.com.au/tips/11-9-2026-horse-racing-tips-and-best-bets-tuncurry-tuncurry-forster-cup-day/905625",
-   "excerpt": "Eight races will be run and won at Tuncurry this Friday. The weather is fine, the track is soft (5) and the rail is in the true position for the entire circuit. Race One: 12 Zous Apollo Race Two: 7 Wan Lost…",
-   "source": "Just Horse Racing",
-   "category": "racing",
-   "published": "2026-09-10T07:04:57+00:00",
-   "ts": 1789023897
-  },
-  {
-   "title": "11/9/2026 Horse Racing Tips and Best Bets – Sunshine Coast",
-   "link": "https://www.justhorseracing.com.au/tips/11-9-2026-horse-racing-tips-and-best-bets-sunshine-coast/905627",
-   "excerpt": "The Sunshine Coast is where QLD racing heads to on Friday. The weather is fine, the track is soft (5) and the rail is out two metres for the entire circuit. Race One: 3 Durness Race Two: 11 Pierantes Race…",
-   "source": "Just Horse Racing",
-   "category": "racing",
-   "published": "2026-09-10T07:03:02+00:00",
-   "ts": 1789023782
-  },
-  {
-   "title": "11/9/2026 Horse Racing Tips and Best Bets – Bordertown",
-   "link": "https://www.justhorseracing.com.au/tips/11-9-2026-horse-racing-tips-and-best-bets-bordertown/905628",
-   "excerpt": "Bordertown is where SA racing heads to this Friday. The weather is fine, the track is heavy (8) and the rail is out three metres from the 1400m-1200m; True for the remainder. Race One: 6 Gradivus Race Two: 10…",
-   "source": "Just Horse Racing",
-   "category": "racing",
-   "published": "2026-09-10T07:02:07+00:00",
-   "ts": 1789023727
-  },
-  {
    "title": "Suaalii keeps ‘open mindset’ to Wallabies position amid rising expectations for Rugby World Cup",
    "link": "https://www.theguardian.com/sport/2026/sep/10/joseph-aukuso-suaalii-australia-wallabies-2027-rugby-world-cup-position",
    "excerpt": "Joseph-Aukuso Suaalii won’t specialise in one on-field role yet Australia coach Les Kiss faces multiple selection conundrums He is known as the Wallabies’ foremost code-switcher, and there are growing calls…",
@@ -606,6 +600,60 @@
    "ts": 1789002700
   },
   {
+   "title": "Seymour races market movers – 10/9/2026",
+   "link": "https://www.justhorseracing.com.au/general-news/betting/seymour-races-market-movers-10-9-2026/905601",
+   "excerpt": "We take a look at the market movers and best backed runners for each race at Seymour on Thursday (10/9/2026) with Neds.com.au, there has been plenty of big moves for long shots and those in the market. *…",
+   "source": "JHR Best Bets",
+   "category": "tips",
+   "published": "2026-09-10T01:00:32+00:00",
+   "ts": 1789002032
+  },
+  {
+   "title": "Hawkesbury races market movers – 10/9/2026",
+   "link": "https://www.justhorseracing.com.au/general-news/betting/hawkesbury-races-market-movers-10-9-2026/905600",
+   "excerpt": "We take a look at the market movers and best backed runners for each race at Hawkesbury on Thursday (10/9/2026) with Neds.com.au, there has been plenty of big moves for long shots and those in the market. *…",
+   "source": "JHR Best Bets",
+   "category": "tips",
+   "published": "2026-09-10T01:00:31+00:00",
+   "ts": 1789002031
+  },
+  {
+   "title": "Makybe Diva Stakes 2026 – Tips, Field, Horse Previews, Odds and $100 Betting Strategy",
+   "link": "https://www.justhorseracing.com.au/general-news/betting/makybe-diva-stakes-2026-tips-field-horse-previews-odds-and-100-betting-strategy/905829",
+   "excerpt": "The feature race at Flemington this Saturday is the Makybe Diva Stakes (1600m), where Sheza Alibi is a clear favourite. Down below is a speed map, runner preview and $100 betting strategy for 2026 Makybe Diva…",
+   "source": "JHR Best Bets",
+   "category": "tips",
+   "published": "2026-09-09T22:28:52+00:00",
+   "ts": 1788992932
+  },
+  {
+   "title": "Run To The Rose 2026 – Tips, Field, Horse Previews, Odds and $100 Betting Strategy",
+   "link": "https://www.justhorseracing.com.au/general-news/betting/run-to-the-rose-2026-tips-field-horse-previews-odds-and-100-betting-strategy/905828",
+   "excerpt": "One of the feature races at Rosehill this Saturday is the Run To The Rose (1200m), where the market says it is an open contest. Down below is a speed map, runner preview and $100 betting strategy for 2026 Run…",
+   "source": "JHR Best Bets",
+   "category": "tips",
+   "published": "2026-09-09T22:27:54+00:00",
+   "ts": 1788992874
+  },
+  {
+   "title": "Let’s Elope Stakes 2026 – Tips, Field, Horse Previews, Odds and $100 Betting Strategy",
+   "link": "https://www.justhorseracing.com.au/general-news/betting/lets-elope-stakes-2026-tips-field-horse-previews-odds-and-100-betting-strategy/905830",
+   "excerpt": "One of the feature races at Flemington this Saturday is the Let&#8217;s Elope Stakes (1400m), where Gold Coast Belle is a clear favourite. Down below is a speed map, runner preview and $100 betting strategy…",
+   "source": "JHR Best Bets",
+   "category": "tips",
+   "published": "2026-09-09T22:26:21+00:00",
+   "ts": 1788992781
+  },
+  {
+   "title": "Bobbie Lewis Quality 2026 – Tips, Field, Horse Previews, Odds and $100 Betting Strategy",
+   "link": "https://www.justhorseracing.com.au/general-news/betting/bobbie-lewis-quality-2026-tips-field-horse-previews-odds-and-100-betting-strategy/905831",
+   "excerpt": "One of the feature races at Flemington this Saturday is the Bobbie Lewis Quality (1200m), where Oliveanotherday dominates the market. Down below is a speed map, runner preview and $100 betting strategy for…",
+   "source": "JHR Best Bets",
+   "category": "tips",
+   "published": "2026-09-09T22:25:50+00:00",
+   "ts": 1788992750
+  },
+  {
    "title": "Victoria's largest amateur football league denies 'gender bias' accusations",
    "link": "https://www.abc.net.au/news/2026-09-10/vafa-clubs-express-dissapointment-as-league-denies-gender-bias/107122870",
    "excerpt": "Multiple Victorian Amateur Football Association (VAFA) clubs express disappointment with how women's competitions are being handled this season, as players across the league say the women's competition is…",
@@ -613,6 +661,15 @@
    "category": "sport",
    "published": "2026-09-09T22:20:05+00:00",
    "ts": 1788992405
+  },
+  {
+   "title": "Free Horse Racing Betting Strategy – Thursday races 10/9/2026",
+   "link": "https://www.justhorseracing.com.au/general-news/betting/free-horse-racing-betting-strategy-thursday-races-10-9-2026/905896",
+   "excerpt": "Resident tipster Adam gives his betting strategy for Thursday (10/9/2026) racing. Please note that some prices quoted were available at the time of writing, which was 8.10am Thursday. Take note that other…",
+   "source": "JHR Best Bets",
+   "category": "tips",
+   "published": "2026-09-09T22:19:51+00:00",
+   "ts": 1788992391
   },
   {
    "title": "Aging Australia's parallels with fallen Test giant too close for comfort",
@@ -703,6 +760,24 @@
    "category": "tips",
    "published": "2026-09-09T21:32:54+00:00",
    "ts": 1788989574
+  },
+  {
+   "title": "St Gotthard short odds in quality The Run To The Rose field",
+   "link": "https://www.justhorseracing.com.au/general-news/betting/st-gotthard-stifles-run-to-the-rose-betting/905841",
+   "excerpt": "St Gotthard holds the call with online bookies for The Run To The Rose (1200m) this Saturday at Rosehill. The Chris Waller trained colt resumes and the market indication is that he is a clear top seed, sitting…",
+   "source": "JHR Best Bets",
+   "category": "tips",
+   "published": "2026-09-09T11:08:24+00:00",
+   "ts": 1788952104
+  },
+  {
+   "title": "Sheza Alibi odds on in Makybe Diva Stakes betting at Flemington",
+   "link": "https://www.justhorseracing.com.au/general-news/betting/sheza-alibi-stifles-makybe-diva-stakes-betting/905849",
+   "excerpt": "Sheza Alibi dominates betting with online bookies for the Makybe Diva Stakes (1600m) this Saturday at Flemington. The star mare returns to Melbourne and the market says she is well and truly here to play. She…",
+   "source": "JHR Best Bets",
+   "category": "tips",
+   "published": "2026-09-09T07:55:25+00:00",
+   "ts": 1788940525
   },
   {
    "title": "AFL boss calls for zero tolerance on players’ poor behaviour in wake of Swans scandal",
@@ -822,31 +897,49 @@
    "ts": 1788420309
   },
   {
-   "title": "Victoria police confirm they have spoken with four people over Sydney Swans scandal",
-   "link": "https://www.theguardian.com/sport/2026/sep/02/sexual-crimes-squad-police-investigation-sydney-swans-scandal-ntwnfb",
-   "excerpt": "Detectives from Sexual Crimes Squad travelled to NSW this week Investigation into sexual assault allegation continues Victoria police say they interviewed four people this week as part of the investigation…",
-   "source": "Guardian AFL",
-   "category": "afl",
-   "published": "2026-09-02T07:06:05+00:00",
-   "ts": 1788332765
+   "title": "Is Australia ready for biggest World Cup ever with Wallabies well and truly stuck in second tier of teams",
+   "link": "https://www.theroar.com.au/2026/01/22/is-australia-ready-for-biggest-world-cup-ever-with-wallabies-well-and-truly-stuck-in-second-tier-of-teams/",
+   "excerpt": "A cast of George Gregan, Jonny Wilkinson, a frilled-neck lizard and Mad Max-style vehicles advancing through the Australian desert representing the different competing nations feature in the first official ad…",
+   "source": "Roar Union",
+   "category": "union",
+   "published": "2026-01-21T18:56:00+00:00",
+   "ts": 1769021760
   },
   {
-   "title": "Million Dollar Multi",
-   "link": "https://expertfootytips.com.au/million-dollar-multi/",
-   "excerpt": "Watch as we reach for the skies by placing small stakes on AFL, to try and win a Million Dollar Multi The post Million Dollar Multi appeared first on Expert Footy Tips .",
-   "source": "Expert Footy Tips",
-   "category": "tips",
-   "published": "2026-09-01T23:26:41+00:00",
-   "ts": 1788305201
+   "title": "‘It’s incredibly exciting’: Wallabies strike major blow for World Cup with Crichton hopping codes",
+   "link": "https://www.theroar.com.au/2026/01/21/wallabies-strike-major-blow-for-world-cup-with-crichton-hopping-codes/",
+   "excerpt": "Kangaroos and Blues Origin star Angus Crichton will join his former Roosters teammate, Joseph-Aukuso Suaalii, at the NSW Waratahs in 2027 after making a late decision to defect to rugby union ahead of next…",
+   "source": "Roar Union",
+   "category": "union",
+   "published": "2026-01-21T04:55:00+00:00",
+   "ts": 1768971300
   },
   {
-   "title": "NRL hierarchy given rare refresh with last year’s top four all bombing out in 2026 | Jack Snape",
-   "link": "https://www.theguardian.com/sport/blog/2026/sep/01/nrl-finals-favourites-top-four-bomb-out-2026-warriors-panthers-dolphins-roosters",
-   "excerpt": "Humbling seasons for proven greats the Broncos, Raiders, Storm and Bulldogs highlight the game’s rapid change The sun sets on the NRL regular season this weekend, and it is clear the game has entered the…",
-   "source": "Guardian League",
-   "category": "nrl",
-   "published": "2026-09-01T03:33:21+00:00",
-   "ts": 1788233601
+   "title": "Waratahs forward facing ban after fracturing teammate’s eye socket in punch-up at training",
+   "link": "https://www.theroar.com.au/2026/01/21/waratahs-forward-facing-ban-after-fracturing-teammates-eye-socket-in-punch-up-at-training/",
+   "excerpt": "Miles Amatosero is set to cop a ban from the Waratahs after the towering forward dished out five punches to new recruit Angus Scott-Young which left him with a fractured eye socket. Both players are set to be…",
+   "source": "Roar Union",
+   "category": "union",
+   "published": "2026-01-20T21:35:35+00:00",
+   "ts": 1768944935
+  },
+  {
+   "title": "Harrison vacating players’ union post with crucial CBA negotiations on the horizon",
+   "link": "https://www.theroar.com.au/2026/01/20/harrison-vacating-players-union-post-with-crucial-cba-negotiations-on-the-horizon/",
+   "excerpt": "The Rugby Union Players’ Association will need to find someone to draw up their new Collective Bargaining Agreement, following the recent resignation of chief executive Justin Harrison. The Roar understands…",
+   "source": "Roar Union",
+   "category": "union",
+   "published": "2026-01-20T05:17:21+00:00",
+   "ts": 1768886241
+  },
+  {
+   "title": "Brumbies struggling as Rugby Australia takeover translates to drastic disconnect with supporter base",
+   "link": "https://www.theroar.com.au/2026/01/20/brumbies-struggling-as-rugby-australia-takeover-translates-to-drastic-disconnect-with-supporter-base/",
+   "excerpt": "The ACT Brumbies, once a powerhouse of Australian rugby, have faced a series of challenges since their takeover by Rugby Australia in mid-2024. This transition not only marked a shift in management and…",
+   "source": "Roar Union",
+   "category": "union",
+   "published": "2026-01-19T18:38:00+00:00",
+   "ts": 1768847880
   }
  ]
 }
