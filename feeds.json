@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-10T22:33:58.933323+00:00",
+ "generated": "2026-09-10T23:36:46.960152+00:00",
  "sources_ok": [
   "Roar Racing",
   "Just Horse Racing",
@@ -20,27 +20,53 @@
   "EFT AFL",
   "ABC Sport",
   "SMH Sport",
-  "The Age Sport",
   "Roar Sport",
   "Guardian AU Sport"
  ],
  "sources_failed": [],
  "filtered": {
   "promo": 4,
-  "overseas": 29,
+  "overseas": 25,
   "no-au-context": 11,
   "junk": 21,
   "off-topic": 2
  },
  "counts": {
-  "afl": 13,
-  "nrl": 12,
+  "afl": 20,
+  "nrl": 14,
   "racing": 9,
-  "sport": 32,
-  "tips": 23,
+  "sport": 14,
+  "tips": 26,
   "union": 11
  },
  "items": [
+  {
+   "title": "Bulldogs sign another Dragons junior as young halfback makes contract call",
+   "link": "https://www.zerotackle.com/bulldogs-sign-another-dragons-junior-as-young-halfback-makes-contract-call-237968/",
+   "excerpt": "The Bulldogs have landed another Dragon.",
+   "source": "Zero Tackle",
+   "category": "nrl",
+   "published": "2026-09-10T23:23:58+00:00",
+   "ts": 1789082638
+  },
+  {
+   "title": "South Sydney Rabbitohs vs Newcastle Knights: NRL elimination final preview and prediction",
+   "link": "https://www.zerotackle.com/south-sydney-rabbitohs-vs-newcastle-knights-nrl-elimination-final-preview-and-prediction-237970/",
+   "excerpt": "Can the Knights cause a dramatic upset to open the finals?",
+   "source": "Zero Tackle",
+   "category": "nrl",
+   "published": "2026-09-10T22:51:18+00:00",
+   "ts": 1789080678
+  },
+  {
+   "title": "Free Horse Racing Betting Strategy – Friday races 11/9/2026",
+   "link": "https://www.justhorseracing.com.au/general-news/betting/free-horse-racing-betting-strategy-friday-races-11-9-2026/906004",
+   "excerpt": "Resident tipster Adam gives his betting strategy for Friday (11/9/2026) racing. Please note that some prices quoted were available at the time of writing, which was 8.40am Friday. Take note that other plays…",
+   "source": "JHR Best Bets",
+   "category": "tips",
+   "published": "2026-09-10T22:44:10+00:00",
+   "ts": 1789080250
+  },
   {
    "title": "New club confirms Christian Tuipulotu signing after Dragons departure",
    "link": "https://www.zerotackle.com/new-club-confirms-christian-tuipulotu-signing-after-dragons-departure-237976/",
@@ -204,15 +230,6 @@
    "ts": 1789070978
   },
   {
-   "title": "South Sydney Rabbitohs vs Newcastle Knights live stream: How to watch the NRL finals online or on TV, start time, squads",
-   "link": "https://www.zerotackle.com/south-sydney-rabbitohs-vs-newcastle-knights-live-stream-how-to-watch-the-nrl-finals-online-or-on-tv-start-time-squads-237971/",
-   "excerpt": "Your complete guide to the finals opener.",
-   "source": "Zero Tackle",
-   "category": "nrl",
-   "published": "2026-09-10T20:02:19+00:00",
-   "ts": 1789070539
-  },
-  {
    "title": "Mind over matter: The 50-50 formula behind Amiss' success",
    "link": "https://www.afl.com.au/news/1607312/mind-over-matter-the-50-50-formula-behind-fremantle-dockers-jye-amiss-success",
    "excerpt": "Jye Amiss reveals how a focus on the mental side of football has helped fuel his emergence as one of the competition's most dangerous key forwards",
@@ -222,7 +239,7 @@
    "ts": 1789070400
   },
   {
-   "title": "The Swans look completely different, and it's not about who isn't there",
+   "title": "The Swans look completely different, and it's not only about who isn't there",
    "link": "https://www.afl.com.au/news/1607266/the-stunning-numbers-behind-sydney-swans-game-style-changes",
    "excerpt": "The undermanned Swans have made some major adjustments to their game style in recent games",
    "source": "AFL.com.au",
@@ -276,37 +293,10 @@
    "ts": 1789066800
   },
   {
-   "title": "‘It doesn’t matter who puts the jumper on’: How the Swans replaced the irreplaceable",
-   "link": "https://www.theage.com.au/sport/afl/it-doesn-t-matter-who-puts-the-jumper-on-how-the-swans-replaced-the-irreplaceable-20260907-p60uz4.html?ref=rss&utm_medium=rss&utm_source=rss_sport",
-   "excerpt": "The suspensions of the “Pullman Five” left Sydney short of talent against Brisbane last weekend. But the club proved they could make up for it in pressure, sacrifice and an unwavering commitment to the system.",
-   "source": "The Age Sport",
-   "category": "sport",
-   "published": "2026-09-10T19:00:00+00:00",
-   "ts": 1789066800
-  },
-  {
-   "title": "What Toby Rodwell’s dad thought of that tackle from Latrell Mitchell",
-   "link": "https://www.theage.com.au/sport/nrl/what-toby-rodwell-s-dad-thought-of-that-tackle-from-latrell-mitchell-20260910-p60w6f.html?ref=rss&utm_medium=rss&utm_source=rss_sport",
-   "excerpt": "Brett Rodwell was in the stands at Allianz Stadium last Friday night when Mitchell ironed out his son. It was just one of the many highlights of Mitchell’s season.",
-   "source": "The Age Sport",
-   "category": "sport",
-   "published": "2026-09-10T19:00:00+00:00",
-   "ts": 1789066800
-  },
-  {
    "title": "Bulldogs star sin-binned for hip-drop",
    "link": "https://www.smh.com.au/sport/nrl/bulldogs-star-sin-binned-for-hip-drop-20260910-p60wex.html?ref=rss&utm_medium=rss&utm_source=rss_sport",
    "excerpt": "Bulldogs centre Monica Tagoai is sent to the sin bin for a hip-drop tackle.",
    "source": "SMH Sport",
-   "category": "sport",
-   "published": "2026-09-10T12:02:31+00:00",
-   "ts": 1789041751
-  },
-  {
-   "title": "Bulldogs star sin-binned for hip-drop",
-   "link": "https://www.theage.com.au/sport/nrl/bulldogs-star-sin-binned-for-hip-drop-20260910-p60wex.html?ref=rss&utm_medium=rss&utm_source=rss_sport",
-   "excerpt": "Bulldogs centre Monica Tagoai is sent to the sin bin for a hip-drop tackle.",
-   "source": "The Age Sport",
    "category": "sport",
    "published": "2026-09-10T12:02:31+00:00",
    "ts": 1789041751
@@ -321,28 +311,10 @@
    "ts": 1789037461
   },
   {
-   "title": "Preston, Robinson combine for classy try",
-   "link": "https://www.theage.com.au/sport/nrl/preston-robinson-combine-for-classy-try-20260910-p60wet.html?ref=rss&utm_medium=rss&utm_source=rss_sport",
-   "excerpt": "Canterbury halfback Tayla Preston puts up a pinpoint kick and Andie Robinson does the rest in style.",
-   "source": "The Age Sport",
-   "category": "sport",
-   "published": "2026-09-10T10:51:01+00:00",
-   "ts": 1789037461
-  },
-  {
    "title": "Roosters prop barges over",
    "link": "https://www.smh.com.au/sport/nrl/roosters-prop-barges-over-20260910-p60wen.html?ref=rss&utm_medium=rss&utm_source=rss_sport",
    "excerpt": "Roosters forward Otesa Pule crashes over to score against the Bulldogs.",
    "source": "SMH Sport",
-   "category": "sport",
-   "published": "2026-09-10T10:25:31+00:00",
-   "ts": 1789035931
-  },
-  {
-   "title": "Roosters prop barges over",
-   "link": "https://www.theage.com.au/sport/nrl/roosters-prop-barges-over-20260910-p60wen.html?ref=rss&utm_medium=rss&utm_source=rss_sport",
-   "excerpt": "Roosters forward Otesa Pule crashes over to score against the Bulldogs.",
-   "source": "The Age Sport",
    "category": "sport",
    "published": "2026-09-10T10:25:31+00:00",
    "ts": 1789035931
@@ -357,28 +329,10 @@
    "ts": 1789035620
   },
   {
-   "title": "Brilliant Baxter ball sets up Sergis",
-   "link": "https://www.theage.com.au/sport/nrl/brilliant-baxter-ball-sets-up-sergis-20260910-p60wep.html?ref=rss&utm_medium=rss&utm_source=rss_sport",
-   "excerpt": "Roosters fullback Corban Baxter sets up a try for Jess Sergis with sublime ball-playing.",
-   "source": "The Age Sport",
-   "category": "sport",
-   "published": "2026-09-10T10:20:20+00:00",
-   "ts": 1789035620
-  },
-  {
    "title": "AFL semi-final teams and expert tips: Cats make a key selection call for their trip west",
    "link": "https://www.smh.com.au/sport/afl/afl-semi-final-teams-and-expert-tips-cats-make-a-key-selection-call-for-their-trip-west-20260908-p60veh.html?ref=rss&utm_medium=rss&utm_source=rss_sport",
    "excerpt": "Here are the all-important teams and expert tips for the cut-throat games on Friday and Saturday.",
    "source": "SMH Sport",
-   "category": "sport",
-   "published": "2026-09-10T10:17:05+00:00",
-   "ts": 1789035425
-  },
-  {
-   "title": "AFL semi-final teams and expert tips: Cats make a key selection call for their trip west",
-   "link": "https://www.theage.com.au/sport/afl/afl-semi-final-teams-and-expert-tips-cats-make-a-key-selection-call-for-their-trip-west-20260908-p60veh.html?ref=rss&utm_medium=rss&utm_source=rss_sport",
-   "excerpt": "Here are the all-important teams and expert tips for the cut-throat games on Friday and Saturday.",
-   "source": "The Age Sport",
    "category": "sport",
    "published": "2026-09-10T10:17:05+00:00",
    "ts": 1789035425
@@ -393,24 +347,6 @@
    "ts": 1789034100
   },
   {
-   "title": "Farnworth can’t forget his finals heartbreak. His fab five can right those wrongs",
-   "link": "https://www.theage.com.au/sport/nrl/farnworth-can-t-forget-his-finals-heartbreak-his-fab-five-can-right-those-wrongs-20260909-p60vri.html?ref=rss&utm_medium=rss&utm_source=rss_sport",
-   "excerpt": "These are the numbers which illustrate why the Dolphins’ backline holds the key to their premiership ambitions, as one man seeks grand final retribution.",
-   "source": "The Age Sport",
-   "category": "sport",
-   "published": "2026-09-10T09:55:00+00:00",
-   "ts": 1789034100
-  },
-  {
-   "title": "Updated Team Lists: Rabbitohs vs Knights – Finals Week 1, 2026",
-   "link": "https://www.zerotackle.com/updated-team-lists-rabbitohs-vs-knights-11941701-237956/",
-   "excerpt": "The Rabbitohs and Knights have cut their squads to 20 ahead of tomorrow's match at Allianz Stadium.",
-   "source": "Zero Tackle",
-   "category": "nrl",
-   "published": "2026-09-10T09:49:08+00:00",
-   "ts": 1789033748
-  },
-  {
    "title": "The data on contact sport, concussion and CTE is convincing. But not conclusive",
    "link": "https://www.smh.com.au/sport/the-data-on-contact-sport-concussion-and-cte-is-convincing-but-not-conclusive-20260910-p60w1y.html?ref=rss&utm_medium=rss&utm_source=rss_sport",
    "excerpt": "Risks associated with brain trauma represent an existential risk to collision and combat sports. But from a legal perspective, the current evidence is not yet watertight.",
@@ -420,28 +356,10 @@
    "ts": 1789032600
   },
   {
-   "title": "The data on contact sport, concussion and CTE is convincing. But not conclusive",
-   "link": "https://www.theage.com.au/sport/the-data-on-contact-sport-concussion-and-cte-is-convincing-but-not-conclusive-20260910-p60w1y.html?ref=rss&utm_medium=rss&utm_source=rss_sport",
-   "excerpt": "Risks associated with brain trauma represent an existential risk to collision and combat sports. But from a legal perspective, the current evidence is not yet watertight.",
-   "source": "The Age Sport",
-   "category": "sport",
-   "published": "2026-09-10T09:30:00+00:00",
-   "ts": 1789032600
-  },
-  {
    "title": "Women at centre of Camberwell Golf Club stoush make move against president",
    "link": "https://www.smh.com.au/sport/golf/monique-ryan-slams-camberwell-golf-club-after-women-dumped-from-its-committee-20260910-p60waf.html?ref=rss&utm_medium=rss&utm_source=rss_sport",
    "excerpt": "Kooyong MP Monique Ryan described the decision to remove all four women from the governing committee of a Melbourne golf club as “a very bad look”.",
    "source": "SMH Sport",
-   "category": "sport",
-   "published": "2026-09-10T09:28:04+00:00",
-   "ts": 1789032484
-  },
-  {
-   "title": "Women at centre of Camberwell Golf Club stoush make move against president",
-   "link": "https://www.theage.com.au/sport/golf/monique-ryan-slams-camberwell-golf-club-after-women-dumped-from-its-committee-20260910-p60waf.html?ref=rss&utm_medium=rss&utm_source=rss_sport",
-   "excerpt": "Kooyong MP Monique Ryan described the decision to remove all four women from the governing committee of a Melbourne golf club as “a very bad look”.",
-   "source": "The Age Sport",
    "category": "sport",
    "published": "2026-09-10T09:28:04+00:00",
    "ts": 1789032484
@@ -537,60 +455,6 @@
    "ts": 1789016160
   },
   {
-   "title": "Aussie beach volleyball stars have crafty plan for success in LA",
-   "link": "https://www.abc.net.au/news/2026-09-10/beach-volleyball-taliqua-clancy-stefie-fejes-snoop-dogg/107134880",
-   "excerpt": "Taliqua Clancy and Stefie Fejes have already secured qualification for the 2028 LA Olympic Games, but as well as knitting together a formidable partnership, Fejes's talent for crochet has Clancy's eyes fixed…",
-   "source": "ABC Sport",
-   "category": "sport",
-   "published": "2026-09-10T04:24:28+00:00",
-   "ts": 1789014268
-  },
-  {
-   "title": "At 35, there is still no end in sight for Dane Gagai",
-   "link": "https://www.abc.net.au/news/2026-09-10/dane-gagai-newcastle-knights-nrl-finals/107136258",
-   "excerpt": "He has already played more NRL matches than any other outside back in the history of rugby league but ahead of yet another finals campaign Dane Gagai is certain there are still great days to come.",
-   "source": "ABC Sport",
-   "category": "sport",
-   "published": "2026-09-10T04:04:41+00:00",
-   "ts": 1789013081
-  },
-  {
-   "title": "Uganda pulls out of Invictus Games to avoid opposing King Charles's 'wishes'",
-   "link": "https://www.abc.net.au/news/2026-09-10/uganda-invictus-games-withdrawal-prince-harry-king-charles-iii/107136984",
-   "excerpt": "Uganda's defence force chief says the country has withdrawn from the Invictus Games, the creation of Prince Harry, because they don't want to risk King Charles's disapproval.",
-   "source": "ABC Sport",
-   "category": "sport",
-   "published": "2026-09-10T03:33:42+00:00",
-   "ts": 1789011222
-  },
-  {
-   "title": "Australia’s Max Purcell straight back in Davis Cup fold after 18-month anti-doping ban",
-   "link": "https://www.theguardian.com/sport/2026/sep/10/australian-max-purcell-named-davis-cup-after-doping-ban",
-   "excerpt": "Dual grand slam doubles champion named after tennis suspension Alex de Minaur leads Australia team to face Poland in tie in Brisbane Max Purcell, the grand slam doubles champion left shattered when having to…",
-   "source": "Guardian AU Sport",
-   "category": "sport",
-   "published": "2026-09-10T03:23:33+00:00",
-   "ts": 1789010613
-  },
-  {
-   "title": "Premier says Olympic rowing concerns 'last hurrah' of 'naysayers'",
-   "link": "https://www.abc.net.au/news/2026-09-10/premier-doubles-down-on-rockhampton-olympic-rowing/107136446",
-   "excerpt": "Queensland's premier dismisses concerns raised about Rockhampton's ability to accommodate Olympic rowing events as the \"last hurrah\" of people trying to discredit the event.",
-   "source": "ABC Sport",
-   "category": "sport",
-   "published": "2026-09-10T02:17:44+00:00",
-   "ts": 1789006664
-  },
-  {
-   "title": "F1 debuts a new track with a corner so grand it is called Monumental",
-   "link": "https://www.abc.net.au/news/2026-09-10/f1-debuts-at-madring-for-spanish-grand-prix/106834996",
-   "excerpt": "Formula 1 debuts a new circuit to its calendar, and despite no grand prix raced yet, the Madring already boasts a corner that is poised to become an iconic scene in motorsport.",
-   "source": "ABC Sport",
-   "category": "sport",
-   "published": "2026-09-10T01:46:44+00:00",
-   "ts": 1789004804
-  },
-  {
    "title": "Inside gate the sole worry for Apocalyptic ahead of Rosehill Stakes",
    "link": "https://www.justracing.com.au/horse-racing/inside-gate-the-sole-worry-for-apocalyptic-ahead-of-rosehill-stakes/157256",
    "excerpt": "While an inside barrier is typically advantageous, jockey Tommy Berry harbours reservations about the suitability of gate one for Apocalyptic in Saturday&#8217;s Sheraco Stakes. The Michael Freedman-trained…",
@@ -654,15 +518,6 @@
    "ts": 1788992750
   },
   {
-   "title": "Victoria's largest amateur football league denies 'gender bias' accusations",
-   "link": "https://www.abc.net.au/news/2026-09-10/vafa-clubs-express-dissapointment-as-league-denies-gender-bias/107122870",
-   "excerpt": "Multiple Victorian Amateur Football Association (VAFA) clubs express disappointment with how women's competitions are being handled this season, as players across the league say the women's competition is…",
-   "source": "ABC Sport",
-   "category": "sport",
-   "published": "2026-09-09T22:20:05+00:00",
-   "ts": 1788992405
-  },
-  {
    "title": "Free Horse Racing Betting Strategy – Thursday races 10/9/2026",
    "link": "https://www.justhorseracing.com.au/general-news/betting/free-horse-racing-betting-strategy-thursday-races-10-9-2026/905896",
    "excerpt": "Resident tipster Adam gives his betting strategy for Thursday (10/9/2026) racing. Please note that some prices quoted were available at the time of writing, which was 8.10am Thursday. Take note that other…",
@@ -672,22 +527,19 @@
    "ts": 1788992391
   },
   {
-   "title": "Aging Australia's parallels with fallen Test giant too close for comfort",
-   "link": "https://www.abc.net.au/news/2026-09-10/cricket-australia-similarities-west-indies-aging-analysis/107128736",
-   "excerpt": "As much of Australia's selection chatter once again centres around the inclusion of Marnus Labuschagne, the No.3's struggles are a symptom of a far greater problem.",
-   "source": "ABC Sport",
-   "category": "sport",
-   "published": "2026-09-09T22:03:26+00:00",
-   "ts": 1788991406
-  },
-  {
    "title": "10/9/2026 Harness Racing Tips, Selections and Best Bets – Tamworth",
    "link": "https://www.justracing.com.au/harness-racing/10-9-2026-harness-racing-tips-selections-and-best-bets-tamworth/157246",
    "excerpt": "One of the feature harness meetings on Thursday will be run at Tamworth. We take a look at each of the 8 races on the card and give our tips &#8230; The post 10/9/2026 Harness Racing Tips, Selections and Best…",
    "source": "Just Racing",
    "category": "tips",
    "published": "2026-09-09T21:48:13+00:00",
-   "ts": 1788990493
+   "ts": 1788990493,
+   "tip": {
+    "kind": "race",
+    "subject": "Tamworth",
+    "tipster": "Just Racing",
+    "when": "2026-09-10"
+   }
   },
   {
    "title": "10/9/2026 Harness Racing Tips, Selections and Best Bets – Redcliffe",
@@ -696,7 +548,13 @@
    "source": "Just Racing",
    "category": "tips",
    "published": "2026-09-09T21:46:12+00:00",
-   "ts": 1788990372
+   "ts": 1788990372,
+   "tip": {
+    "kind": "race",
+    "subject": "Redcliffe",
+    "tipster": "Just Racing",
+    "when": "2026-09-10"
+   }
   },
   {
    "title": "10/9/2026 Harness Racing Tips, Selections and Best Bets – Kilmore",
@@ -705,7 +563,13 @@
    "source": "Just Racing",
    "category": "tips",
    "published": "2026-09-09T21:44:09+00:00",
-   "ts": 1788990249
+   "ts": 1788990249,
+   "tip": {
+    "kind": "race",
+    "subject": "Kilmore",
+    "tipster": "Just Racing",
+    "when": "2026-09-10"
+   }
   },
   {
    "title": "10/9/2026 Harness Racing Tips, Selections and Best Bets – Penrith",
@@ -714,7 +578,13 @@
    "source": "Just Racing",
    "category": "tips",
    "published": "2026-09-09T21:42:06+00:00",
-   "ts": 1788990126
+   "ts": 1788990126,
+   "tip": {
+    "kind": "race",
+    "subject": "Penrith",
+    "tipster": "Just Racing",
+    "when": "2026-09-10"
+   }
   },
   {
    "title": "10/9/2026 Harness Racing Tips, Selections and Best Bets – Ascot Park",
@@ -723,7 +593,13 @@
    "source": "Just Racing",
    "category": "tips",
    "published": "2026-09-09T21:40:04+00:00",
-   "ts": 1788990004
+   "ts": 1788990004,
+   "tip": {
+    "kind": "race",
+    "subject": "Ascot Park",
+    "tipster": "Just Racing",
+    "when": "2026-09-10"
+   }
   },
   {
    "title": "10/9/2026 Harness Racing Tips, Selections and Best Bets – Cambridge",
@@ -732,7 +608,13 @@
    "source": "Just Racing",
    "category": "tips",
    "published": "2026-09-09T21:38:03+00:00",
-   "ts": 1788989883
+   "ts": 1788989883,
+   "tip": {
+    "kind": "race",
+    "subject": "Cambridge",
+    "tipster": "Just Racing",
+    "when": "2026-09-10"
+   }
   },
   {
    "title": "10/9/2026 Greyhound Racing Tips, Selections and Best Bets – Warragul",
@@ -741,7 +623,13 @@
    "source": "Just Racing",
    "category": "tips",
    "published": "2026-09-09T21:36:00+00:00",
-   "ts": 1788989760
+   "ts": 1788989760,
+   "tip": {
+    "kind": "race",
+    "subject": "Warragul",
+    "tipster": "Just Racing",
+    "when": "2026-09-10"
+   }
   },
   {
    "title": "10/9/2026 Greyhound Racing Tips, Selections and Best Bets – Q Straight",
@@ -750,7 +638,13 @@
    "source": "Just Racing",
    "category": "tips",
    "published": "2026-09-09T21:34:56+00:00",
-   "ts": 1788989696
+   "ts": 1788989696,
+   "tip": {
+    "kind": "race",
+    "subject": "Q Straight",
+    "tipster": "Just Racing",
+    "when": "2026-09-10"
+   }
   },
   {
    "title": "10/9/2026 Greyhound Racing Tips, Selections and Best Bets – Gosford",
@@ -759,7 +653,13 @@
    "source": "Just Racing",
    "category": "tips",
    "published": "2026-09-09T21:32:54+00:00",
-   "ts": 1788989574
+   "ts": 1788989574,
+   "tip": {
+    "kind": "race",
+    "subject": "Gosford",
+    "tipster": "Just Racing",
+    "when": "2026-09-10"
+   }
   },
   {
    "title": "St Gotthard short odds in quality The Run To The Rose field",
@@ -769,15 +669,6 @@
    "category": "tips",
    "published": "2026-09-09T11:08:24+00:00",
    "ts": 1788952104
-  },
-  {
-   "title": "Sheza Alibi odds on in Makybe Diva Stakes betting at Flemington",
-   "link": "https://www.justhorseracing.com.au/general-news/betting/sheza-alibi-stifles-makybe-diva-stakes-betting/905849",
-   "excerpt": "Sheza Alibi dominates betting with online bookies for the Makybe Diva Stakes (1600m) this Saturday at Flemington. The star mare returns to Melbourne and the market says she is well and truly here to play. She…",
-   "source": "JHR Best Bets",
-   "category": "tips",
-   "published": "2026-09-09T07:55:25+00:00",
-   "ts": 1788940525
   },
   {
    "title": "AFL boss calls for zero tolerance on players’ poor behaviour in wake of Swans scandal",
@@ -897,6 +788,60 @@
    "ts": 1788420309
   },
   {
+   "title": "Victoria police confirm they have spoken with four people over Sydney Swans scandal",
+   "link": "https://www.theguardian.com/sport/2026/sep/02/sexual-crimes-squad-police-investigation-sydney-swans-scandal-ntwnfb",
+   "excerpt": "Detectives from Sexual Crimes Squad travelled to NSW this week Investigation into sexual assault allegation continues Victoria police say they interviewed four people this week as part of the investigation…",
+   "source": "Guardian AFL",
+   "category": "afl",
+   "published": "2026-09-02T07:06:05+00:00",
+   "ts": 1788332765
+  },
+  {
+   "title": "Million Dollar Multi",
+   "link": "https://expertfootytips.com.au/million-dollar-multi/",
+   "excerpt": "Watch as we reach for the skies by placing small stakes on AFL, to try and win a Million Dollar Multi The post Million Dollar Multi appeared first on Expert Footy Tips .",
+   "source": "Expert Footy Tips",
+   "category": "tips",
+   "published": "2026-09-01T23:26:41+00:00",
+   "ts": 1788305201
+  },
+  {
+   "title": "NRL hierarchy given rare refresh with last year’s top four all bombing out in 2026 | Jack Snape",
+   "link": "https://www.theguardian.com/sport/blog/2026/sep/01/nrl-finals-favourites-top-four-bomb-out-2026-warriors-panthers-dolphins-roosters",
+   "excerpt": "Humbling seasons for proven greats the Broncos, Raiders, Storm and Bulldogs highlight the game’s rapid change The sun sets on the NRL regular season this weekend, and it is clear the game has entered the…",
+   "source": "Guardian League",
+   "category": "nrl",
+   "published": "2026-09-01T03:33:21+00:00",
+   "ts": 1788233601
+  },
+  {
+   "title": "Round 10 NRLW Tips 2026 | SGM Bets & Predictions",
+   "link": "https://expertfootytips.com.au/round-10-nrlw-tips-2026/",
+   "excerpt": "Jimmy and The Machine give their expert footy tips this round in the 2026 NRLW Season. The post Round 10 NRLW Tips 2026 | SGM Bets &#038; Predictions appeared first on Expert Footy Tips .",
+   "source": "Expert Footy Tips",
+   "category": "tips",
+   "published": "2026-08-30T23:17:40+00:00",
+   "ts": 1788131860
+  },
+  {
+   "title": "Round 27 NRL Tips 2026 | SGM Bets & Predictions",
+   "link": "https://expertfootytips.com.au/round-27-nrl-tips-2026/",
+   "excerpt": "Jimmy and The Machine give their expert footy tips this round in the 2026 NRL Season. The post Round 27 NRL Tips 2026 | SGM Bets &#038; Predictions appeared first on Expert Footy Tips .",
+   "source": "Expert Footy Tips",
+   "category": "tips",
+   "published": "2026-08-30T23:16:13+00:00",
+   "ts": 1788131773
+  },
+  {
+   "title": "Emotional scenes as Jai Arrow appears for Souths three months after MND diagnosis",
+   "link": "https://www.theguardian.com/sport/2026/aug/29/emotional-scenes-as-jai-arrow-appears-for-souths-three-months-after-mnd-diagnosis",
+   "excerpt": "Rabbitoh granted dispensation by NRL to appear Forward will join 100 club next week Jai Arrow made a brief but heartwarming return on Saturday as the forward brought up his 99th game for South Sydney Rabbitohs…",
+   "source": "Guardian League",
+   "category": "nrl",
+   "published": "2026-08-29T05:27:02+00:00",
+   "ts": 1787981222
+  },
+  {
    "title": "Is Australia ready for biggest World Cup ever with Wallabies well and truly stuck in second tier of teams",
    "link": "https://www.theroar.com.au/2026/01/22/is-australia-ready-for-biggest-world-cup-ever-with-wallabies-well-and-truly-stuck-in-second-tier-of-teams/",
    "excerpt": "A cast of George Gregan, Jonny Wilkinson, a frilled-neck lizard and Mad Max-style vehicles advancing through the Australian desert representing the different competing nations feature in the first official ad…",
@@ -940,6 +885,60 @@
    "category": "union",
    "published": "2026-01-19T18:38:00+00:00",
    "ts": 1768847880
+  },
+  {
+   "title": "‘BS s–t wrestling drills’: Cornes slams Crows as young star suffers serious knee injury in training mishap",
+   "link": "https://www.theroar.com.au/2026/01/19/bs-s-t-wrestling-drills-cornes-slams-crows-as-young-star-suffers-serious-knee-injury-in-training-mishap/",
+   "excerpt": "Adelaide young gun Dan Curtin is facing a delayed start to the 2026 season, after suffering a suspected dislocated kneecap in a training incident. Curtin was stretchered from the ground at the Crows&#8217;…",
+   "source": "Roar AFL",
+   "category": "afl",
+   "published": "2026-01-19T05:07:13+00:00",
+   "ts": 1768799233
+  },
+  {
+   "title": "Why this year’s wooden spooner is in the perfect spot to make a bombshell play for Zak Butters",
+   "link": "https://www.theroar.com.au/2026/01/14/why-this-years-wooden-spooner-is-in-the-perfect-spot-to-make-a-bombshell-play-for-zak-butters/",
+   "excerpt": "At the conclusion of the 2026 AFL season, both Zak Butters and Zac Bailey will be restricted free agents and should theoretically have the same rights to explore their options in the league. In a practical…",
+   "source": "Roar AFL",
+   "category": "afl",
+   "published": "2026-01-14T00:20:51+00:00",
+   "ts": 1768350051
+  },
+  {
+   "title": "Injury heartbreak as Roos favourite son, Blues goalsneak suffer season-ending blows",
+   "link": "https://www.theroar.com.au/2026/01/12/roo-heartbreak-as-luckless-favourite-son-suffers-season-ending-injury-in-horror-training-blow/",
+   "excerpt": "North Melbourne defender Jackson Archer has suffered a season-ending knee injury during the club&#8217;s return to pre-season training. The 23-year old, who is the son of club legend and Shinboner of the…",
+   "source": "Roar AFL",
+   "category": "afl",
+   "published": "2026-01-12T04:35:00+00:00",
+   "ts": 1768192500
+  },
+  {
+   "title": "‘Hurt those closest to me’: Neale makes Brisbane captaincy call, confirms separation with wife",
+   "link": "https://www.theroar.com.au/2026/01/02/hurt-those-closest-to-me-neale-makes-brisbane-captaincy-call-confirms-separation-with-wife/",
+   "excerpt": "Brisbane dual premiership captain Lachie Neale has said resigning from the position effective immediately was a &#8216;pretty easy decision&#8217;, amid a marriage breakdown with wife Jules. Jules, who has two…",
+   "source": "Roar AFL",
+   "category": "afl",
+   "published": "2026-01-02T02:11:27+00:00",
+   "ts": 1767319887
+  },
+  {
+   "title": "‘Played here since I was 14’: AFL deny ‘pissed’ Lions star’s Origin application … despite Dees gun being cleared",
+   "link": "https://www.theroar.com.au/2025/12/28/played-here-since-i-was-14-afl-deny-pissed-lions-stars-origin-application-despite-dees-gun-being-cleared/",
+   "excerpt": "The AFL have ruled star Brisbane midfielder Will Ashcroft ineligible to represent Victoria in February&#8217;s State of Origin return, after initially clearing him to play in the marquee match. Squads for…",
+   "source": "Roar AFL",
+   "category": "afl",
+   "published": "2025-12-28T04:13:02+00:00",
+   "ts": 1766895182
+  },
+  {
+   "title": "The unsigned guns who could be next year’s Callum Ah Chee in a new era of pre-season draft recruiting",
+   "link": "https://www.theroar.com.au/2025/12/24/the-unsigned-guns-who-could-be-next-years-callum-ah-chee-in-a-new-era-of-pre-season-draft-recruiting/",
+   "excerpt": "A few weeks ago, Adelaide and Callum Ah Chee exploited the pre-season draft to engineer a de facto free agency move to facilitate his move from Brisbane, after a trade fell through. The ordinary way the PSD…",
+   "source": "Roar AFL",
+   "category": "afl",
+   "published": "2025-12-23T17:44:00+00:00",
+   "ts": 1766511840
   }
  ]
 }
