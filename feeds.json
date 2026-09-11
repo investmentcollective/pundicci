@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-11T12:43:36.541667+00:00",
+ "generated": "2026-09-11T22:22:03.934078+00:00",
  "sources_ok": [
   "Roar Racing",
   "Just Horse Racing",
@@ -26,8 +26,8 @@
  "sources_failed": [],
  "filtered": {
   "promo": 4,
-  "overseas": 22,
-  "no-au-context": 11,
+  "overseas": 21,
+  "no-au-context": 12,
   "junk": 21,
   "off-topic": 3
  },
@@ -41,31 +41,247 @@
  },
  "items": [
   {
-   "title": "AFL LIVE: Chris Scott left fuming after no-goal call, Dockers suddenly charge to life in Perth",
+   "title": "Nicola Olyslagers finds silver lining in high jump jackpot at Ultimate Championship",
+   "link": "https://www.theguardian.com/sport/2026/sep/12/world-athletics-ultimate-championship-nicola-olyslagers-high-jump-jackpot",
+   "excerpt": "Australian earns biggest payday of career with second behind Mahuchikh Kurtis Marschall finishes fourth after Armand Duplantis in pole vault Nicola Olyslagers has had the best worst night of her career after…",
+   "source": "Guardian AU Sport",
+   "category": "sport",
+   "published": "2026-09-11T22:00:16+00:00",
+   "ts": 1789164016
+  },
+  {
+   "title": "Tom Lynagh is Australian rugby’s biggest enigma. Can he be a saviour, too?",
+   "link": "https://www.smh.com.au/sport/rugby-union/tom-lynagh-is-australian-rugby-s-biggest-enigma-can-he-be-a-saviour-too-20260911-p60wlg.html?ref=rss&utm_medium=rss&utm_source=rss_sport",
+   "excerpt": "Brilliant but brittle, the young Queensland five-eighth started against the Lions last year but has barely played since. Getting Lynagh fit again could be crucial for the Rugby World Cup.",
+   "source": "SMH Sport",
+   "category": "sport",
+   "published": "2026-09-11T21:52:28+00:00",
+   "ts": 1789163548
+  },
+  {
+   "title": "Gilbert reveals Dolphins’ blueprint for premiership contention",
+   "link": "https://www.zerotackle.com/gilbert-reveals-dolphins-blueprint-for-premiership-contention-237953/",
+   "excerpt": "It has taken three years, but the Dolphins are now a chance of turning finals into a premiership. This is how.",
+   "source": "Zero Tackle",
+   "category": "nrl",
+   "published": "2026-09-11T21:51:49+00:00",
+   "ts": 1789163509
+  },
+  {
+   "title": "SEVEN potential landing spots for Jeremiah Nanai",
+   "link": "https://www.zerotackle.com/seven-potential-landing-spots-for-jeremiah-nanai-238005/",
+   "excerpt": "He will test the open market on November 1.",
+   "source": "Zero Tackle",
+   "category": "nrl",
+   "published": "2026-09-11T21:24:16+00:00",
+   "ts": 1789161856
+  },
+  {
+   "title": "'Sometimes I punch the wall when I'm happy': Scott's take on ARC's no goal call",
+   "link": "https://www.afl.com.au/news/1608029/sometimes-i-punch-the-wall-when-im-happy-geelong-cats-coach-chris-scott-plays-down-arc-call",
+   "excerpt": "Chris Scott has down his best to play down the controversial ARC call on Friday night",
+   "source": "AFL.com.au",
+   "category": "afl",
+   "published": "2026-09-11T21:07:00+00:00",
+   "ts": 1789160820
+  },
+  {
+   "title": "England has won 38 straight Tests but Wallaroos won't die wondering",
+   "link": "https://www.abc.net.au/news/2026-09-12/wxv-global-series-test-australia-wallaroos-england-red-roses/107139972",
+   "excerpt": "On paper, Australia is not given a chance of beating England in this weekend's WXV Global Series Test, but the Wallaroos refuse to be intimidated.",
+   "source": "ABC Sport",
+   "category": "sport",
+   "published": "2026-09-11T21:01:57+00:00",
+   "ts": 1789160517
+  },
+  {
+   "title": "Lions' shock loss to Swans was about more than complacency",
+   "link": "https://www.abc.net.au/news/2026-09-12/afl-finals-brisbane-lions-sydney-swans-adelaide-crows/107142558",
+   "excerpt": "Some critics might think Brisbane did not take Sydney seriously in the first week of the AFL finals, but there were other reasons for their heavy defeat.",
+   "source": "ABC Sport",
+   "category": "sport",
+   "published": "2026-09-11T21:01:28+00:00",
+   "ts": 1789160488
+  },
+  {
+   "title": "Race the clock in today’s Name Scramble",
+   "link": "https://www.zerotackle.com/daily-game-nrl-name-scramble-2026-09-12-237966/",
+   "excerpt": "Drag the tiles into place and test how quickly your rugby league memory can solve all five names.",
+   "source": "Zero Tackle",
+   "category": "nrl",
+   "published": "2026-09-11T21:00:00+00:00",
+   "ts": 1789160400
+  },
+  {
+   "title": "New suitor emerges for departing Titans dummy half",
+   "link": "https://www.zerotackle.com/new-suitor-emerges-for-departing-titans-dummy-half-238002/",
+   "excerpt": "He is one of five confirmed Titans' departures.",
+   "source": "Zero Tackle",
+   "category": "nrl",
+   "published": "2026-09-11T20:43:41+00:00",
+   "ts": 1789159421
+  },
+  {
+   "title": "Fremantle Dockers show they have the steel to be best in AFL",
+   "link": "https://www.abc.net.au/news/2026-09-12/fremantle-dockers-geelong-cats-afl-semi-final/107142022",
+   "excerpt": "Fremantle booked a spot in the AFL Preliminary Finals with a stirring win over Geelong, which showed the Dockers have what it takes to go the whole way.",
+   "source": "ABC Sport",
+   "category": "sport",
+   "published": "2026-09-11T20:39:32+00:00",
+   "ts": 1789159172
+  },
+  {
+   "title": "They’re an AFL powerhouse. So why can’t Collingwood’s women’s team find success?",
+   "link": "https://www.smh.com.au/sport/afl/they-re-an-afl-powerhouse-so-why-can-t-collingwood-s-women-s-team-find-success-20260908-p60vex.html?ref=rss&utm_medium=rss&utm_source=rss_sport",
+   "excerpt": "Collingwood should be a successful AFLW club. They have up-to-date facilities and a strong history of success in the men’s program. So what’s wrong with their AFLW side?",
+   "source": "SMH Sport",
+   "category": "sport",
+   "published": "2026-09-11T20:30:00+00:00",
+   "ts": 1789158600
+  },
+  {
+   "title": "‘Made for finals’: The interstate gun with the AFL’s No.1 ranking",
+   "link": "https://www.smh.com.au/sport/afl/made-for-finals-the-interstate-gun-with-the-afl-s-no-1-ranking-20260908-p60vfx.html?ref=rss&utm_medium=rss&utm_source=rss_sport",
+   "excerpt": "Izak Rankine only moved to a permanent midfield role in round nine this year after being primarily a forward and part-time mid.",
+   "source": "SMH Sport",
+   "category": "sport",
+   "published": "2026-09-11T20:30:00+00:00",
+   "ts": 1789158600
+  },
+  {
+   "title": "Wayne Bennett agrees to Queensland Maroons role",
+   "link": "https://www.zerotackle.com/wayne-bennett-agrees-to-queensland-maroons-role-238003/",
+   "excerpt": "He will take on a second role in 2027.",
+   "source": "Zero Tackle",
+   "category": "nrl",
+   "published": "2026-09-11T20:18:44+00:00",
+   "ts": 1789157924
+  },
+  {
+   "title": "WHO WINS R5? Blues run to end, SEVEN teams get no love",
+   "link": "https://www.afl.com.au/aflw/news/1606742/who-wins-r5-blues-run-to-end-seven-teams-get-no-love",
+   "excerpt": "Our footy experts have made the call on AFLW round five",
+   "source": "AFL.com.au",
+   "category": "afl",
+   "published": "2026-09-11T20:00:00+00:00",
+   "ts": 1789156800
+  },
+  {
+   "title": "‘I love the Sharks’: From boyhood fan to Cronulla’s billionaire backer",
+   "link": "https://www.smh.com.au/sport/nrl/i-love-the-sharks-from-boyhood-fan-to-cronulla-s-billionaire-backer-20260904-p60uga.html?ref=rss&utm_medium=rss&utm_source=rss_sport",
+   "excerpt": "Mike Dorrell is Australia’s ninth-richest person, worth more than $13 billion. But the Cronulla benefactor will be just another fan as they begin their finals tilt.",
+   "source": "SMH Sport",
+   "category": "sport",
+   "published": "2026-09-11T19:00:00+00:00",
+   "ts": 1789153200
+  },
+  {
+   "title": "Whatever James Hird does next, it’s time for him to shed the entourage",
+   "link": "https://www.smh.com.au/sport/afl/whatever-james-hird-does-next-it-s-time-for-him-to-shed-the-entourage-20260910-p60weu.html?ref=rss&utm_medium=rss&utm_source=rss_sport",
+   "excerpt": "James Hird needs to rise above the theatrics and nonsense that again enveloped him and Essendon this week.",
+   "source": "SMH Sport",
+   "category": "sport",
+   "published": "2026-09-11T19:00:00+00:00",
+   "ts": 1789153200
+  },
+  {
+   "title": "Bring on the the Zak attack: The Cats’ semi-final showed they sorely need it",
+   "link": "https://www.smh.com.au/sport/afl/bring-on-the-the-zak-attack-the-cats-semi-final-showed-they-sorely-need-it-20260911-p60wq1.html?ref=rss&utm_medium=rss&utm_source=rss_sport",
+   "excerpt": "Finals expose weaknesses and Geelong were found wanting again in the engine room, as they were when they were pounded by the Lions in last year’s grand final.",
+   "source": "SMH Sport",
+   "category": "sport",
+   "published": "2026-09-11T16:34:51+00:00",
+   "ts": 1789144491
+  },
+  {
+   "title": "'Job is not done' for Dockers as Longmuir claims underdog status for Swans prelim",
+   "link": "https://www.afl.com.au/news/1607324/job-is-not-done-for-fremantle-dockers-as-justin-longmuir-claims-underdog-status-for-sydney-swans-prelim",
+   "excerpt": "Justin Longmuir claimed no satisfaction from the Dockers' win over the Cats, saying there was still more work to do",
+   "source": "AFL.com.au",
+   "category": "afl",
+   "published": "2026-09-11T15:56:00+00:00",
+   "ts": 1789142160
+  },
+  {
+   "title": "'Short of a run': Scott reveals extent of star duo's injury battles",
+   "link": "https://www.afl.com.au/news/1607325/short-of-a-run-chris-scott-reveals-extent-of-star-geelong-cats-duo-jeremy-cameron-and-max-holmes-injury-battles",
+   "excerpt": "Jeremy Cameron will now undergo surgery after managing a nerve issue in his arm throughout the season",
+   "source": "AFL.com.au",
+   "category": "afl",
+   "published": "2026-09-11T15:30:00+00:00",
+   "ts": 1789140600
+  },
+  {
+   "title": "With the Dockers on the ropes, Luke Jackson produced some familiar finals heroics",
+   "link": "https://www.afl.com.au/news/1607323/with-the-dockers-on-the-ropes-luke-jackson-produced-some-familiar-finals-heroics",
+   "excerpt": "Luke Jackson's dominant patch brought back memories of his Grand Final heroics, and it kept Fremantle's own premiership hopes alive",
+   "source": "AFL.com.au",
+   "category": "afl",
+   "published": "2026-09-11T15:24:00+00:00",
+   "ts": 1789140240
+  },
+  {
+   "title": "Wayne Bennett has never liked the bunker. He wants it gone after Friday night",
+   "link": "https://www.smh.com.au/sport/nrl/wayne-bennett-has-never-liked-the-bunker-he-wants-it-gone-after-friday-night-20260911-p60wix.html?ref=rss&utm_medium=rss&utm_source=rss_sport",
+   "excerpt": "A crucial decision midway through the second half that was overturned by the bunker left the South Sydney coach seething.",
+   "source": "SMH Sport",
+   "category": "sport",
+   "published": "2026-09-11T14:06:13+00:00",
+   "ts": 1789135573
+  },
+  {
+   "title": "Dockers avoid a violet crumble, advance to a prelim final after Chris Scott left fuming from no-goal call",
    "link": "https://www.smh.com.au/sport/afl/afl-live-geelong-tackle-slow-starting-dockers-in-fight-for-preliminary-final-spot-20260911-p60wni.html?ref=rss&utm_medium=rss&utm_source=rss_sport",
-   "excerpt": "Desperate to avoid a straight-sets finals exit, the Dockers have made a stirring comeback. Can they hold on? Follow all the action from Optus Stadium.",
+   "excerpt": "Desperate to avoid a straight-sets finals exit, the Dockers made a stirring comeback to hold on in the west.",
    "source": "SMH Sport",
    "category": "sport",
-   "published": "2026-09-11T12:41:52+00:00",
-   "ts": 1789130512
+   "published": "2026-09-11T14:05:40+00:00",
+   "ts": 1789135540
   },
   {
-   "title": "Smith praises Ponga's 'performance of the year'",
-   "link": "https://www.smh.com.au/sport/nrl/smith-praises-pongas-performance-of-the-year-20260911-p60wpw.html?ref=rss&utm_medium=rss&utm_source=rss_sport",
-   "excerpt": "Cameron Smith is full of praise for Kalyn Ponga after his performance in the knockout final.",
-   "source": "SMH Sport",
-   "category": "sport",
-   "published": "2026-09-11T12:40:24+00:00",
-   "ts": 1789130424
-  },
-  {
-   "title": "LIVE: Dockers lead enthralling semi-final, Scott in disbelief as Dempsey denied",
+   "title": "RECAP: Dockers win enthralling clash against Cats to book prelim berth",
    "link": "https://www.afl.com.au/news/1607142/live-its-all-on-the-line-as-dockers-host-cats-in-do-or-die-semi-final",
    "excerpt": "Follow all the action from the semi-final between Fremantle and Geelong",
    "source": "AFL.com.au",
    "category": "afl",
-   "published": "2026-09-11T12:27:00+00:00",
-   "ts": 1789129620
+   "published": "2026-09-11T13:50:00+00:00",
+   "ts": 1789134600
+  },
+  {
+   "title": "Fremantle v Geelong player ratings: ‘The Unicorn’ weaved his magic yet again, but these Cats guns will rue one that got away",
+   "link": "https://www.smh.com.au/sport/afl/fremantle-v-geelong-player-ratings-while-dockers-stood-up-under-pressure-these-cats-guns-will-rue-one-that-got-away-20260911-p60wpy.html?ref=rss&utm_medium=rss&utm_source=rss_sport",
+   "excerpt": "In a seesawing finals classic at Optus Stadium, the top-of-the-ladder Dockers had the answers just when they needed them most. Here’s how our experts saw each player’s games.",
+   "source": "SMH Sport",
+   "category": "sport",
+   "published": "2026-09-11T13:26:23+00:00",
+   "ts": 1789133183
+  },
+  {
+   "title": "Joey pleads with Rabbitohs to extend Walker",
+   "link": "https://www.smh.com.au/sport/nrl/joey-pleads-with-rabbitohs-to-extend-walker-20260911-p60wq0.html?ref=rss&utm_medium=rss&utm_source=rss_sport",
+   "excerpt": "Andrew Johns says the Rabbitohs have to re-sign Cody Walker despite his injury.",
+   "source": "SMH Sport",
+   "category": "sport",
+   "published": "2026-09-11T13:20:52+00:00",
+   "ts": 1789132852
+  },
+  {
+   "title": "Anchors away: Freo prevails in finals epic after weathering Cats' storm",
+   "link": "https://www.afl.com.au/news/1607322/anchors-away-fremantle-dockers-prevails-in-finals-epic-after-weathering-geelong-cats-storm",
+   "excerpt": "Fremantle survived Geelong's surge to claim a 14-point win",
+   "source": "AFL.com.au",
+   "category": "afl",
+   "published": "2026-09-11T13:00:00+00:00",
+   "ts": 1789131600
+  },
+  {
+   "title": "Wayne Bennett launches incredible attack on NRL bunker after finals elimination",
+   "link": "https://www.zerotackle.com/wayne-bennett-launches-incredible-attack-on-nrl-bunker-after-finals-elimination-237999/",
+   "excerpt": "The veteran coach wants the bunker out of the game.",
+   "source": "Zero Tackle",
+   "category": "nrl",
+   "published": "2026-09-11T12:50:09+00:00",
+   "ts": 1789131009
   },
   {
    "title": "Bennett’s selection mistake, Ponga’s role and Sandon Smith a starter: NRL Finals talking points, Rabbitohs vs Knights",
@@ -77,33 +293,6 @@
    "ts": 1789129614
   },
   {
-   "title": "Latrell gushes over Ponga's masterclass",
-   "link": "https://www.smh.com.au/sport/nrl/latrell-gushes-over-pongas-masterclass-20260911-p60wpu.html?ref=rss&utm_medium=rss&utm_source=rss_sport",
-   "excerpt": "Latrell Mitchell sends high praise towards Kalyn Ponga after Newcastle's win.",
-   "source": "SMH Sport",
-   "category": "sport",
-   "published": "2026-09-11T12:16:44+00:00",
-   "ts": 1789129004
-  },
-  {
-   "title": "Geelong coach punches wall after disaster call",
-   "link": "https://www.smh.com.au/sport/afl/geelong-coach-punches-wall-after-disaster-call-20260911-p60wps.html?ref=rss&utm_medium=rss&utm_source=rss_sport",
-   "excerpt": "Geelong coach Chris Scott was spotted fuming in the coaches box, punching the wall after a goal was snatched away from a desperate Cats side.",
-   "source": "SMH Sport",
-   "category": "sport",
-   "published": "2026-09-11T12:05:05+00:00",
-   "ts": 1789128305
-  },
-  {
-   "title": "Tempers flare on full-time siren",
-   "link": "https://www.smh.com.au/sport/nrl/tempers-flare-on-full-time-siren-20260911-p60wpr.html?ref=rss&utm_medium=rss&utm_source=rss_sport",
-   "excerpt": "Newcastle and South Sydney come together for a melee right on full-time of the elimination final.",
-   "source": "SMH Sport",
-   "category": "sport",
-   "published": "2026-09-11T12:00:44+00:00",
-   "ts": 1789128044
-  },
-  {
    "title": "NRL Finals player ratings: Every Rabbitohs and Knights player ranked",
    "link": "https://www.zerotackle.com/nrl-finals-player-ratings-every-rabbitohs-and-knights-player-ranked-ponga-koloamatangi-mitchell-sharpe-south-sydney-newcastle-237988/",
    "excerpt": "Who was the best, and who finished at the bottom?",
@@ -111,78 +300,6 @@
    "category": "nrl",
    "published": "2026-09-11T11:59:37+00:00",
    "ts": 1789127977
-  },
-  {
-   "title": "Bye bye Bunnies: South Sydney’s season over as Knights claim victory",
-   "link": "https://www.smh.com.au/sport/nrl/nrl-finals-2026-live-updates-rabbitohs-and-knights-go-head-to-head-in-elimination-final-20260910-p60w3z.html?ref=rss&utm_medium=rss&utm_source=rss_sport",
-   "excerpt": "South Sydney’s season is over after Cody Walker and Alex Johnston went down injured in a 20-10 loss to Newcastle.",
-   "source": "SMH Sport",
-   "category": "sport",
-   "published": "2026-09-11T11:55:57+00:00",
-   "ts": 1789127757
-  },
-  {
-   "title": "Treacy whacked by Cox",
-   "link": "https://www.smh.com.au/sport/afl/treacy-whacked-by-cox-20260911-p60wpq.html?ref=rss&utm_medium=rss&utm_source=rss_sport",
-   "excerpt": "Fremantle key forward Josh Treacy is smashed in a marking contest by teammate Mason Cox.",
-   "source": "SMH Sport",
-   "category": "sport",
-   "published": "2026-09-11T11:50:05+00:00",
-   "ts": 1789127405
-  },
-  {
-   "title": "McEwen scores his second to squash Souths",
-   "link": "https://www.smh.com.au/sport/nrl/mcewen-scores-his-second-to-squash-souths-20260911-p60wpp.html?ref=rss&utm_medium=rss&utm_source=rss_sport",
-   "excerpt": "Knights back-rower Jermaine McEwen scores his second try against the Rabbitohs.",
-   "source": "SMH Sport",
-   "category": "sport",
-   "published": "2026-09-11T11:36:49+00:00",
-   "ts": 1789126609
-  },
-  {
-   "title": "Razzle-dazzle Rabbitohs denied by Bunker",
-   "link": "https://www.smh.com.au/sport/nrl/razzle-dazzle-rabbitohs-denied-by-bunker-20260911-p60wpn.html?ref=rss&utm_medium=rss&utm_source=rss_sport",
-   "excerpt": "Jayden Sullivan's second-half try is overruled by the Bunker after a knock-on from Alex Johnston.",
-   "source": "SMH Sport",
-   "category": "sport",
-   "published": "2026-09-11T11:25:39+00:00",
-   "ts": 1789125939
-  },
-  {
-   "title": "Clever work from Crossland",
-   "link": "https://www.smh.com.au/sport/nrl/clever-work-from-crossland-20260911-p60wpm.html?ref=rss&utm_medium=rss&utm_source=rss_sport",
-   "excerpt": "Knights hooker Phoenix Crossland gets a captain's challenge go his way.",
-   "source": "SMH Sport",
-   "category": "sport",
-   "published": "2026-09-11T11:15:25+00:00",
-   "ts": 1789125325
-  },
-  {
-   "title": "Geelong star starts scuffle as Dockers hit first",
-   "link": "https://www.smh.com.au/sport/afl/geelong-star-starts-scuffle-as-dockers-hit-first-20260911-p60wpl.html?ref=rss&utm_medium=rss&utm_source=rss_sport",
-   "excerpt": "Geelong's Bailey Smith finds himself in a scuffle after Fremantle soars into the lead with the first goal of the game.",
-   "source": "SMH Sport",
-   "category": "sport",
-   "published": "2026-09-11T11:11:15+00:00",
-   "ts": 1789125075
-  },
-  {
-   "title": "Graham polishes off ad-lib Bunnies play",
-   "link": "https://www.smh.com.au/sport/nrl/graham-polishes-off-ad-lib-bunnies-play-20260911-p60wpj.html?ref=rss&utm_medium=rss&utm_source=rss_sport",
-   "excerpt": "Campbell Graham plants the ball down after some off-the-cuff footy from Souths, including a basketball-style pass from Keaon Koloamatangi.",
-   "source": "SMH Sport",
-   "category": "sport",
-   "published": "2026-09-11T10:46:17+00:00",
-   "ts": 1789123577
-  },
-  {
-   "title": "Graham survives try with perfect tackle",
-   "link": "https://www.smh.com.au/sport/nrl/graham-survives-try-with-perfect-tackle-20260911-p60wph.html?ref=rss&utm_medium=rss&utm_source=rss_sport",
-   "excerpt": "Campbell Graham stops a flying Fletcher Sharpe at the perfect moment.",
-   "source": "SMH Sport",
-   "category": "sport",
-   "published": "2026-09-11T10:42:16+00:00",
-   "ts": 1789123336
   },
   {
    "title": "Cody Walker suffers devastating leg injury in NRL finals clash",
@@ -194,24 +311,6 @@
    "ts": 1789123126
   },
   {
-   "title": "Walker hobbles off with leg injury",
-   "link": "https://www.smh.com.au/sport/nrl/walker-hobbles-off-with-leg-injury-20260911-p60wpi.html?ref=rss&utm_medium=rss&utm_source=rss_sport",
-   "excerpt": "Rabbitohs veteran Cody Walker leaves the field with a leg injury.",
-   "source": "SMH Sport",
-   "category": "sport",
-   "published": "2026-09-11T10:36:40+00:00",
-   "ts": 1789123000
-  },
-  {
-   "title": "Updated Team Lists: Sharks vs Cowboys – Finals Week 1, 2026",
-   "link": "https://www.zerotackle.com/updated-team-lists-sharks-vs-cowboys-11941703-237992/",
-   "excerpt": "The Sharks and Cowboys have cut their squads to 20 ahead of tomorrow's match at Allianz Stadium.",
-   "source": "Zero Tackle",
-   "category": "nrl",
-   "published": "2026-09-11T09:49:08+00:00",
-   "ts": 1789120148
-  },
-  {
    "title": "Springboks v All Blacks a US World Cup preview in Baltimore as thrilling series goes down to the wire",
    "link": "https://www.theguardian.com/sport/2026/sep/11/springboks-all-blacks-rugby-baltimore",
    "excerpt": "‘Rugby’s Greatest Rivalry’ will culminate on US soil on Saturday, a staging post on the road to America hosting the World Cup in 2031 When New Zealand and South Africa kick off at M&T Bank Stadium in Baltimore…",
@@ -219,15 +318,6 @@
    "category": "union",
    "published": "2026-09-11T09:00:01+00:00",
    "ts": 1789117201
-  },
-  {
-   "title": "Injured stars feature in Australia’s extended World Cup squad",
-   "link": "https://www.zerotackle.com/injured-stars-feature-in-australias-extended-world-cup-squad-237985/",
-   "excerpt": "Kevin Walters will officially name his squad after the grand final.",
-   "source": "Zero Tackle",
-   "category": "nrl",
-   "published": "2026-09-11T08:50:15+00:00",
-   "ts": 1789116615
   },
   {
    "title": "12/9/2026 Horse Racing Tips and Best Bets – Flemington, Makybe Diva Stakes day",
@@ -329,15 +419,6 @@
    "ts": 1789108323
   },
   {
-   "title": "Updated Team Lists: Warriors vs Dolphins – Finals Week 1, 2026",
-   "link": "https://www.zerotackle.com/updated-team-lists-warriors-vs-dolphins-11941702-237983/",
-   "excerpt": "The Warriors and Dolphins have cut their squads to 20 ahead of tomorrow's match at Go Media Stadium.",
-   "source": "Zero Tackle",
-   "category": "nrl",
-   "published": "2026-09-11T06:04:09+00:00",
-   "ts": 1789106649
-  },
-  {
    "title": "'Pros and cons' for Giants facing depleted Swans in Sydney Derby",
    "link": "https://www.afl.com.au/aflw/news/1607362/pros-and-cons-for-gws-giants-facing-depleted-swans-in-sydney-derby",
    "excerpt": "Sydney has some stars sidelined, but Cam Bernasconi says that can only make it harder to plan ahead",
@@ -345,15 +426,6 @@
    "category": "afl",
    "published": "2026-09-11T05:56:00+00:00",
    "ts": 1789106160
-  },
-  {
-   "title": "Sea Eagles land All Blacks great in huge boost for 2027",
-   "link": "https://www.zerotackle.com/sea-eagles-land-all-blacks-great-in-huge-boost-for-2027-237981/",
-   "excerpt": "The former international coach brings a remarkable winning record to the Northern Beaches.",
-   "source": "Zero Tackle",
-   "category": "nrl",
-   "published": "2026-09-11T04:20:34+00:00",
-   "ts": 1789100434
   },
   {
    "title": "Sunshine Coast races market movers – 11/9/2026",
@@ -374,15 +446,6 @@
    "ts": 1789095600
   },
   {
-   "title": "Every NRL team’s best five players of 2026, and MVP vote totals for every club",
-   "link": "https://www.zerotackle.com/every-nrl-teams-best-five-players-of-2026-and-mvp-vote-totals-for-every-club-237865/",
-   "excerpt": "The vote ladder reveals some surprises, with the Panthers not topping the table.",
-   "source": "Zero Tackle",
-   "category": "nrl",
-   "published": "2026-09-11T02:42:09+00:00",
-   "ts": 1789094529
-  },
-  {
    "title": "Emily Bates dreamt of being an athlete. Now, she is leaving a lasting legacy",
    "link": "https://www.afl.com.au/aflw/news/1607311/emily-bates-dreamt-of-being-an-athlete-now-she-is-leaving-a-lasting-legacy",
    "excerpt": "AFL.com.au's Dylan Bolch found out more about Hawthorn star Emily Bates from those who know her best",
@@ -390,15 +453,6 @@
    "category": "afl",
    "published": "2026-09-11T02:19:00+00:00",
    "ts": 1789093140
-  },
-  {
-   "title": "Shibasaki breaks silence on Broncos departure",
-   "link": "https://www.zerotackle.com/shibasaki-breaks-silence-on-broncos-departure-237978/",
-   "excerpt": "The incumbent Australian centre was full of praise for both Maguire and Meninga as he transitions into his new playing chapter.",
-   "source": "Zero Tackle",
-   "category": "nrl",
-   "published": "2026-09-11T02:06:39+00:00",
-   "ts": 1789092399
   },
   {
    "title": "Tulloch Lodge eyes Golden Rose success with promising three-year-olds",
@@ -489,15 +543,6 @@
    "category": "afl",
    "published": "2026-09-11T00:25:00+00:00",
    "ts": 1789086300
-  },
-  {
-   "title": "Free Horse Racing Betting Strategy – Friday races 11/9/2026",
-   "link": "https://www.justhorseracing.com.au/general-news/betting/free-horse-racing-betting-strategy-friday-races-11-9-2026/906004",
-   "excerpt": "Resident tipster Adam gives his betting strategy for Friday (11/9/2026) racing. Please note that some prices quoted were available at the time of writing, which was 8.40am Friday. Take note that other plays…",
-   "source": "JHR Best Bets",
-   "category": "tips",
-   "published": "2026-09-10T22:44:10+00:00",
-   "ts": 1789080250
   },
   {
    "title": "11/9/2026 Harness Racing Tips, Selections and Best Bets – Wagga",
@@ -612,51 +657,6 @@
     "tipster": "Just Racing",
     "when": "2026-09-11"
    }
-  },
-  {
-   "title": "Mind over matter: The 50-50 formula behind Amiss' success",
-   "link": "https://www.afl.com.au/news/1607312/mind-over-matter-the-50-50-formula-behind-fremantle-dockers-jye-amiss-success",
-   "excerpt": "Jye Amiss reveals how a focus on the mental side of football has helped fuel his emergence as one of the competition's most dangerous key forwards",
-   "source": "AFL.com.au",
-   "category": "afl",
-   "published": "2026-09-10T20:00:00+00:00",
-   "ts": 1789070400
-  },
-  {
-   "title": "The Swans look completely different, and it's not only about who isn't there",
-   "link": "https://www.afl.com.au/news/1607266/the-stunning-numbers-behind-sydney-swans-game-style-changes",
-   "excerpt": "The undermanned Swans have made some major adjustments to their game style in recent games",
-   "source": "AFL.com.au",
-   "category": "afl",
-   "published": "2026-09-10T20:00:00+00:00",
-   "ts": 1789070400
-  },
-  {
-   "title": "The 25, September edition: AFLW's best players, ranked by our experts",
-   "link": "https://www.afl.com.au/aflw/news/1607017/the-25-september-edition-aflws-best-players-ranked-by-our-experts",
-   "excerpt": "Welcome to 'The 25', where AFL.com.au's team of experts rank the best players in the game",
-   "source": "AFL.com.au",
-   "category": "afl",
-   "published": "2026-09-10T20:00:00+00:00",
-   "ts": 1789070400
-  },
-  {
-   "title": "IF the Crows 'wined and dined' Zac Bailey for 18 months ... THEN",
-   "link": "https://www.afl.com.au/news/1606782/sliding-doors-if-theres-one-thing-damo-is-really-tiring-of-then",
-   "excerpt": "Sliding Doors is in full swing for 2026 ... and Damo's got plenty on his mind",
-   "source": "AFL.com.au",
-   "category": "afl",
-   "published": "2026-09-10T20:00:00+00:00",
-   "ts": 1789070400
-  },
-  {
-   "title": "Former Coleman Medal winner set for fourth club after choosing new home",
-   "link": "https://www.afl.com.au/news/1607313/former-coleman-medal-winner-jesse-hogan-set-for-fourth-club-after-choosing-new-home",
-   "excerpt": "Forward Jesse Hogan has made a decision on his future",
-   "source": "AFL.com.au",
-   "category": "afl",
-   "published": "2026-09-10T08:32:00+00:00",
-   "ts": 1789029120
   },
   {
    "title": "Suaalii keeps ‘open mindset’ to Wallabies position amid rising expectations for Rugby World Cup",
@@ -776,15 +776,6 @@
    "ts": 1788420309
   },
   {
-   "title": "Victoria police confirm they have spoken with four people over Sydney Swans scandal",
-   "link": "https://www.theguardian.com/sport/2026/sep/02/sexual-crimes-squad-police-investigation-sydney-swans-scandal-ntwnfb",
-   "excerpt": "Detectives from Sexual Crimes Squad travelled to NSW this week Investigation into sexual assault allegation continues Victoria police say they interviewed four people this week as part of the investigation…",
-   "source": "Guardian AFL",
-   "category": "afl",
-   "published": "2026-09-02T07:06:05+00:00",
-   "ts": 1788332765
-  },
-  {
    "title": "Million Dollar Multi",
    "link": "https://expertfootytips.com.au/million-dollar-multi/",
    "excerpt": "Watch as we reach for the skies by placing small stakes on AFL, to try and win a Million Dollar Multi The post Million Dollar Multi appeared first on Expert Footy Tips .",
@@ -819,6 +810,15 @@
    "category": "tips",
    "published": "2026-08-30T23:16:13+00:00",
    "ts": 1788131773
+  },
+  {
+   "title": "Round 4 AFLW Tips 2026 | SGM Bets & Predictions",
+   "link": "https://expertfootytips.com.au/round-4-aflw-tips-2026/",
+   "excerpt": "Jimmy and The Machine give their expert footy tips this round in the 2026 AFLW Season. The post Round 4 AFLW Tips 2026 | SGM Bets &#038; Predictions appeared first on Expert Footy Tips .",
+   "source": "Expert Footy Tips",
+   "category": "tips",
+   "published": "2026-08-30T23:15:30+00:00",
+   "ts": 1788131730
   },
   {
    "title": "Emotional scenes as Jai Arrow appears for Souths three months after MND diagnosis",
