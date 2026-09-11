@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-10T23:36:46.960152+00:00",
+ "generated": "2026-09-11T12:43:36.541667+00:00",
  "sources_ok": [
   "Roar Racing",
   "Just Horse Racing",
@@ -26,14 +26,14 @@
  "sources_failed": [],
  "filtered": {
   "promo": 4,
-  "overseas": 25,
+  "overseas": 22,
   "no-au-context": 11,
   "junk": 21,
-  "off-topic": 2
+  "off-topic": 3
  },
  "counts": {
   "afl": 20,
-  "nrl": 14,
+  "nrl": 15,
   "racing": 9,
   "sport": 14,
   "tips": 26,
@@ -41,22 +41,454 @@
  },
  "items": [
   {
-   "title": "Bulldogs sign another Dragons junior as young halfback makes contract call",
-   "link": "https://www.zerotackle.com/bulldogs-sign-another-dragons-junior-as-young-halfback-makes-contract-call-237968/",
-   "excerpt": "The Bulldogs have landed another Dragon.",
-   "source": "Zero Tackle",
-   "category": "nrl",
-   "published": "2026-09-10T23:23:58+00:00",
-   "ts": 1789082638
+   "title": "AFL LIVE: Chris Scott left fuming after no-goal call, Dockers suddenly charge to life in Perth",
+   "link": "https://www.smh.com.au/sport/afl/afl-live-geelong-tackle-slow-starting-dockers-in-fight-for-preliminary-final-spot-20260911-p60wni.html?ref=rss&utm_medium=rss&utm_source=rss_sport",
+   "excerpt": "Desperate to avoid a straight-sets finals exit, the Dockers have made a stirring comeback. Can they hold on? Follow all the action from Optus Stadium.",
+   "source": "SMH Sport",
+   "category": "sport",
+   "published": "2026-09-11T12:41:52+00:00",
+   "ts": 1789130512
   },
   {
-   "title": "South Sydney Rabbitohs vs Newcastle Knights: NRL elimination final preview and prediction",
-   "link": "https://www.zerotackle.com/south-sydney-rabbitohs-vs-newcastle-knights-nrl-elimination-final-preview-and-prediction-237970/",
-   "excerpt": "Can the Knights cause a dramatic upset to open the finals?",
+   "title": "Smith praises Ponga's 'performance of the year'",
+   "link": "https://www.smh.com.au/sport/nrl/smith-praises-pongas-performance-of-the-year-20260911-p60wpw.html?ref=rss&utm_medium=rss&utm_source=rss_sport",
+   "excerpt": "Cameron Smith is full of praise for Kalyn Ponga after his performance in the knockout final.",
+   "source": "SMH Sport",
+   "category": "sport",
+   "published": "2026-09-11T12:40:24+00:00",
+   "ts": 1789130424
+  },
+  {
+   "title": "LIVE: Dockers lead enthralling semi-final, Scott in disbelief as Dempsey denied",
+   "link": "https://www.afl.com.au/news/1607142/live-its-all-on-the-line-as-dockers-host-cats-in-do-or-die-semi-final",
+   "excerpt": "Follow all the action from the semi-final between Fremantle and Geelong",
+   "source": "AFL.com.au",
+   "category": "afl",
+   "published": "2026-09-11T12:27:00+00:00",
+   "ts": 1789129620
+  },
+  {
+   "title": "Bennett’s selection mistake, Ponga’s role and Sandon Smith a starter: NRL Finals talking points, Rabbitohs vs Knights",
+   "link": "https://www.zerotackle.com/bennetts-selection-mistake-pongas-role-and-sandon-smith-a-starter-nrl-finals-talking-points-rabbitohs-vs-knights-237990/",
+   "excerpt": "Wayne Bennett has made a rare blunder at the selection table, while the Knights could go a long way in the finals.",
    "source": "Zero Tackle",
    "category": "nrl",
-   "published": "2026-09-10T22:51:18+00:00",
-   "ts": 1789080678
+   "published": "2026-09-11T12:26:54+00:00",
+   "ts": 1789129614
+  },
+  {
+   "title": "Latrell gushes over Ponga's masterclass",
+   "link": "https://www.smh.com.au/sport/nrl/latrell-gushes-over-pongas-masterclass-20260911-p60wpu.html?ref=rss&utm_medium=rss&utm_source=rss_sport",
+   "excerpt": "Latrell Mitchell sends high praise towards Kalyn Ponga after Newcastle's win.",
+   "source": "SMH Sport",
+   "category": "sport",
+   "published": "2026-09-11T12:16:44+00:00",
+   "ts": 1789129004
+  },
+  {
+   "title": "Geelong coach punches wall after disaster call",
+   "link": "https://www.smh.com.au/sport/afl/geelong-coach-punches-wall-after-disaster-call-20260911-p60wps.html?ref=rss&utm_medium=rss&utm_source=rss_sport",
+   "excerpt": "Geelong coach Chris Scott was spotted fuming in the coaches box, punching the wall after a goal was snatched away from a desperate Cats side.",
+   "source": "SMH Sport",
+   "category": "sport",
+   "published": "2026-09-11T12:05:05+00:00",
+   "ts": 1789128305
+  },
+  {
+   "title": "Tempers flare on full-time siren",
+   "link": "https://www.smh.com.au/sport/nrl/tempers-flare-on-full-time-siren-20260911-p60wpr.html?ref=rss&utm_medium=rss&utm_source=rss_sport",
+   "excerpt": "Newcastle and South Sydney come together for a melee right on full-time of the elimination final.",
+   "source": "SMH Sport",
+   "category": "sport",
+   "published": "2026-09-11T12:00:44+00:00",
+   "ts": 1789128044
+  },
+  {
+   "title": "NRL Finals player ratings: Every Rabbitohs and Knights player ranked",
+   "link": "https://www.zerotackle.com/nrl-finals-player-ratings-every-rabbitohs-and-knights-player-ranked-ponga-koloamatangi-mitchell-sharpe-south-sydney-newcastle-237988/",
+   "excerpt": "Who was the best, and who finished at the bottom?",
+   "source": "Zero Tackle",
+   "category": "nrl",
+   "published": "2026-09-11T11:59:37+00:00",
+   "ts": 1789127977
+  },
+  {
+   "title": "Bye bye Bunnies: South Sydney’s season over as Knights claim victory",
+   "link": "https://www.smh.com.au/sport/nrl/nrl-finals-2026-live-updates-rabbitohs-and-knights-go-head-to-head-in-elimination-final-20260910-p60w3z.html?ref=rss&utm_medium=rss&utm_source=rss_sport",
+   "excerpt": "South Sydney’s season is over after Cody Walker and Alex Johnston went down injured in a 20-10 loss to Newcastle.",
+   "source": "SMH Sport",
+   "category": "sport",
+   "published": "2026-09-11T11:55:57+00:00",
+   "ts": 1789127757
+  },
+  {
+   "title": "Treacy whacked by Cox",
+   "link": "https://www.smh.com.au/sport/afl/treacy-whacked-by-cox-20260911-p60wpq.html?ref=rss&utm_medium=rss&utm_source=rss_sport",
+   "excerpt": "Fremantle key forward Josh Treacy is smashed in a marking contest by teammate Mason Cox.",
+   "source": "SMH Sport",
+   "category": "sport",
+   "published": "2026-09-11T11:50:05+00:00",
+   "ts": 1789127405
+  },
+  {
+   "title": "McEwen scores his second to squash Souths",
+   "link": "https://www.smh.com.au/sport/nrl/mcewen-scores-his-second-to-squash-souths-20260911-p60wpp.html?ref=rss&utm_medium=rss&utm_source=rss_sport",
+   "excerpt": "Knights back-rower Jermaine McEwen scores his second try against the Rabbitohs.",
+   "source": "SMH Sport",
+   "category": "sport",
+   "published": "2026-09-11T11:36:49+00:00",
+   "ts": 1789126609
+  },
+  {
+   "title": "Razzle-dazzle Rabbitohs denied by Bunker",
+   "link": "https://www.smh.com.au/sport/nrl/razzle-dazzle-rabbitohs-denied-by-bunker-20260911-p60wpn.html?ref=rss&utm_medium=rss&utm_source=rss_sport",
+   "excerpt": "Jayden Sullivan's second-half try is overruled by the Bunker after a knock-on from Alex Johnston.",
+   "source": "SMH Sport",
+   "category": "sport",
+   "published": "2026-09-11T11:25:39+00:00",
+   "ts": 1789125939
+  },
+  {
+   "title": "Clever work from Crossland",
+   "link": "https://www.smh.com.au/sport/nrl/clever-work-from-crossland-20260911-p60wpm.html?ref=rss&utm_medium=rss&utm_source=rss_sport",
+   "excerpt": "Knights hooker Phoenix Crossland gets a captain's challenge go his way.",
+   "source": "SMH Sport",
+   "category": "sport",
+   "published": "2026-09-11T11:15:25+00:00",
+   "ts": 1789125325
+  },
+  {
+   "title": "Geelong star starts scuffle as Dockers hit first",
+   "link": "https://www.smh.com.au/sport/afl/geelong-star-starts-scuffle-as-dockers-hit-first-20260911-p60wpl.html?ref=rss&utm_medium=rss&utm_source=rss_sport",
+   "excerpt": "Geelong's Bailey Smith finds himself in a scuffle after Fremantle soars into the lead with the first goal of the game.",
+   "source": "SMH Sport",
+   "category": "sport",
+   "published": "2026-09-11T11:11:15+00:00",
+   "ts": 1789125075
+  },
+  {
+   "title": "Graham polishes off ad-lib Bunnies play",
+   "link": "https://www.smh.com.au/sport/nrl/graham-polishes-off-ad-lib-bunnies-play-20260911-p60wpj.html?ref=rss&utm_medium=rss&utm_source=rss_sport",
+   "excerpt": "Campbell Graham plants the ball down after some off-the-cuff footy from Souths, including a basketball-style pass from Keaon Koloamatangi.",
+   "source": "SMH Sport",
+   "category": "sport",
+   "published": "2026-09-11T10:46:17+00:00",
+   "ts": 1789123577
+  },
+  {
+   "title": "Graham survives try with perfect tackle",
+   "link": "https://www.smh.com.au/sport/nrl/graham-survives-try-with-perfect-tackle-20260911-p60wph.html?ref=rss&utm_medium=rss&utm_source=rss_sport",
+   "excerpt": "Campbell Graham stops a flying Fletcher Sharpe at the perfect moment.",
+   "source": "SMH Sport",
+   "category": "sport",
+   "published": "2026-09-11T10:42:16+00:00",
+   "ts": 1789123336
+  },
+  {
+   "title": "Cody Walker suffers devastating leg injury in NRL finals clash",
+   "link": "https://www.zerotackle.com/cody-walker-suffers-devastating-leg-injury-in-nrl-finals-clash-237995/",
+   "excerpt": "He may have played his last game for South Sydney.",
+   "source": "Zero Tackle",
+   "category": "nrl",
+   "published": "2026-09-11T10:38:46+00:00",
+   "ts": 1789123126
+  },
+  {
+   "title": "Walker hobbles off with leg injury",
+   "link": "https://www.smh.com.au/sport/nrl/walker-hobbles-off-with-leg-injury-20260911-p60wpi.html?ref=rss&utm_medium=rss&utm_source=rss_sport",
+   "excerpt": "Rabbitohs veteran Cody Walker leaves the field with a leg injury.",
+   "source": "SMH Sport",
+   "category": "sport",
+   "published": "2026-09-11T10:36:40+00:00",
+   "ts": 1789123000
+  },
+  {
+   "title": "Updated Team Lists: Sharks vs Cowboys – Finals Week 1, 2026",
+   "link": "https://www.zerotackle.com/updated-team-lists-sharks-vs-cowboys-11941703-237992/",
+   "excerpt": "The Sharks and Cowboys have cut their squads to 20 ahead of tomorrow's match at Allianz Stadium.",
+   "source": "Zero Tackle",
+   "category": "nrl",
+   "published": "2026-09-11T09:49:08+00:00",
+   "ts": 1789120148
+  },
+  {
+   "title": "Springboks v All Blacks a US World Cup preview in Baltimore as thrilling series goes down to the wire",
+   "link": "https://www.theguardian.com/sport/2026/sep/11/springboks-all-blacks-rugby-baltimore",
+   "excerpt": "‘Rugby’s Greatest Rivalry’ will culminate on US soil on Saturday, a staging post on the road to America hosting the World Cup in 2031 When New Zealand and South Africa kick off at M&T Bank Stadium in Baltimore…",
+   "source": "Guardian Union",
+   "category": "union",
+   "published": "2026-09-11T09:00:01+00:00",
+   "ts": 1789117201
+  },
+  {
+   "title": "Injured stars feature in Australia’s extended World Cup squad",
+   "link": "https://www.zerotackle.com/injured-stars-feature-in-australias-extended-world-cup-squad-237985/",
+   "excerpt": "Kevin Walters will officially name his squad after the grand final.",
+   "source": "Zero Tackle",
+   "category": "nrl",
+   "published": "2026-09-11T08:50:15+00:00",
+   "ts": 1789116615
+  },
+  {
+   "title": "12/9/2026 Horse Racing Tips and Best Bets – Flemington, Makybe Diva Stakes day",
+   "link": "https://www.justhorseracing.com.au/tips/12-9-2026-horse-racing-tips-and-best-bets-flemington-makybe-diva-stakes-day/905739",
+   "excerpt": "Group l racing returns to Flemington this Saturday with the Makybe Diva Stakes (1600m) highlighting a fab ten race program. The weather is fine, the track is good (4) and the rail is in the true position for…",
+   "source": "Just Horse Racing",
+   "category": "racing",
+   "published": "2026-09-11T07:14:31+00:00",
+   "ts": 1789110871
+  },
+  {
+   "title": "12/9/2026 Horse Racing Tips and Best Bets – Rosehill, Run To The Rose day",
+   "link": "https://www.justhorseracing.com.au/tips/12-9-2026-horse-racing-tips-and-best-bets-rosehill-run-to-the-rose-day/905738",
+   "excerpt": "Ten races will be run and won at Rosehill this Saturday as the Spring Carnival heats up. The weather is fine, the track is good (4) and the rail is out five metres for the entire circuit. Best Bookies 💰 👉 View…",
+   "source": "Just Horse Racing",
+   "category": "racing",
+   "published": "2026-09-11T07:13:15+00:00",
+   "ts": 1789110795
+  },
+  {
+   "title": "12/9/2026 Horse Racing Tips and Best Bets – Belmont",
+   "link": "https://www.justhorseracing.com.au/tips/12-9-2026-horse-racing-tips-and-best-bets-belmont/905741",
+   "excerpt": "Belmont will conduct an eight event program on Saturday for Nicopolis Stakes Day. The weather is fine, the track is soft (5) and the rail is out ten metres for the entire circuit. Best Bookies 💰 👉 View the…",
+   "source": "Just Horse Racing",
+   "category": "racing",
+   "published": "2026-09-11T07:11:28+00:00",
+   "ts": 1789110688
+  },
+  {
+   "title": "12/9/2026 Horse Racing Tips and Best Bets – Morphettville, Wylie Handicap day",
+   "link": "https://www.justhorseracing.com.au/tips/12-9-2026-horse-racing-tips-and-best-bets-morphettville-wylie-handicap-day/905742",
+   "excerpt": "Morphettville will play host to a ten race program on Saturday, headlined by the W H Whylie Handicap (1100m). The weather is fine, the track is soft (6) and the rail is out four metres for the entire circuit.…",
+   "source": "Just Horse Racing",
+   "category": "racing",
+   "published": "2026-09-11T07:10:01+00:00",
+   "ts": 1789110601
+  },
+  {
+   "title": "12/9/2026 Horse Racing Tips and Best Bets – Donald",
+   "link": "https://www.justhorseracing.com.au/tips/12-9-2026-horse-racing-tips-and-best-bets-donald/905633",
+   "excerpt": "The second tier Victorian race card this Saturday heads to Donald. The weather is fine, the track is soft (6) and the rail is in the true position for the entire circuit. Race One: 11 Shezous Race Two: 14…",
+   "source": "Just Horse Racing",
+   "category": "racing",
+   "published": "2026-09-11T07:08:24+00:00",
+   "ts": 1789110504
+  },
+  {
+   "title": "12/9/2026 Horse Racing Tips and Best Bets – Griffith",
+   "link": "https://www.justhorseracing.com.au/tips/12-9-2026-horse-racing-tips-and-best-bets-griffith/905630",
+   "excerpt": "Six races will be run and won at Griffith this Saturday. The weather is fine, the track is good (4) and the rail is in the true position for the entire circuit. Race One: 8 Misil Beauty Race Two: 8 Pippie…",
+   "source": "Just Horse Racing",
+   "category": "racing",
+   "published": "2026-09-11T07:07:46+00:00",
+   "ts": 1789110466
+  },
+  {
+   "title": "12/9/2026 Horse Racing Tips and Best Bets – Kembla Grange",
+   "link": "https://www.justhorseracing.com.au/tips/12-9-2026-horse-racing-tips-and-best-bets-kembla-grange/905631",
+   "excerpt": "The second tier NSW race card this Saturday heads to Kembla Grange. The weather is fine, the track is good (4) and the rail is out four metres from the 1700m-500m; True for the remainder. Race One: 9 Over The…",
+   "source": "Just Horse Racing",
+   "category": "racing",
+   "published": "2026-09-11T07:06:23+00:00",
+   "ts": 1789110383
+  },
+  {
+   "title": "12/9/2026 Horse Racing Tips and Best Bets – Gold Coast",
+   "link": "https://www.justhorseracing.com.au/tips/12-9-2026-horse-racing-tips-and-best-bets-gold-coast/905635",
+   "excerpt": "The Gold Coast will play host to an eight event program on Saturday. The weather is fine, the track is soft (5) and the rail is out eight metres from the 1000m-Winning Post; Out four metres for the remainder.…",
+   "source": "Just Horse Racing",
+   "category": "racing",
+   "published": "2026-09-11T07:05:25+00:00",
+   "ts": 1789110325
+  },
+  {
+   "title": "12/9/2026 Horse Racing Tips and Best Bets – Toowoomba",
+   "link": "https://www.justhorseracing.com.au/tips/12-9-2026-horse-racing-tips-and-best-bets-toowoomba/905639",
+   "excerpt": "Night racing continues at Toowoomba this Saturday. The weather is fine, the track is good (4) and the rail is in the true position for the entire circuit. Race One: 5 Commands Approved Race Two: 2 Magritte…",
+   "source": "Just Horse Racing",
+   "category": "racing",
+   "published": "2026-09-11T07:04:31+00:00",
+   "ts": 1789110271
+  },
+  {
+   "title": "AFLW TEAMS: Huge Tigers boost, boom Swans recruit in, key Bomber back",
+   "link": "https://www.afl.com.au/aflw/news/1607321/aflw-teams-huge-tigers-boost-marquee-swans-recruit-in-key-bomber-back",
+   "excerpt": "The teams for Sunday's round five NAB AFLW games are in",
+   "source": "AFL.com.au",
+   "category": "afl",
+   "published": "2026-09-11T07:00:00+00:00",
+   "ts": 1789110000
+  },
+  {
+   "title": "Horse Racing Big Bets – Saturday’s Races (inc Makybe Diva Stakes) 12/9/2026",
+   "link": "https://www.justhorseracing.com.au/general-news/betting/horse-racing-big-bets-saturdays-races-inc-makybe-diva-stakes-12-9-2026/905921",
+   "excerpt": "We take a look at the big bets the online bookmakers have taken on Saturday’s horse racing around the country with most of the big money being placed at Flemington, Rosehill, Doomben, Morphettville and…",
+   "source": "JHR Best Bets",
+   "category": "tips",
+   "published": "2026-09-11T06:32:03+00:00",
+   "ts": 1789108323
+  },
+  {
+   "title": "Updated Team Lists: Warriors vs Dolphins – Finals Week 1, 2026",
+   "link": "https://www.zerotackle.com/updated-team-lists-warriors-vs-dolphins-11941702-237983/",
+   "excerpt": "The Warriors and Dolphins have cut their squads to 20 ahead of tomorrow's match at Go Media Stadium.",
+   "source": "Zero Tackle",
+   "category": "nrl",
+   "published": "2026-09-11T06:04:09+00:00",
+   "ts": 1789106649
+  },
+  {
+   "title": "'Pros and cons' for Giants facing depleted Swans in Sydney Derby",
+   "link": "https://www.afl.com.au/aflw/news/1607362/pros-and-cons-for-gws-giants-facing-depleted-swans-in-sydney-derby",
+   "excerpt": "Sydney has some stars sidelined, but Cam Bernasconi says that can only make it harder to plan ahead",
+   "source": "AFL.com.au",
+   "category": "afl",
+   "published": "2026-09-11T05:56:00+00:00",
+   "ts": 1789106160
+  },
+  {
+   "title": "Sea Eagles land All Blacks great in huge boost for 2027",
+   "link": "https://www.zerotackle.com/sea-eagles-land-all-blacks-great-in-huge-boost-for-2027-237981/",
+   "excerpt": "The former international coach brings a remarkable winning record to the Northern Beaches.",
+   "source": "Zero Tackle",
+   "category": "nrl",
+   "published": "2026-09-11T04:20:34+00:00",
+   "ts": 1789100434
+  },
+  {
+   "title": "Sunshine Coast races market movers – 11/9/2026",
+   "link": "https://www.justhorseracing.com.au/general-news/betting/sunshine-coast-races-market-movers-11-9-2026/905604",
+   "excerpt": "We take a look at the market movers and best backed runners for each race at Sunshine Coast on Friday (11/9/2026) with Neds.com.au, there has been plenty of big moves for long shots and those in the market. *…",
+   "source": "JHR Best Bets",
+   "category": "tips",
+   "published": "2026-09-11T03:00:21+00:00",
+   "ts": 1789095621
+  },
+  {
+   "title": "Scheer will: How star Cat fought back from 'darkest times' to love footy again",
+   "link": "https://www.afl.com.au/aflw/news/1607264/chloe-scheer-will-how-star-geelong-cats-forward-fought-back-from-her-darkest-times-to-love-footy-again",
+   "excerpt": "Chloe Scheer lost two seasons to injury, but never the hunger to compete",
+   "source": "AFL.com.au",
+   "category": "afl",
+   "published": "2026-09-11T03:00:00+00:00",
+   "ts": 1789095600
+  },
+  {
+   "title": "Every NRL team’s best five players of 2026, and MVP vote totals for every club",
+   "link": "https://www.zerotackle.com/every-nrl-teams-best-five-players-of-2026-and-mvp-vote-totals-for-every-club-237865/",
+   "excerpt": "The vote ladder reveals some surprises, with the Panthers not topping the table.",
+   "source": "Zero Tackle",
+   "category": "nrl",
+   "published": "2026-09-11T02:42:09+00:00",
+   "ts": 1789094529
+  },
+  {
+   "title": "Emily Bates dreamt of being an athlete. Now, she is leaving a lasting legacy",
+   "link": "https://www.afl.com.au/aflw/news/1607311/emily-bates-dreamt-of-being-an-athlete-now-she-is-leaving-a-lasting-legacy",
+   "excerpt": "AFL.com.au's Dylan Bolch found out more about Hawthorn star Emily Bates from those who know her best",
+   "source": "AFL.com.au",
+   "category": "afl",
+   "published": "2026-09-11T02:19:00+00:00",
+   "ts": 1789093140
+  },
+  {
+   "title": "Shibasaki breaks silence on Broncos departure",
+   "link": "https://www.zerotackle.com/shibasaki-breaks-silence-on-broncos-departure-237978/",
+   "excerpt": "The incumbent Australian centre was full of praise for both Maguire and Meninga as he transitions into his new playing chapter.",
+   "source": "Zero Tackle",
+   "category": "nrl",
+   "published": "2026-09-11T02:06:39+00:00",
+   "ts": 1789092399
+  },
+  {
+   "title": "Tulloch Lodge eyes Golden Rose success with promising three-year-olds",
+   "link": "https://www.justracing.com.au/horse-racing/tulloch-lodge-eyes-golden-rose-success-with-promising-three-year-olds/157303",
+   "excerpt": "Gai Waterhouse and Adrian Bott are set to unleash six runners at Rosehill Gardens this Saturday, with five of them competing in stakes races. Notably, four of these contenders are &#8230; The post Tulloch…",
+   "source": "Just Racing",
+   "category": "tips",
+   "published": "2026-09-11T01:30:15+00:00",
+   "ts": 1789090215
+  },
+  {
+   "title": "Wide draw a concern for Castillo King in Run To The Rose",
+   "link": "https://www.justracing.com.au/horse-racing/wide-draw-a-concern-for-castillo-king-in-run-to-the-rose/157301",
+   "excerpt": "Castillo King, having had fewer than two months since his initial race start, is set to compete against some of the finest horses in his age bracket in the upcoming &#8230; The post Wide draw a concern for…",
+   "source": "Just Racing",
+   "category": "tips",
+   "published": "2026-09-11T01:26:48+00:00",
+   "ts": 1789090008
+  },
+  {
+   "title": "Geelong races market movers – 11/9/2026",
+   "link": "https://www.justhorseracing.com.au/general-news/betting/geelong-races-market-movers-11-9-2026/905603",
+   "excerpt": "We take a look at the market movers and best backed runners for each race at Geelong on Friday (11/9/2026) with Neds.com.au, there has been plenty of big moves for long shots and those in the market. * Market…",
+   "source": "JHR Best Bets",
+   "category": "tips",
+   "published": "2026-09-11T01:00:19+00:00",
+   "ts": 1789088419
+  },
+  {
+   "title": "Tuncurry races market movers – Tuncurry-Forster Cup day 11/9/2026",
+   "link": "https://www.justhorseracing.com.au/general-news/betting/tuncurry-races-market-movers-tuncurry-forster-cup-day-11-9-2026/905602",
+   "excerpt": "We take a look at the market movers and best backed runners for each race at Tuncurry on Friday (11/9/2026) with Neds.com.au, there has been plenty of big moves for long shots and those in the market. * Market…",
+   "source": "JHR Best Bets",
+   "category": "tips",
+   "published": "2026-09-11T01:00:18+00:00",
+   "ts": 1789088418
+  },
+  {
+   "title": "Forget the talk, time for action: Fagan's blunt warning to Lions",
+   "link": "https://www.afl.com.au/news/1607326/forget-the-talk-time-for-action-chris-fagans-warning-to-brisbane-lions",
+   "excerpt": "Chris Fagan says there's no guarantees his team will automatically bounce back after last week's humbling by Sydney",
+   "source": "AFL.com.au",
+   "category": "afl",
+   "published": "2026-09-11T00:45:00+00:00",
+   "ts": 1789087500
+  },
+  {
+   "title": "Makybe Diva Stakes 2026 – Tips, Field, Horse Previews, Odds and $100 Betting Strategy",
+   "link": "https://www.justhorseracing.com.au/general-news/betting/makybe-diva-stakes-2026-tips-field-horse-previews-odds-and-100-betting-strategy/905829",
+   "excerpt": "The feature race at Flemington this Saturday is the Makybe Diva Stakes (1600m), where Sheza Alibi is a clear favourite. Down below is a speed map, runner preview and $100 betting strategy for 2026 Makybe Diva…",
+   "source": "JHR Best Bets",
+   "category": "tips",
+   "published": "2026-09-11T00:39:52+00:00",
+   "ts": 1789087192
+  },
+  {
+   "title": "Run To The Rose 2026 – Tips, Field, Horse Previews, Odds and $100 Betting Strategy",
+   "link": "https://www.justhorseracing.com.au/general-news/betting/run-to-the-rose-2026-tips-field-horse-previews-odds-and-100-betting-strategy/905828",
+   "excerpt": "One of the feature races at Rosehill this Saturday is the Run To The Rose (1200m), where the market says it is an open contest. Down below is a speed map, runner preview and $100 betting strategy for 2026 Run…",
+   "source": "JHR Best Bets",
+   "category": "tips",
+   "published": "2026-09-11T00:35:54+00:00",
+   "ts": 1789086954
+  },
+  {
+   "title": "Let’s Elope Stakes 2026 – Tips, Field, Horse Previews, Odds and $100 Betting Strategy",
+   "link": "https://www.justhorseracing.com.au/general-news/betting/lets-elope-stakes-2026-tips-field-horse-previews-odds-and-100-betting-strategy/905830",
+   "excerpt": "One of the feature races at Flemington this Saturday is the Let&#8217;s Elope Stakes (1400m), where Gold Coast Belle is a clear favourite. Down below is a speed map, runner preview and $100 betting strategy…",
+   "source": "JHR Best Bets",
+   "category": "tips",
+   "published": "2026-09-11T00:33:21+00:00",
+   "ts": 1789086801
+  },
+  {
+   "title": "Bobbie Lewis Quality 2026 – Tips, Field, Horse Previews, Odds and $100 Betting Strategy",
+   "link": "https://www.justhorseracing.com.au/general-news/betting/bobbie-lewis-quality-2026-tips-field-horse-previews-odds-and-100-betting-strategy/905831",
+   "excerpt": "One of the feature races at Flemington this Saturday is the Bobbie Lewis Quality (1200m), where Oliveanotherday dominates the market. Down below is a speed map, runner preview and $100 betting strategy for…",
+   "source": "JHR Best Bets",
+   "category": "tips",
+   "published": "2026-09-11T00:31:50+00:00",
+   "ts": 1789086710
+  },
+  {
+   "title": "Trade Talk: Twist as Hogan picks Pies, Saints trio sign on, Crows set for compo pick",
+   "link": "https://www.afl.com.au/news/1606757/trade-talk-all-the-latest-contract-news-free-agency-and-trade-rumours-ahead-of-october",
+   "excerpt": "Get all the latest contract news and trade rumours ahead of the player movement period",
+   "source": "AFL.com.au",
+   "category": "afl",
+   "published": "2026-09-11T00:25:00+00:00",
+   "ts": 1789086300
   },
   {
    "title": "Free Horse Racing Betting Strategy – Friday races 11/9/2026",
@@ -68,166 +500,118 @@
    "ts": 1789080250
   },
   {
-   "title": "New club confirms Christian Tuipulotu signing after Dragons departure",
-   "link": "https://www.zerotackle.com/new-club-confirms-christian-tuipulotu-signing-after-dragons-departure-237976/",
-   "excerpt": "The Tongan international has agreed to a long-term-deal.",
-   "source": "Zero Tackle",
-   "category": "nrl",
-   "published": "2026-09-10T22:17:05+00:00",
-   "ts": 1789078625
+   "title": "11/9/2026 Harness Racing Tips, Selections and Best Bets – Wagga",
+   "link": "https://www.justracing.com.au/harness-racing/11-9-2026-harness-racing-tips-selections-and-best-bets-wagga/157289",
+   "excerpt": "One of the feature harness meetings on Friday will be run at Wagga. We take a look at each of the 8 races on the card and give our tips &#8230; The post 11/9/2026 Harness Racing Tips, Selections and Best Bets…",
+   "source": "Just Racing",
+   "category": "tips",
+   "published": "2026-09-10T21:54:29+00:00",
+   "ts": 1789077269,
+   "tip": {
+    "kind": "race",
+    "subject": "Wagga",
+    "tipster": "Just Racing",
+    "when": "2026-09-11"
+   }
   },
   {
-   "title": "12/9/2026 Horse Racing Tips and Best Bets – Flemington, Makybe Diva Stakes day",
-   "link": "https://www.justhorseracing.com.au/tips/12-9-2026-horse-racing-tips-and-best-bets-flemington-makybe-diva-stakes-day/905739",
-   "excerpt": "Group l racing returns to Flemington this Saturday with the Makybe Diva Stakes (1600m) highlighting a fab ten race program. The weather is fine, the track is good (4) and the rail is in the true position for…",
-   "source": "Just Horse Racing",
-   "category": "racing",
-   "published": "2026-09-10T22:14:31+00:00",
-   "ts": 1789078471
+   "title": "11/9/2026 Harness Racing Tips, Selections and Best Bets – Mildura",
+   "link": "https://www.justracing.com.au/harness-racing/11-9-2026-harness-racing-tips-selections-and-best-bets-mildura/157290",
+   "excerpt": "One of the feature harness meetings on Friday will be run at Mildura. We take a look at each of the 6 races on the card and give our tips &#8230; The post 11/9/2026 Harness Racing Tips, Selections and Best…",
+   "source": "Just Racing",
+   "category": "tips",
+   "published": "2026-09-10T21:52:27+00:00",
+   "ts": 1789077147,
+   "tip": {
+    "kind": "race",
+    "subject": "Mildura",
+    "tipster": "Just Racing",
+    "when": "2026-09-11"
+   }
   },
   {
-   "title": "12/9/2026 Horse Racing Tips and Best Bets – Rosehill, Run To The Rose day",
-   "link": "https://www.justhorseracing.com.au/tips/12-9-2026-horse-racing-tips-and-best-bets-rosehill-run-to-the-rose-day/905738",
-   "excerpt": "Ten races will be run and won at Rosehill this Saturday as the Spring Carnival heats up. The weather is fine, the track is good (4) and the rail is out five metres for the entire circuit. Best Bookies 💰 👉 View…",
-   "source": "Just Horse Racing",
-   "category": "racing",
-   "published": "2026-09-10T22:13:15+00:00",
-   "ts": 1789078395
+   "title": "11/9/2026 Harness Racing Tips, Selections and Best Bets – Hobart",
+   "link": "https://www.justracing.com.au/harness-racing/11-9-2026-harness-racing-tips-selections-and-best-bets-hobart/157291",
+   "excerpt": "One of the feature harness meetings on Friday will be run at Hobart. We take a look at each of the 7 races on the card and give our tips &#8230; The post 11/9/2026 Harness Racing Tips, Selections and Best Bets…",
+   "source": "Just Racing",
+   "category": "tips",
+   "published": "2026-09-10T21:50:25+00:00",
+   "ts": 1789077025,
+   "tip": {
+    "kind": "race",
+    "subject": "Hobart",
+    "tipster": "Just Racing",
+    "when": "2026-09-11"
+   }
   },
   {
-   "title": "12/9/2026 Horse Racing Tips and Best Bets – Belmont",
-   "link": "https://www.justhorseracing.com.au/tips/12-9-2026-horse-racing-tips-and-best-bets-belmont/905741",
-   "excerpt": "Belmont will conduct an eight event program on Saturday for Nicopolis Stakes Day. The weather is fine, the track is soft (5) and the rail is out ten metres for the entire circuit. Best Bookies 💰 👉 View the…",
-   "source": "Just Horse Racing",
-   "category": "racing",
-   "published": "2026-09-10T22:11:28+00:00",
-   "ts": 1789078288
+   "title": "11/9/2026 Harness Racing Tips, Selections and Best Bets – Geelong (H)",
+   "link": "https://www.justracing.com.au/harness-racing/11-9-2026-harness-racing-tips-selections-and-best-bets-geelong-h/157292",
+   "excerpt": "One of the feature harness meetings on Friday will be run at Geelong (H). We take a look at each of the 8 races on the card and give our &#8230; The post 11/9/2026 Harness Racing Tips, Selections and Best Bets…",
+   "source": "Just Racing",
+   "category": "tips",
+   "published": "2026-09-10T21:48:23+00:00",
+   "ts": 1789076903
   },
   {
-   "title": "12/9/2026 Horse Racing Tips and Best Bets – Morphettville, Wylie Handicap day",
-   "link": "https://www.justhorseracing.com.au/tips/12-9-2026-horse-racing-tips-and-best-bets-morphettville-wylie-handicap-day/905742",
-   "excerpt": "Morphettville will play host to a ten race program on Saturday, headlined by the W H Whylie Handicap (1100m). The weather is fine, the track is soft (6) and the rail is out four metres for the entire circuit.…",
-   "source": "Just Horse Racing",
-   "category": "racing",
-   "published": "2026-09-10T22:10:01+00:00",
-   "ts": 1789078201
+   "title": "11/9/2026 Harness Racing Tips, Selections and Best Bets – Albion Park",
+   "link": "https://www.justracing.com.au/harness-racing/11-9-2026-harness-racing-tips-selections-and-best-bets-albion-park/157293",
+   "excerpt": "One of the feature harness meetings on Friday will be run at Albion Park. We take a look at each of the 8 races on the card and give our &#8230; The post 11/9/2026 Harness Racing Tips, Selections and Best Bets…",
+   "source": "Just Racing",
+   "category": "tips",
+   "published": "2026-09-10T21:46:20+00:00",
+   "ts": 1789076780,
+   "tip": {
+    "kind": "race",
+    "subject": "Albion Park",
+    "tipster": "Just Racing",
+    "when": "2026-09-11"
+   }
   },
   {
-   "title": "11/9/2026 Horse Racing Tips and Best Bets – Geelong",
-   "link": "https://www.justhorseracing.com.au/tips/11-9-2026-horse-racing-tips-and-best-bets-geelong/905626",
-   "excerpt": "Victorian racing this Friday heads to Geelong. The weather is fine, the track is soft (6) and the rail is in the true position for the entire circuit. Race One: 11 Eye Tracker Race Two: 8 Rockzino Race Three:…",
-   "source": "Just Horse Racing",
-   "category": "racing",
-   "published": "2026-09-10T22:06:59+00:00",
-   "ts": 1789078019
+   "title": "11/9/2026 Harness Racing Tips, Selections and Best Bets – Gloucester Park",
+   "link": "https://www.justracing.com.au/harness-racing/11-9-2026-harness-racing-tips-selections-and-best-bets-gloucester-park/157294",
+   "excerpt": "One of the feature harness meetings on Friday will be run at Gloucester Park. We take a look at each of the 10 races on the card and give our &#8230; The post 11/9/2026 Harness Racing Tips, Selections and Best…",
+   "source": "Just Racing",
+   "category": "tips",
+   "published": "2026-09-10T21:44:19+00:00",
+   "ts": 1789076659,
+   "tip": {
+    "kind": "race",
+    "subject": "Gloucester Park",
+    "tipster": "Just Racing",
+    "when": "2026-09-11"
+   }
   },
   {
-   "title": "11/9/2026 Horse Racing Tips and Best Bets – Goulburn",
-   "link": "https://www.justhorseracing.com.au/tips/11-9-2026-horse-racing-tips-and-best-bets-goulburn/905624",
-   "excerpt": "Goulburn will conduct a seven race card this Friday. The weather is fine, the track is soft (5) and the rail is in the true position for the entire circuit. Race One: 4 Feazabeel Race Two: 3 Sea Level Race…",
-   "source": "Just Horse Racing",
-   "category": "racing",
-   "published": "2026-09-10T22:05:57+00:00",
-   "ts": 1789077957
+   "title": "11/9/2026 Harness Racing Tips, Selections and Best Bets – Newcastle",
+   "link": "https://www.justracing.com.au/harness-racing/11-9-2026-harness-racing-tips-selections-and-best-bets-newcastle/157295",
+   "excerpt": "One of the feature harness meetings on Friday will be run at Newcastle. We take a look at each of the 8 races on the card and give our tips &#8230; The post 11/9/2026 Harness Racing Tips, Selections and Best…",
+   "source": "Just Racing",
+   "category": "tips",
+   "published": "2026-09-10T21:42:15+00:00",
+   "ts": 1789076535,
+   "tip": {
+    "kind": "race",
+    "subject": "Newcastle",
+    "tipster": "Just Racing",
+    "when": "2026-09-11"
+   }
   },
   {
-   "title": "11/9/2026 Horse Racing Tips and Best Bets – Tuncurry, Tuncurry-Forster Cup day",
-   "link": "https://www.justhorseracing.com.au/tips/11-9-2026-horse-racing-tips-and-best-bets-tuncurry-tuncurry-forster-cup-day/905625",
-   "excerpt": "Eight races will be run and won at Tuncurry this Friday. The weather is fine, the track is soft (5) and the rail is in the true position for the entire circuit. Race One: 12 Zous Apollo Race Two: 7 Wan Lost…",
-   "source": "Just Horse Racing",
-   "category": "racing",
-   "published": "2026-09-10T22:04:57+00:00",
-   "ts": 1789077897
-  },
-  {
-   "title": "11/9/2026 Horse Racing Tips and Best Bets – Sunshine Coast",
-   "link": "https://www.justhorseracing.com.au/tips/11-9-2026-horse-racing-tips-and-best-bets-sunshine-coast/905627",
-   "excerpt": "The Sunshine Coast is where QLD racing heads to on Friday. The weather is fine, the track is soft (5) and the rail is out two metres for the entire circuit. Race One: 3 Durness Race Two: 11 Pierantes Race…",
-   "source": "Just Horse Racing",
-   "category": "racing",
-   "published": "2026-09-10T22:03:02+00:00",
-   "ts": 1789077782
-  },
-  {
-   "title": "11/9/2026 Horse Racing Tips and Best Bets – Bordertown",
-   "link": "https://www.justhorseracing.com.au/tips/11-9-2026-horse-racing-tips-and-best-bets-bordertown/905628",
-   "excerpt": "Bordertown is where SA racing heads to this Friday. The weather is fine, the track is heavy (8) and the rail is out three metres from the 1400m-1200m; True for the remainder. Race One: 6 Gradivus Race Two: 10…",
-   "source": "Just Horse Racing",
-   "category": "racing",
-   "published": "2026-09-10T22:02:07+00:00",
-   "ts": 1789077727
-  },
-  {
-   "title": "The big number Knights wingers must achieve to beat Rabbitohs",
-   "link": "https://www.zerotackle.com/the-big-number-knights-wingers-must-achieve-to-beat-rabbitohs-237972/",
-   "excerpt": "An undermanned Knights can salvage a win against the Rabbitohs, and here is how.",
-   "source": "Zero Tackle",
-   "category": "nrl",
-   "published": "2026-09-10T21:49:21+00:00",
-   "ts": 1789076961
-  },
-  {
-   "title": "Opals knocked out of World Cup as luckless captain's torn ACL confirmed",
-   "link": "https://www.abc.net.au/news/2026-09-11/opals-knocked-out-of-fiba-womens-basketball-world-cup/107141164",
-   "excerpt": "Without a number of their biggest stars, Australia's Opals are knocked out of the FIBA Women's Basketball World Cup in a comprehensive quarterfinal loss to Spain.",
-   "source": "ABC Sport",
-   "category": "sport",
-   "published": "2026-09-10T21:32:11+00:00",
-   "ts": 1789075931
-  },
-  {
-   "title": "Is Jye Gray the best option at fullback for the Rabbitohs?",
-   "link": "https://www.zerotackle.com/is-jye-gray-the-best-option-at-fullback-for-the-rabbitohs-237813/",
-   "excerpt": "Gray&#8217;s chance to prove he belongs",
-   "source": "Zero Tackle",
-   "category": "nrl",
-   "published": "2026-09-10T21:24:13+00:00",
-   "ts": 1789075453
-  },
-  {
-   "title": "Tevita Pangai Junior chasing NRL return",
-   "link": "https://www.zerotackle.com/tevita-pangai-junior-chasing-nrl-return-237975/",
-   "excerpt": "The Tongan international has made a major call on his future after a frustrating campaign in England.",
-   "source": "Zero Tackle",
-   "category": "nrl",
-   "published": "2026-09-10T21:21:24+00:00",
-   "ts": 1789075284
-  },
-  {
-   "title": "How long can you survive today’s NRL Streakr?",
-   "link": "https://www.zerotackle.com/daily-game-nrl-streakr-2026-09-11-237914/",
-   "excerpt": "Back your rugby league instincts, build your streak and see how your run compares with the field.",
-   "source": "Zero Tackle",
-   "category": "nrl",
-   "published": "2026-09-10T21:00:00+00:00",
-   "ts": 1789074000
-  },
-  {
-   "title": "Injury returns, Roosters form, Panthers unstoppable?: The FIVE biggest questions for the NRL finals",
-   "link": "https://www.zerotackle.com/injury-returns-roosters-form-panthers-unstoppable-the-five-biggest-questions-for-the-nrl-finals-237849/",
-   "excerpt": "These questions will decide the premiership.",
-   "source": "Zero Tackle",
-   "category": "nrl",
-   "published": "2026-09-10T20:42:40+00:00",
-   "ts": 1789072960
-  },
-  {
-   "title": "South Sydney Rabbitohs move to sign New Zealand youngster",
-   "link": "https://www.zerotackle.com/south-sydney-rabbitohs-move-to-sign-new-zealand-youngster-237969/",
-   "excerpt": "The Rabbitohs have landed a rising talent from across the Tasman.",
-   "source": "Zero Tackle",
-   "category": "nrl",
-   "published": "2026-09-10T20:21:48+00:00",
-   "ts": 1789071708
-  },
-  {
-   "title": "Crows' quest for premiership glory just beginning as they prepare to take on Lions",
-   "link": "https://www.abc.net.au/news/2026-09-11/adelaide-crows-quest-for-premiership-glory-just-beginning/107127980",
-   "excerpt": "The Crows have snapped their September shackles, but the team's next assignment is in Brisbane, where they will take on the reigning premiers at a venue where they've been winless since 2018.",
-   "source": "ABC Sport",
-   "category": "sport",
-   "published": "2026-09-10T20:09:38+00:00",
-   "ts": 1789070978
+   "title": "11/9/2026 Harness Racing Tips, Selections and Best Bets – Northam",
+   "link": "https://www.justracing.com.au/harness-racing/11-9-2026-harness-racing-tips-selections-and-best-bets-northam/157296",
+   "excerpt": "One of the feature harness meetings on Friday will be run at Northam. We take a look at each of the 6 races on the card and give our tips &#8230; The post 11/9/2026 Harness Racing Tips, Selections and Best…",
+   "source": "Just Racing",
+   "category": "tips",
+   "published": "2026-09-10T21:40:14+00:00",
+   "ts": 1789076414,
+   "tip": {
+    "kind": "race",
+    "subject": "Northam",
+    "tipster": "Just Racing",
+    "when": "2026-09-11"
+   }
   },
   {
    "title": "Mind over matter: The 50-50 formula behind Amiss' success",
@@ -257,112 +641,13 @@
    "ts": 1789070400
   },
   {
-   "title": "IF there's one thing Damo is really getting tired of ... THEN",
+   "title": "IF the Crows 'wined and dined' Zac Bailey for 18 months ... THEN",
    "link": "https://www.afl.com.au/news/1606782/sliding-doors-if-theres-one-thing-damo-is-really-tiring-of-then",
    "excerpt": "Sliding Doors is in full swing for 2026 ... and Damo's got plenty on his mind",
    "source": "AFL.com.au",
    "category": "afl",
    "published": "2026-09-10T20:00:00+00:00",
    "ts": 1789070400
-  },
-  {
-   "title": "Recent finals history is against Freo, but these numbers could save them",
-   "link": "https://www.abc.net.au/news/2026-09-11/afl-fremantle-vs-geelong-analysis-key-stats-preview/107137866",
-   "excerpt": "After topping the AFL ladder for the majority of this season, Fremantle finds itself on the canvas and must overturn recent history to keep its premiership dream alive.",
-   "source": "ABC Sport",
-   "category": "sport",
-   "published": "2026-09-10T19:00:51+00:00",
-   "ts": 1789066851
-  },
-  {
-   "title": "‘It doesn’t matter who puts the jumper on’: How the Swans replaced the irreplaceable",
-   "link": "https://www.smh.com.au/sport/afl/it-doesn-t-matter-who-puts-the-jumper-on-how-the-swans-replaced-the-irreplaceable-20260907-p60uz4.html?ref=rss&utm_medium=rss&utm_source=rss_sport",
-   "excerpt": "The suspensions of the “Pullman Five” left Sydney short of talent against Brisbane last weekend. But the club proved they could make up for it in pressure, sacrifice and an unwavering commitment to the system.",
-   "source": "SMH Sport",
-   "category": "sport",
-   "published": "2026-09-10T19:00:00+00:00",
-   "ts": 1789066800
-  },
-  {
-   "title": "What Toby Rodwell’s dad thought of that tackle from Latrell Mitchell",
-   "link": "https://www.smh.com.au/sport/nrl/what-toby-rodwell-s-dad-thought-of-that-tackle-from-latrell-mitchell-20260910-p60w6f.html?ref=rss&utm_medium=rss&utm_source=rss_sport",
-   "excerpt": "Brett Rodwell was in the stands at Allianz Stadium last Friday night when Mitchell ironed out his son. It was just one of the many highlights of Mitchell’s season.",
-   "source": "SMH Sport",
-   "category": "sport",
-   "published": "2026-09-10T19:00:00+00:00",
-   "ts": 1789066800
-  },
-  {
-   "title": "Bulldogs star sin-binned for hip-drop",
-   "link": "https://www.smh.com.au/sport/nrl/bulldogs-star-sin-binned-for-hip-drop-20260910-p60wex.html?ref=rss&utm_medium=rss&utm_source=rss_sport",
-   "excerpt": "Bulldogs centre Monica Tagoai is sent to the sin bin for a hip-drop tackle.",
-   "source": "SMH Sport",
-   "category": "sport",
-   "published": "2026-09-10T12:02:31+00:00",
-   "ts": 1789041751
-  },
-  {
-   "title": "Preston, Robinson combine for classy try",
-   "link": "https://www.smh.com.au/sport/nrl/preston-robinson-combine-for-classy-try-20260910-p60wet.html?ref=rss&utm_medium=rss&utm_source=rss_sport",
-   "excerpt": "Canterbury halfback Tayla Preston puts up a pinpoint kick and Andie Robinson does the rest in style.",
-   "source": "SMH Sport",
-   "category": "sport",
-   "published": "2026-09-10T10:51:01+00:00",
-   "ts": 1789037461
-  },
-  {
-   "title": "Roosters prop barges over",
-   "link": "https://www.smh.com.au/sport/nrl/roosters-prop-barges-over-20260910-p60wen.html?ref=rss&utm_medium=rss&utm_source=rss_sport",
-   "excerpt": "Roosters forward Otesa Pule crashes over to score against the Bulldogs.",
-   "source": "SMH Sport",
-   "category": "sport",
-   "published": "2026-09-10T10:25:31+00:00",
-   "ts": 1789035931
-  },
-  {
-   "title": "Brilliant Baxter ball sets up Sergis",
-   "link": "https://www.smh.com.au/sport/nrl/brilliant-baxter-ball-sets-up-sergis-20260910-p60wep.html?ref=rss&utm_medium=rss&utm_source=rss_sport",
-   "excerpt": "Roosters fullback Corban Baxter sets up a try for Jess Sergis with sublime ball-playing.",
-   "source": "SMH Sport",
-   "category": "sport",
-   "published": "2026-09-10T10:20:20+00:00",
-   "ts": 1789035620
-  },
-  {
-   "title": "AFL semi-final teams and expert tips: Cats make a key selection call for their trip west",
-   "link": "https://www.smh.com.au/sport/afl/afl-semi-final-teams-and-expert-tips-cats-make-a-key-selection-call-for-their-trip-west-20260908-p60veh.html?ref=rss&utm_medium=rss&utm_source=rss_sport",
-   "excerpt": "Here are the all-important teams and expert tips for the cut-throat games on Friday and Saturday.",
-   "source": "SMH Sport",
-   "category": "sport",
-   "published": "2026-09-10T10:17:05+00:00",
-   "ts": 1789035425
-  },
-  {
-   "title": "Farnworth can’t forget his finals heartbreak. His fab five can right those wrongs",
-   "link": "https://www.smh.com.au/sport/nrl/farnworth-can-t-forget-his-finals-heartbreak-his-fab-five-can-right-those-wrongs-20260909-p60vri.html?ref=rss&utm_medium=rss&utm_source=rss_sport",
-   "excerpt": "These are the numbers which illustrate why the Dolphins’ backline holds the key to their premiership ambitions, as one man seeks grand final retribution.",
-   "source": "SMH Sport",
-   "category": "sport",
-   "published": "2026-09-10T09:55:00+00:00",
-   "ts": 1789034100
-  },
-  {
-   "title": "The data on contact sport, concussion and CTE is convincing. But not conclusive",
-   "link": "https://www.smh.com.au/sport/the-data-on-contact-sport-concussion-and-cte-is-convincing-but-not-conclusive-20260910-p60w1y.html?ref=rss&utm_medium=rss&utm_source=rss_sport",
-   "excerpt": "Risks associated with brain trauma represent an existential risk to collision and combat sports. But from a legal perspective, the current evidence is not yet watertight.",
-   "source": "SMH Sport",
-   "category": "sport",
-   "published": "2026-09-10T09:30:00+00:00",
-   "ts": 1789032600
-  },
-  {
-   "title": "Women at centre of Camberwell Golf Club stoush make move against president",
-   "link": "https://www.smh.com.au/sport/golf/monique-ryan-slams-camberwell-golf-club-after-women-dumped-from-its-committee-20260910-p60waf.html?ref=rss&utm_medium=rss&utm_source=rss_sport",
-   "excerpt": "Kooyong MP Monique Ryan described the decision to remove all four women from the governing committee of a Melbourne golf club as “a very bad look”.",
-   "source": "SMH Sport",
-   "category": "sport",
-   "published": "2026-09-10T09:28:04+00:00",
-   "ts": 1789032484
   },
   {
    "title": "Former Coleman Medal winner set for fourth club after choosing new home",
@@ -374,42 +659,6 @@
    "ts": 1789029120
   },
   {
-   "title": "AFLW TEAMS: New Roo to debut, Eagles drop four, key Lion returns",
-   "link": "https://www.afl.com.au/aflw/news/1607110/aflw-teams-new-roo-in-line-for-debut-eagles-drop-four-key-lion-returns",
-   "excerpt": "The teams for round five's AFLW games are in, plus squads for Sunday",
-   "source": "AFL.com.au",
-   "category": "afl",
-   "published": "2026-09-10T08:20:00+00:00",
-   "ts": 1789028400
-  },
-  {
-   "title": "FINALS TEAMS: Dockers mid dropped, Crows leader axed, Cats make De Koning call",
-   "link": "https://www.afl.com.au/news/1607098/finals-teams-fremantle-dockers-youngster-nathan-odriscoll-out-crows-leader-isaac-cumming-axed-geelong-cats-make-sam-de-koning-call",
-   "excerpt": "The teams are in for the semi-finals on Friday and Saturday",
-   "source": "AFL.com.au",
-   "category": "afl",
-   "published": "2026-09-10T08:20:00+00:00",
-   "ts": 1789028400
-  },
-  {
-   "title": "Trade Talk: Twist as Hogan picks Pies, Crows set for compo pick, Dees lead Dear race",
-   "link": "https://www.afl.com.au/news/1606757/trade-talk-all-the-latest-contract-news-free-agency-and-trade-rumours-ahead-of-october",
-   "excerpt": "Get all the latest contract news and trade rumours ahead of the player movement period",
-   "source": "AFL.com.au",
-   "category": "afl",
-   "published": "2026-09-10T08:20:00+00:00",
-   "ts": 1789028400
-  },
-  {
-   "title": "Suns eye off Saints young gun, Tiger set for new deal, Demon to play on",
-   "link": "https://www.afl.com.au/news/1606783/inside-trading-clubs-begin-trade-talks-hawthorn-hawk-staying-put-st-kilda-saint-signs-on",
-   "excerpt": "Check out all the latest trade news from around the League",
-   "source": "AFL.com.au",
-   "category": "afl",
-   "published": "2026-09-10T08:05:00+00:00",
-   "ts": 1789027500
-  },
-  {
    "title": "Suaalii keeps ‘open mindset’ to Wallabies position amid rising expectations for Rugby World Cup",
    "link": "https://www.theguardian.com/sport/2026/sep/10/joseph-aukuso-suaalii-australia-wallabies-2027-rugby-world-cup-position",
    "excerpt": "Joseph-Aukuso Suaalii won’t specialise in one on-field role yet Australia coach Les Kiss faces multiple selection conundrums He is known as the Wallabies’ foremost code-switcher, and there are growing calls…",
@@ -417,258 +666,6 @@
    "category": "union",
    "published": "2026-09-10T07:01:15+00:00",
    "ts": 1789023675
-  },
-  {
-   "title": "Father-son products delisted by Blues as changes continue",
-   "link": "https://www.afl.com.au/news/1607279/father-son-products-lucas-and-ben-camporeale-delisted-by-carlton-blues-as-changes-continue",
-   "excerpt": "The Blues have delisted Lucas and Ben Camporeale",
-   "source": "AFL.com.au",
-   "category": "afl",
-   "published": "2026-09-10T06:53:00+00:00",
-   "ts": 1789023180
-  },
-  {
-   "title": "Joyce vague on details, Albanese wins tennis match amid golf grant saga",
-   "link": "https://www.abc.net.au/news/2026-09-10/barnaby-joyce-superannuation-pauline-hanson-andrew-hastie-golf/107128384",
-   "excerpt": "This week One Nation's Treasury spokesperson was vague on policy details, Andrew Hastie took on Pauline Hanson and the prime minister defended his membership to a golf club.",
-   "source": "ABC Sport",
-   "category": "sport",
-   "published": "2026-09-10T06:49:07+00:00",
-   "ts": 1789022947
-  },
-  {
-   "title": "Team whispers: Docker injured again, defender to return, Lion misses training",
-   "link": "https://www.afl.com.au/news/1606747/team-whispers-all-the-latest-selection-news-ahead-of-week-three-of-finals",
-   "excerpt": "Stay up to date with all the latest teams news ahead of the semi-finals this weekend",
-   "source": "AFL.com.au",
-   "category": "afl",
-   "published": "2026-09-10T05:51:00+00:00",
-   "ts": 1789019460
-  },
-  {
-   "title": "Dockers keen to 'right some wrongs' after finals stumble, dropped defender recalled",
-   "link": "https://www.afl.com.au/news/1607140/fremantle-dockers-keen-to-right-some-wrongs-after-finals-stumble-dropped-defender-judd-mcvee-earns-recall",
-   "excerpt": "Justin Longmuir says Fremantle has learned some valuable lessons from the qualifying final loss to Hawthorn",
-   "source": "AFL.com.au",
-   "category": "afl",
-   "published": "2026-09-10T04:56:00+00:00",
-   "ts": 1789016160
-  },
-  {
-   "title": "Inside gate the sole worry for Apocalyptic ahead of Rosehill Stakes",
-   "link": "https://www.justracing.com.au/horse-racing/inside-gate-the-sole-worry-for-apocalyptic-ahead-of-rosehill-stakes/157256",
-   "excerpt": "While an inside barrier is typically advantageous, jockey Tommy Berry harbours reservations about the suitability of gate one for Apocalyptic in Saturday&#8217;s Sheraco Stakes. The Michael Freedman-trained…",
-   "source": "Just Racing",
-   "category": "tips",
-   "published": "2026-09-10T01:11:40+00:00",
-   "ts": 1789002700
-  },
-  {
-   "title": "Seymour races market movers – 10/9/2026",
-   "link": "https://www.justhorseracing.com.au/general-news/betting/seymour-races-market-movers-10-9-2026/905601",
-   "excerpt": "We take a look at the market movers and best backed runners for each race at Seymour on Thursday (10/9/2026) with Neds.com.au, there has been plenty of big moves for long shots and those in the market. *…",
-   "source": "JHR Best Bets",
-   "category": "tips",
-   "published": "2026-09-10T01:00:32+00:00",
-   "ts": 1789002032
-  },
-  {
-   "title": "Hawkesbury races market movers – 10/9/2026",
-   "link": "https://www.justhorseracing.com.au/general-news/betting/hawkesbury-races-market-movers-10-9-2026/905600",
-   "excerpt": "We take a look at the market movers and best backed runners for each race at Hawkesbury on Thursday (10/9/2026) with Neds.com.au, there has been plenty of big moves for long shots and those in the market. *…",
-   "source": "JHR Best Bets",
-   "category": "tips",
-   "published": "2026-09-10T01:00:31+00:00",
-   "ts": 1789002031
-  },
-  {
-   "title": "Makybe Diva Stakes 2026 – Tips, Field, Horse Previews, Odds and $100 Betting Strategy",
-   "link": "https://www.justhorseracing.com.au/general-news/betting/makybe-diva-stakes-2026-tips-field-horse-previews-odds-and-100-betting-strategy/905829",
-   "excerpt": "The feature race at Flemington this Saturday is the Makybe Diva Stakes (1600m), where Sheza Alibi is a clear favourite. Down below is a speed map, runner preview and $100 betting strategy for 2026 Makybe Diva…",
-   "source": "JHR Best Bets",
-   "category": "tips",
-   "published": "2026-09-09T22:28:52+00:00",
-   "ts": 1788992932
-  },
-  {
-   "title": "Run To The Rose 2026 – Tips, Field, Horse Previews, Odds and $100 Betting Strategy",
-   "link": "https://www.justhorseracing.com.au/general-news/betting/run-to-the-rose-2026-tips-field-horse-previews-odds-and-100-betting-strategy/905828",
-   "excerpt": "One of the feature races at Rosehill this Saturday is the Run To The Rose (1200m), where the market says it is an open contest. Down below is a speed map, runner preview and $100 betting strategy for 2026 Run…",
-   "source": "JHR Best Bets",
-   "category": "tips",
-   "published": "2026-09-09T22:27:54+00:00",
-   "ts": 1788992874
-  },
-  {
-   "title": "Let’s Elope Stakes 2026 – Tips, Field, Horse Previews, Odds and $100 Betting Strategy",
-   "link": "https://www.justhorseracing.com.au/general-news/betting/lets-elope-stakes-2026-tips-field-horse-previews-odds-and-100-betting-strategy/905830",
-   "excerpt": "One of the feature races at Flemington this Saturday is the Let&#8217;s Elope Stakes (1400m), where Gold Coast Belle is a clear favourite. Down below is a speed map, runner preview and $100 betting strategy…",
-   "source": "JHR Best Bets",
-   "category": "tips",
-   "published": "2026-09-09T22:26:21+00:00",
-   "ts": 1788992781
-  },
-  {
-   "title": "Bobbie Lewis Quality 2026 – Tips, Field, Horse Previews, Odds and $100 Betting Strategy",
-   "link": "https://www.justhorseracing.com.au/general-news/betting/bobbie-lewis-quality-2026-tips-field-horse-previews-odds-and-100-betting-strategy/905831",
-   "excerpt": "One of the feature races at Flemington this Saturday is the Bobbie Lewis Quality (1200m), where Oliveanotherday dominates the market. Down below is a speed map, runner preview and $100 betting strategy for…",
-   "source": "JHR Best Bets",
-   "category": "tips",
-   "published": "2026-09-09T22:25:50+00:00",
-   "ts": 1788992750
-  },
-  {
-   "title": "Free Horse Racing Betting Strategy – Thursday races 10/9/2026",
-   "link": "https://www.justhorseracing.com.au/general-news/betting/free-horse-racing-betting-strategy-thursday-races-10-9-2026/905896",
-   "excerpt": "Resident tipster Adam gives his betting strategy for Thursday (10/9/2026) racing. Please note that some prices quoted were available at the time of writing, which was 8.10am Thursday. Take note that other…",
-   "source": "JHR Best Bets",
-   "category": "tips",
-   "published": "2026-09-09T22:19:51+00:00",
-   "ts": 1788992391
-  },
-  {
-   "title": "10/9/2026 Harness Racing Tips, Selections and Best Bets – Tamworth",
-   "link": "https://www.justracing.com.au/harness-racing/10-9-2026-harness-racing-tips-selections-and-best-bets-tamworth/157246",
-   "excerpt": "One of the feature harness meetings on Thursday will be run at Tamworth. We take a look at each of the 8 races on the card and give our tips &#8230; The post 10/9/2026 Harness Racing Tips, Selections and Best…",
-   "source": "Just Racing",
-   "category": "tips",
-   "published": "2026-09-09T21:48:13+00:00",
-   "ts": 1788990493,
-   "tip": {
-    "kind": "race",
-    "subject": "Tamworth",
-    "tipster": "Just Racing",
-    "when": "2026-09-10"
-   }
-  },
-  {
-   "title": "10/9/2026 Harness Racing Tips, Selections and Best Bets – Redcliffe",
-   "link": "https://www.justracing.com.au/harness-racing/10-9-2026-harness-racing-tips-selections-and-best-bets-redcliffe/157247",
-   "excerpt": "One of the feature harness meetings on Thursday will be run at Redcliffe. We take a look at each of the 7 races on the card and give our tips &#8230; The post 10/9/2026 Harness Racing Tips, Selections and Best…",
-   "source": "Just Racing",
-   "category": "tips",
-   "published": "2026-09-09T21:46:12+00:00",
-   "ts": 1788990372,
-   "tip": {
-    "kind": "race",
-    "subject": "Redcliffe",
-    "tipster": "Just Racing",
-    "when": "2026-09-10"
-   }
-  },
-  {
-   "title": "10/9/2026 Harness Racing Tips, Selections and Best Bets – Kilmore",
-   "link": "https://www.justracing.com.au/harness-racing/10-9-2026-harness-racing-tips-selections-and-best-bets-kilmore/157248",
-   "excerpt": "One of the feature harness meetings on Thursday will be run at Kilmore. We take a look at each of the 9 races on the card and give our tips &#8230; The post 10/9/2026 Harness Racing Tips, Selections and Best…",
-   "source": "Just Racing",
-   "category": "tips",
-   "published": "2026-09-09T21:44:09+00:00",
-   "ts": 1788990249,
-   "tip": {
-    "kind": "race",
-    "subject": "Kilmore",
-    "tipster": "Just Racing",
-    "when": "2026-09-10"
-   }
-  },
-  {
-   "title": "10/9/2026 Harness Racing Tips, Selections and Best Bets – Penrith",
-   "link": "https://www.justracing.com.au/harness-racing/10-9-2026-harness-racing-tips-selections-and-best-bets-penrith/157249",
-   "excerpt": "One of the feature harness meetings on Thursday will be run at Penrith. We take a look at each of the 9 races on the card and give our tips &#8230; The post 10/9/2026 Harness Racing Tips, Selections and Best…",
-   "source": "Just Racing",
-   "category": "tips",
-   "published": "2026-09-09T21:42:06+00:00",
-   "ts": 1788990126,
-   "tip": {
-    "kind": "race",
-    "subject": "Penrith",
-    "tipster": "Just Racing",
-    "when": "2026-09-10"
-   }
-  },
-  {
-   "title": "10/9/2026 Harness Racing Tips, Selections and Best Bets – Ascot Park",
-   "link": "https://www.justracing.com.au/harness-racing/10-9-2026-harness-racing-tips-selections-and-best-bets-ascot-park/157250",
-   "excerpt": "One of the feature harness meetings on Thursday will be run at Ascot Park. We take a look at each of the 7 races on the card and give our &#8230; The post 10/9/2026 Harness Racing Tips, Selections and Best…",
-   "source": "Just Racing",
-   "category": "tips",
-   "published": "2026-09-09T21:40:04+00:00",
-   "ts": 1788990004,
-   "tip": {
-    "kind": "race",
-    "subject": "Ascot Park",
-    "tipster": "Just Racing",
-    "when": "2026-09-10"
-   }
-  },
-  {
-   "title": "10/9/2026 Harness Racing Tips, Selections and Best Bets – Cambridge",
-   "link": "https://www.justracing.com.au/harness-racing/10-9-2026-harness-racing-tips-selections-and-best-bets-cambridge/157251",
-   "excerpt": "One of the feature harness meetings on Thursday will be run at Cambridge. We take a look at each of the 8 races on the card and give our tips &#8230; The post 10/9/2026 Harness Racing Tips, Selections and Best…",
-   "source": "Just Racing",
-   "category": "tips",
-   "published": "2026-09-09T21:38:03+00:00",
-   "ts": 1788989883,
-   "tip": {
-    "kind": "race",
-    "subject": "Cambridge",
-    "tipster": "Just Racing",
-    "when": "2026-09-10"
-   }
-  },
-  {
-   "title": "10/9/2026 Greyhound Racing Tips, Selections and Best Bets – Warragul",
-   "link": "https://www.justracing.com.au/greyhound-racing/10-9-2026-greyhound-racing-tips-selections-and-best-bets-warragul/157232",
-   "excerpt": "One of the feature Greyhound meetings on Thursday will be run at Warragul. We take a look at each of the 12 races on the card and give our tips &#8230; The post 10/9/2026 Greyhound Racing Tips, Selections and…",
-   "source": "Just Racing",
-   "category": "tips",
-   "published": "2026-09-09T21:36:00+00:00",
-   "ts": 1788989760,
-   "tip": {
-    "kind": "race",
-    "subject": "Warragul",
-    "tipster": "Just Racing",
-    "when": "2026-09-10"
-   }
-  },
-  {
-   "title": "10/9/2026 Greyhound Racing Tips, Selections and Best Bets – Q Straight",
-   "link": "https://www.justracing.com.au/greyhound-racing/10-9-2026-greyhound-racing-tips-selections-and-best-bets-q-straight/157233",
-   "excerpt": "One of the feature Greyhound meetings on Thursday will be run at Q Straight. We take a look at each of the 12 races on the card and give our &#8230; The post 10/9/2026 Greyhound Racing Tips, Selections and…",
-   "source": "Just Racing",
-   "category": "tips",
-   "published": "2026-09-09T21:34:56+00:00",
-   "ts": 1788989696,
-   "tip": {
-    "kind": "race",
-    "subject": "Q Straight",
-    "tipster": "Just Racing",
-    "when": "2026-09-10"
-   }
-  },
-  {
-   "title": "10/9/2026 Greyhound Racing Tips, Selections and Best Bets – Gosford",
-   "link": "https://www.justracing.com.au/greyhound-racing/10-9-2026-greyhound-racing-tips-selections-and-best-bets-gosford/157234",
-   "excerpt": "One of the feature Greyhound meetings on Thursday will be run at Gosford. We take a look at each of the 10 races on the card and give our tips &#8230; The post 10/9/2026 Greyhound Racing Tips, Selections and…",
-   "source": "Just Racing",
-   "category": "tips",
-   "published": "2026-09-09T21:32:54+00:00",
-   "ts": 1788989574,
-   "tip": {
-    "kind": "race",
-    "subject": "Gosford",
-    "tipster": "Just Racing",
-    "when": "2026-09-10"
-   }
-  },
-  {
-   "title": "St Gotthard short odds in quality The Run To The Rose field",
-   "link": "https://www.justhorseracing.com.au/general-news/betting/st-gotthard-stifles-run-to-the-rose-betting/905841",
-   "excerpt": "St Gotthard holds the call with online bookies for The Run To The Rose (1200m) this Saturday at Rosehill. The Chris Waller trained colt resumes and the market indication is that he is a clear top seed, sitting…",
-   "source": "JHR Best Bets",
-   "category": "tips",
-   "published": "2026-09-09T11:08:24+00:00",
-   "ts": 1788952104
   },
   {
    "title": "AFL boss calls for zero tolerance on players’ poor behaviour in wake of Swans scandal",
@@ -761,15 +758,6 @@
    "ts": 1788650845
   },
   {
-   "title": "Kriel and Marx tries help South Africa power past All Blacks to take series lead",
-   "link": "https://www.theguardian.com/sport/2026/sep/05/south-africa-new-zealand-greatest-rivalry-third-test-match-report",
-   "excerpt": "South Africa 29-24 New Zealand All Blacks captain Ardie Savea out of final Test There have been moments over the past couple of weeks that have made us question South Africa’s status as the standard bearers in…",
-   "source": "Guardian Union",
-   "category": "union",
-   "published": "2026-09-05T17:41:30+00:00",
-   "ts": 1788630090
-  },
-  {
    "title": "NRL rivals stand with Jai Arrow as Rabbitohs meet the moment on emotion-charged night",
    "link": "https://www.theguardian.com/sport/2026/sep/04/nrl-jai-arrow-mnd-100-south-sydney-rabbitohs-vs-roosters",
    "excerpt": "Arrow plays 100th game for South Sydney three months after MND diagnosis as Rabbitohs’ win against the Roosters takes a back seat This time last year Jai Arrow ran out for his final game. At the time it was…",
@@ -840,6 +828,15 @@
    "category": "nrl",
    "published": "2026-08-29T05:27:02+00:00",
    "ts": 1787981222
+  },
+  {
+   "title": "FULL TIME: Rabbitohs vs Knights – Finals Week 1, 2026",
+   "link": "https://www.zerotackle.com/fulltime-rabbitohs-knights-round-finals-week-1-2026-mc11941701-237793/",
+   "excerpt": "The South Sydney Rabbitohs face the Newcastle Knights in Finals Week 1 of the 2026 NRL season. Follow the live scores, team lists, match statistics and key moments from the game at Allianz Stadium.",
+   "source": "Zero Tackle",
+   "category": "nrl",
+   "published": "2026-08-14T09:50:00+00:00",
+   "ts": 1786701000
   },
   {
    "title": "Is Australia ready for biggest World Cup ever with Wallabies well and truly stuck in second tier of teams",
