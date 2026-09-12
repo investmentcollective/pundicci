@@ -323,48 +323,6 @@
   footer { text-align:center; padding:30px 20px 40px; font-size:10px; color:var(--faint); letter-spacing:2px; text-transform:uppercase; line-height:2; }
   footer .gold { color:var(--brand2); }
 
-  /* ─────────── The Wire ─────────── */
-  .livetips { border:1px solid var(--line2); border-radius:14px; background:var(--card); padding:18px 20px 12px; margin-bottom:22px; }
-  .livetips-head { display:flex; align-items:center; gap:9px; margin-bottom:14px; }
-  .livetips-title { font-size:10px; font-weight:600; letter-spacing:2.4px; text-transform:uppercase; color:var(--ink); }
-  .livetips-count { font-size:10px; color:var(--faint); letter-spacing:1px; margin-left:auto; }
-  .tip-row { display:flex; align-items:baseline; gap:12px; padding:11px 0; border-top:1px solid var(--line); text-decoration:none; color:inherit; flex-wrap:wrap; }
-  .tip-row:hover .tip-subject { text-decoration:underline; }
-  .tip-kind { font-size:9px; font-weight:600; letter-spacing:1.3px; text-transform:uppercase; padding:2px 7px; border-radius:3px; flex-shrink:0; }
-  .tip-kind.race { background:rgba(18,122,94,0.10); color:var(--charlie); border:1px solid rgba(18,122,94,0.28); }
-  .tip-kind.fixture { background:rgba(34,100,196,0.09); color:var(--douchie); border:1px solid rgba(34,100,196,0.26); }
-  .tip-subject { font-weight:500; font-size:15px; color:var(--ink); }
-  .tip-meta { font-size:11px; color:var(--muted); }
-  .tip-when { font-size:10px; color:var(--faint); letter-spacing:0.5px; margin-left:auto; white-space:nowrap; }
-  .tip-note { font-size:12px; color:var(--muted); line-height:1.5; flex-basis:100%; margin-top:-2px; }
-  .livetips-foot { font-size:10px; color:var(--faint); padding-top:11px; border-top:1px solid var(--line); line-height:1.5; }
-  .wire-filters { display:flex; gap:7px; flex-wrap:wrap; justify-content:center; margin:0 0 20px; }
-  .wire-chip {
-    font-size:10px; font-weight:600; letter-spacing:1.6px; text-transform:uppercase;
-    padding:6px 14px; border-radius:999px; cursor:pointer; user-select:none;
-    border:1px solid var(--line2); color:var(--muted); background:var(--card);
-    transition:all .15s ease;
-  }
-  .wire-chip:hover { border-color:var(--line3); color:var(--ink); }
-  .wire-chip.active { background:var(--ink); border-color:var(--ink); color:#FFFFFF; }
-  .wire-item {
-    display:block; text-decoration:none; color:inherit;
-    background:var(--card); border:1px solid var(--line); border-radius:12px;
-    padding:18px 22px; margin-bottom:10px; transition:all .15s ease;
-  }
-  .wire-item:hover { border-color:var(--line3); transform:translateY(-1px); }
-  .wire-meta { display:flex; align-items:center; gap:9px; flex-wrap:wrap; margin-bottom:8px; }
-  .wire-src {
-    font-size:9px; font-weight:600; letter-spacing:1.4px; text-transform:uppercase;
-    padding:2px 8px; border-radius:3px; background:var(--card2); color:var(--muted);
-    border:1px solid var(--line);
-  }
-  .wire-cat { font-size:9px; font-weight:600; letter-spacing:1.4px; text-transform:uppercase; }
-  .wire-time { font-size:10px; color:var(--faint); letter-spacing:0.4px; margin-left:auto; }
-  .wire-title { font-family:var(--serif); font-weight:600; font-size:19px; line-height:1.3; color:var(--ink); }
-  .wire-excerpt { font-size:13px; line-height:1.6; color:var(--muted); margin-top:7px; }
-  .wire-empty { text-align:center; padding:44px 24px; color:var(--muted); font-size:13px; }
-
   /* ─────────── Mobile ─────────── */
   @media (max-width: 700px) {
     .header { padding:12px 16px; padding-top:calc(18px + env(safe-area-inset-top, 0px)); }
@@ -445,7 +403,6 @@
   <div class="nav-tab" data-nav="leaderboard" onclick="showPage('leaderboard')">Leaderboard</div>
   <div class="nav-tab" data-nav="records" onclick="showPage('records')">Records</div>
   <div class="nav-tab" data-nav="post" onclick="showPage('post')">The Post</div>
-  <div class="nav-tab" data-nav="wire" onclick="showPage('wire')">The Wire</div>
   <div class="nav-tab" data-nav="account" onclick="showPage('account')">Account</div>
 </div>
 
@@ -522,18 +479,6 @@
   </div>
   <div id="post-feed"></div>
   <footer>All quotes verified by nobody <span class="gold">◆</span> The Post regrets nothing</footer>
-</div>
-
-<!-- ═══════════ THE WIRE ═══════════ -->
-<div class="page" id="page-wire">
-  <div class="post-masthead">
-    <div class="post-title">The <span class="amp">Wire</span></div>
-    <div class="post-rules"><span class="post-tagline">Racing &amp; Sport · Incoming</span></div>
-  </div>
-  <div id="live-tips"></div>
-  <div class="wire-filters" id="wire-filters"></div>
-  <div id="wire-feed"></div>
-  <footer>Headlines syndicated from public feeds <span class="gold">◆</span> <span id="wire-stamp"></span></footer>
 </div>
 
 <!-- ═══════════ ACCOUNT ═══════════ -->
@@ -616,6 +561,31 @@ const BETS = [
 ];
 
 const PENDING_BETS = [
+  { captain:'charlie', date:'12 Sep 2026',
+    event:'AFL SGM — Brisbane Lions v Adelaide Crows (12 legs)',
+    details:'Semi-final, Gabba · Sat 12 Sep 19:35 · $25 bonus bet — winnings only, stake not returned',
+    odds:'32.00', stake:'$25 (bonus)', potential:'$775.00',
+    legs:[
+      { done:false, label:'Brisbane Lions — Head to Head' },
+      { done:false, label:'Charlie Cameron 1+ goal' },
+      { done:false, label:'Kai Lohmann 1+ goal' },
+      { done:false, label:'Eric Hipwood 1+ goal' },
+      { done:false, label:'Taylor Walker 1+ goal' },
+      { done:false, label:'Josh Rachele 1+ goal' },
+      { done:false, label:'Izak Rankine 1+ goal' },
+      { done:false, label:'Jordan Dawson under 26.5 disposals' },
+      { done:false, label:'Cam Rayner over 14.5 disposals' },
+      { done:false, label:'Harris Andrews 10+ disposals' },
+      { done:false, label:'Luke Nankervis 10+ disposals' },
+      { done:false, label:'Riley Thilthorpe 10+ disposals' }
+    ]
+  },
+  { captain:'charlie', date:'12 Sep 2026',
+    event:'Rosehill R9 — Ahha Ahha (Place)',
+    details:'No. 10 · Sat 12 Sep 16:40 · $10 place · the same horse that returned $165 at Flemington in February',
+    odds:'6.25', stake:'$10', potential:'$62.50',
+    legs:[ { done:false, label:'Ahha Ahha to place — Rosehill R9, 16:40' } ]
+  },
   { captain:'shannon', date:'22 Aug 2026',
     event:'AFL Premiership Exacta — Brisbane Lions / Sydney Swans',
     details:'Brisbane to win premiership · Sydney runner-up · Grand Final 26 Sep, MCG · $10 stake placed 25 Aug',
@@ -663,7 +633,7 @@ const SCHEDULE = [
   { date:'22 Aug 2026', captain:'shannon', logged:true },
   { date:'29 Aug 2026', captain:'nic',     logged:true },
   { date:'05 Sep 2026', captain:'douchie', logged:true },
-  { date:'12 Sep 2026', captain:'charlie', logged:false },
+  { date:'12 Sep 2026', captain:'charlie', logged:true },
   { date:'19 Sep 2026', captain:'shannon', logged:false },
   { date:'26 Sep 2026', captain:'nic',     logged:false },
   { date:'03 Oct 2026', captain:'douchie', logged:false },
@@ -1291,7 +1261,6 @@ function showPage(id) {
   window.scrollTo(0, 0);
   if (id === 'home') buildHome();
   if (id === 'account') buildAccount();
-  if (id === 'wire') buildWire();
   stampAsAt();
 }
 
@@ -1302,129 +1271,6 @@ buildTicker();
 buildLeaderboard();
 buildRecords();
 buildPost();
-const WIRE_CATS = [
-  ['all','All'], ['tips','Tips'], ['racing','Racing'], ['afl','AFL'],
-  ['nrl','NRL'], ['union','Union'], ['sport','Sport']
-];
-const WIRE_CAT_COLOR = {
-  tips:'var(--ink)', racing:'var(--charlie)', afl:'var(--shannon)',
-  nrl:'var(--douchie)', union:'var(--nic)', sport:'var(--muted)'
-};
-let WIRE = null, wireFilter = 'all';
-
-function timeAgo(ts) {
-  if (!ts) return '';
-  const mins = Math.floor((Date.now()/1000 - ts) / 60);
-  if (mins < 1) return 'just now';
-  if (mins < 60) return mins + 'm ago';
-  const hrs = Math.floor(mins/60);
-  if (hrs < 24) return hrs + 'h ago';
-  const days = Math.floor(hrs/24);
-  return days === 1 ? 'yesterday' : days + 'd ago';
-}
-
-function esc(s) {
-  return String(s).replace(/[&<>"']/g, c =>
-    ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-}
-
-function renderLiveTips() {
-  const box = document.getElementById('live-tips');
-  if (!box || !WIRE || !WIRE.items) return;
-
-  // a tip for a meeting that has already run is not a live tip
-  const today = new Date(); today.setHours(0, 0, 0, 0);
-  const cutoff = today.getTime() - 864e5;   // yesterday, for late-posted cards
-
-  const tips = WIRE.items
-    .filter(i => i.tip)
-    .filter(i => !i.tip.when || Date.parse(i.tip.when) >= cutoff)
-    .slice(0, 8);
-
-  if (!tips.length) { box.innerHTML = ''; return; }
-
-  const whenLabel = (t) => {
-    if (!t.when) return timeAgo(0) || '';
-    const d = new Date(t.when + 'T00:00:00');
-    const diff = Math.round((d - today) / 864e5);
-    if (diff === 0) return 'Today';
-    if (diff === 1) return 'Tomorrow';
-    if (diff === -1) return 'Yesterday';
-    return d.toLocaleDateString('en-AU', { weekday: 'short', day: 'numeric', month: 'short' });
-  };
-
-  box.innerHTML = `<div class="livetips">
-    <div class="livetips-head">
-      <span class="pending-pulse">Live Tips</span>
-      <span class="livetips-count">${tips.length} current</span>
-    </div>
-    ${tips.map(i => `
-      <a class="tip-row" href="${esc(i.link)}" target="_blank" rel="noopener noreferrer">
-        <span class="tip-kind ${i.tip.kind}">${i.tip.kind === 'race' ? 'Meeting' : 'Fixture'}</span>
-        <span class="tip-subject">${esc(i.tip.subject)}</span>
-        <span class="tip-meta">${esc(i.tip.tipster || i.source)}</span>
-        <span class="tip-when">${whenLabel(i.tip)}</span>
-        ${i.excerpt ? `<span class="tip-note">${esc(i.excerpt)}</span>` : ''}
-      </a>`).join('')}
-    <div class="livetips-foot">Meeting, fixture and tipster parsed from the headline &mdash;
-      selections stay with the tipster. Tap through for the full card.</div>
-  </div>`;
-}
-
-function renderWire() {
-  const feed = document.getElementById('wire-feed');
-  if (!feed) return;
-  renderLiveTips();
-
-  if (!WIRE) {
-    feed.innerHTML = '<div class="wire-empty">Loading the wire…</div>';
-    return;
-  }
-  if (!WIRE.items || !WIRE.items.length) {
-    feed.innerHTML = '<div class="wire-empty">No stories yet. The feed refreshes twice daily &mdash; ' +
-      'run the <strong>Fetch racing &amp; sport feeds</strong> action to pull now.</div>';
-    return;
-  }
-
-  const cats = new Set(WIRE.items.map(i => i.category));
-  document.getElementById('wire-filters').innerHTML = WIRE_CATS
-    .filter(([k]) => k === 'all' || cats.has(k))
-    .map(([k, label]) =>
-      `<div class="wire-chip${k === wireFilter ? ' active' : ''}" onclick="setWireFilter('${k}')">${label}</div>`)
-    .join('');
-
-  const shown = WIRE.items.filter(i => wireFilter === 'all' || i.category === wireFilter);
-  feed.innerHTML = shown.map(i => `
-    <a class="wire-item" href="${esc(i.link)}" target="_blank" rel="noopener noreferrer">
-      <div class="wire-meta">
-        <span class="wire-src">${esc(i.source)}</span>
-        <span class="wire-cat" style="color:${WIRE_CAT_COLOR[i.category] || 'var(--muted)'}">${esc(i.category)}</span>
-        <span class="wire-time">${timeAgo(i.ts)}</span>
-      </div>
-      <div class="wire-title">${esc(i.title)}</div>
-      ${i.excerpt ? `<div class="wire-excerpt">${esc(i.excerpt)}</div>` : ''}
-    </a>`).join('');
-
-  const stamp = document.getElementById('wire-stamp');
-  if (stamp && WIRE.generated) {
-    stamp.textContent = 'Updated ' + timeAgo(Math.floor(Date.parse(WIRE.generated)/1000));
-  }
-}
-
-function setWireFilter(cat) { wireFilter = cat; renderWire(); }
-
-function buildWire() {
-  if (WIRE) { renderWire(); return; }
-  renderWire();
-  fetch('feeds.json', { cache: 'no-cache' })
-    .then(r => r.ok ? r.json() : Promise.reject(r.status))
-    .then(data => { WIRE = data; renderWire(); })
-    .catch(() => {
-      document.getElementById('wire-feed').innerHTML =
-        '<div class="wire-empty">Could not load the wire. It refreshes twice daily via GitHub Actions.</div>';
-    });
-}
-
 function stampAsAt() {
   const set = (sel, val) => document.querySelectorAll(sel).forEach(el => el.textContent = val);
   const w = BETS.filter(b => b.result === 'W').length;

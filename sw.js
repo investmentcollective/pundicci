@@ -37,10 +37,8 @@ self.addEventListener('fetch', event => {
   if (req.method !== 'GET') return;
 
   const isDoc = req.mode === 'navigate' || req.destination === 'document';
-  // the feed changes on a schedule - never serve it from cache first
-  const isFeed = new URL(req.url).pathname.endsWith('/feeds.json');
 
-  if (isDoc || isFeed) {
+  if (isDoc) {
     event.respondWith(
       fetch(req)
         .then(res => {
