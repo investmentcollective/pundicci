@@ -323,6 +323,20 @@
   footer { text-align:center; padding:30px 20px 40px; font-size:10px; color:var(--faint); letter-spacing:2px; text-transform:uppercase; line-height:2; }
   footer .gold { color:var(--brand2); }
 
+  /* ─────────── Post teaser (home) ─────────── */
+  .teaser {
+    display:block; width:100%; text-align:left; cursor:pointer; font:inherit;
+    background:var(--card); border:1px solid var(--line2); border-left:4px solid var(--ink);
+    border-radius:14px; padding:20px 24px; margin-top:26px; transition:all .15s ease;
+  }
+  .teaser:hover { border-color:var(--line3); border-left-color:var(--ink); transform:translateY(-1px); }
+  .teaser-meta { display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:10px; }
+  .teaser-kicker { font-size:9px; font-weight:600; letter-spacing:2.2px; text-transform:uppercase; color:var(--muted); }
+  .teaser-date { font-size:10px; color:var(--faint); letter-spacing:0.5px; margin-left:auto; }
+  .teaser-title { font-family:var(--serif); font-weight:800; font-size:24px; line-height:1.25; letter-spacing:-0.2px; color:var(--ink); }
+  .teaser-stand { font-family:var(--serif); font-size:15px; line-height:1.55; color:var(--muted); margin-top:9px; }
+  .teaser-more { font-size:11px; font-weight:600; letter-spacing:1.6px; text-transform:uppercase; color:var(--ink); margin-top:14px; display:inline-flex; align-items:center; gap:7px; }
+
   /* ─────────── Mobile ─────────── */
   @media (max-width: 700px) {
     .header { padding:12px 16px; padding-top:calc(18px + env(safe-area-inset-top, 0px)); }
@@ -430,6 +444,8 @@
     <div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div>
   </div>
 
+  <div id="post-teaser"></div>
+
   <div class="section-title"><span class="gold">◆</span> Live Position</div>
   <div id="pending-widget"></div>
 
@@ -513,7 +529,7 @@
 /* ══════════════════════════════════════════════════════════════
    DATA — edit this block to update the dashboard
    ══════════════════════════════════════════════════════════════ */
-const BALANCE = { current: 7175.51, asAt: '09 Sep 2026', opening: 5138.12, openingDate: '30 Dec 2025', betReturns2026: 1037.94 };
+const BALANCE = { current: 7175.51, asAt: '26 Sep 2026', opening: 5138.12, openingDate: '30 Dec 2025', betReturns2026: 1037.94 };
 
 const MEMBERS = {
   charlie: { name:'Charlie', color:'var(--charlie)', hex:'#127A5E', outstanding:0 },
@@ -557,47 +573,14 @@ const BETS = [
   { m:'charlie', date:'15 Aug 2026', desc:'Cavalry Girl — Caulfield Heath Race 3', odds:'2.60', stake:30, ret:78.00, result:'W' },
   { m:'shannon', date:'22 Aug 2026', desc:'Horses — bet lost ($20 stake)', odds:null, stake:20, ret:0, result:'L' },
   { m:'nic',     date:'29 Aug 2026', desc:'NRL/Rugby multi — Sydney Roosters + NZ All Blacks', odds:null, stake:30, ret:0, result:'L' },
-  { m:'douchie', date:'05 Sep 2026', desc:'5-leg multi (horses & sports)', odds:null, stake:30, ret:0, result:'L' }
+  { m:'douchie', date:'05 Sep 2026', desc:'5-leg multi (horses & sports)', odds:null, stake:30, ret:0, result:'L' },
+  { m:'shannon', date:'22 Aug 2026', desc:'AFL Premiership Exacta — Brisbane 1st / Sydney 2nd (settled 26 Sep)', odds:'18.00', stake:10, ret:0, result:'L' },
+  { m:'charlie', date:'12 Sep 2026', desc:'AFL SGM — Brisbane v Adelaide (12-leg, $25 bonus bet)', odds:'32.00', stake:25, ret:0, result:'L' },
+  { m:'charlie', date:'12 Sep 2026', desc:'Rosehill R9 — Ahha Ahha (Place)', odds:'6.25', stake:10, ret:0, result:'L' },
+  { m:'shannon', date:'19 Sep 2026', desc:'AFL SGM — Brisbane v Hawthorn prelim (7-leg, 5 of 7 legs landed)', odds:'15.00', stake:30, ret:0, result:'L' }
 ];
 
-const PENDING_BETS = [
-  { captain:'charlie', date:'12 Sep 2026',
-    event:'AFL SGM — Brisbane Lions v Adelaide Crows (12 legs)',
-    details:'Semi-final, Gabba · Sat 12 Sep 19:35 · $25 bonus bet — winnings only, stake not returned',
-    odds:'32.00', stake:'$25 (bonus)', potential:'$775.00',
-    legs:[
-      { done:false, label:'Brisbane Lions — Head to Head' },
-      { done:false, label:'Charlie Cameron 1+ goal' },
-      { done:false, label:'Kai Lohmann 1+ goal' },
-      { done:false, label:'Eric Hipwood 1+ goal' },
-      { done:false, label:'Taylor Walker 1+ goal' },
-      { done:false, label:'Josh Rachele 1+ goal' },
-      { done:false, label:'Izak Rankine 1+ goal' },
-      { done:false, label:'Jordan Dawson under 26.5 disposals' },
-      { done:false, label:'Cam Rayner over 14.5 disposals' },
-      { done:false, label:'Harris Andrews 10+ disposals' },
-      { done:false, label:'Luke Nankervis 10+ disposals' },
-      { done:false, label:'Riley Thilthorpe 10+ disposals' }
-    ]
-  },
-  { captain:'charlie', date:'12 Sep 2026',
-    event:'Rosehill R9 — Ahha Ahha (Place)',
-    details:'No. 10 · Sat 12 Sep 16:40 · $10 place · the same horse that returned $165 at Flemington in February',
-    odds:'6.25', stake:'$10', potential:'$62.50',
-    legs:[ { done:false, label:'Ahha Ahha to place — Rosehill R9, 16:40' } ]
-  },
-  { captain:'shannon', date:'22 Aug 2026',
-    event:'AFL Premiership Exacta — Brisbane Lions / Sydney Swans',
-    details:'Brisbane to win premiership · Sydney runner-up · Grand Final 26 Sep, MCG · $10 stake placed 25 Aug',
-    odds:'18.00', stake:'$10', potential:'$180.00',
-    legs:[
-      { done:false, label:'Brisbane beat Adelaide — Gabba, Sat 12 Sep' },
-      { done:false, label:'Sydney win home prelim — SCG (vs Freo or Geelong)' },
-      { done:false, label:'Brisbane win away prelim at Hawthorn' },
-      { done:false, label:'Brisbane win Grand Final — MCG, 26 Sep' }
-    ]
-  }
-];
+const PENDING_BETS = [];
 
 const SCHEDULE = [
   { date:'24 Jan 2026', captain:'douchie', logged:true },
@@ -634,7 +617,7 @@ const SCHEDULE = [
   { date:'29 Aug 2026', captain:'nic',     logged:true },
   { date:'05 Sep 2026', captain:'douchie', logged:true },
   { date:'12 Sep 2026', captain:'charlie', logged:true },
-  { date:'19 Sep 2026', captain:'shannon', logged:false },
+  { date:'19 Sep 2026', captain:'shannon', logged:true },
   { date:'26 Sep 2026', captain:'nic',     logged:false },
   { date:'03 Oct 2026', captain:'douchie', logged:false },
   { date:'10 Oct 2026', captain:'charlie', logged:false },
@@ -667,6 +650,57 @@ const DEBTS = [
 ];
 
 const ARTICLES = [
+  { tag:'Editorial', tagClass:'tag-editorial', date:'26 Sep 2026', who:'The Post',
+    title:"Two Dollars and Ninety-Four Cents Stand Between the Collective and a Losing Year",
+    standfirst:"Thirty-eight bets. One stake from red. And the week belongs to the man who keeps not betting.",
+    byline:'By our Economics Editor',
+    body:`The Pundicci Investment Collective has, across thirty-eight bets and nine months of the 2026 season, staked <strong>$1,035.00</strong> and recovered <strong>$1,037.94</strong>.<br><br>
+
+The difference is <strong>$2.94</strong>.<br><br>
+
+This publication has reported all year on the collective's fortunes in the language of streaks, black books and cruel final legs. We now report on it in the language of arithmetic, because the arithmetic has become the story. Two dollars and ninety-four cents is the entire yield of nine months of committee-sanctioned wagering. It is less than the price of a coffee. It would not cover the postage on a letter explaining itself.<br><br>
+
+More pressingly: it is less than one stake.<br><br>
+
+<strong>The next losing bet ends the profitable year.</strong> A standard $30 captain stake that fails to return takes the collective to &minus;$27.06 and into the red for the first time since January. There is no buffer left. There is no cushion. There is $2.94.<br><br>
+
+The week in question belongs to <strong>Nic</strong>.<br><br>
+
+Readers with long memories &mdash; or access to the Ledger of Shame &mdash; will recall that Nic has failed to submit a bet on three separate captain weeks this season: 11 April, 9 May, and 1 August. The Post has covered each. The committee has run out of euphemisms. Ninety dollars in outstanding stakes sits against his name.<br><br>
+
+And yet. Consider the position honestly. If Nic submits a bet this week and it loses, the collective's year turns negative. If Nic submits nothing at all &mdash; if he does exactly what he has done three times already &mdash; the $2.94 survives untouched into October.<br><br>
+
+<em>The single most financially prudent action available to this collective is for Nic to continue ignoring his obligations.</em><br><br>
+
+The Post states this without endorsement and with some discomfort.<br><br>
+
+A note on who is holding the roof up. Charlie is <strong>+$283.95</strong> for the season, five wins from eleven, and is the only member in profit. Remove him from the ledger entirely and the collective sits at <strong>&minus;$281.01</strong>. Douchie is down $22.26 and has at least had the decency to win twice. Nic is down $78.75 across five bets, which is a respectable rate of loss for a man who has bet five times in nine months.<br><br>
+
+Which leaves <strong>Shannon</strong>. One win. Eleven bets. <strong>&minus;$180.00</strong>. His last fortnight has been the most elaborately painful in the collective's short history: a seven-leg preliminary final multi that landed five of seven, and an 18.00 Premiership Exacta that survived a semi-final, survived Hawthorn, and lived thirty-two days before expiring. He has not commented. The Post did not ask.<br><br>
+
+The 2026 season has fourteen weeks left to run. The collective enters them with a pool of $7,175.51, a profit of $2.94, and a growing sense that the profit is decorative.<br><br>
+
+We will report the moment it goes.` },
+  { tag:'Pending', tagClass:'tag-pending', date:'12 Sep 2026', who:'The Post',
+    title:"Brisbane Carry Two Men's Money Tonight. Neither Asked the Other First.",
+    byline:'By our Finals Desk',
+    body:`At 19:35 this evening the Brisbane Lions host Adelaide at the Gabba in a semi-final. For most of the country this is a football match. For the Pundicci Investment Collective it is a single point of failure.<br><br>
+
+<strong>Charlie</strong> has opened his captain week with a twelve-leg same-game multi at 32.00. Twelve. The Post pauses here, because the record requires it: in May, Charlie submitted a nine-leg same-game multi that survived eight legs before expiring on Brodie Kemp's boot. The lesson available from that experience was that nine legs is too many. The lesson Charlie has taken is that nine legs was not enough.<br><br>
+
+The ticket requires Brisbane to win, and then requires Charlie Cameron, Kai Lohmann, Eric Hipwood, Taylor Walker, Josh Rachele and Izak Rankine each to kick a goal &mdash; six separate men, on the same evening, in a final. It further requires Jordan Dawson to stay <em>under</em> 26.5 disposals while Cam Rayner goes <em>over</em> 14.5, and Harris Andrews, Luke Nankervis and Riley Thilthorpe all to reach ten. Should every one of these things occur, the collective banks <strong>$775.00</strong>.<br><br>
+
+<strong>Shannon</strong>, who placed a $10 Premiership Exacta back on 25 August and has said little since, finds his ticket alive tonight for reasons entirely outside his control. His first leg is Brisbane beating Adelaide &mdash; the same match, the same result, the same ninety-odd minutes. Two members of this collective have money on the Lions this evening and arrived there independently. Neither consulted the other. The Post finds this either reassuring or alarming and has not settled on which.<br><br>
+
+And then there is <strong>Ahha Ahha</strong>.<br><br>
+
+In February, at Flemington, a horse bearing that name won Race 8 at 5.50 and handed Charlie $165 and a fortnight of insufferability. This publication covered it. We noted at the time that nobody could explain why the name was funny and nobody could stop saying it. Seven months later Charlie has found the animal again, at Rosehill in Race 9, and put $10 on it to place at 6.25. Loyalty, of a kind. Returns $62.50 if it runs top three.<br><br>
+
+The accounting deserves a note. The twelve-leg multi was struck with a bonus bet, which means Charlie's actual exposure this weekend &mdash; his own money, out of his own pocket &mdash; is ten dollars. Ten dollars, against a combined potential return of <strong>$837.50</strong>. He marked the occasion by messaging the group "That's me for the weekend lads!!" and attaching a photograph of himself flexing in a Pundicci shirt.<br><br>
+
+Rosehill Race 9 jumps at 16:40. The Gabba follows at 19:35. By midnight the collective will be up somewhere north of eight hundred dollars, or it will be exactly where it is now, and Charlie will have lost ten dollars and some standing.<br><br>
+
+The Post will be watching. The Post suspects everyone will be.` },
   { tag:'Pending', tagClass:'tag-pending', date:'09 Sep 2026', who:'Shannon',
     title:"Shannon's $10 Is Still Alive. Brisbane Just Need to Win Three in a Row. On the Road. No Pressure.",
     byline:'By our Grand Final Bureau',
@@ -856,11 +890,31 @@ function buildTicker() {
 /* ══════════════════════════════════════════════════════════════
    RENDER — Home
    ══════════════════════════════════════════════════════════════ */
+function buildTeaser() {
+  const el = document.getElementById('post-teaser');
+  if (!el || !ARTICLES.length) return;
+  const a = ARTICLES[0];
+  // strip tags and clip the body when an article has no explicit standfirst
+  const stand = a.standfirst ||
+    a.body.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim().slice(0, 155) + '…';
+  el.innerHTML = `<button class="teaser" onclick="showPage('post')">
+    <div class="teaser-meta">
+      <span class="article-tag ${a.tagClass}">${a.tag}</span>
+      <span class="teaser-kicker">The Pundicci Post</span>
+      <span class="teaser-date">${a.date}</span>
+    </div>
+    <div class="teaser-title">${a.title}</div>
+    <div class="teaser-stand">${stand}</div>
+    <div class="teaser-more">Read the full piece →</div>
+  </button>`;
+}
+
 function buildHome() {
   const totalNet = BETS.reduce((a,b) => a + (b.ret - b.stake), 0);
   animateNumber(document.getElementById('hero-balance'), BALANCE.current);
   animateNumber(document.getElementById('hero-returns'), BALANCE.betReturns2026, { sign:true });
   animateNumber(document.getElementById('hero-net'), totalNet, { sign:true });
+  buildTeaser();
 
   /* season progress */
   const done = SCHEDULE.filter(s => s.logged).length;
@@ -1262,7 +1316,17 @@ function showPage(id) {
   if (id === 'home') buildHome();
   if (id === 'account') buildAccount();
   stampAsAt();
+  // replaceState rather than setting location.hash, which would re-fire hashchange
+  try { history.replaceState(null, '', '#' + id); } catch (e) {}
 }
+
+/* Deep links — .../PIC_Dashboard.html#post opens The Post directly,
+   so a shared link can land on the right tab. */
+function openFromHash() {
+  const id = (location.hash || '').replace(/^#/, '');
+  if (id && document.getElementById('page-' + id)) showPage(id);
+}
+window.addEventListener('hashchange', openFromHash);
 
 /* ══════════════════════════════════════════════════════════════
    INIT
@@ -1287,6 +1351,7 @@ function stampAsAt() {
 }
 buildHome();
 stampAsAt();
+openFromHash();
 
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
