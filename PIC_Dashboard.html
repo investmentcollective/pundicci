@@ -323,6 +323,25 @@
   footer { text-align:center; padding:30px 20px 40px; font-size:10px; color:var(--faint); letter-spacing:2px; text-transform:uppercase; line-height:2; }
   footer .gold { color:var(--brand2); }
 
+  /* ─────────── Front-page alert ─────────── */
+  .alert {
+    border:1px solid rgba(229,72,77,0.34); border-left:4px solid var(--red);
+    background:rgba(229,72,77,0.045); border-radius:14px;
+    padding:22px 26px; margin-bottom:24px;
+  }
+  .alert-head { display:flex; align-items:center; gap:11px; flex-wrap:wrap; margin-bottom:12px; }
+  .alert-tag {
+    font-size:9px; font-weight:600; letter-spacing:2px; text-transform:uppercase;
+    padding:3px 10px; border-radius:3px; background:var(--red); color:#FFFFFF;
+  }
+  .alert-date { font-size:10px; color:var(--faint); letter-spacing:1px; margin-left:auto; }
+  .alert-title { font-family:var(--serif); font-weight:800; font-size:26px; line-height:1.24; color:var(--ink); }
+  .alert-body { font-family:var(--serif); font-size:15px; line-height:1.68; color:var(--muted); margin-top:12px; }
+  .alert-body strong { color:var(--ink); }
+  .alert-figs { display:flex; gap:28px; flex-wrap:wrap; margin-top:18px; padding-top:16px; border-top:1px solid rgba(229,72,77,0.22); }
+  .alert-fig .l { font-size:9px; font-weight:600; letter-spacing:1.8px; text-transform:uppercase; color:var(--muted); }
+  .alert-fig .v { font-size:22px; font-weight:800; font-variant-numeric:tabular-nums; margin-top:3px; }
+
   /* ─────────── Post teaser (home) ─────────── */
   .teaser {
     display:block; width:100%; text-align:left; cursor:pointer; font:inherit;
@@ -422,6 +441,8 @@
 
 <!-- ═══════════ HOME ═══════════ -->
 <div class="page active" id="page-home">
+  <div id="front-alert"></div>
+
   <div class="hero">
     <div>
       <div class="hero-label">Collective Account Balance</div>
@@ -529,12 +550,22 @@
 /* ══════════════════════════════════════════════════════════════
    DATA — edit this block to update the dashboard
    ══════════════════════════════════════════════════════════════ */
-const BALANCE = { current: 7175.51, asAt: '26 Sep 2026', opening: 5138.12, openingDate: '30 Dec 2025', betReturns2026: 1037.94 };
+const BALANCE = { current: 7175.51, asAt: '23 Oct 2026', opening: 5138.12, openingDate: '30 Dec 2025', betReturns2026: 1037.94 };
+
+/* Front-page notice. Set to null to clear it from the home page. */
+const ALERT = {
+  tag:'Collective Notice',
+  date:'23 Oct 2026',
+  title:'The collective is in deficit. Two members have stopped betting entirely.',
+  body:`For the first time since January the 2026 season is running at a loss. Worse than the number is the silence behind it: <strong>two of the last four captain weeks passed without a bet being placed at all</strong>.<br><br>
+The Post understands that liquidators have begun circling the fringes of this organisation &mdash; several recently departed KPMG staffers, keen for a gig and well practised at unpacking books considerably thicker than these. They have made enquiries. They have been told to wait. They have indicated that they are comfortable waiting.<br><br>
+<strong>Nic</strong> and <strong>Shannon</strong> are asked to lift. Fewer paperbacks. Less real estate. The committee's position, stated plainly, is that this collective was founded to invest in <em>four legs</em> &mdash; and that it would like to see some.`
+};
 
 const MEMBERS = {
   charlie: { name:'Charlie', color:'var(--charlie)', hex:'#127A5E', outstanding:0 },
-  nic:     { name:'Nic',     color:'var(--nic)',     hex:'#5B4FC7', outstanding:3 },
-  shannon: { name:'Shannon', color:'var(--shannon)', hex:'#B85C22', outstanding:0 },
+  nic:     { name:'Nic',     color:'var(--nic)',     hex:'#5B4FC7', outstanding:4 },
+  shannon: { name:'Shannon', color:'var(--shannon)', hex:'#B85C22', outstanding:1 },
   douchie: { name:'Douchie', color:'var(--douchie)', hex:'#2264C4', outstanding:0 }
 };
 
@@ -577,7 +608,8 @@ const BETS = [
   { m:'shannon', date:'22 Aug 2026', desc:'AFL Premiership Exacta — Brisbane 1st / Sydney 2nd (settled 26 Sep)', odds:'18.00', stake:10, ret:0, result:'L' },
   { m:'charlie', date:'12 Sep 2026', desc:'AFL SGM — Brisbane v Adelaide (12-leg, $25 bonus bet)', odds:'32.00', stake:25, ret:0, result:'L' },
   { m:'charlie', date:'12 Sep 2026', desc:'Rosehill R9 — Ahha Ahha (Place)', odds:'6.25', stake:10, ret:0, result:'L' },
-  { m:'shannon', date:'19 Sep 2026', desc:'AFL SGM — Brisbane v Hawthorn prelim (7-leg, 5 of 7 legs landed)', odds:'15.00', stake:30, ret:0, result:'L' }
+  { m:'shannon', date:'19 Sep 2026', desc:'AFL SGM — Brisbane v Hawthorn prelim (7-leg, 5 of 7 legs landed)', odds:'15.00', stake:30, ret:0, result:'L' },
+  { m:'douchie', date:'03 Oct 2026', desc:'Bet Lost', odds:null, stake:30, ret:0, result:'L' }
 ];
 
 const PENDING_BETS = [];
@@ -618,10 +650,10 @@ const SCHEDULE = [
   { date:'05 Sep 2026', captain:'douchie', logged:true },
   { date:'12 Sep 2026', captain:'charlie', logged:true },
   { date:'19 Sep 2026', captain:'shannon', logged:true },
-  { date:'26 Sep 2026', captain:'nic',     logged:false },
-  { date:'03 Oct 2026', captain:'douchie', logged:false },
+  { date:'26 Sep 2026', captain:'nic',     logged:true, noBet:true },
+  { date:'03 Oct 2026', captain:'douchie', logged:true },
   { date:'10 Oct 2026', captain:'charlie', logged:false },
-  { date:'17 Oct 2026', captain:'shannon', logged:false },
+  { date:'17 Oct 2026', captain:'shannon', logged:true, noBet:true },
   { date:'24 Oct 2026', captain:'nic',     logged:false },
   { date:'31 Oct 2026', captain:'douchie', logged:false },
   { date:'07 Nov 2026', captain:'charlie', logged:false },
@@ -643,13 +675,45 @@ const SAVINGS_ANNUAL = 360;
 
 /* Outstanding obligations — cash owed and unfulfilled captain weeks */
 const DEBTS = [
+  { m:'shannon', what:'Captain week not bet — 17 Oct (1 × $30 stake)', amt:30, status:'First offence', level:'warn' },
   { m:'shannon', what:'Savings arrears — 4 weeks overdue and counting', amt:120, status:'Sanctions pending', level:'bad' },
   { m:'shannon', what:'Savings — remainder of 2026 schedule', amt:240, status:'Accruing', level:'warn' },
   { m:'nic',     what:'Savings balance — 2026', amt:80, status:'Under review', level:'warn' },
-  { m:'nic',     what:'Captain weeks not bet — 11 Apr, 09 May & 01 Aug (3 × $30 stakes)', amt:90, status:'Referred to committee', level:'bad' }
+  { m:'nic',     what:'Captain weeks not bet — 11 Apr, 09 May, 01 Aug & 26 Sep (4 × $30 stakes)', amt:120, status:'Referred to committee', level:'bad' }
 ];
 
 const ARTICLES = [
+  { tag:'Editorial', tagClass:'tag-editorial', date:'23 Oct 2026', who:'The Post',
+    title:"The Liquidators Are Circling. They Have Been Told to Wait. They Are Comfortable Waiting.",
+    standfirst:"A collective in deficit, five unpaid stakes, and two members who have simply stopped turning up.",
+    byline:'By our Insolvency Correspondent',
+    body:`One month ago this publication reported that the Pundicci Investment Collective was $2.94 in front for the year, and that the next losing bet would end its profitable season. We noted, with some discomfort, that the most prudent course available was for Nic to continue ignoring his obligations.<br><br>
+
+He did. The $2.94 survived the weekend entirely because the man who owed four weeks of stakes did not place a bet with them.<br><br>
+
+It did not survive Douchie. On 3 October, a $30 stake went out and did not come back, and the 2026 season turned red for the first time since January. It now sits at <strong>&minus;$27.06</strong>.<br><br>
+
+<strong>But the deficit is not the story. The silence is.</strong><br><br>
+
+Of the last four captain weeks, two passed without a bet being placed at all. Nic's 26 September obligation &mdash; the one trailed in this publication, the one accompanied by a graphic circulated to the group showing $120 and two legs and a photograph of a springbok in jewellery &mdash; never happened. The bet slip was never filled. The stake was never struck. His outstanding balance moved from $90 to $120 and his missed-week tally to four.<br><br>
+
+More troubling, because it is new: on 17 October, <strong>Shannon did not place a bet</strong>.<br><br>
+
+Readers should understand what a departure this represents. Shannon has been, by some distance, the worst-performing member of this collective &mdash; one win from eleven, $180 down, a man who has backed horses that did not run, same-game multis that died on the seventh of seven legs, and an 18.00 Premiership Exacta that survived a semi-final and a preliminary final across thirty-two days before expiring at the last. He has lost in every format the modern bookmaker offers. What he has never done, until this month, is fail to show up.<br><br>
+
+Five captain stakes now sit unpaid across the two of them. <strong>$150.</strong> The Ledger of Shame, a document this publication maintains with no particular pleasure, has never been longer.<br><br>
+
+And word has reached The Post that the collective's condition has been noticed externally.<br><br>
+
+Liquidators are circling the fringes of this organisation. Several are understood to be recently departed KPMG staff &mdash; capable people, between engagements, accustomed to unpacking books a great deal thicker than these and visibly unbothered by how quickly they could unpack ours. Approaches have been made. They have been told to wait. They have indicated, with the particular calm of professionals who have seen this before, that they are entirely comfortable waiting.<br><br>
+
+The committee's position is as follows.<br><br>
+
+<em>Fewer paperbacks. Less real estate.</em> This collective was not founded so that its members could develop opinions about property yields and work through a reading list. It was founded to put money on <strong>four legs</strong>, and the committee would very much like to see some again.<br><br>
+
+Charlie remains in profit and remains, functionally, the only thing holding this up. Douchie keeps turning up and keeps losing, which the committee notes is at least half of what is being asked.<br><br>
+
+Nic bets tomorrow. Or he does not, and the number becomes five.` },
   { tag:'Editorial', tagClass:'tag-editorial', date:'26 Sep 2026', who:'The Post',
     title:"Two Dollars and Ninety-Four Cents Stand Between the Collective and a Losing Year",
     standfirst:"Thirty-eight bets. One stake from red. And the week belongs to the man who keeps not betting.",
@@ -890,6 +954,37 @@ function buildTicker() {
 /* ══════════════════════════════════════════════════════════════
    RENDER — Home
    ══════════════════════════════════════════════════════════════ */
+function buildAlert() {
+  const el = document.getElementById('front-alert');
+  if (!el) return;
+  if (typeof ALERT === 'undefined' || !ALERT) { el.innerHTML = ''; return; }
+
+  // figures are computed, never typed, so the notice can't go stale
+  const net     = BETS.reduce((a, b) => a + (b.ret - b.stake), 0);
+  const missed  = SCHEDULE.filter(s => s.noBet).length;
+  const owed    = missed * 30;
+  const silent  = SCHEDULE.filter(s => s.logged).slice(-4).filter(s => s.noBet).length;
+
+  el.innerHTML = `<div class="alert">
+    <div class="alert-head">
+      <span class="alert-tag">${ALERT.tag}</span>
+      <span class="alert-date">${ALERT.date}</span>
+    </div>
+    <div class="alert-title">${ALERT.title}</div>
+    <div class="alert-body">${ALERT.body}</div>
+    <div class="alert-figs">
+      <div class="alert-fig"><div class="l">Season P&amp;L</div>
+        <div class="v" style="color:${net < 0 ? 'var(--red)' : 'var(--green)'}">${money(net, true)}</div></div>
+      <div class="alert-fig"><div class="l">Stakes Outstanding</div>
+        <div class="v" style="color:var(--red)">${money(owed)}</div></div>
+      <div class="alert-fig"><div class="l">Weeks Not Bet</div>
+        <div class="v" style="color:var(--red)">${missed}</div></div>
+      <div class="alert-fig"><div class="l">Of Last Four Weeks</div>
+        <div class="v" style="color:var(--red)">${silent} silent</div></div>
+    </div>
+  </div>`;
+}
+
 function buildTeaser() {
   const el = document.getElementById('post-teaser');
   if (!el || !ARTICLES.length) return;
@@ -914,6 +1009,7 @@ function buildHome() {
   animateNumber(document.getElementById('hero-balance'), BALANCE.current);
   animateNumber(document.getElementById('hero-returns'), BALANCE.betReturns2026, { sign:true });
   animateNumber(document.getElementById('hero-net'), totalNet, { sign:true });
+  buildAlert();
   buildTeaser();
 
   /* season progress */
