@@ -144,6 +144,7 @@
   .duty-row { display:flex; gap:14px; flex-wrap:wrap; }
   .duty-card { flex:1; min-width:230px; border-radius:16px; padding:20px 24px; border:1px solid var(--line2); background:var(--card2); position:relative; overflow:hidden; }
   .duty-card.primary { border-color:var(--line3); }
+  .duty-card.awaiting { border-color:rgba(184,128,31,0.38); background:rgba(184,128,31,0.045); }
   .duty-tag { font-size:10px; font-weight:800; letter-spacing:3px; text-transform:uppercase; color:var(--muted); margin-bottom:10px; }
   .duty-name { font-family:var(--display); font-weight:800; font-size:30px; letter-spacing:1px; line-height:1; text-transform:uppercase; }
   .duty-date { font-size:13px; color:var(--muted); margin-top:8px; font-weight:600; }
@@ -550,22 +551,23 @@
 /* ══════════════════════════════════════════════════════════════
    DATA — edit this block to update the dashboard
    ══════════════════════════════════════════════════════════════ */
-const BALANCE = { current: 7175.51, asAt: '23 Oct 2026', opening: 5138.12, openingDate: '30 Dec 2025', betReturns2026: 1037.94 };
+const BALANCE = { current: 7280.51, asAt: '07 Nov 2026', opening: 5138.12, openingDate: '30 Dec 2025', betReturns2026: 1142.94 };
 
 /* Front-page notice. Set to null to clear it from the home page. */
 const ALERT = {
   tag:'Collective Notice',
-  date:'23 Oct 2026',
-  title:'The collective is in deficit. Two members have stopped betting entirely.',
-  body:`For the first time since January the 2026 season is running at a loss. Worse than the number is the silence behind it: <strong>two of the last four captain weeks passed without a bet being placed at all</strong>.<br><br>
-The Post understands that liquidators have begun circling the fringes of this organisation &mdash; several recently departed KPMG staffers, keen for a gig and well practised at unpacking books considerably thicker than these. They have made enquiries. They have been told to wait. They have indicated that they are comfortable waiting.<br><br>
-<strong>Nic</strong> and <strong>Shannon</strong> are asked to lift. Fewer paperbacks. Less real estate. The committee's position, stated plainly, is that this collective was founded to invest in <em>four legs</em> &mdash; and that it would like to see some.`
+  date:'12 Nov 2026',
+  title:'Attendance restored. Results not. The collective remains in deficit.',
+  body:`The committee notes, with guarded approval, that every captain week since 17 October has been filled. Shannon returned on Cup day with three bets. Nic returned on 24 October and <strong>won</strong> &mdash; his first since March, and the collective's first since August. Douchie and Charlie have both turned up since.<br><br>
+The participation crisis is over. The <em>other</em> problem is not. Of the four weeks fulfilled, three returned nothing, and the season sits back in the red.<br><br>
+Particular concern attaches to <strong>Shannon</strong>, now one win from fourteen bets and $210 down. He has been asked whether he would like a week off. He has declined. The committee has recorded this as either commendable or evidence for the dismissal provisions, and will decide later.<br><br>
+The liquidators have been informed that circumstances have improved. They have not left.`
 };
 
 const MEMBERS = {
   charlie: { name:'Charlie', color:'var(--charlie)', hex:'#127A5E', outstanding:0 },
   nic:     { name:'Nic',     color:'var(--nic)',     hex:'#5B4FC7', outstanding:4 },
-  shannon: { name:'Shannon', color:'var(--shannon)', hex:'#B85C22', outstanding:1 },
+  shannon: { name:'Shannon', color:'var(--shannon)', hex:'#B85C22', outstanding:0 },
   douchie: { name:'Douchie', color:'var(--douchie)', hex:'#2264C4', outstanding:0 }
 };
 
@@ -609,7 +611,14 @@ const BETS = [
   { m:'charlie', date:'12 Sep 2026', desc:'AFL SGM — Brisbane v Adelaide (12-leg, $25 bonus bet)', odds:'32.00', stake:25, ret:0, result:'L' },
   { m:'charlie', date:'12 Sep 2026', desc:'Rosehill R9 — Ahha Ahha (Place)', odds:'6.25', stake:10, ret:0, result:'L' },
   { m:'shannon', date:'19 Sep 2026', desc:'AFL SGM — Brisbane v Hawthorn prelim (7-leg, 5 of 7 legs landed)', odds:'15.00', stake:30, ret:0, result:'L' },
-  { m:'douchie', date:'03 Oct 2026', desc:'Bet Lost', odds:null, stake:30, ret:0, result:'L' }
+  { m:'douchie', date:'03 Oct 2026', desc:'Bet Lost', odds:null, stake:30, ret:0, result:'L' },
+  { m:'nic',     date:'24 Oct 2026', desc:'Townsville R5 — Brave Agenda (stake fronted by Shannon)', odds:'3.50', stake:30, ret:105.00, result:'W' },
+  { m:'shannon', date:'17 Oct 2026', desc:'Melbourne Cup — King Pedro (Win)', odds:'51.00', stake:5, ret:0, result:'L' },
+  { m:'shannon', date:'17 Oct 2026', desc:'Melbourne Cup — King Pedro (Place)', odds:'14.00', stake:15, ret:0, result:'L' },
+  { m:'shannon', date:'17 Oct 2026', desc:'Flemington R8 — Saint George (Win, boosted)', odds:'15.00', stake:10, ret:0, result:'L' },
+  { m:'douchie', date:'31 Oct 2026', desc:"Flemington 4-leg multi — Warnie, Alibaba, Cormier, Surfin' Bird (boosted)", odds:null, stake:20, ret:0, result:'L' },
+  { m:'douchie', date:'31 Oct 2026', desc:'Randwick quaddie — 90 combinations (12% boost)', odds:null, stake:10, ret:0, result:'L' },
+  { m:'charlie', date:'07 Nov 2026', desc:'Flemington R1 — Natural Emotion (Win)', odds:'9.00', stake:30, ret:0, result:'L' }
 ];
 
 const PENDING_BETS = [];
@@ -652,11 +661,11 @@ const SCHEDULE = [
   { date:'19 Sep 2026', captain:'shannon', logged:true },
   { date:'26 Sep 2026', captain:'nic',     logged:true, noBet:true },
   { date:'03 Oct 2026', captain:'douchie', logged:true },
-  { date:'10 Oct 2026', captain:'charlie', logged:false },
-  { date:'17 Oct 2026', captain:'shannon', logged:true, noBet:true },
-  { date:'24 Oct 2026', captain:'nic',     logged:false },
-  { date:'31 Oct 2026', captain:'douchie', logged:false },
-  { date:'07 Nov 2026', captain:'charlie', logged:false },
+  { date:'10 Oct 2026', captain:'charlie', logged:false, awaiting:true },
+  { date:'17 Oct 2026', captain:'shannon', logged:true },
+  { date:'24 Oct 2026', captain:'nic',     logged:true },
+  { date:'31 Oct 2026', captain:'douchie', logged:true },
+  { date:'07 Nov 2026', captain:'charlie', logged:true },
   { date:'14 Nov 2026', captain:'shannon', logged:false },
   { date:'21 Nov 2026', captain:'nic',     logged:false },
   { date:'28 Nov 2026', captain:'douchie', logged:false },
@@ -675,7 +684,6 @@ const SAVINGS_ANNUAL = 360;
 
 /* Outstanding obligations — cash owed and unfulfilled captain weeks */
 const DEBTS = [
-  { m:'shannon', what:'Captain week not bet — 17 Oct (1 × $30 stake)', amt:30, status:'First offence', level:'warn' },
   { m:'shannon', what:'Savings arrears — 4 weeks overdue and counting', amt:120, status:'Sanctions pending', level:'bad' },
   { m:'shannon', what:'Savings — remainder of 2026 schedule', amt:240, status:'Accruing', level:'warn' },
   { m:'nic',     what:'Savings balance — 2026', amt:80, status:'Under review', level:'warn' },
@@ -998,7 +1006,10 @@ function buildAlert() {
   const net     = BETS.reduce((a, b) => a + (b.ret - b.stake), 0);
   const missed  = SCHEDULE.filter(s => s.noBet).length;
   const owed    = missed * 30;
-  const silent  = SCHEDULE.filter(s => s.logged).slice(-4).filter(s => s.noBet).length;
+  // consecutive filled weeks, counting back from the most recent logged one
+  const done = SCHEDULE.filter(s => s.logged);
+  let streak = 0;
+  for (let i = done.length - 1; i >= 0 && !done[i].noBet; i--) streak++;
 
   el.innerHTML = `<div class="alert">
     <div class="alert-head">
@@ -1014,8 +1025,8 @@ function buildAlert() {
         <div class="v" style="color:var(--red)">${money(owed)}</div></div>
       <div class="alert-fig"><div class="l">Weeks Not Bet</div>
         <div class="v" style="color:var(--red)">${missed}</div></div>
-      <div class="alert-fig"><div class="l">Of Last Four Weeks</div>
-        <div class="v" style="color:var(--red)">${silent} silent</div></div>
+      <div class="alert-fig"><div class="l">Weeks Filled In a Row</div>
+        <div class="v" style="color:var(--green)">${streak}</div></div>
     </div>
   </div>`;
 }
@@ -1112,6 +1123,19 @@ function buildDuty() {
       </div>`;
     }
   }
+
+  /* Past weeks whose outcome we still don't have. Without this they are
+     invisible: not a bet, not a no-bet, just a silent gap in the season. */
+  SCHEDULE.filter(s => s.awaiting).forEach(s => {
+    const m = MEMBERS[s.captain];
+    html += `<div class="duty-card awaiting">
+      <div class="duty-tag" style="color:var(--amber)">⏳ Awaiting Detail</div>
+      <div class="duty-name" style="font-size:24px;color:${m.hex}">${m.name}</div>
+      <div class="duty-date">${s.date}</div>
+      <span class="duty-when" style="background:rgba(184,128,31,0.12);color:var(--amber);border-color:rgba(184,128,31,0.32)">Outcome unknown</span>
+    </div>`;
+  });
+
   row.innerHTML = html;
 }
 
